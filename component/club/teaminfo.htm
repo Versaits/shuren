@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_jqexec="lvs_team_base">
+        <div class=" TeamHeadBack">
+            <div class="flexbox">
+                <div style="width:120px;text-align:center;padding-top:24px"><img width="60%" src="${teamlogo}" idxtype="image" lvs_elm="EditItem" idxid="${teamlogo}" lvs_bind="teamlogo" idxname="球队标志"/> </div>
+                <div class="flex1">
+                    <div class="ClubTitle"><span lvs_elm="EditItem" idxid="${teamname}" lvs_bind="teamname" idxname="球队名称">${teamname}</span><span class="float-right ClubStatus" lvs_elm="EditItem" idxid="${status}" lvs_bind="status" idxserial="正常,比赛临时,已解散" idxname="状态">${status}</span></div>
+                    <div class="ClubDesc">球队主教练：<span lvs_elm="EditItem" idxid="${coachname}" lvs_bind="teamcoach" idxname="球队主教练">{{if coachname}}{{if coachname==''}}<span style="color:#aaaaaa">未设置</span>{{else}}${coachname}{{/if}}{{/if}}</div>
+                    <div class="ClubDesc">球队主场：<span lvs_elm="EditItem" idxid="${teamplace}" lvs_bind="teamplace" idxname="球队主场">{{if teamplace==''}}<span style="color:#aaaaaa">未设置</span>{{else}}${teamplace}{{/if}}</span></div>
+                    <div class="ClubDesc">球衣颜色：<span lvs_elm="EditItem" idxid="${teamcolor}" lvs_bind="teamcolor" idxname="球衣颜色">{{if teamcolor==''}}<span style="color:#aaaaaa">未设置</span>{{else}}${teamcolor}{{/if}}</span></div>
+                    <div class="ClubDesc">训练时间：<span lvs_elm="EditItemWeek">{{if lesntime==''}}<span style="color:#aaaaaa">未设置</span>{{else}}${lesntime}{{/if}}</span></div>
+                </div>
+            </div>
+            <div class="flexbox NumberTab">
+                <div class="flex1"><span class="BigNum">${lesnnum}</span><br /><span class="LitNum">训练人次</span></div><div style="color:#aaaaaa">|</div>
+                <div class="flex1"><span class="BigNum">${matchnum}</span><br /><span class="LitNum">比赛场次</span></div><div style="color:#aaaaaa">|</div>
+                <div class="flex1"><span class="BigNum">${totalvals}</span>{{if valunit}}${valunit}{{/if}}<br /><span class="LitNum">全队身价</span></div>
+            </div>
+        </div>
+        <div class="ClubTab flexbox" lvs_elm="TeamTab">
+            <div class="ClubTabItem flex1 active" lvs_ref="tab.SelPanel" idxid="mem">球队阵容</div>
+            <div class="ClubTabItem flex1" lvs_ref="tab.SelPanel" idxid="match">球队比赛</div>
+            <div class="ClubTabItem flex1" lvs_ref="tab.GetData" apiname="leag/team_list" gettype="Team.MemList" idxkey="teamid" tmplname="cn.club.membranks">排行榜</div>
+            <div class="ClubTabItem flex1" lvs_ref="tab.GetData" apiname="leag/team_list" gettype="Team.Workers" idxkey="teamid" tmplname="cn.worker.wklist">守护者</div>
+        </div>
+        <div class="tabcontent" tabcontainer="mem">
+            <div class="BaseClubTitle"><span class="BaseText">正式成员（${mems.length}人）</span></div>
+            <component name="cn.club.memberlist" basedata="mems:mems" data-trigger="manage"></component>
+            <div class="BaseClubTitle"><span class="BaseText">编外成员（${outmems.length}人）</span></div>
+            <component name="cn.club.memberlist" basedata="mems:outmems" data-trigger="manage"></component>
+        </div>
+        <div class="tabcontent" tabcontainer="match" style="display:none">
+        2
+        </div>
+        <div class="tabcontent" tabcontainer="data" style="display:none">
+        3
+        </div>
+    </div>
+</body>
+</html>

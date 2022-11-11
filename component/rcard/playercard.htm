@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_rcard_playercard" lvs_jqexec="lvs_playercard" id="RCardOutput">
+        <div lvs_elm="PrintCard" style="position:fixed;top:0;left:0;z-index:1;width:1080px;height:1720px"></div>
+        <div class="RCardBox" perheit="260" style="position:relative;z-index:2">
+            <img lvs_elm="CardMainImg" class="MainImg" src="${image}" style="width:100%;display:none" />
+            <div lvs_elm="FormInfo" dest="ClubInfoForm" dire="left" class="ClubInfo ClubAnimate" style="position:absolute;left:0;top:0;width:40%" perheit="120">
+                <div class="ClubName">${clubname}</div>
+                <img width="30%" class="ClubLogo" style="margin-left:20%" src="${clublogo}" />
+            </div>
+            <div lvs_elm="FormInfo" dest="TeamInfoForm" dire="top" class="TeamInfo TeamAnimate" style="position:absolute;right:0;top:0;">
+                {{each(s,stardata) stars}}
+                    <img width="10px" height="10px" style="margin-left:3px" src="../../Image/star_1.png" />
+                {{/each}}
+                <div class="TeamName">${teamname}</div>
+            </div>
+            <div  lvs_elm="MembInfo" dest="MembInfoForm" dire="bottom" class="MembInfo MembAnimate" style="position:absolute;left:0;bottom:0;width:60%">
+                <div class="MembName MembDelay">${baseno}<span style="font-size:12px">号</span><span class="MembBigname" style="font-size:150%">${name}</span></div>
+                <div class="MembDelay">
+                    <div style="width:${lesnnum*100/3000}%"><div class="MembLesnNum"></div></div>
+                    <div style="width:${matchnum*100/1000}%"><div class="MembMatchNum"></div></div>
+                    <div style="width:${honornum}%"><div class="MembHonorNum"></div></div>
+                </div>
+            </div>
+            <div lvs_elm="BuyIt" dest="BuyItForm" class="BuyInfo" style="position:absolute;right:0;bottom:180px;width:20%">
+                <div class="LitUserHead" width="80px" height="80px" src="../../Image/bukpack.png" />收藏
+            </div>
+            <div lvs_elm="ShareIt" class="ShareInfo" style="position:absolute;right:0;bottom:120px;width:20%;background-color:White">
+                <div class="LitUserHead" width="80px" height="80px" src="../../Image/share.png" />分享
+            </div>
+            <div  lvs_elm="FormInfo" dest="ShirtInfoForm" dire="left" class="ShirtInfo ShirtAnimate" style="position:absolute;left:0;bottom:50px">
+                {{each(t,shtdata) shirts}}<div style="background-color:${shtdata.name}"><span style="font-size:smaller;color:White;height:${300/shirts.length}px;line-height:${300/shirts.length}px;">${shtdata.id}</span></div>{{/each}}
+            </div>
+            <div  lvs_elm="FormInfo" dest="CardInfoForm" dire="right" class="CardInfo CardAnimate" style="position:absolute;right:0;bottom:0;width:50%" perheit="40">
+                <div class="CardVal CardDelay">${curval}</div>
+                <div class="flexbox CardLitval CardDelay">
+                    <div style="width:${lesnval*100/curval}%" class="LesnVal"></div>
+                    <div style="width:${matchval*100/curval}%" class="MatchVal"></div>
+                    <div style="width:${honorval*100/curval}%" class="HonorVal"></div>
+                </div>
+            </div>
+            <div class="FlyWord" style="animation-delay:3.3s">从${lesnbeg}开始足球训练</div>
+            <div class="FlyWord" style="animation-delay:4.3s">历经风雨完成<span style="font-size:150%">${lesnnum}</span>次训练</div>
+            <div class="FlyWord" style="animation-delay:5.3s">参与<span style="font-size:150%">${matchnum}</span>场比赛历练</div>
+            <div class="FlyWord" style="animation-delay:6.3s">获得了<span style="font-size:150%">${honornum}</span>个荣誉奖励</div>
+            <div class="FlyRightWord" style="animation-delay:7.3s">共积累<span style="font-size:150%">${curval}</span>个球星技术积分</div>
+        </div>
+    </div>
+    <div class="BaseForm" id="ClubInfoForm" title="所属俱乐部" style="display:none">
+        <div class="BaseInfoBox">
+            <div class="BaseInfoTitle">当前所在俱乐部</div>
+            <img width="30%" src="${clublogo}" />
+            <div class="BaseInfoTitle">${clubname}</div>
+            <a class="button bg-green" lvs_ref="../lvsleag/clubmain.htm?id=${clubid}">查看详情</a>
+            <a class="FormCancel button bg-grey">关闭</a>
+        </div>
+    </div>
+    <div class="BaseForm" id="TeamInfoForm" title="所在球队" style="display:none">
+        <div class="BaseInfoBox">
+            <div class="BaseInfoTitle">当前所在球队</div>
+            <img width="30%" src="${teamlogo}" />
+            <div class="BaseInfoTitle">${teamname}</div>
+            {{each(s,strdata) stars}}
+                <div class="BaseInfoDesc">
+                    <img width="16px" height="16px" src="../../Image/star_1.png" style="vertical-align:middle" />${strdata.sdesc}${strdata.name}
+                </div>
+            {{/each}}
+            <a class="button bg-green" lvs_ref="../lvsleag/teammain.htm?id=${teamid}">查看详情</a>
+            <a class="FormCancel button bg-grey">关闭</a>
+        </div>
+    </div>
+    <div class="BaseForm" id="MembInfoForm" title="球员信息" style="display:none">
+        <div class="BaseInfoBox">
+        </div>
+    </div>
+    <div class="BaseForm" id="ShirtInfoForm" title="我的战袍" style="display:none">
+        <div class="BaseInfoBox">
+            <div class="BaseInfoTitle">${name}穿过的战袍</div>
+            {{each(t,shtdata) shirts}}
+                
+            {{/each}}
+        </div>
+    </div>
+    <div class="BaseForm" id="CardInfoForm" title="我的球星卡" style="display:none">
+        <div class="BaseInfoBox">
+            <div class="BaseInfoTitle">当前总身价：<span style="font-size:160%;color:#fd9e09">${curval}</span></div>
+            <div class="BaseInfoTitle">当前共发行：${totalnum}张卡</div>
+            <div class="BaseInfoTitle">每张价值：<span style="font-size:160%;color:#fd9e09">${curtbis}</span>元</div>
+            <div class="BaseInfoTitle txt-grey">每参加训练身价增长3-10</div>
+            <div class="BaseInfoTitle txt-grey">每参加比赛身价增长10-100</div>
+            <div class="BaseInfoTitle txt-grey">每获得荣誉身价增长60-800</div>
+            <div class="BaseInfoTitle">当前身价来源：</div>
+            <div class="flexbox"><div class="flex1">训练<br /><span style="font-size:160%;color:#fd9e09">${lesnval}</span></div><div class="flex1">参赛<br /><span style="font-size:160%;color:#fd9e09">${matchval}</span></div><div class="flex1">荣誉<br /><span style="font-size:160%;color:#fd9e09">${honorval}</span></div></div>
+            <div class="BaseDesc">
+            <a class="YellowButton" lvs_ref="dialog.BuyCard">我要收藏</a>
+            <a class="FormCancel GreyButton">关闭</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+<div lvs_component="cn_lesn_taskexhs" lvs_jqexec="lvs_lesn_taskexhs">
+    {{if exhs}}
+    {{each(e,exhdata) exhs}}
+    <div class="el_search" style="">
+        <div class="el_input_box  el_input_inner" style="background-image:none">
+            <input class="" lvs_elm="SearchData" type="text"  placeholder="搜索展评"  style="width:99%;font-size: 15px;height: 20px;"/>
+            <img class="el_input_clear"  src="./icon/el_icon_close.png"  style="display:none" />
+        </div>
+    </div>
+    <div class="WSBox" style="padding:24px;margin-top:12px">
+        <div class="HeadTitle">${exhdata.exhname}</div>
+
+        <div class="flexrow">
+            {{each(g,grpdata) groups}}
+            <div class="colflex4">
+                <div class="FlexItemBox" style="width:90%;margin-left:5%;margin-top:16px" lvs_elm="ShowExhItem" idxid="${grpdata.id}">
+                    <div class="HeadImg" perheit="57">
+                        <img width="100%" src="${grpdata.image}" />
+                    </div>
+                    <div>
+                        <div class="FlexTitle">${grpdata.title}</div>
+                        <div class="FlexDesc" style="text-align:left">${grpdata.classname}</div>
+                        <div class="FlexDesc" style="text-align:left;"><span>浏览：${grpdata.readnum}</span><span class="float-right">均分：<span lvs_bind="avgscore">${grpdata.remscore}</span></span></div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    {{/each}}
+    <div class="BaseForm" id="ShowExhForm" style="作品展示" style="display:none">
+    </div>
+    {{else}}
+    <div class="BaseTmpl" id="ShowExhTmpl" style="display:none">
+        <component load="dialog" name="cn.lesn.grpexhibit"></component>
+        <div>
+            <a class="DlgFootButton FormOk" opetype="OpenRem">评</a>
+        </div>
+        <div class="DlgFootBox" style="display:none">
+            <div style="position:relative;z-index:99999">
+                <div class="BaseDesc">请给出你对作品的评分</div>
+                <div class="BaseDesc" style="height:24px"><component name="cn.button.scorenum" lvs_bind="remscore" data-max="5"></component></div>
+                <div class="BaseDesc">请给出你对作品的评价</div>
+                <div class="BaseInput"><input type="text" lvs_bind="remtext" /></div>
+                <div class="BaseDesc"><a class="button bg-green FormOk" opetype="RetRem">提交评价</a><a class="button bg-grey FormCancel">取消操作</a></div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+</div>
+</body>
+</html>

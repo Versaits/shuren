@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_theme_blankinpshow" lvs_jqexec="lvsblankinpshow" class="PageThemeBox">
+        <div class="ThemeTitle">{{if title!=''}}${title}{{else}}填空题{{/if}}<span class="float-right" lvs_elm="CheckPass"  {{if checkok}}pass="1"{{else}}style="display:none"{{/if}}><img width="24px" height="24px" src="../../Image/ok.png" /></span></div>
+        {{if score}}<div class="ThemeDesc">${score}分</div>{{/if}}
+        <div class="ThemeOpe"><a lvs_elm="ThemeAns" class="button bg-grey">答题</a></div>
+        <div class="BaseForm" id="ThemeForm{{if pageid}}_${pageid}{{/if}}_${seqid}" title="答题" style="display:none">
+            <div class="ThemeTitle" lvs_bind="title" style="{{if titlefont}}font-size:1.8vw;{{/if}}{{if titlecolor}}color:${titlecolor};{{/if}}">{{if title}}${title}{{/if}}</div>
+            <div class="ThemeProblem" lvs_bind="problem" style="{{if problemfont}}font-size:1.8vw;{{/if}}{{if problemcolor}}color:${problemcolor};{{/if}}">{{if problem}}${problem}{{/if}}</div>
+            <div class="ThemeAnswer" style="margin-top:50px"><a lvs_elm="RetAnswer" class="AnsButton FormOk" opetype="RetAnswer">提交答案</a></div>
+        </div>
+    </div>
+</body>
+</html>

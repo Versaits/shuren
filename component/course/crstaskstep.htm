@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_course_crstaskstep">
+        <div class="BaseInput" style="width:92%;margin-left:4%" style="margin-top:8px">
+            <div class="flexbox" style="padding:8px">
+                <div class="flex1"><input type="text" lvs_bind="stepname" placeholder="请输入提交内容的简要说明" style="border-bottom:#dadada 1px solid"/></div>
+                <div style="width:64px;border-left:#dadada 1px solid"><select lvs_bind="stepcircle"><option value="2">最迟</option><option value="1">每</option></select></div>
+                <div style="width:64px;"><input type="number" lvs_bind="stepday" value="7" placeholder="天数" /></div>
+                <div>天提交以下内容（可多选）:</div>
+            </div>
+            <div class="flexbox SelBox" style="padding:8px">
+                <div class="flex1 MultSelecting" lvs_bind="textres" idxid="1">图文信息</div>
+                <div class="flex1 MultSelecting" lvs_bind="taskres" idxid="4">定制表单</div>
+                <div class="flex1 MultSelecting" lvs_bind="paperres" idxid="6">工作纸</div>
+                <div class="flex1 MultSelecting" lvs_bind="progres" idxid="2">任务进度</div>
+                <div class="flex1 MultSelecting" lvs_bind="fileres" idxid="3">文件附件</div>
+                <div class="flex1 MultSelecting" lvs_bind="mindres" idxid="5">思维导图</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,718 @@
+﻿.PageElm
+{
+    position:absolute;
+    top:0;
+    left:0;
+}
+.EditSpace .PageElmText
+{
+    border-radius:2px;
+    text-align:left;
+    font-size:18px;
+    line-height:180%;
+}
+.Editable
+{
+    background:rgba(255,255,255,0.1);
+    border-bottom:#dadada 1px solid;
+    cursor:text;
+    position:relative;
+}
+.Clicktable
+{
+    cursor:pointer;
+    position:relative;
+}
+.EditSpace .PageElmTheme
+{
+    line-height:180%;
+}
+.PageElm .ElmEdit
+{
+    display:none;
+}
+.PageElmSel .ElmEdit
+{
+    display:inline-block;
+    float:right;
+    width:36px;
+    height:24px;
+    margin-top:-12px;
+    background-image:url('../../Image/ok.png');
+    background-size:100% 100%;
+}
+.MoveFrameBox
+{
+    cursor:move;
+    z-index:3;
+    position:absolute;
+}
+.PageBox
+{
+    overflow:hidden;
+}
+.PageTask
+{
+    overflow:hidden;
+}
+.PageCheck
+{
+    overflow:hidden;
+}
+.PageListBox .PageElmText
+{
+    -webkit-transform:scale(0.12,0.12);
+    transform:scale(0.12,0.12);
+    transform-origin:left top;
+    -webkit-transform-origin:left top;
+    text-align:left;
+}
+.PageTabTitle
+{
+    display:inline-block;
+    margin-top:-24px;
+    height:24px;
+    line-height:24px;
+    border:#d7d7d7 1px solid;
+    border-radius:5px 5px 0 0;
+    background-color:#f7f7f7;
+    font-size:14px;
+    letter-spacing:1px;
+    color:#aaaaa;
+    padding:0 8px;
+    float:left;
+}
+.PageListBox .PageTabTitle
+{
+    -webkit-transform:scale(0.12,0.12);
+    transform:scale(0.12,0.12);
+    transform-origin:left top;
+    -webkit-transform-origin:left top;
+    text-align:left;
+    padding:5px;
+}
+.EditBoxCard .PageElmText
+{
+    -webkit-transform:scale(1,1);
+    transform:scale(1,1);
+    transform-origin:left top;
+    -webkit-transform-origin:left top;
+    padding:5px;
+}
+.PageBox .PageElmText .Editable
+{
+}
+.PageListBox .PageElmTheme
+{
+    -webkit-transform:scale(0.12,0.12);
+    transform:scale(0.12,0.12);
+    transform-origin:left top;
+    -webkit-transform-origin:left top;
+    text-align:left;
+    padding:5px;
+}
+.PageListBox .PageElmTask
+{
+    -webkit-transform:scale(0.12,0.12);
+    transform:scale(0.12,0.12);
+    transform-origin:left top;
+    -webkit-transform-origin:left top;
+    text-align:left;
+}
+.EditBoxCard .PageElmTask
+{
+    -webkit-transform:scale(1,1);
+    transform:scale(1,1);
+    transform-origin:left top;
+    -webkit-transform-origin:left top;
+    text-align:left;
+}
+.PageListBox .PageElmFile
+{
+    -webkit-transform:scale(0.12,0.12);
+    transform-origin:left top;
+    -webkit-transform-origin:left top;
+}
+.EditBoxCard .PageElmFile
+{
+    -webkit-transform:scale(1,1);
+    transform:scale(1,1);
+    transform-origin:left top;
+    -webkit-transform-origin:left top;
+}
+.PageListBox .PageElmGroup
+{
+    -webkit-transform:scale(0.12,0.12);
+    transform:scale(0.12,0.12);
+    transform-origin:left top;
+    -webkit-transform-origin:left top;
+    text-align:left;
+}
+.EditBoxCard .PageElmGroup
+{
+    -webkit-transform:scale(1,1);
+    transform:scale(1,1);
+    transform-origin:left top;
+    -webkit-transform-origin:left top;
+}
+.PageListBox .PageElmTable
+{
+    -webkit-transform:scale(0.12,0.12);
+    transform:scale(0.12,0.12);
+    transform-origin:left top;
+    -webkit-transform-origin:left top;
+}
+.EditBoxCard .PageElmTable
+{
+    -webkit-transform:scale(1,1);
+    transform:scale(1,1);
+    transform-origin:left top;
+    -webkit-transform-origin:left top;
+}
+.PageListBox .PageElmGroupRes
+{
+    -webkit-transform:scale(0.12,0.12);
+    transform:scale(0.12,0.12);
+    transform-origin:left top;
+    -webkit-transform-origin:left top;
+    text-align:left;
+}
+.EditBoxCard .PageElmGroupRes
+{
+    -webkit-transform:scale(1,1);
+    transform:scale(1,1);
+    transform-origin:left top;
+    -webkit-transform-origin:left top;
+}
+.PageBox .ThemeProblem
+{
+}
+.PageBox .ThemeOption
+{
+}
+.PageBox .ThemeAnswer
+{
+    display:none;
+}
+.PageCheck .ThemeProblem
+{
+    display:none;
+}
+.PageCheck .ThemeOption
+{
+    display:none;
+}
+.PageCheck .ThemeAnswer
+{
+    display:none;
+}
+.PageElmSel
+{
+}
+
+.VTimeLineBox
+{
+    border-left:#8a8a8a 2px solid;
+    border-right:#8a8a8a 2px solid;
+    border-bottom:#8a8a8a 1px solid;
+    height:108px;
+}
+.VTimeLineBox .TimeHead
+{
+    height:20px;
+    font-size:10px;
+    color:#8a8a8a;
+}
+.VTimeLineBox .TimeVPageZone
+{
+    height:54px;
+    width:98%;
+    position:relative;
+    background-color:#eaeaea;
+}
+.VTimeLineBox .TimeVPageZone .TimeTheme
+{
+    position:absolute;
+    top: 0;
+    border:Orange 1px solid;
+    border-radius:999px;
+    background-image:linear-gradient(45deg, #f2c2a2 0%, #d28242 100%);
+    width:12px;
+    height:12px;
+}
+.VTimeLineBox .TimeBox
+{
+    position:absolute;
+    bottom:0;
+    left: 0;
+    width:98%;
+    height:36px;
+    padding:2px;
+    border-radius:4px;
+    border:#d7d7d7 1px solid;
+    background-image:linear-gradient(180deg,#dadada 0%,#fafafa 10%,#e7e7e7 30%,#d7d7d7 70%,#efefef 100%);
+}
+.VTimeLineBox .TimeBox .TimeFlow
+{
+    border:#d7d7d7 1px solid;
+    background-color:#f7f7f7;
+    height:36px;
+    text-align:left;
+}
+.VTimeLineBox .TimeBox .TimeFlow .TimeOff
+{
+    background-image:linear-gradient(180deg,#c7c7c7 0%,#d7d7d7 70%,#b7b7b7 90%,#d7d7d7 100%);
+    display:inline-block;
+    height:36px;
+    z-index:1;
+}
+.VTimeLineBox .TimeSpan
+{
+    background-color:#47a2f7;
+    width:1px;
+    height:108px;
+    margin-top:-108px;
+    z-index:2;
+}
+.VTimeLineBox .TimeOver
+{
+    background-color:#2a2a2a;
+    width: 1px;
+    height:36px;
+    margin-top:-56px;
+    z-index:2;
+}
+.VTimeLineBox .TimeOverShow
+{
+    width:46px;
+    font-size:10px;
+    padding:2px 3px;
+    background-color:White;
+    border:#dadada 1px solid;
+    border-radius:3px;
+    color:#6a6a6a;
+    margin-left:-23px;
+    text-align:left;
+}
+.VTimeLineBox .TimeLineShow
+{
+    background-color:#47a2f7;
+    width:66px;
+    margin-left:-33px;
+    border-radius:3px;
+    color:White;
+    font-size:10px;
+    text-align:center;
+    cursor:w-resize;
+}
+.VTimeLineBox .TimeLineAdd
+{
+    width:20px;
+    height:20px;
+    border-radius:5px;
+    border:#47a2f7 2px solid;
+    margin-left:-10px;
+    margin-top:60px;
+    background-image:url('../../Image/edit.png');
+    background-size:100% 100%;
+}
+
+.MoveFrameBox
+{
+    overflow:visible;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    border:Red 0.5px dotted;
+    cursor:move;
+}
+.MoveLeftTop
+{
+    width:8px;
+    height:8px;
+    border:Red 0.5px solid;
+    position:absolute;
+    left:-9px;
+    top:-9px;
+    cursor:nw-resize;
+}
+.MoveMidTop
+{
+    width:8px;
+    height:8px;
+    border:Red 0.5px solid;
+    position:absolute;
+    left:49%;
+    top:-9px;
+    cursor:n-resize;
+}
+.MoveRightTop
+{
+    width:8px;
+    height:8px;
+    border:Red 0.5px solid;
+    position:absolute;
+    left:100%;
+    top:-9px;
+    cursor:ne-resize;
+}
+.MoveLeftBottom
+{
+    width:8px;
+    height:8px;
+    border:Red 0.5px solid;
+    position:absolute;
+    left:-9px;
+    top:100%;
+    cursor:sw-resize;
+}
+.MoveMidBottom
+{
+    width:8px;
+    height:8px;
+    border:Red 0.5px solid;
+    position:absolute;
+    left:49%;
+    top:100%;
+    cursor:n-resize;
+}
+.MoveRightBottom
+{
+    width:8px;
+    height:8px;
+    border:Red 0.5px solid;
+    position:absolute;
+    left:100%;
+    top:100%;
+    cursor:se-resize;
+}
+.MoveLeft
+{
+    width:8px;
+    height:8px;
+    position:absolute;
+    border:Red 0.5px solid;
+    left:-9px;
+    top:49%;
+    cursor:w-resize;
+}
+.MoveRight
+{
+    width:8px;
+    height:8px;
+    border:Red 0.5px solid;
+    position:absolute;
+    left:100%;
+    top:49%;
+    cursor:w-resize;
+}
+.MoveTopRoltate
+{
+    position:absolute;
+    top:-24px;
+    left:49%;
+    width:8px;
+    height:8px;
+    border-radius:99px;
+    border:Red 2px solid;
+    cursor:move;    
+}
+.PageListPreview
+{
+    overflow:auto;
+}
+.PageItem
+{
+    width:96%;
+    margin-left:2%;
+    background-color:White;
+    margin-top:8px;
+}
+.PageItem .PageBox
+{
+    width:72%;
+    left:26%;
+    border:#dadada 1px solid;
+    background-color:White;
+}
+.PageItem .PageCheck
+{
+    width:80%;
+    left:18%;
+    border:#8acafa 1px solid;
+    background-color:#fafafe;
+    border-radius:0 5px 5px 0;
+}
+.PageItem .PageTask
+{
+    width:80%;
+    left:18%;
+    border:#8afaca 1px solid;
+    background-color:#fafefa;
+    border-radius:0 5px 5px 0;
+}
+.PageItem .PageNum
+{
+    display:inline-block;
+    padding:2px 3px;
+    border-radius:0 10px 10px 0;
+    font-size:10px;
+    color:#8a8a8a;
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:1;
+}
+.PageItem .PageTime
+{
+    display:inline-block;
+    padding:2px 3px;
+    border-radius:0px 10px 10px 0;
+    background-color:#fafaff;
+    border:#babaff 0.5px solid;
+    font-size:10px;
+    color:#8a8a8a;
+    position:absolute;
+    z-index:1;
+    left:0;
+    bottom:0;
+}
+.PageItem .PageNumPlan
+{
+    background-color:#fffcfa;
+    border:#ffca8a 0.5px solid;
+}
+.PageItem .PageNumCheck
+{
+    background-color:#fafcff;
+    border:#8acaff 0.5px solid;
+}
+.PageItem .PageNumTask
+{
+    background-color:#fafffc;
+    border:#8affca 0.5px solid;
+}
+.PageItemSel
+{
+    border:Red 1px solid;
+    background-color:#fffaea;
+}
+.PageItemSel .PageNum
+{
+    color:Red;
+}
+.PageMenu
+{
+    font-size:14px;
+    text-align:center;
+    padding:8px 5px;
+    border:#fafafa 0.5px solid;
+}
+
+.HeadMenuBox
+{
+}
+.HeadMenuBox .MenuItem
+{
+    padding:2px 12px;
+    letter-spacing:2px;
+}
+.HeadMenuBox .MenuItem:hover
+{
+    background-color:#fafafa;
+}
+.SubMenuBox
+{
+    padding:5px;
+    line-height:160%;
+    border:#dadada 1px solid;
+    box-shadow:1px 2px 1px 2px #eaeaea;
+    text-align:left;
+    background-color:White;
+    position:relative;
+    z-index:2500;
+}
+.SubMenuBox .SubMenuItem
+{
+    padding:5px;
+    border-bottom:#fafafa 0.5px solid;
+    letter-spacing:1.2px;
+}
+.SubMenuBox .SubMenuImg
+{
+    width:24px;
+    height:24px;
+    border-radius:999px;
+    border:White 2px solid;
+    vertical-align:middle;
+}
+.SubMenuBox .SubMenuItem:hover
+{
+    background-color:#ececec;
+    border-bottom:#dadada 1px solid;
+}
+.SubMenuBox .SubMenuItemDiv
+{
+    margin-top:1px;
+    border-top:#eaeaea 0.5px solid;
+}
+
+.TooltipBox
+{
+    text-align:center;
+    padding:6px 0;
+}
+.TooltipBox .TooltipBut
+{
+    width:18px;
+    height:18px;
+    margin-left:3px;
+    margin-right:3px;
+    border-bottom:#dadada 1px solid;
+    border-right:#dadada 1px solid;
+    border-radius:2px;
+    cursor:pointer;
+}
+
+.TaskListBox
+{
+    margin-top:18px;
+    border:#fafafa 0.5px solid;
+    box-shadow:1px 2px 1px 2px #eaeaea;
+}
+.GrpResListBox
+{
+    padding:12px 0;
+    border-bottom:#dadafa 1px solid;
+    text-align:left;
+    width:96%;
+    margin-left:2%;
+}
+.GrpResListBox .GrpResTitle
+{
+    padding:8px 0;
+    font-size:16px;
+    color:#4a4a4a;
+    letter-spacing:1px;
+}
+.GrpResListBox .GrpResDesc
+{
+    padding:6px 0;
+    font-size:14px;
+    color:#6a6a6a;
+    letter-spacing:1.2px;
+}
+.VPageItem
+{
+    position:absolute;
+    background-color:White;
+    font-size:12px;
+    border:#c7c7c7 1px solid;
+    border-radius:3px;
+}
+.VPageItemSel
+{
+    border:#3a8ada 1px solid!important;
+    border-radius:6px!important;
+}
+.VPageDrop
+{
+    display:inline-block;
+    margin-left:5px;
+    margin-top:-1px;
+    border-top:#ffffff .5em solid;
+    border-right:.5em solid transparent;
+    border-bottom:0;
+    border-left:.5em solid transparent;
+}
+.VButton
+{
+    padding:2px 3px;
+    margin-top:10px;
+    border:#aaaaaa 1px solid;
+    border-radius:3px;
+    display:inline-block;
+    background-image:linear-gradient(180deg,#fafafa 0%,#dadada 10%,#eaeaea 30%,#e2e2e2 70%,#fafafa 100%);
+}
+
+.PageGroupBox
+{
+    width:100%;
+    border:#fafafe 2px solid;
+    overflow:hidden;
+    border-radius:6px;
+    box-shadow:2px 2px 2px rgba(200,200,220,0.3);
+    line-height:160%;
+}
+.PageGroupBox .GroupTitle
+{
+    text-align:left;
+    font-weight:bold;
+    padding:6px 0;
+    background-image:linear-gradient(71deg,#b9ddfe 0%,#ddedfc 97%);
+    font-size:1.2vw;
+}
+.PageGroupBox .GroupFoot
+{
+    padding:5px 0;
+    background-image:linear-gradient(71deg,#ddedfc 0%,#f0fdff 97%);
+}
+.PageGroupBox .GroupDesc
+{
+    width:96%;
+    margin-left:2%;
+    text-align:left;
+    padding:5px 0;
+}
+.PageGroupBox table
+{
+    width:96%;
+    margin-left:2%;
+    color:#6a6a6a;
+    letter-spacing:1.1px;
+}
+.PageGroupBox .GrpResTable
+{
+    line-height:180%;
+    color:#6a6a6a;
+    letter-spacing:1.1px;
+    border: #dadada 1px solid;
+}
+.PageGroupBox .GrpResTable td
+{
+    border-bottom:#eaeaea 1px solid;
+    border-right:#eaeaea 1px solid;
+}
+
+.LineBoxPanel
+{
+    height:540px;
+    overflow:auto;
+}
+.DropButton
+{
+    padding:0 3px;
+    border:#aaaaaa 1px solid;
+    border-radius:0 0 5px 5px;
+    display:inline-block;
+    font-size:10px;
+    color:#4a4a4a;
+    background-image:linear-gradient( 180deg,#eaeaea 0%,#ffffff 20%, #eaeaea 40%,#dadada 70%,#eaeaea 100%);
+    cursor:pointer;    
+}
+.DropButton:hover
+{
+    font-weight:bold;
+}
+.TdBox
+{
+    border:#dadada 1px solid;
+    background-color:White;
+}
+.TdBoxSel
+{
+    border:#ffcaaa 1px solid!important;
+    background-color:#ffeaca!important;
+}

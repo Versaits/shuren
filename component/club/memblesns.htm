@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_club_memblesns" lvs_jqexec="lvs_memblesns">
+        <div class="BaseBox">
+            <div class="BaseTitle">
+                <span class="HeadLine">共完成${lesnnum}次训练，实现${lesnval}身价</span>
+            </div>
+            {{each(m,memdata) membs}}
+            {{if memdata.lesnnum>0}}
+            <div class="BaseList">
+                <div class="padding flexbox">
+                    <img width="60px" height="60px" class="LitUserHead" src="${memdata.teamlogo}" />
+                    <div class="flex1">
+                        <div class="ListTitle">${memdata.teamname}<span class="ListStatus">{{if memdata.lesnstatus=='停训'}}${memdata.lesnstatus}{{else memdata.weeknum>0}}每周${memdata.weeknum}训{{else}}未训{{/if}}</span></div>
+                        <div class="ListDesc">训练时段：${memdata.jointime}{{if memdata.lesnstatus=='停训'}}~${memdata.lesnend}{{/if}}</div>
+                        <div class="ListDesc">训练总次数：${memdata.lesnnum}</div>
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+            {{/each}}
+        </div>
+        {{if lesns}}{{if lesns.length>0}}
+        <div class="BaseBox">
+            <div class="BaseTitle"><span class="HeadLine">以下为签到训练${checknum}次</span></div>
+        </div>
+        {{/if}}{{/if}}
+    </div>
+</body>
+</html>

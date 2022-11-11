@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_course_crstmplbase" lvs_jqexec="lvs_crstmpl_base">
+        {{if id}}
+        <div class="flexbox" style="width:92%;margin-left:4%;margin-top:12px">
+            <div style="width:80px">
+                <div lvs_elm="TmplPlay" perheit="57"><img width="100%" style="max-height:60px" class="CrsHeadImg" src="${titleimg}" lvs_bind="titleimg" idxname="标题图片" idxtype="pic"/></div>
+            </div>
+            <div class="flex1 CrsBaseBox" style="padding-left:18px">
+                <a class="button border-green float-right" lvs_ref="router.crstmpl_edit" idxid="${id}">讲义编辑</a>
+                <div class="CrsTitle" lvs_bind="title" idxname="课程标题">{{if title==''}}空白{{else}}${title}{{/if}}</div>
+                <div class="TagList">
+                    <span class="TagItem" lvs_bind="seqid" idxname="课程顺序" idxid="${id}">第${seqid}课</span>
+                    <span class="TagItem" lvs_bind="module" idxname="课程模块" idxid="${module}" idxserial="{{each(m,moddata) modules}}{{if m>0}},{{/if}}${moddata.sname}{{/each}}">{{if module==''}}--{{else}}${module}{{/if}}</span>
+                    <span class="TagItem" lvs_bind="level" idxname="课程适合年级" idxid="${lvlid}" idxserial="{{each(l,lvldata) levels}}{{if l>0}},{{/if}}${lvldata.sid}-${lvldata.sname}{{/each}}">{{if level==''}}不分年级{{else}}${level}{{/if}}</span>
+                    <span class="TagItem" lvs_bind="status" idxname="课程状态" idxid="${status}" idxserial="新建,发布,停用,删除">{{if status==''}}新建{{else}}${status}{{/if}}</span>
+                </div>
+                <div class="CrsDesc htmlformat" lvs_bind="desc" idxname="详细介绍" idxtype="textarea">{{if desc==''}}无详细介绍{{else}}${deschtml}{{/if}}</div>
+            </div>
+        </div>
+        <div style="width:92%;margin-left:4%;margin-top:32px">
+            <div class="WSBaseTab flexbox tabhead">
+                <div class="WSTabItem active" lvs_ref="tab.SelPanel" idxid="def">总体数据</div>
+                <div class="WSTabItem" lvs_elm="CoursePlay" idxid="${id}">讲义演示</div>
+                {{if tmpltype!='模板'}}
+                <div class="WSTabItem" lvs_ref="tab.GetData" apiname="edu/course_list" tmplname="cn.course.tchtmpls" gettype="CrsTmpl.TchTmpls" idxkey="teacher" idxkey2="crstmplid" idxid="${id}">个人备课</div>
+                <div class="WSTabItem" lvs_ref="tab.GetData" apiname="edu/course_list" tmplname="cn.course.crsclass" gettype="CrsTmpl.Classes" datares="CourseMore" idxkey="teacher" idxkey2="crstmplid" idxid="${id}">课程授课</div>
+                <div class="WSTabItem" lvs_ref="tab.GetData" apiname="edu/course_list" tmplname="cn.course.crsfiles" gettype="CrsTmpl.Files" datares="CourseMore" idxkey="teacher" idxkey2="crstmplid" idxid="${id}">附件文件</div>
+                <div class="WSTabItem" lvs_elm="TaskPlay" idxid="${id}">课后作业</div>
+                {{/if}}
+            </div>
+            <div class="WSListContainer tabcontent WSBox" tabcontainer="def">
+            </div>
+            <div class="WSListContainer tabcontent WSBox" tabcontainer="data" lvs_elm="CourseMore" style="display:none">
+                
+            </div>
+        </div>
+        {{else}}
+        <div class="BaseTmpl" id="TmplUpdTmpl" style="display:none">
+            
+        </div>
+        {{/if}}
+    </div>
+</body>
+</html>

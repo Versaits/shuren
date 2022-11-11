@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_crsplan_crstmplchks" lvs_jqexec="lvs_crstmpl_chks">
+        {{if tasks}}
+        {{if tasks.length==0}}
+            <div class="TaskListBox"><div class="GrpResListBox txt-grey">尚无任务要求，请先创建任务要求，再编辑任务评审</div></div>
+        {{/if}}
+        {{each(t,tskdata) tasks}}
+        <div class="TaskListBox">
+            <div class="Title">任务${tskdata.seqid}：</div>
+            {{each(g,grdata) tskdata.grpreses}}
+            <div class="GrpResListBox">
+                <div class="GrpResTitle">${grdata.stepid}.${grdata.stepname}：<span class="txt-grey" style="font-size:80%"></span><span class="float-right"><img lvs_elm="EditGrpChk" idxid="${grdata.id}" dataidx="${t},${g}" width="20px" height="20px" src="../../Image/bukrecm.png" /></span></div>
+                <div class="GrpResDesc">评审要求：{{if grdata.check}}至少${grdata.check.chknum}人参与评审，${grdata.check.oknum}人评审通过{{else}}尚未设置评审要求{{/if}}</div>
+                {{if grdata.check}}
+                {{if grdata.check.cates}}
+                    {{each(c,ctdata) grdata.check.cates}}
+                        <div class="GrpResDesc">评审维度${c+1}：${ctdata.name}（权重${ctdata.rate}%）</div>
+                    {{/each}}
+                {{else}}
+                    <div class="GrpResDesc">无多维度评审要求</div>
+                {{/if}}
+                {{/if}}
+            </div>
+            {{/each}}
+        </div>
+        {{/each}}
+        {{else}}
+        <div class="BaseTmpl" id="UpdChkTmpl" style="display:none">
+            <div class="BaseDesc">进展阶段名称：${stepname}</div>
+            <div class="BaseDesc">参与评审的最少人数</div>
+            <div class="BaseInput"><input type="number" lvs_bind="chknum" value="{{if check}}${check.chknum}{{else}}1{{/if}}" placeholder="完成该阶段任务评审的最少人数" /></div>
+            <div class="BaseDesc">评审通过的最低人数</div>
+            <div class="BaseInput"><input type="number" lvs_bind="oknum" value="{{if check}}${check.oknum}{{else}}1{{/if}}" placeholder="评审通过的最低人数要求" /></div>
+            <div class="BaseDesc">评审维度设置</div>
+            <div class="TypeTab flexbox" lvs_bind="cate"><div class="TypeItem flex1 {{if check.cates}}{{else}}active{{/if}}" lvs_ref="tab.SelPanel" tabidx="no" idxid="no">单维度评审</div><div class="TypeItem flex1 {{if check.cates}}active{{/if}}" lvs_ref="tab.SelPanel" tabidx="mult" idxid="mult">多维度评审</div></div>
+            <div class="tabcontent" tabcontainer="no" {{if check.cates}}style="display:none"{{/if}}>
+            </div>
+            <div class="tabcontent" tabcontainer="mult" {{if check.cates}}{{else}}style="display:none"{{/if}}>
+                {{if check.cates}}
+                    {{each(c,catedata) check.cates}}
+                    <div class="eachcate">
+                        <div class="BaseDesc">评审维度名称：</div>
+                        <div class="BaseInput"><input lvs_bind="catename" type="text" value="${catedata.name}" placeholer="评审的维度"/></div>
+                        <div class="BaseDesc">评审权重(%)：</div>
+                        <div class="BaseInput"><input type="number" lvs_bind="caterate" value="${catedata.rate}" /></div>
+                    </div>
+                    {{/each}}
+                {{else}}
+                 <div class="eachcate">
+                    <div class="BaseDesc">评审维度名称：</div>
+                    <div class="BaseInput"><input lvs_bind="catename" type="text" placeholer="评审的维度"/></div>
+                    <div class="BaseDesc">评审权重(%)：</div>
+                    <div class="BaseInput"><input type="number" lvs_bind="caterate" /></div>
+                </div>
+                {{/if}}
+                <a class="float-right FormOk" ope="AppendCate"><img width="16px" height="16px" class="LitUserHead" src="../../Image/add.png"/></a>
+            </div>
+            <div class="BaseDesc"><a class="FormOk button bg-green" ope="Update">确认设置</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        {{/if}}
+    </div>
+</body>
+</html>

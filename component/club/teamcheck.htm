@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_club_teamcheck" lvs_jqexec="lvs_club_teamcheck">
+        {{if teams}}
+        {{each(t,tmdata) teams}}
+        <div class="ListBase1" style="margin-top:12px">
+            <div class="ListTitle flexbox">
+                <div class="LeftTitle">${tmdata.teamname}</div>
+                <div class="RightTitle flex1"><span class="button bg-grey float-left" style="margin-top:0;padding-top:0;height:24px;line-height:24px" lvs_ref="router.teammgt" idxid="${tmdata.id}">设置</span><span class="MultSelecting">球队训练</span><span class="MultSelecting" lvs_elm="AllSelect">全选</span></div>
+            </div>
+            <div class="ListBody">
+                <div class="flexrow">
+                    {{each(m,memdata) tmdata.mems}}
+                    <div class="colflex4">
+                        <div class="MemChkBox MultSelecting {{if memdata.ischk}}HasSelected{{/if}}" idxid="${memdata.id}">
+                            <img class="MemChkImg" width="60px" height="60px" src="${memdata.image}" />
+                            <span class="MemCloTitle">${memdata.clonum}</span>
+                            <div class="MemNameTitle">${memdata.membname}</div>
+                            <div class="MemDesc">已连续${memdata.longtime}次</div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        <div class="FootMask"></div>
+        <div class="ClubFoot flexbox">
+            <div class="flex1" lvs_elm="MoreTeam"><div class="FootItem">更多球队^</div></div>
+            <div class="flex1 bg-green" lvs_elm="LesnChkOk"><div class="FootItem">确认签到</div></div>
+        </div>
+        {{else}}
+        {{/if}}
+    </div>
+</body>
+</html>

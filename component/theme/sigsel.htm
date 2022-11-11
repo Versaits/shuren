@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="SigSel" lvs_jqexec="lvssigsel" class="PageThemeBox">
+        <div class="ThemeTitle">{{if title!=''}}${title}{{else}}单选题{{/if}}</div>
+        {{if score}}<div class="ThemeDesc">${score}分</div>{{/if}}
+        <div class="ThemeOpe"><a lvs_elm="ShowTheme" class="button bg-grey Clicktable">查看题目</a></div>
+        <div class="ThmPanelBox" style="display:none">
+            <div class="ThemeTitle flexbox">
+                <div class="PropertyText Editable ThemeTitleEdit" contenteditable="true" lvs_bind="title" style="{{if titlefont}}font-size:${titlefont};{{/if}}{{if titlecolor}}color:${titlecolor};{{/if}}width:50%;">{{if title}}${title}{{else}}单选题{{/if}}</div>
+                <div class="PropertySet flex1">答对才能通过</div><div style="width:48px"><component name="cn.button.checkbtn" class="Clicktable" lvs_bind="checkpass" data-isopen="{{if checkpass}}on{{else}}off{{/if}}"></component></div><div style="width:36px;text-align:center"><img width="24px" height="24px" class="Clicktable" lvs_elm="ClosePanel" src="../../Image/close.png" /></div>
+            </div>
+            <div class="ThemeProblem PropertyText Editable htmlformat" contenteditable="true" lvs_bind="problem" style="{{if problemfont}}font-size:${problemfont};{{/if}}{{if problemcolor}}color:${problemcolor};{{/if}}">{{if problem}}${problem}{{else}}请输入题目{{/if}}</div>
+            <div class="ThemeOption PropertyText" lvs_bind="option" style="{{if optionfont}}font-size:${optionfont};{{/if}}{{if optioncolor}}color:${optioncolor};{{/if}}">
+                <div lvs_elm="OptionList">
+                {{if options}}
+                {{each(o,optdata) options}}
+                    <div class="OptionItem flex1" lvs_bind="option${o}"><span class="OptionX" lvs_bind="optionseqid">${optdata.seqid}</span>.<span lvs_bind="optiontext" class="Editable htmlformat" contenteditable="true" style="width:60%;display:inline-block">${optdata.opttext}</span>{{if optdata.optimg}}<span lvs_bind="optionimg"><img height="60px" src="${optdata.optimg}" /></span>{{/if}}<span class="float-right"><img class="Clicktable" lvs_elm="DelOption" src="../../Image/del.gif" /></span></div>
+                {{/each}}
+                {{else}}
+                    <div class="OptionItem"><span class="OptionX" lvs_bind="option0">A</span>.<span lvs_bind="optiontext" class="Editable htmlformat" contenteditable="true" style="width:60%;display:inline-block">选项一</span><span class="float-right"><img lvs_elm="DelOption" src="../../Image/del.gif"  class="Clicktable"/></span></div>
+                    <div class="OptionItem"><span class="OptionX" lvs_bind="option1">B</span>.<span lvs_bind="optiontext" class="Editable htmlformat" contenteditable="true" style="width:60%;display:inline-block">选项二</span><span class="float-right"><img lvs_elm="DelOption" src="../../Image/del.gif"  class="Clicktable"/></span></div>
+                    <div class="OptionItem"><span class="OptionX" lvs_bind="option2">C</span>.<span lvs_bind="optiontext" class="Editable htmlformat" contenteditable="true" style="width:60%;display:inline-block">选项三</span><span class="float-right"><img lvs_elm="DelOption" src="../../Image/del.gif"  class="Clicktable"/></span></div>
+                    <div class="OptionItem"><span class="OptionX" lvs_bind="option3">D</span>.<span lvs_bind="optiontext" class="Editable htmlformat" contenteditable="true" style="width:60%;display:inline-block">选项四</span><span class="float-right"><img lvs_elm="DelOption" src="../../Image/del.gif"  class="Clicktable"/></span></div>
+                {{/if}}
+                </div>
+                <div class="OptionAdd Clicktable" lvs_elm="OptionAdd"><img class="LitUserHead" src="../../Image/add.png" /></div>
+            </div>
+            <div class="ThemeAnswer">标准答案：<span lvs_bind="baseanswer">{{if options}}{{each(b,ansdata) options}}<span class="OptionSeling {{if baseanswer}}{{if ansdata.seqid==baseanswer}}OptionSeled{{/if}}{{/if}}">${ansdata.seqid}</span>{{/each}}{{else}}<span class="OptionSeling">A</span><span class="OptionSeling">B</span><span class="OptionSeling">C</span><span class="OptionSeling">D</span>{{/if}}</span></div>
+        </div>
+    </div>
+</body>
+</html>

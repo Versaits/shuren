@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_course_crslist" lvs_jqexec="lvs_course_list">
+        {{if tag1}}
+            <div style="text-align:left;padding:10px 0">
+                <component name="cn.button.tagsel" lvs_elm="TagSel1" basedata="tags:${tag1}" data-title="${tag1name}" data-isall="1"></component>
+            </div>
+        {{/if}}
+        {{if tag2}}
+            <div style="text-align:left;padding:10px 0">
+                <component name="cn.button.tagsel" lvs_elm="TagSel2" basedata="tags:${tag2}" data-title="${tag2name}" data-isall="1"></component>
+            </div>
+        {{/if}}
+        <div lvs_elm="CourseList" style="margin-top:12px">
+        </div>
+    </div>
+    <div id="ConfirmTmpl" style="display:none">确认要进行${ope}操作？<br /><a class="button bg-green FormOk">确认</a><a class="button bg-yellow FormCancel">取消</a></div>
+    <div id="TmplLesnedTmpl" style="display:none">
+        {{if crsclass}}
+        {{if crsclass.length==0}}<div class="BaseDesc">该节课尚未发布授课，请先点“授课”按钮发布授课</div>
+        {{else}}
+        <div class="BaseDesc">确认要查看以下班级中的课程学习？</div>
+        <div class="BaseDesc">
+            <div class="SelBox" lvs_bind="classlist">
+                {{each(c,crsdata) crsclass}}
+                <div class="Selecting {{if crsclass.length==1}}Selected{{/if}}" idxid="${crsdata.lesnid}">${crsdata.name}</div>
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+        <div class="BaseDesc"><a class="button bg-green FormOk">确认</a><a class="button bg-yellow FormCancel">取消</a></div>
+        {{/if}}
+    </div>
+    <div id="CrsListForm" style="display:none" class="BaseForm"></div>
+</body>
+</html>

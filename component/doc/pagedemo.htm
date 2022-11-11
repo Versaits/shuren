@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_doc_pagedemo">
+        <div class="demo_Title1" style="margin-top:50px" id="el_slider">初始化页面lvs.InitPage</div>
+        <div class="demo_Description">对页面进行初始化，包括组件加载、模块定义、令牌获取、初始化数据获取等</div>
+        <div class="demo_block" style="">
+            lvs.InitPage( elm, initparams, modules, okfunc( token, idxid, result ) );<br />
+            elm - 页面加载内容后存放的容器元素。<br />
+            initparams - 初始化参数。<br />
+            modules-加载的模块和组件<br />
+            okfunc-加载完成后的回调函数<br />
+            回调参数token-页面前后台访问令牌<br />
+            回调参数idxid-页面数据索引值<br />
+            回调参数result-页面初始数据
+        </div>
+        <div class="demo_Description">示例代码：<br />
+            <textarea class="demo_Code" style="width:80%">
+                lvs.InitPage( $('#divMainInfo'), { apptype: "Stem", regtype: "none"}, ["file", "doc"], function( token, idxid, result ){});
+            </textarea>
+        </div>
+        <div class="demo_Description">数据说明：
+            <table class="demo_Table" width="80%" border="1">
+                <thead><td>接口数据</td><td>说明</td><td>类型</td></thead>
+                <tr><td>initparams.apptype</td><td>应用类型</td><td>枚举：Stem|Fzstem|Share|Hippo等等，对应不同公众号</td></tr>
+                <tr><td>initparams.regtype</td><td>微信登记类型</td><td>枚举：none-不需要|user-用户授权方式|base-关注方式</td></tr>
+                <tr><td>initparams.access_token</td><td>初始访问令牌（如有）</td><td>字符串</td></tr>
+                <tr><td>initparams.apiname</td><td>初始数据获取接口</td><td>字符串</td></tr>
+                <tr><td>initparams.tmplname</td><td>初始页面模板</td><td>字符串</td></tr>
+                <tr><td>initparams.role</td><td>初始角色</td><td>枚举：stud|tch|worker</td></tr>
+                <tr><td>initparams.roleid</td><td>初始角色号</td><td>整数</td></tr>
+                <tr><td>initparams.roleid</td><td>初始角色号</td><td>整数</td></tr>
+                <tr><td>modules</td><td>基础模块和组件模块</td><td>结构</td></tr>
+                <tr><td>modules.file</td><td>是否加载文件上传模块</td><td>枚举：1-加载|0-不加载</td></tr>
+                <tr><td>modules.video</td><td>是否加载视频处理模块</td><td>枚举：1-加载|0-不加载</td></tr>
+                <tr><td>modules.vod</td><td>是否加载云点播模块</td><td>枚举：1-加载|0-不加载</td></tr>
+                <tr><td>modules.modules</td><td>组件模块列表</td><td>字符串数组，组件目录名称</td></tr>
+            </table>
+        </div>
+
+        <div class="demo_Title1" style="margin-top:50px" id="SetPageData">设置页面数据lvs.SetPageData</div>
+        <div class="demo_Description">页面初始化后需要对页面数据进行初始化重构处理</div>
+        <div class="demo_block" style="">
+            lvs.SetPageData( pagedata, oridata, orikeys );<br />
+            pagedata - 页面数据。<br />
+            oridata - 原始数据。<br />
+            orikeys-原始键值<br />
+            原始数据经过原始键值要求重构后赋给页面数据
+        </div>
+        <div class="demo_Description">示例代码：<br />
+            <textarea class="demo_Code" style="width:80%">
+                lvs.SetPageData( window.PageData, {user:"",operate:""}, {} );
+            </textarea>
+        </div>
+        <div class="demo_Description">数据说明：
+            <table class="demo_Table" width="80%" border="1">
+                <thead><td>接口数据</td><td>说明</td><td>类型</td></thead>
+            </table>
+        </div>
+
+    </div>
+</body>
+</html>

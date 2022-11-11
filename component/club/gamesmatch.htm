@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_club_gamesmatch" lvs_jqexec="lvs_club_gamesmatch">
+        <div class="SlidePanel">
+            <div class="flexbox" style="width:${33*gameses.length}%">
+                {{each(g,gmdata) gameses}}
+                <div class="flex1" lvs_elm="GamesSel" idxid="${gmdata.id}" dataidx="${g}">
+                    <div class="GamesBox">
+                        <img width="60%" src="${gmdata.image}" />
+                        <div class="GamesName">${gmdata.name}</div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        <div lvs_elm="GamesInfo" class="GamesPanel" style="display:none">
+            <div style="font-size:16px;padding:6px 8px" lvs_bind="gamesname"></div>
+            <div style="font-size:12px;color:#8a8a8a;padding:6px 8px" lvs_bind="begdate"></div>
+            <span class="float-right"><a class="button bg-green" lvs_elm="GoGames" idxid="${idxid}">查看详情</a></span>
+        </div>
+        <div class="MatchListPanel">
+        {{each(m,mthdata) matches}}
+        <div class="MatchListItem" lvs_elm="MatchDef" idxid="${mthdata.id}" panelid="${mthdata.gamesid}">
+            <div style="color:#8a8a8a;font-size:12px;" lvs_elm="GamesDef" idxid="${mthdata.gamesid}">${mthdata.gamesname}</div>
+            <div class="flexbox" style="font-size:16px;color:#4a4a4a;margin-top:6px;">
+                <div class="flex1" lvs_elm="TeamDef" idxid="${mthdata.oteam}">
+                    <img class="TinyUserHead" width="20px" height="20px" src="${mthdata.oteamlogo}" style="vertical-align:middle" /><br />
+                    ${mthdata.oteamname}
+                </div>
+                <div style="width:100px">
+                    {{if mthdata.status=='未赛'||mthdata.status==''}}-:-{{else}}${mthdata.oscore} : ${mthdata.tscore}{{/if}}
+                    {{if mthdata.status=='未赛'||mthdata.status==''}}<br /><span style="color:#8a8a8a;font-size:12px">等待中</span>{{else status=='结束'}}<br /><span style="color:DarkGreen;font-size:12px">已结束</span>{{else}}<span style="color:Red;font-size:12px">进行中</span>{{/if}}
+                </div>
+                <div class="flex1" lvs_elm="TeamDef" idxid="${mthdata.tteam}">
+                    <img class="TinyUserHead" width="20px" height="20px" src="${mthdata.tteamlogo}" style="vertical-align:middle" /><br />
+                    ${mthdata.tteamname}
+                </div>
+            </div>
+            <div style="color:#8a8a8a;font-size:10px;margin-top:8px">${mthdata.matchdate}</div>
+        </div>
+        {{/each}}
+        </div>
+    </div>
+</body>
+</html>

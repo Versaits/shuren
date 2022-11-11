@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_course_crstmpl_pbl" lvs_jqexec="lvs_crstmpl_base">
+    <div class="TabBox">
+        {{if tmpls}}
+        <div class="NaviBox" style="padding:12px 0">
+            <a class="NaviLink" lvs_ref="baserouter.tchcrs" idxid="${id}">我的备课</a>&nbsp;&nbsp;>&nbsp;&nbsp;
+            ${sname}<img lvs_elm="EditCourse" width="16px" height="16px" style="vertical-align:middle;margin-left:6px" src="../../Image/bukrecm.png"/>
+            <span class="float-right TextTab">
+                <span class="TextTabItem" lvs_ref="tab.SelPanel" idxid="base">基本信息</span>
+                <span class="TextTabItem active" lvs_ref="tab.SelPanel" idxid="crstmpl">内容设计</span>
+                <span class="TextTabItem" lvs_ref="tab.SelPanel" idxid="studstat" style="display:none">学习统计</span>
+                <span class="TextTabItem" lvs_ref="tab.SelPanel" idxid="chktask">学习与评价</span>
+            </span>
+        </div>
+        <div class="tabcontent" tabcontainer="base" style="display:none">
+            <div class="WSBox" style="padding:24px">
+                <div class="flexbox">
+                    <div style="width:360px">
+                        <img width="100%" src="${titleimg}" />
+                        <div class="BaseTitle">${title}</div>
+                        <div class="BaseDesc">${sdesc}</div>
+                        <a lvs_elm="EditCourse" class="button bg-green">编辑信息</a>
+                    </div>
+                    <div class="flex1" style="padding-left:24px">
+                        <div class="WSBaseTab flexbox tabhead" lvs_elm="CrsClassTab">
+                            <div class="WSTabItem" tabdef="1" lvs_ref="tab.GetData"  apiname="edu/course_list" tmplname="cn.cls.classlist" gettype="Crs.Class" datares="CourseMore" idxkey="teacher" idxkey2="courseid" idxid="${id}">当前学习班级</div>
+                            <div class="WSTabItem" style="display:none" lvs_ref="tab.SelPanel" idxid="def">课程数据</div>
+                        </div>
+                        <div class="WSListContainer tabcontent WSBox" tabcontainer="def">
+                        </div>
+                        <div class="WSListContainer tabcontent WSBox" tabcontainer="data" lvs_elm="CourseMore" style="display:none">
+                
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tabcontent" tabcontainer="studstat" style="display:none">
+        </div>
+        <div class="tabcontent" tabcontainer="chktask" style="display:none">
+            <div class="WSBox" style="padding:12px 24px;text-align:left">
+                选班级：<select class="tabdef" lvs_elm="ClassSel" style="width:30%;font-size:14px">{{each(c,clsdata) classes}}<option value="${clsdata.id}">${clsdata.name}</option>{{/each}}</select>
+                <span class="TagBox" lvs_elm="TagClassSel" style="font-size:13px">{{each(a,adata) classes}}<span class="TagItem" idxid="${adata.id}">${adata.lvlname}${adata.classseq}班</span>{{/each}}</span>
+            </div>
+            <div class="WSBox" style="padding:12px 24px">
+                <div class="flexbox">
+                    <div style="width:240px" class="CrsLeftList">
+                        <div class="CrsLeftListBox" lvs_elm="ClsCrsTmplList"></div>
+                    </div>
+                    <div class="flex1">
+                        <div lvs_elm="ClsCrsTmplBox" style="margin-left:12px"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tabcontent" tabcontainer="crstmpl">
+            <div class="WSBox" style="padding:24px">
+                <div class="flexbox">
+                    <div style="width:240px" class="CrsLeftList">
+                        <div class="CrsLeftListHead" style="text-align:center"><a lvs_elm="EditModule" class="float-left">编辑</a>课程目录<a lvs_elm="RefreshPage" style="display:none">刷新</a><a class="float-right" lvs_elm="AddCrsTmpl">新增</a></div>
+                        <div class="CrsLeftListBox" lvs_elm="CrstmplList"></div>
+                    </div>
+                    <div class="flex1">
+                        <div lvs_elm="CrsTmplOpe" class="CurLeftListHead" style="display:none"><a class="WsButton bg-wsblue" lvs_elm="SaveTmpl">存为模板</a><a class="WsButton bg-wsyellow" lvs_elm="LoadTmpl" style="margin-top:8px">加载模板</a></div>
+                        <div lvs_elm="CrsTmplBox" class=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="BaseForm" id="EditModSeqForm" title="编辑课程名称与序号" style="display:none">
+        </div>
+        <div class="BaseForm" id="SelModuleForm" title="选择系列课程" style="display:none">
+            <div class="BaseDesc">请选择系列课程：</div>
+            <div class="BaseDesc">
+                {{if modules.length==0}}暂无系列课程，请点击创建按钮添加{{/if}}
+                {{each(o,moddata) modules}}
+                <div class="Selecting flexbox" style="padding:6px;text-align:left">
+                    <div class="FormOk flex1" idxid="${moddata.id}" idxname="${moddata.sname}" opetype="SelOk">课程${moddata.id}：${moddata.sname}</div><a class="float-right"><img width="16px" height="16px" src="../../Image/bukrecm.png" class="FormOk" opetype="EditModule" /></a>
+                </div>
+                {{/each}}
+                <div class="Selecting txt-grey FormOk" opetype="AddModule"><img width="12px" height="12px" class="TinyUserHead" src="../../Image/add.png" />添加新课程</div>
+            </div>
+            <div lvs_elm="AddModBox" style="display:none">
+                <div class="BaseDesc">课程名称：</div>
+                <div class="BaseInput"><input type="text" lvs_bind="module" placeholder="请输入系列课程名称" /></div>
+                <div class="BaseDesc"><a class="FormOk button bg-green">确定创建</a><a class="FormCancel button bg-grey">取消操作</a></div>
+            </div>
+        </div>
+        <div class="BaseForm" id="AddTmplForm" title="新增课程" style="display:none">
+        </div>
+        <div class="BaseTmpl" id="AddModuleTmpl" style="display:none">
+            <div class="BaseDesc">一级目录：请选择或新增{{if grade=='Career'}}系列课{{else}}章节{{/if}}</div>
+            <div class="BaseInput"><component name="cn.button.serial" basedata="selmodule:selmodule" lvs_bind="modseq" {{if curval}}data-curval="${curval}"{{/if}} data-serial="{{each(m,moddata) modules}}{{if m>0}},{{/if}}${moddata.id}-${moddata.sname}{{/each}}" /></div>
+            <div class="BaseDesc">二级目录：新{{if grade=='Career'}}项目过程名称{{else}}课程标题{{/if}}</div>
+            <div class="TmplItem">
+                <div class="flexbox" style="width:80%;margin-left:10%"><div class="BaseInput flex1" style="margin-left:0"><input type="text" lvs_bind="tmplname" placeholder="请输入课程标题或者项目过程名称" /></div><img width="24px" height="24px" class="RngButton FormOk" opetype="AddItem" src="../../Image/add.png" /></div>
+            </div>
+            <div class="BaseDesc"><a class="FormOk button bg-green" opetype="AddOk">确认添加</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="EditCourseForm" title="编辑项目信息" style="display:none">
+            <div class="BaseDesc">项目课题名称</div>
+            <div class="BaseInput"><input type="text" lvs_bind="crsname" value="${sname}" /></div>
+            <div class="BaseDesc">项目课题说明</div>
+            <div class="BaseInput"><textarea lvs_bind="crsdesc">${crsdesc}</textarea></div>
+            <div class="BaseDesc">项目标题图片</div>
+            <div class="BaseInput"><div class="PicFile" lvs_bind="piclist"><img width="20%" src="${titleimg}" /></div></div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确定修改</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="AddStepForm" style="display:none">
+            <div class="BaseDesc"><span class="txt-red">*</span>项目过程标题：</div>
+            <div class="BaseInput"><input type="text" lvs_bind="crstmplname" placeholder="请输入项目阶段标题" need="1" /></div>
+            <div class="BaseDesc">项目过程预期完成天数：</div>
+            <div class="BaseInput"><input type="number" lvs_bind="daynum" value="7" /></div>
+            <div class="BaseDesc"><a class="button bg-green FormOk">确定创建</a><a class="button bg-grey FormCancel">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="SaveTmplForm" style="display:none">
+            <div class="BaseDesc"><span class="txt-red">*</span>保存的模板名称</div>
+            <div class="BaseInput"><input type="text" lvs_bind="crsname" need="1" placeholder="为模板起一个易识别的名称" /></div>
+            <div class="BaseDesc">模板简要说明</div>
+            <div class="BaseInput"><textarea lvs_bind="crsdesc" placeholder="对模板的使用描述"></textarea></div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确认保存</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="LoadTmplForm" style="display:none"></div>
+        {{else courses}}
+        <div class="BaseTmpl" id="LoadsTmpl" style="display:none">
+            <div class="BaseDesc">请选择需要加载的模板</div>
+            {{if courses.length==0}}
+            <div class="BaseDesc"><span class="txt-red">尚无可用的项目设计模板，可通过另存模板保存</span></div>
+            {{else}}
+            <div class="BaseInput"><component name="cn.button.serial" lvs_bind="loadid" data-curval="" data-serial="{{each(c,crsdata) courses}}{{if c>0}},{{/if}}${crsdata.id}-${crsdata.name}{{/each}}"></component></div>
+            {{/if}}
+            <div class="BaseDesc"><span class="txt-red">加载选中的模板后，原设计步骤及内容将清空并根据模板重新添加，请注意选择</span></div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确认加载</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        {{else list}}
+        <div class="BaseTmpl" id="EditModSeqTmpl" style="display:none">
+            <div class="BaseDesc">请编辑系列课程顺序编号和名称</div>
+            {{each(m,moddata) list}}
+            <div class="UpdItem">
+                <div class="BaseInput flexbox"><div style="width:20%;border-right:#dadada 1px solid;"><input type="number" align="right" lvs_bind="modseq" style="text-align:right" value="${moddata.seqid}" /></div><div class="flex1"><input type="text" lvs_bind="module" value="${moddata.sname}" /></div></div>
+                <div class="UpdTmplBox" style="width:96%;margin-left:4%">
+                    {{each(t,tmpldata) moddata.sub}}
+                    <div class="UpdTmplItem" idxid="${tmpldata.id}">
+                        <div class="BaseInput flexbox"><div style="width:20%;border-right:#dadada 1px solid;"><input type="number" align="right" lvs_bind="tmplseq" style="text-align:right" value="${tmpldata.seqid}" /></div><div class="flex1"><input type="text" lvs_bind="tmplname" value="${tmpldata.sname}" /></div></div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+            {{/each}}
+            <div class="BaseDesc"><a class="button bg-green FormOk">确认修改</a><a class="button bg-grey FormCancel">取消操作</a></div>
+        </div>
+        {{else}}
+        <div class="BaseTmpl" id="EditCrsTmpl" style="display:none">
+            <div class="BaseDesc">所属系列课/章节</div>
+            <div class="BaseInput"><component load="dialog" name="cn.button.serial" lvs_bind="crsmodule" data-curval="${module}" data-serial="{{each(m,moddata) modules}}{{if m>0}},{{/if}}${moddata.sname}{{/each}}"></component></div>
+            <div class="BaseDesc"><span class="txt-red">*</span>课程序号</div>
+            <div class="BaseInput"><input type="number" lvs_bind="crsseqid" value="${seqid}" need="1"/></div>
+            <div class="BaseDesc"><span class="txt-red">*</span>课程标题</div>
+            <div class="BaseInput"><input type="text" lvs_bind="crstitle" value="${sname}" need="1"/></div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确定修改</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        {{/if}}
+    </div></div>
+</body>
+</html>

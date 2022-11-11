@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="LesnPlay" lvs_name="cn_play_lesnplay" id="id_cn_play_lesnplay_${id}" lvs_jqexec="lvslesnplay">
+        <div class="PlayControl flexbox" style="width:100%">
+            <a class="PlayLast"><img height="30px" mode="widthFix" src="../Image/lastpage.png" /></a>
+            <div class="flex1">
+            <span class="PlayIndexBox" lvs_elm="PlayIndex">P<span lvs_bind="curpage">${curpage}</span><span class="RightDrop"></span></span>
+            <a class="PlayOrPause" autoplay="${autoplay}">
+                <img height="30px" mode="widthFix" style="vertical-align:middle" lvs_bind="autoplay" src="{{if autoplay}}{{if autoplay>0}}../Image/pausepage.png{{else}}../Image/playpage.png{{/if}}{{else}}../Image/playpage.png{{/if}}" />
+            </a>
+            <a class="FullScreen" style="margin-left:16px" sta="exit"><img height="30px" style="vertical-align:middle" src="../Image/fullscreen.png" /></a>
+            </div>
+            <a class="PlayNext"><img height="30px" mode="widthFix" src="../Image/nextpage.png" /></a>
+        </div>
+        <div class="PlayPanel" perheit="57">
+            <div class="LesnPlayPage" lvs_elm="CurLesnPage">
+                {{if pages}}
+                    {{if pages.length==0}}
+                    <div class="NullPanel">
+                        <img class="NullTips" src="../Image/fedu/nulltip.png"/>
+                        <div class="NullText" style="margin-top:34px">当前课程无讲义可播放</div>
+                    </div>
+                    {{/if}}
+                {{else}}
+                <div class="NullPanel">
+                    <img class="NullTips" src="../Image/fedu/nulltip.png"/>
+                    <div class="NullText" style="margin-top:34px">当前课程无讲义可播放</div>
+                </div>
+                {{/if}}
+            </div>
+            {{if taskans}}
+            <div style="width:60px;position:fixed;top:200px;right:0;">
+                {{each(a,tadata) taskans}}
+                <div lvs_elm="TaskTheme" themetaskid="${tadata.id}" idxid="${tadata.seqid}" dataidx="${a}" class="LesnOpeBox {{if ansstatus=='提交'}}TaskThemeOk{{else ansstatus=='完成'}}TaskThemeEnd{{else}}{{if tadata.type=='TTask'}}TaskThemeWork{{else}}TaskThemeNok{{/if}}{{/if}}" title="{{if tadata.type=='TTask'}}作业题{{else}}互动答题${a+1}{{/if}}">
+                    <img width="18px" height="18px" src="../../Image/icon/hwork.png" style="vertical-align:middle;margin-right:3px" />${a+1}
+                </div>
+                {{/each}}
+            </div>
+            {{/if}}
+            {{if filenum}}
+            <div style="width:60px;position:fixed;bottom:50px;right:0;">
+                <div class="LesnOpeBox LesnAttach" lvs_elm="LesnAttach" tmplid="${id}" title="课程附件"><img width="15px" height="15px" src="../../Image/icon/addfile_b.png" />${filenum}</div>
+            </div>
+            {{/if}}
+        </div>
+        <div class="PlayPages flexbox" lvs_elm="PlayPageIdxs">
+            {{each(p,pagedata) pages}}
+            <div class="PlayPageItem {{if pagedata.type=='check'||pagedata.plantype=='check'}}{{if pagedata.checked}}PlayPageCheckOk{{else}}PlayPageCheck{{/if}}{{/if}} {{if curpage==p}}PlayPageItemAct{{/if}} flex1" seqidx="${p}" pageid="${pagedata.id}" maxsec="{{if pagedata.timeoff}}${pagedata.timeoff}{{else pagedata.playtime}}${pagedata.playtime}{{else}}6{{/if}}"><div class="PlayPageItemProg" style="width:0"></div></div>
+            {{/each}}
+            {{if autotask}}
+            {{each(t,tskdata) tasks}}
+            <div class="PlayPageItem PlayPageTask flex1" seqidx="${t+pages.length}" pageid="${tskdata.id}"><div class="PlayPageItemProg" style="width:0"></div></div>
+            {{/each}}
+            {{/if}}
+        </div>
+        <div class="BaseForm" id="LesnInfoForm" title="课程信息" style="display:none"></div>
+        <div class="BaseForm" id="WorkTaskForm" title="确认" style="display:none">
+            <div class="BaseDesc">本题为课后作业题，确认要开始课后作业？</div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确认开始</a><a class="FormCancel button bg-grey">暂不开始</a></div>
+        </div>
+    </div>
+</body>
+</html>

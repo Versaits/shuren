@@ -1,0 +1,119 @@
+﻿.el_slider
+{
+    width: 100%;
+    
+ }
+ 
+ .el_slider_input
+{
+    width: 80%;
+   
+ }
+.el_slider_runway
+{
+    width:100%;
+    height:6px;
+    margin:16px 0;
+    background-color:#E4E7ED;
+    border-radius:3px;
+    position:relative;
+    cursor:pointer;
+    vertical-align:middle
+}
+.el_slider_runway_grade
+{
+    width:100%;
+    height:6px;
+    margin:16px 0;
+    background:linear-gradient(to right,#FFE0E0 0%,#FFE0E0 60%,#E1FFAA 60%,#E1FFAA 70%,#C0FEFF 70%,#C0FEFF 85%,#CbDcFF 85%,#CbDcFF 100%);
+    /*background-color:#E4E7ED;*/
+    border-radius:3px;
+    position:relative;
+    cursor:pointer;
+    vertical-align:middle
+}
+.el_slider_bar
+{
+    height:6px;
+    background-color:#409EFF;
+    border-top-left-radius:3px;
+    border-bottom-left-radius:3px;
+    position:absolute
+}
+.el_slider_button_wrapper
+{
+    height:36px;
+    width:36px;
+    z-index:1001;
+    top:-15px;
+    transform:translateX(-50%);
+    background-color:transparent;
+    text-align:center;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    line-height:normal;
+    position:absolute;
+   
+}
+
+.el_slider_button
+{
+    width:16px;
+    height:16px;
+    margin-top:10px;
+    margin-left:8px;
+    border:2px solid #409EFF;
+    background-color:#FFF;
+    border-radius:50%;
+    -webkit-transition:.2s;
+    transition:.2s;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none
+}
+.el_slider_stop
+{
+    height:6px;
+    width:6px;
+    border-radius:100%;
+    background-color:#fff;
+    transform:translateX(-50%);
+    position:absolute;
+}
+
+.el_plussub {
+	width:90%;
+	height:40px;
+	border:1px solid #ccc;
+	background:#fff;
+	margin-left:50px;
+	font-size:16px;
+}
+.el_plussub span {
+	width:20%;
+	height:40px;
+	float:left;
+	text-align:center;
+	line-height:40px;
+	cursor:pointer;
+	font-size:24px;
+}
+.el_plussub .el_sub {
+	border-right:1px solid #ccc;
+}
+.el_plussub .el_plus {
+	border-left:1px solid #ccc;
+}
+.el_plussub input[type="text"] {
+	border:none;
+	height:38px;
+	width:55%;
+	text-align:center;
+	float:left;
+	line-height:40px;
+	font-size:16px;
+}
+    

@@ -1,0 +1,469 @@
+﻿.ew-color-picker-box {
+  /* 边框颜色为#dcdee2 */
+  border: 1px solid #dcdee2;
+  /* 边框有4px的圆角 */
+  border-radius: 4px;
+  /* 4px的上下内间距,7px的左右内间距 */
+  padding: 4px 7px;
+}
+.ew-color-picker-box > .ew-color-box-no {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  line-height: 40px;
+  color: #5e535f;
+  border: 1px solid #e2dfe2;
+  border-radius: 2px;
+}
+.ew-color-picker-box-arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  margin: auto;
+  z-index: 3;
+}
+.ew-color-picker-box-arrow-left {
+  width: 12px;
+  height: 1px;
+  display: inline-block;
+  background-color: #fff;
+  position: relative;
+  transform: rotate(45deg);
+}
+.ew-color-picker-box-arrow-right {
+  width: 12px;
+  height: 1px;
+  display: inline-block;
+  background-color: #fff;
+  position: relative;
+  transform: rotate(-45deg);
+  right: 3px;
+}
+
+ 
+.ew-color-picker {
+  min-width: 320px;
+  box-sizing: content-box;
+  border: 1px solid #ebeeff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  z-index: 10;
+  padding: 7px;
+  text-align: left;
+}
+<div class="panel">
+  <div class="white-panel"></div>
+  <div class="black-panel"></div>
+</div>
+ 
+.panel {
+  width: 280px;
+  height: 180px;
+  position: relative;
+  border: 1px solid #fff;
+  background-color: rgb(255, 166, 0);
+}
+.panel > div.white-panel,
+.panel > div.black-panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.white-panel {
+  background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0));
+}
+.black-panel {
+  background: linear-gradient(0deg, #000, transparent);
+}
+.ew-color-picker-panel {
+  width: 280px;
+  height: 180px;
+  position: relative;
+  border: 1px solid #fff;
+  background-color: rgb(255, 166, 0);
+  cursor: pointer;
+}
+.ew-color-picker-panel > div.ew-color-picker-white-panel,
+.ew-color-picker-panel > div.ew-color-picker-black-panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.ew-color-picker-white-panel {
+  background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0));
+}
+.ew-color-picker-black-panel {
+  background: linear-gradient(0deg, #000, transparent);
+}
+.ew-color-picker-panel-cursor {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  transform: translate(-4px, -4px);
+  box-shadow: 0 0 0 3px #fff, inset 0 0 2px 2px rgb(0 0 0 / 40%),
+    /*等价于rgba(0,0,0,0.4)*/ 0 0 2px 3px rgb(0 0 0 / 50%); /*等价于rgba(0,0,0,0.5)*/
+  cursor: default;
+}
+.ew-color-slider,
+.ew-color-slider-bar {
+  position: relative;
+}
+.ew-color-slider.ew-is-vertical {
+  width: 28px;
+  height: 100%;
+  cursor: pointer;
+  float: right;
+}
+.ew-color-slider.ew-is-vertical .ew-color-slider-bar {
+  width: 12px;
+  height: 100%;
+  float: left;
+  margin-left: 3px;
+  background: linear-gradient(
+    180deg,
+    #f00 0,
+    #ff0 17%,
+    #0f0 33%,
+    #0ff 50%,
+    #00f 67%,
+    #f0f 83%,
+    #f00
+  );
+}
+.ew-color-slider-thumb {
+  background-color: #fff;
+  border-radius: 4px;
+  position: absolute;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  border: 1px solid #dcdee2;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+  position: absolute;
+}
+.ew-alpha-slider-bar {
+  width: 12px;
+  height: 100%;
+  float: left;
+ 
+  position: relative;
+}
+.ew-alpha-slider-wrapper,
+.ew-alpha-slider-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+.ew-alpha-slider-bar.ew-is-vertical .ew-alpha-slider-bg {
+  /* 这里先暂时写死 */
+  background: linear-gradient(
+    to top,
+    rgba(255, 0, 0, 0) 0%,
+    rgba(255, 0, 0) 100%
+  );
+}
+.ew-alpha-slider-wrapper {
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==");
+}
+.ew-alpha-slider-thumb {
+  background-color: #fff;
+  border-radius: 4px;
+  position: absolute;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  border: 1px solid #dcdee2;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+  position: absolute;
+}
+.ew-color-drop-container {
+  margin-top: 6px;
+  padding-top: 4px;
+  min-height: 28px;
+  border-top: 1px solid #cdcdcd;
+  position: relative;
+}
+.ew-color-input {
+  display: inline-block;
+  padding: 8px 12px;
+  border: 1px solid #e9ebee;
+  border-radius: 4px;
+  outline: none;
+  width: 160px;
+  height: 28px;
+  line-height: 28px;
+  border: 1px solid #dcdfe6;
+  padding: 0 5px;
+  -webkit-transition: border-color 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: border-color 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-radius: 5px;
+  background-color: #fff;
+}
+.ew-color-drop-btn-group {
+  position: absolute;
+  right: 0;
+  top: 5px;
+}
+.ew-color-drop-btn {
+  padding: 5px;
+  font-size: 12px;
+  border-radius: 3px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  font-weight: 500;
+  margin: 0;
+  white-space: nowrap;
+  color: #606266;
+  border: 1px solid #dcdfe6;
+  letter-spacing: 1px;
+  text-align: center;
+  cursor: pointer;
+}
+.ew-color-clear {
+  color: #4096ef;
+  border-color: transparent;
+  background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+}
+.ew-color-clear:hover {
+  color: #66b1ff;
+}
+.ew-color-sure {
+  margin-left: 10px;
+}
+.ew-color-sure {
+  border-color: #4096ef;
+  color: #4096ef;
+}
+.ew-pre-define-color-container {
+  width: 280px;
+  font-size: 12px;
+  margin-top: 8px;
+}
+.ew-pre-define-color-container::after {
+  content: "";
+  display: table;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+.ew-pre-define-color-container .ew-pre-define-color {
+  margin: 0 0 8px 8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 1px solid #9b979b;
+  cursor: pointer;
+  float: left;
+}
+.ew-pre-define-color-container .ew-pre-define-color:hover {
+  opacity: 0.8;
+}
+.ew-pre-define-color-active {
+  box-shadow: 0 0 3px 2px #409eff;
+}
+.ew-pre-define-color:nth-child(10n + 1) {
+  margin-left: 0;
+}
+.ew-pre-define-color.ew-has-alpha {
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==");
+}
+.ew-pre-define-color.ew-pre-define-color-disabled {
+  cursor: not-allowed;
+}
+
+.el_color_picker {
+    display: inline-block;
+    position: relative;
+    line-height: normal;
+    height: 40px;
+}
+.el_color_picker_trigger {
+    display: inline-block;
+    box-sizing: border-box;
+    height: 40px;
+    width: 40px;
+    padding: 4px;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    font-size: 0;
+    position: relative;
+    cursor: pointer;
+}
+.el_color_picker_color {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    border: 1px solid #999;
+    border-radius: 2px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+.color_icon_source {
+    background-position: 10px 5px;
+    width: 16px;
+    height: 16px;
+}
+
+
+.el_color_picker_panel {
+    position: absolute;
+    z-index: 10;
+    padding: 6px;
+    box-sizing: content-box;
+    background-color: #fff;
+    border: 1px solid #ebeef5;
+    border-radius: 4px;
+    box-shadow: 0 2px 12px 0rgba(0,0,0,.1);
+}
+.el_color_dropdown {
+    width: 300px;
+}
+.el_color_dropdown_main_wrapper {
+    margin-bottom: 6px;
+}
+.el_color_hue_slider_vertical {
+    width: 12px;
+    height: 180px;
+    padding: 2px 0;
+}
+.el_color_hue_slider {
+    position: relative;
+    box-sizing: border-box;
+    width: 280px;
+    height: 12px;
+    background-color: red;
+    padding: 0 2px;
+}
+.el_color_hue_slider.is-vertical .el_color_hue_slider_bar {
+    background: linear-gradient(180deg,red 0,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,red);
+}
+.el_color_hue_slider_bar {
+    position: relative;
+    background: linear-gradient(180deg,red 0,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,red);
+    height: 100%;
+}
+.el_color_hue_slider_vertical .el_color_hue_slider_thumb {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 4px;
+}
+.el_color_hue_slider_thumb {
+    cursor: pointer;
+    box-sizing: border-box;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    border-radius: 1px;
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 0 2px rgb(0 0 0 / 60%);
+    z-index: 1;
+    position:absolute;
+}
+.el_color_svpanel {
+    position: relative;
+    width: 280px;
+    height: 180px;
+}
+.el_color_svpanel_white 
+{
+    height:180px;
+    background: linear-gradient(90deg,#fff,hsla(0,0%,100%,0));
+}
+.el_color_svpanel_black 
+{
+    height:180px;
+    background: linear-gradient(0deg,#000,transparent);
+}
+.el_color_svpanel_cursor 
+{
+    width:6px;
+  height: 6px;
+  border-radius: 50%;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  transform: translate(-4px, -4px);
+  box-shadow: 0 0 0 1px #fff, inset 0 0 1px 1px rgb(0 0 0 / 40%),
+    /*等价于rgba(0,0,0,0.4)*/ 0 0 2px 3px rgb(0 0 0 / 50%); /*等价于rgba(0,0,0,0.5)*/
+  cursor: default;
+
+}
+.el_color_dropdown_btns {
+    margin-top: 6px;
+    text-align: right;
+}
+.el_color_dropdown_value {
+    float: left;
+    line-height: 26px;
+    font-size: 12px;
+    color: #000;
+    width: 160px;
+}
+.el_input_mini {
+    font-size: 12px;
+}
+.el_input {
+    position: relative;
+    font-size: 14px;
+    display: inline-block;
+    width: 100%;
+}
+.el_button_text {
+    border-color: transparent;
+    color: #409eff;
+    background: transparent;
+    padding-left: 0;
+    padding-right: 0;
+}
+.el_button_mini {
+    padding: 7px 15px;
+    font-size: 12px;
+    border-radius: 3px;
+}
+.el_button {
+    display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid #dcdfe6;
+    color: #606266;
+    -webkit-appearance: none;
+    text-align: center;
+    box-sizing: border-box;
+    outline: none;
+    margin: 0;
+    transition: .1s;
+    font-weight: 500;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+}
+.el_color_dropdown_link-btn {
+    cursor: pointer;
+    color: #409eff;
+    text-decoration: none;
+    padding: 15px;
+    font-size: 12px;
+}
+

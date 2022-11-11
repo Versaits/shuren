@@ -1,0 +1,55 @@
+﻿@keyframes flytobottom
+{
+    0%{left:0;bottom:800px;width:100px;height:100px;opacity: 0.0;filter: alpha(opacity=0);transform:rotate(-0.2turn);}
+    100%{left:0;bottom:0;width:400px;height:400px;opacity: 1;filter: alpha(opacity=100);transform:rotate(0);}
+}
+@keyframes flytotop
+{
+    0%{left:50%;top:800px;width:100px;height:100px;opacity: 0.0;filter: alpha(opacity=0);transform:rotate(-0.2turn);}
+    100%{left:0;top:0;width:400px;height:400px;opacity: 1;filter: alpha(opacity=100);transform:rotate(0);}
+}
+@keyframes flybox
+{
+    0%{opacity: 0.0;filter: alpha(opacity=0);}
+    100%{opacity: 1;filter: alpha(opacity=100);}
+}
+.FlyBox
+{
+    position:relative;
+    background-position:center center;
+    background-repeat:no-repeat;
+    backgorund-size:100%;
+    animation-name: flybox;
+    animation-iteration-count: 1;
+    animation-duration:1s;
+    animation-timing-function:ease;
+    animation-fill-mode: forwards;
+}
+.FlyToBottom
+{
+    position:absolute;
+    z-index:1;
+    background-size:100%;
+    background-position:center bottom;
+    background-repeat:no-repeat;
+    animation-name:flytobottom;
+    animation-duration:5s;
+    animation-iteration-count: 1;
+    animation-delay:1s;
+    animation-timing-function:ease;
+    animation-fill-mode: forwards;
+}
+.FlyToTop
+{
+    position:absolute;
+    z-index:1;
+    background-size:100%;
+    background-position:center bottom;
+    background-repeat:no-repeat;
+    animation-name:flytotop;
+    animation-duration:5s;
+    animation-iteration-count: 1;
+    animation-delay:1s;
+    animation-timing-function:ease;
+    animation-fill-mode: forwards;
+}

@@ -1,0 +1,33 @@
+﻿.LesnGroupTable
+{
+    font-size:16px;
+    border:#CACACA 2px solid;
+}
+.LesnGroupTable .GroupTitle
+{
+    color:#2A2A2A;
+    font-size:16px;
+    padding:5px 2px;
+}
+.LesnGroupTable .GroupMem
+{
+    color:#4A4A4A;
+    font-size:13px;
+    padding:5px 2px;
+}
+.GrpResDesc
+{
+    font-size:12px;
+    color:#2a2a2a;
+    text-align:center;
+    line-height:150%;
+}
+.LesnGroupTable .StudEdit
+{
+    border:#eaeaea 1px solid;
+    box-shadow:1px 1px 1px rgba(160,160,160,0.5);
+    background-color:White;
+    padding:2px 5px;
+    border-radius:99px;
+    min-height:30px;
+}

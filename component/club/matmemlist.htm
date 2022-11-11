@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_club_matmemlist" lvs_jqexec="lvs_matmemlist">
+        {{if list}}
+        <div class="MemberList" style="padding:12px 0">${teamname}<span class="float-right"><a class="button border-green" style="margin-top:0" lvs_elm="MatStatus" idxid="-${teamid}" sta="报名">全队报名</a></span></div>
+        {{each(m,memdata) list}}
+            <div class="MemberList"><img width="24px" height="24px" src="${memdata.picurl}" class="LitUserHead" style="vertical-align:middle"/>${memdata.clonum}号.${memdata.name}<span class="float-right">{{if memdata.status==''}}<a class="button border-green" style="margin-top:0" lvs_elm="MatStatus" idxid="${memdata.id}" sta="报名">报名</a>{{else}}<a class="button border-red" style="margin-top:0" lvs_elm="MatStatus" idxid="${memdata.id}" sta="取消">撤销</a>{{/if}}</span></div>
+        {{/each}}
+        <div class="MemberList" style="padding:12px 0"><span style="color:#aaaaaa">还不是队员</span><span class="float-right"><a class="button border-green" style="margin-top:0" lvs_elm="JoinTeam" idxid="${teamid}">加入球队</a></span></div>
+        {{/if}}
+        <div class="BaseTmpl" id="JoinMemberTmpl" style="display:none">
+            <div class="BaseDesc"><span class="txt-red">*</span>球员姓名：</div>
+            <div class="BaseInput"><input type="text" lvs_bind="membname" /></div>
+            <div class="BaseDesc"><span class="txt-red">*</span>球衣号码：</div>
+            <div class="BaseInput"><input type="number" lvs_bind="clonum" /></div>
+            <div class="BaseDesc">头像照片：</div>
+            <div class="BaseInput"><div class="PicFile" lvs_bind="membimg"></div></div>
+            <div class="BaseDesc"><a class="button bg-green FormOk" idxid="${teamid}">确认加入</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_cls_clslesns" lvs_jqexec="lvs_class_lesns">
+        <div class="WSBox" style="padding:32px;">
+        {{if classes.length==0}}
+            <div class="NullPanel">
+                <img class="NullTips" src="../Image/fedu/nulltip.png"/>
+                <div class="NullText" style="margin-top:34px">目前没有对应的授课班级</span></div>
+            </div>
+        {{else}}
+            <div>
+                <component name="cn.cls.selclasses" basedata="list:crses" data-chgtrigger="selchange"></component>
+            </div>
+            <div class="ExpBody" lvs_elm="LesnInfoPanel" style="margin-top:18px">
+            </div>
+        {{/if}}
+        </div>
+    </div>
+</body>
+</html>

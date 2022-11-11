@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="AnswerInp" lvs_jqexec="lvsanswerinp" class="PageThemeBox">
+        <div class="ThemeTitle htmlformat">{{if title!=''}}${title}{{else}}问答题{{/if}}</div>
+        {{if score}}<div class="ThemeDesc">${score}分</div>{{/if}}
+        <div class="ThemeOpe"><a lvs_elm="ShowTheme" class="button bg-grey Clicktable">查看题目</a></div>
+        <div class="ThmPanelBox" style="display:none">
+            <div class="ThemeTitle flexbox">
+                <div class="htmlformat flex1 PropertyText Editable ThemeTitleEdit" contenteditable="true" lvs_bind="title" style="{{if titlefont}}font-size:${titlefont};{{/if}}{{if titlecolor}}color:${titlecolor};{{/if}}">{{if title}}${title}{{else}}问答题{{/if}}</div>
+                <div style="width:36px;text-align:center"><img width="24px" height="24px" lvs_elm="ClosePanel" src="../../Image/close.png" /></div>
+            </div>
+            <div class="ThemeProblem htmlformat PropertyText Editable" contenteditable="true" lvs_bind="problem" style="{{if problemfont}}font-size:${problemfont};{{/if}}{{if problemcolor}}color:${problemcolor};{{/if}}">{{if problem}}${problem}{{else}}请输入题目{{/if}}</div>
+            <div class="ThemeAnswer" style="text-align: left">参考答案：</div>
+            <div class="ThemeAnswer Editable htmlformat" style="font-size: 12px;text-align: left" contenteditable="true" lvs_bind="baseanswer">{{if baseanswer}}${baseanswer}{{else}}请输入参考答案{{/if}}</div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+<div lvs_component="cn_el_cityselect" lvs_jqexec="lvs_el_cityselect">
+    
+    <div class="el_cityselrow flexbox" style="">
+        <div class=" el_citysel flex1">
+            <select id="prov"  class=" el_cityselItem "lvs_bind="ProvData">
+                <option value="">=请选择省份=</option>
+            </select>
+        </div>
+        
+        <!--城市选择-->
+        <div class=" el_citysel flex1" >
+        <select id="city" class="el_cityselItem" lvs_bind="CityData">
+            <option value="">=请选择城市=</option>
+        </select>
+        </div>
+                <!--县区选择-->
+        <div class=" el_citysel flex1">
+                <select id="country" class="el_cityselItem" lvs_bind="DisData">
+                    <option value="">=请选择县区=</option>
+                </select>
+        </div>
+       
+               
+    </div>
+    
+
+</div>
+</body>
+</html>

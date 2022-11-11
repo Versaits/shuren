@@ -1,0 +1,356 @@
+﻿.CrsLeftList
+{
+    box-shadow:2px 2px 3px rgba(160,180,200,0.5);
+}
+.CrsMainInfoBox
+{
+    margin-left:12px;
+    width:98%;
+    box-shadow:1px 1px 2px rgba(160,180,200,0.5);
+    border:#dadada 1px solid;
+    border-radius:3px;
+}
+.CrsLeftListHead
+{
+    border-top:#dadada 1px solid;
+    border-left:#dadada 1px solid;
+    border-right:#dadada 1px solid;
+    border-radius:3px 3px 0 0;
+    padding:8px 6px;
+    background-image:linear-gradient(180deg,#eaefff 0%,#fafeff 5%,#eaefff 10%, #f2fafe 70%,#fafeff 100%);
+}
+.CrsLeftListBox
+{
+    border-left:#dadada 1px solid;
+    border-bottom:#dadada 1px solid;
+    border-right:#dadada 1px solid;
+    padding:6px 6px;
+    border-radius:0 0 3px 3px;
+    height:600px;
+    overflow:auto;
+}
+.ScrollBarHead
+{
+    padding:8px;
+    font-size:16px;
+    color:#007bff;
+    letter-spacing:1.2px;
+    font-weight:bold;
+    text-align:left;
+    background-image:linear-gradient(180deg,#eaefff 0%,#fafeff 5%,#eaefff 10%, #f2fafe 70%,#fafeff 100%);
+}
+.ScrollBarHead .PreTitle
+{
+    color:White;
+    background-color:#007bff;
+    padding:0 1px;
+    margin:0 5px 0 12px;
+    border-radius:9px;
+}
+.ScrollBarHead .button
+{
+    font-size:14px;
+    margin-top:-6px;
+    height:20px;
+    line-height:20px!important;
+    font-weight:normal;
+}
+
+.BaseListItem
+{
+    text-align:left;
+    padding:12px 0;
+    border-bottom:#dadada 0.5px solid;
+}
+.BaseListItem .HeadImg
+{
+    background-position:center center;
+    background-size:100%;
+    background-repeat:no-repeat;
+}
+.BaseListItem .ListTitle
+{
+    font-size:16px;
+    padding:6px 0;
+    color:#007bff;
+    
+}
+.BaseListItem .ListBody
+{
+    font-size:13px;
+    padding:6px 0;
+    color:#8a8a8a;
+    line-height:160%;
+}
+.BaseListItem .BaseOpe
+{
+    font-size:14px;
+    padding:3px 0;
+}
+.BaseListItem .ListTag
+{
+    padding:5px 0;
+}
+.BaseListItem .ListTag .TagName
+{
+    display:inline-block;
+    padding:2px 5px;
+    background-color:#007bff;
+    color:White;
+    border-radius:99px;
+    margin-left:5px;
+    font-size:11px;
+    font-weight:bold;
+}
+.CrsListBox
+{
+    background-image:linear-gradient(180deg,#cacaca 0%,#fefefe 0.5%,#eaeaea 1.5%,#f2f2f2 50%,#fafafa 100%);
+    padding-top:5px;
+}
+.CrsListBox .BaseListHead
+{
+    width:96%;
+    margin-left:2%;
+    border:#dadada 1px solid;
+    border-radius:3px;
+    padding:2px 0;
+    background-color:#f2f2f2;
+}
+.CrsList
+{
+    width:96%;
+    margin-left:1%;
+    border:#dadada 1px solid;
+    border-radius:3px;
+    overflow:auto;
+    padding:5px 3px;
+    height:700px;
+}
+.CrsHeadImg
+{
+    border:#c7eaf0 2px solid;
+    border-radius:8px;
+    margin:6px;
+    overflow:hidden;
+}
+.CrsBaseBox
+{
+}
+.CrsBaseBox .CrsTitle
+{
+    font-size:18px;
+    text-align:left;
+    letter-spacing:1.2px;
+}
+.CrsBaseBox .CrsDesc
+{
+    font-size:12px;
+    padding:8px 0;
+    color:#8a8a8a;
+    letter-spacing:1px;
+    text-align:left;
+}
+.CrsBaseBox .TagList
+{
+    text-align:left;
+    font-size:13px;
+    letter-spacing:1.5px;
+}
+.CrsBaseBox .TagList .TagItem
+{
+    display:inline-block;
+    background-image:linear-gradient(135deg,#cacada 0%,#fafafc 10%,#eaeaea 60%,#dadada 100%);
+    padding:3px 8px;
+    border:#cacaca 1px solid;
+    border-radius:99px;
+    margin-left:5px;
+    cursor:pointer;
+}
+.TmplListBox
+{
+    font-size:14px;
+    color:#4a4a4a;
+    text-align:left;
+    line-height:160%;
+}
+.TmplListBox .TmplTitle
+{
+    font-size:15px;
+    letter-spacing:1px;
+    color:#4a4a4a;
+}
+.TmplListBox .PreTitle
+{
+    background-image:linear-gradient:(135deg,#5786f5 0%,#3766d5 100%);
+    color:White;
+    margin-right:5px;
+}
+.TmplListBox .TmplDesc
+{
+    font-size:12px;
+    letter-spacing:1.2px;
+    color:#8a8a8a;
+}
+
+.TaskStepBox
+{
+    margin-top:6px;
+}
+.TaskStepBox .TaskStepItem
+{
+    padding:8px 0;
+    text-align:center;
+    background-color:#d2effa;
+    border-radius:0 999px 999px 0;
+    margin-left:12px;
+    font-size:15px;
+    color:#4a4a4a;
+    cursor:pointer;
+    letter-spacing:1.2px;
+    height:32px;
+}
+.TaskStepBox .TaskStepItemSel
+{
+    background-color:#a2d2fa!important;
+    border:#2282d2 2px solid!important;
+}
+.TaskStepBox .TaskStepItemAdd
+{
+    padding:8px 0;
+    text-align:center;
+    background-color:#e2e2f2;
+    border-radius:0 999px 999px 0;
+    margin-left:12px;
+    font-size:15px;
+    color:#6a6a6a;
+    cursor:pointer;
+    letter-spacing:1.2px;
+    height:32px;
+}
+.TaskStepBox .TaskStepSeq
+{
+    float:left;
+    margin-left:-16px;
+    display:inline-block;
+    background-color:#2282d2;
+    color:White;
+    text-align:center;
+    border-radius:999px;
+    width:32px;
+    height:32px;
+    line-height:32px;
+    cursor:text;
+}
+.TaskStepBox .TaskStepTitle
+{
+    line-height:32px;
+    cursor:text;
+}
+.ProjCrsListBox
+{
+    border:#fafafa 1px solid;
+    padding:12px 6px;
+    margin-top:6px;
+    border-radius:5px;
+    box-shadow:1px 1px 2px #cacfef;
+    font-size:12px;
+    background-color:White;
+}
+.ProjCrsListBox .CrsTitle
+{
+    font-size:15px;
+    color:#4a4a4a;
+    letter-spacing:1.2px;
+}
+.ProjCrsListBox .CrsDesc
+{
+    font-size:12px;
+    letter-spacing:1.5px;
+    color:#8a8a8a;
+}
+
+.ProjCrsListBox .CrsOpe
+{
+    font-size:12px;
+    letter-spacing:1.2px;
+    color:#8a8a8a;
+}
+.ProjCrsListBox .CrsOpe .button
+{
+    margin-top:0!important;
+    line-height:24px!important;
+}
+
+.GreyDropdown
+{
+    display: inline-block;
+    margin-left: 5px;
+    margin-top: 1px;
+    border-top: #8ac8a8a .3em solid;
+    border-right: .4em solid transparent;
+    border-bottom: 0;
+    border-left: .4em solid transparent;
+}
+.StudListBox
+{
+    background-color:White;
+    border:#dadada 1px solid;
+    border-radius:6px;
+    text-align:center;
+    padding:8px 0;
+}
+.StudListBox .StudTitle
+{
+    color:#4a4a4a;
+    font-size:16px;
+    font-weight:bold;
+    padding:3px 0;
+}
+.StudListBox .StudDesc
+{
+    color:#8a8a8a;
+    font-size:13px;
+    padding:3px 0;
+}
+
+.FixRngButton
+{
+    width:72px;
+    height:72px;
+    line-height:72px;
+    text-align:center;
+    display:inline-block;
+    position:fixed;
+    font-size:40px;
+    font-weight:bold;
+    border-radius:999px;
+    color:White;
+    cursor:pointer;
+    background-color:#308ffa;
+    box-shadow:3px 3px 5px rbga(160,180,200,0.5);
+}
+.FixRngButton:hover
+{
+    box-shadow:5px 5px 7px rbga(160,180,200,0.3);
+}
+.MenuItem
+{
+    padding:6px solid;
+    border-bottom:#eaeaea 1px solid;
+    cursor:pointer;
+}
+.MenuItem:hover
+{
+    background-color:#eaf0ff;
+    font-weight:bold;
+}
+.RngButton
+{
+    border-radius:999px;
+    border:White 2px solid;
+    box-shadow:1px 1px 2px rgba(128,128,128,0.5);
+}
+.RngButton:hover
+{
+    box-shadow:2px 2px 4px rgba(128,128,128,0.3);
+}

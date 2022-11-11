@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_list_list_demo" lvs_jqexec="lvs_list_demo">
+        <div class="demo_Title1" style="margin-top:50px" id="el_slider">基础列表</div>
+        <div class="demo_Description">带有外部响应的对内容进行展示的列表</div>
+        <div class="demo_block" style="">
+            <div style="width:30%">
+                <component name="cn.list.baselist" basedata="list:baselist"></component>
+            </div>
+        </div>
+        <div class="demo_Description">示例代码：<br />
+            <input class="demo_Code" style="width:80%" type="text" value="<component name=&quot;cn.list.baselist&quot; basedata=&quot;list:items&quot;></component>"/>
+        </div>
+        <div class="demo_Description">输入数据说明：
+            <table class="demo_Table" width="80%" border="1">
+                <thead><td>输入数据名</td><td>说明</td><td>类型</td></thead>
+                <tr><td>list[].id</td><td>list数组的id标记</td><td>整数</td></tr>
+                <tr><td>list[].title</td><td>列表标题</td><td>字符串</td></tr>
+                <tr><td>list[].isdef</td><td>是否缺省选中</td><td>整数</td></tr>
+                <tr><td>list[].seqid</td><td>序号</td><td>整数</td></tr>
+                <tr><td>list[].basetrigger</td><td>选中触发事件，绑定该事件可外部处理，带id和title返回</td><td>字符串</td></tr>
+            </table>
+        </div>
+        <div class="demo_Title2" style="margin-top:50px">可展开二级列表</div>
+        <div class="demo_Description">点击展开的二级列表</div>
+        <div class="demo_block" style="">
+            <div style="width:30%">
+                <component name="cn.list.explist" basedata="list:explist" data-trigger="itemsel"></component>
+            </div>
+        </div>
+        <div class="demo_Description">示例代码：<br />
+            <textarea class="demo_Code" style="width:80%">
+                &lt;component name=&quot;cn.list.explist&quot; basedata=&quot;list:items&quot; data-trigger=&quot;itemsel&quot;&gt;&lt;/component&gt;
+            </textarea>
+        </div>
+        <div class="demo_Description">输入数据说明：
+            <table class="demo_Table" width="80%" border="1">
+                <thead><td>输入数据名</td><td>说明</td><td>类型</td></thead>
+                <tr><td>list[].id</td><td>list一级列表的id标记</td><td>整数</td></tr>
+                <tr><td>list[].sname</td><td>list一级列表的名称</td><td>字符串</td></tr>
+                <tr><td>list[].sub</td><td>一级列表的子列表</td><td>数组</td></tr>
+                <tr><td>list[].sub[].id</td><td>二级列表的id标记</td><td>整数</td></tr>
+                <tr><td>list[].sub[].sname</td><td>二级列表的名称</td><td>字符串</td></tr>
+                <tr><td>list[].sub[].selref</td><td>二级列表选中事件处理模式</td><td>系统预定义</td></tr>
+                <tr><td>trigger</td><td>选中触发事件，绑定该事件可外部处理，带id和title返回</td><td>字符串</td></tr>
+            </table>
+        </div>
+        <div class="demo_Title2" style="margin-top:50px">类朋友圈九宫格图片列表</div>
+        <div class="demo_Description">从1-9张图片不同的排列组合图片；待改进：点击图片显示大图并滑动</div>
+        <div class="demo_block" style="">
+            <div lvs_elm="SelImgNum" class="flexbox SelBox"><div class="Selecting flex1" idxid="1">1张</div><div class="Selecting flex1" idxid="2">2张</div><div class="Selecting flex1" idxid="3">3张</div><div class="Selecting flex1" idxid="4">4张</div><div class="Selecting flex1" idxid="5">5张</div><div class="Selecting flex1" idxid="6">6张</div><div class="Selecting flex1" idxid="7">7张</div><div class="Selecting flex1" idxid="8">8张</div><div class="Selecting Selected flex1" idxid="9">9张</div></div>
+            <div style="width:100%" lvs_elm="ImgList">
+                <component name="cn.list.imggrid" basedata="images:imglist"></component>
+            </div>
+        </div>
+        <div class="demo_Description">示例代码：<br />
+            <textarea class="demo_Code" style="width:80%">
+                &lt;component name=&quot;cn.list.imggrid&quot; basedata=&quot;images:items&quot;&gt;&lt;/component&gt;
+            </textarea>
+        </div>
+        <div class="demo_Description">输入数据说明：
+            <table class="demo_Table" width="80%" border="1">
+                <thead><td>输入数据名</td><td>说明</td><td>类型</td></thead>
+                <tr><td>images</td><td>图片列表</td><td>数组</td></tr>
+                <tr><td>images[].image</td><td>图片地址</td><td>字符串</td></tr>
+            </table>
+        </div>
+        <div class="demo_Title2" style="margin-top:50px">简单图文列表展示</div>
+        <div class="demo_Description">按照一定格式显示列表的图文</div>
+        <div class="demo_block" style="">
+            <div style="width:100%">
+                <component name="cn.list.siglist" basedata="list:siglist"></component>
+            </div>
+        </div>
+        <div class="demo_Description">示例代码：<br />
+            <textarea class="demo_Code" style="width:80%">
+                &lt;component name=&quot;cn.list.siglist&quot; basedata=&quot;list:items&quot;&gt;&lt;/component&gt;
+            </textarea>
+        </div>
+        <div class="demo_Description">输入数据说明：
+            <table class="demo_Table" width="80%" border="1">
+                <thead><td>输入数据名</td><td>说明</td><td>类型</td></thead>
+                <tr><td>list</td><td>数据列表</td><td>数组</td></tr>
+                <tr><td>list[].id</td><td>索引标记</td><td>整数</td></tr>
+                <tr><td>list[].titleimg/image</td><td>标题图片地址，二选一</td><td>字符串</td></tr>
+                <tr><td>list[].perheit</td><td>标题图片高宽比，缺省45</td><td>整数</td></tr>
+                <tr><td>list[].title/name</td><td>标题信息二选一</td><td>字符串</td></tr>
+                <tr><td>list[].num</td><td>数目</td><td>整数</td></tr>
+                <tr><td>list[].time</td><td>时间</td><td>字符串</td></tr>
+                <tr><td>list[].url/listref</td><td>重定向地址或重定向方式二选一</td><td>字符串</td></tr>
+            </table>
+        </div>
+        <div class="demo_Title2" style="margin-top:50px">多列自动排列图文列表</div>
+        <div class="demo_Description">按照每行多列自对齐格式图文列表显示</div>
+        <div class="demo_block" style="">
+            <div style="width:100%">
+                <component name="cn.list.flexlist" basedata="list:flexlist"></component>
+            </div>
+        </div>
+        <div class="demo_Description">示例代码：<br />
+            <textarea class="demo_Code" style="width:80%">
+                &lt;component name=&quot;cn.list.flexlist&quot; basedata=&quot;list:items&quot;&gt;&lt;/component&gt;
+            </textarea>
+        </div>
+        <div class="demo_Description">输入数据说明：
+            <table class="demo_Table" width="80%" border="1">
+                <thead><td>输入数据名</td><td>说明</td><td>类型</td></thead>
+                <tr><td>list</td><td>数据列表</td><td>数组</td></tr>
+                <tr><td>cols</td><td>每行均分列数</td><td>整数，1-6</td></tr>
+                <tr><td>marintop</td><td>每行间间隔距离</td><td>整数</td></tr>
+                <tr><td>list[].id</td><td>索引标记</td><td>整数</td></tr>
+                <tr><td>list[].undisplay</td><td>是否不显示</td><td>枚举：1-不显示，0-显示，未定义-显示</td></tr>
+                <tr><td>list[].image</td><td>标题图片地址</td><td>字符串</td></tr>
+                <tr><td>list[].imgheit</td><td>标题显示高宽比，缺省57</td><td>整数</td></tr>
+                <tr><td>list[].status</td><td>状态栏</td><td>字符串</td></tr>
+                <tr><td>list[].title</td><td>标题内容</td><td>字符串</td></tr>
+                <tr><td>list[].desc</td><td>描述内容</td><td>字符串</td></tr>
+                <tr><td>list[].opes</td><td>操作按钮列表</td><td>数组</td></tr>
+                <tr><td>list[].opes[].name</td><td>按钮显示名称</td><td>字符串</td></tr>
+                <tr><td>list[].opes[].butclass</td><td>按钮显示类</td><td>字符串</td></tr>
+                <tr><td>list[].opes[].butstyle</td><td>按钮显示格式类</td><td>字符串</td></tr>
+                <tr><td>list[].opes[].trigger</td><td>按钮响应事件</td><td>字符串</td></tr>
+                <tr><td>list[].extinfo</td><td>扩展描述内容</td><td>字符串</td></tr>
+                <tr><td>list[].url/basetrigger</td><td>重定向地址/基础响应事件二选一</td><td>字符串</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

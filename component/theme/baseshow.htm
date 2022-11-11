@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_theme_baseshow" lvs_jqexec="lvs_theme_baseshow">
+        <div style="padding:8px 0">${title}</div>
+        <div lvs_elm="CurProblem" style="padding:12px 0"></div>
+        {{if options}}
+            {{each(o,optdata) options}}
+            <div class="htmlformat" lvs_elm="CurOptionItem" seqid="${optdata.seqid}" style="margin-left:12px;padding:8px 0;color:#6a6a6a;">${optdata.seqid}.${optdata.opttext}</div>
+            {{/each}}
+        {{/if}}
+        <div lvs_elm="CurAnswer"></div>
+        <div lvs_elm="CurBaseAns" class="htmlformat">参考答案：<span class="txt-red">${baseanswer}</span></div>
+    </div>
+</body>
+</html>

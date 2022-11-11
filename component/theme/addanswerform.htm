@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_jqexec="lvsanswerinp">
+        {{if title}}
+        <div class="PageThemeBox" style="font-size:1em">
+            <div class="ThemeTitle flexbox">
+                <div class="Editable ThemeTitleEdit htmlformat" contenteditable="true" lvs_bind="title" style="{{if titlefont}}font-size:${titlefont};{{/if}}{{if titlecolor}}color:${titlecolor};{{/if}}width:80%">{{if title}}${title}{{else}}填空题{{/if}}</div>
+            </div>
+           {{if score}}<div class="ThemeDesc">${score}分</div>{{/if}}
+            <div style="text-align:left;height:48px;line-height:48px">题干内容：<span class="float-right"><a lvs_elm="AddThemeImg" class="button bg-grey"><img width="16px" height="16px" style="vertical-align:middle" src="../../Image/poster_ico.png" />插入图片</a></span></div>
+            <div class="ThemeProblem htmlformat Editable" contenteditable="true" lvs_bind="problem" style="{{if problemfont}}font-size:${problemfont};{{/if}}{{if problemcolor}}color:${problemcolor};{{/if}}min-height:120px">{{if problem}}${problem}{{else}}请输入题目{{/if}}</div>
+            <div class="ThemeAnswer" style="text-align: left">参考答案：</div>
+            <div class="ThemeAnswer Editable htmlformat" style="font-size: 12px;text-align: left" contenteditable="true" lvs_bind="baseanswer">{{if baseanswer}}${baseanswer}{{else}}请输入参考答案{{/if}}</div>
+            <div><a class="FormOk button bg-green">保存作业题</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="ThemeImgForm${seqid}" style="display:none">
+        </div>
+        {{else align}}
+        <div class="BaseTmpl" id="ThemeImgTmpl" style="display:none">
+            <div class="BaseDesc">图片对齐模式：</div>
+            <div class="TypeTab flexbox" lvs_bind="textalign"><div class="TypeItem flex1 {{if align=='left'||align==''}}active{{/if}}" idxid="left" lvs_ref="tab.SelPanel">靠左</div><div class="TypeItem flex1 {{if align=='center'}}active{{/if}}" idxid="center" lvs_ref="tab.SelPanel">居中</div><div class="TypeItem flex1 {{if align=='right'}}active{{/if}}" idxid="right" lvs_ref="tab.SelPanel">靠右</div></div>
+            <div class="BaseDesc">图片大小（%）：</div>
+            <div class="BaseInput"><input type="number" lvs_bind="imgwidth" value="${imgwidth}" /></div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确认设置</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        {{/if}}
+    </div>
+</body>
+</html>

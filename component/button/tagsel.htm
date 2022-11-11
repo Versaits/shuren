@@ -1,0 +1,15 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_button_tagsel" lvs_jqexec="lvs_tag_sel">
+        <span class="TagTitle">${title}：</span>
+        {{if isall}}{{if isall>0}}<span class="TagItem TagActive" idxid="">全部</span>{{/if}}{{/if}}
+        {{each(t,tagdata) tags}}
+            <span class="TagItem {{if tagdata.isdef}}TagDef{{/if}}" idxid="{{if tagdata.sid||tagdata.sid==0}}${tagdata.sid}{{else}}${tagdata.sname}{{/if}}">${tagdata.sname}</span>
+        {{/each}}
+    </div>
+</body>
+</html>

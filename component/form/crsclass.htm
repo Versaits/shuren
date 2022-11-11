@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    {{if mark}}课程分配班级进行授课，选择班级或者新建班级{{/if}}
+    <div lvs_component="cn_form_crsclass" lvs_jqexec="lvs_form_crsclass">
+        {{if crsclass.length==0}}
+            <div class="BaseDesc">没有可授课的班级，请输入班级名称新建班级</div>
+        {{else}}
+        <div class="BaseDesc">请选择需要开始授课的班级：<a class="float-right" lvs_elm="NewClass">新建</a></div>
+        <div class="BaseDesc">
+            <div class="SelBox" lvs_bind="crsclassid">
+                {{each(c,clsdata) crsclass}}
+                <div class="Selecting {{if crsclass.length==1}}Selected{{/if}}" idxid="${clsdata.id}">${clsdata.name}</div>
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+        <div lvs_elm="NewClassPanel" {{if crsclass.length>0}}style="display:none"{{/if}}>
+            <div class="BaseDesc">新建班级名称：</div>
+            <div class="BaseInput"><input type="text" lvs_bind="newclsname" placeholder="新创建的班级名称" /></div>
+        </div>
+        <div class="BaseDesc">课程授课日期：</div>
+        <div class="BaseInput"><input type="date" lvs_bind="lesndate" /></div>
+        <div class="BaseDesc">课程授课时间：</div>
+        <div class="BaseInput"><input type="time" lvs_bind="lesntime" /></div>
+        <div class="BaseDesc"><a class="FormOk button bg-green">确认授课</a><a class="FormCancel button bg-yellow">取消操作</a></div>
+    </div>
+</body>
+</html>

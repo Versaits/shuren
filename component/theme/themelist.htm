@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_theme_themelist" lvs_jqexec="lvs_themelist">
+        {{if tasks.length==0}}
+            <div class="NullPanel">
+                <img class="NullTips" src="../Image/fedu/nulltip.png"/>
+                <div class="NullText" style="margin-top:34px">还没有定义课内测验题，在讲义课件编辑中添加</a></div>
+            </div>
+        {{/if}}
+        <div class="flexrow">
+            {{each(t,tskdata) tasks}}
+            <div class="colflex{{if colnum}}${colnum}{{else}}4{{/if}}" style="margin-top:12px">
+                <div class="FlexItemBox">
+                    {{if editmode}}<a class="float-right" lvs_elm="EditPage" pageid="${tskdata.pageid}"><img width="16px" height="16px" src="../../Image/bukrecm.png" /></a>{{/if}}
+                    {{if tskdata.type=='sigsel'}}
+                        <div lvs_elm="theme" class="PageElmTheme PageElmSigsel" seqidx="${t}" id="sigsel${tskdata.id}" style="{{if tskdata.color}}color:${tskdata.color};{{/if}}{{if tskdata.fontsize}}font-size:${tskdata.fontsize};{{/if}}{{if tskdata.zindex}}z-index:${tskdata.zindex};{{/if}}">
+                            <component name="cn.theme.sigselshow" basedata="tasks[${t}]" data-pageid="${pageid}" data-lesnid="${lesnid}" data-seqid="${t}"></component>
+                        </div>
+                    {{else tskdata.type=='multsel'}}
+                        <div lvs_elm="theme" class="PageElmTheme PageElmMultsel" seqidx="${i}" id="multsel${tskdata.id}" style="{{if tskdata.color}}color:${tskdata.color};{{/if}}{{if tskdata.fontsize}}font-size:${tskdata.fontsize};{{/if}}{{if tskdata.zindex}}z-index:${tskdata.zindex};{{/if}}">
+                            <component name="cn.theme.multselshow" basedata="tasks[${t}]" data-pageid="${pageid}" data-lesnid="${lesnid}" data-seqid="${t}"></component>
+                        </div>
+                    {{else tskdata.type=='blank'}}
+                        <div lvs_elm="theme" class="PageElmTheme PageElmBlank" seqidx="${i}" id="blank${tskdata.id}" style="{{if tskdata.color}}color:${tskdata.color};{{/if}}{{if tskdata.fontsize}}font-size:${tskdata.fontsize};{{/if}}{{if tskdata.zindex}}z-index:${tskdata.zindex};{{/if}}">
+                            <component name="cn.theme.blankinpshow" basedata="tasks[${t}]" data-pageid="${pageid}" data-lesnid="${lesnid}" data-seqid="${t}"></component>
+                        </div>
+                    {{else tskdata.type=='answer'}}
+                        <div lvs_elm="theme" class="PageElmTheme PageElmAnswer" seqidx="${i}" id="answer${tskdata.id}" style="{{if tskdata.color}}color:${tskdata.color};{{/if}}{{if tskdata.fontsize}}font-size:${tskdata.fontsize};{{/if}}{{if tskdata.zindex}}z-index:${tskdata.zindex};{{/if}}">
+                            <component name="cn.theme.answerinpshow" basedata="tasks[${t}]" data-pageid="${pageid}" data-lesnid="${lesnid}" data-seqid="${t}"></component>
+                        </div>
+                    {{else tskdata.type=='task'}}
+                        <div lvs_elm="task" class="PageElmTask PageElmTheme" seqidx="${i}" id="task${tskdata.id}" style="{{if tskdata.color}}color:${tskdata.color};{{/if}}{{if tskdata.bgcolor}}background-color:${tskdata.bgcolor};{{/if}}{{if tskdata.fontsize}}font-size:${tskdata.fontsize};{{/if}}{{if tskdata.zindex}}z-index:${tskdata.zindex};{{/if}}">
+                            <component name="cn.theme.taskpapershow" basedata="tasks[${t}]" data-pageid="${pageid}" data-lesnid="${lesnid}" data-seqid="${t}"></component>
+                        </div>
+                    {{/if}}
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</body>
+</html>

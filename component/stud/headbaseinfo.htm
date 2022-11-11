@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_stud_baseinfo" lvs_jqexec="lvs_stud_base">
+        <div>
+            
+            <div class="HeadTitle flexbox">
+                <div class="flex1">您好！<img class="UserHead" src="${image}" lvs_bind="userimg" style="width:32px;height:32px;vertical-align:middle" /><span lvs_bind="name">${name}</span>@${projname}</div>
+                <div style="width:70px"></div>
+                <div style="width:70px"></div>
+                <div style="width:80px;text-align:right"><span lvs_ref="more" destelm="HeadMoreBox" togglename="收起"><a>明细</a></span></div>
+            </div>
+            <div class="MoreBox BaseEditBox" lvs_elm="HeadMoreBox" style="margin-top:20px;width:60%;margin-left:20%;min-width:200px;display:none">
+                <div style="text-align:center"><span><img class="UserHead" lvs_bind="userimg" idxname="头像图片" idxid="${id}" idxtype="pic" src="${image}"/></span></div>
+                <div style="margin-top:12px;text-align:left;color:#808080;font-size:14px;line-height:34px;letter-spacing:1px">
+                    账号：{{if loginname}}${loginname}{{else}}${userlogin}{{/if}}<br/>
+                    姓名：<span {{if id<10000}}lvs_bind="name"{{/if}} idxname="姓名" idxid="${id}">${name}</span><br/>
+                    {{if schoolname}}
+                    单位：<span lvs_bind="schoolname" idxname="所在单位" idxid="${id}">{{if schoolname==''}}--{{else}}${schoolname}{{/if}}</span><br/>
+                    {{else lvlname}}
+                    班级：<span idxname="所在年级" idxserial="23-初一,25-初二,27-初三" idxid="${lvlid}">{{if lvlname==''}}待设{{else}}${lvlname}{{/if}}</span><span idxname="所在班级" idxid="${id}">${clsseq}</span>班<br/>
+                    {{/if}}
+                    手机：<span lvs_bind="mobile" idxname="手机号码" idxid="${id}" idxtype="mobile">{{if mobile==''}}--{{else}}${mobile}{{/if}}</span><br/>
+                    邮箱：<span lvs_bind="usermail" idxname="邮箱地址" idxid="${id}" idxtype="mail">{{if usermail==''}}--{{else}}${usermail}{{/if}}</span><br />
+                    <a lvs_elm="UpdPass" class="button border-green">修改密码</a>
+                </div>
+            </div>
+         </div>
+         <div class="BaseForm" id="UpdPassForm" title="修改密码" style="display:none">
+            <div class="BaseDesc"><span class="txt-red">*</span>原密码</div>
+            <div class="BaseInput"><input type="password" need="1" lvs_bind="oldpass" /></div>
+            <div class="BaseDesc"><span class="txt-red">*</span>请输入新密码</div>
+            <div class="BaseInput"><input type="password" need="1" lvs_bind="loginpass" /></div>
+            <div class="BaseDesc"><span class="txt-red">*</span>请确认新密码</div>
+            <div class="BaseInput"><input type="password" need="1" lvs_bind="loginpass2" /></div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确定修改</a><a class="FormCancel button bg-grey">取消操作</a></div>
+         </div>
+    </div>
+</body>
+</html>

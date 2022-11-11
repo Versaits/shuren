@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_el_city" lvs_jqexec="lvs_el_city">
+    <div class="el_city" style="">
+        <div class="el_input_box  el_input_inner" style="background-image:none">
+            <input class="" lvs_bind="AreaData" type="text"  placeholder="请选择"  style="margin-left:5%;width:85%;font-size:14px"/>
+            <img class="el_input_clear"  src="./icon/el_icon_close.png"  style="display:none" />
+        </div>
+    
+    <div class="el_citytabs" style="border:solid 1px black;display:none">
+        <div class="el_citytabs_nav flexbox">
+            <div id="provinces" class="el_citytabs_item is_active flex1" style="">省/直辖市</div>
+             <div id="citys" class="el_citytabs_item flex1">城市  </div>
+               {{if level}}{{if level != 2  }}<div id="districts" class="el_citytabs_item flex1">县区</div>{{/if}}{{else}}<div id="districts" class="el_citytabs_item flex1">县区</div>{{/if}}
+            
+        </div>
+
+        <div id="provincesTable" class = "" style="display:none"></div>
+            
+         <div id="citysTable" class = "" style="display:none"></div>    
+        {{if level}}{{if level != 2  }}<div id="districtsTable" class = "" style="display:none"></div>{{/if}}{{else}}<div id="districtsTable" class = "" style="display:none">{{/if}}
+            
+        
+        
+    </div>
+    </div>
+    </div>
+  
+
+</body>
+</html>

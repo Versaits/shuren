@@ -1,0 +1,40 @@
+﻿.MesListBox
+{
+    overflow:auto;
+    border:#dadada 1px solid;
+    background-color:White;
+    font-size:14px;
+    line-height:200%;
+    letter-spacing:1px;
+    text-align:left;
+}
+.MesItem
+{
+}
+.OperateZone
+{
+    background-color:#eaeaea;
+    padding:5px 0;
+    position:fixed;
+    bottom:0;
+    width:auto;
+}
+.MesInput
+{
+    font-size:15px;
+    background-color:White;
+    border:#dadada 1px solid;
+    border-radius:999px;
+    cursor:pointer;
+    width:100%;
+}
+.RoundButton
+{
+    font-size:14px;
+    border-radius:999px;
+    cursor:pointer;
+    text-align:center;
+    background-color:#6285c9;
+    color:White;
+    padding:1px 3px;
+}

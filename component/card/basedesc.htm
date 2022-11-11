@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="BaseDesc" lvs_jqexec="lvsbasedesc">
+        <div class="BaseDescBox">
+            {{each(l,lstdata) list}}
+            {{if lstdata.type!='html'}}
+                <div class="{{if lstdata.type=='title'}}BaseTitle{{else lstdata.type=='subscr'}}BaseSubscr{{else lstdata.type=='remark'}}BaseRemark{{else}}BaseDesc${lstdata.type}{{/if}}">
+                    {{if lstdata.name!=''}}${lstdata.name}：{{/if}}${showtext}
+                </div>
+            {{else}}
+                <div class="BaseHtml">
+                {{if lstdata.showtext!=''}}${lstdata.showtext}{{/if}}
+                {{if lstdata.showpics}}
+                    {{each(p,picdata) lstdata.showpics}}
+                    <img class="BaseImg" width="100%" src="${picdata.image}" />
+                    {{/each}}
+                {{/if}}
+                {{if lstdata.showfile!=''}}
+                    {{if lstdata.filetype=='mp4'||lstdata.filetype=='m3u8'}}
+                        <div id="BaseHtmlVideo${l}" class="BaseVideo" playurl="${lstdata.showfile}"></div>
+                    {{else}}
+                        <a class="BaseFile" href="${lstdata.showfile}" download="${lstdata.showfile}">文件下载</a>
+                    {{/if}}
+                {{/if}}
+                </div>
+            {{/if}}
+            {{/each}}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+﻿.GroupTis
+{
+    border:#308ffa 1px solid;
+    border-radius:99px;
+    width:15px;
+    height:15px;
+    display:inline-block;
+    line-height:15px;
+    font-size:11px;
+    text-align:center;
+    cursor:pointer;
+    color:#308ffa;
+}
+
+.HeadTitle
+{
+    text-align:left;
+    letter-spacing:1.8px;
+    color:#6a6a6a;
+    font-size:16px;
+}
+
+.BaseListAdd
+{
+    border:#dadada 1px solid;
+    margin:3px;
+    border-radius:3px;
+    padding:5px 0;
+    text-align:center;
+    color:#6a6a6a;
+    text-shadow:1px 1px 1px #a2c2d2;
+    background-color:White;
+    cursor:pointer;
+}
+.BaseListAdd:hover
+{
+    background-color:#d2e2f2!important;
+    font-weight:bold;
+}

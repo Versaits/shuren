@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_head_basehead" lvs_jqexec="lvsfstemhead">
+        <div style="width:100%;line-height:100%;padding:12px 0;{{if back}}background:${back}{{/if}}">
+            <div class="flexbox">
+                <div style="width:10%;text-align:right;padding-right:5px">{{if logo}}<img height="40px" class="BaseHeadLogo" mode="widthFix" src="${logo}" style="vertical-align:middle" />{{/if}}</div>
+                <div class="flex1 HeadLargTitle" style="text-align:left;line-height:32px">{{if title}}${title}{{/if}}</div>
+                {{if topmenus}}
+                <div style="max-width:40%;width:${topmenus.list.length*90}px;padding-top:22px;margin-bottom:-12px" class="TopMenuBox flexbox">
+                    {{each(m,menudata) topmenus.list}}
+                    {{if m>0}}<div style="padding:8px 0;color:#aaaaaa">|</div>{{/if}}
+                    <div class="flex1" style="text-align:center">
+                    <span class="TopMenuItem {{if topmenus.defidx}}{{if topmenus.defidx==menudata.id}}active{{/if}}{{else}}{{if m==0}}{{/if}}{{/if}}" router="${menudata.router}" idxid="${menudata.id}">${menudata.name}</span>
+                    </div>
+                    {{/each}}
+                </div>
+                {{/if}}
+                {{if nologin}}
+                {{else}}
+                <div style="width:20%;text-align:left;">
+                    {{if role}}{{if role==''}}<a lvs_elm="GoLogin" projid="${projid}" apptype="${apptype}">未登录</a>
+                    {{else}}
+                        <img class="LitUserHead" lvs_elm="MenuSel" currole="${role}" curroleid="${roleid}" style="width:40px;height:40px;vertical-align:middle" lvs_bind="userimg" src="{{if image==''}}../Image/user.gif{{else}}${image}{{/if}}"/><span lvs_elm="MenuSel" lvs_bind="name" style="color:#fafafa;font-size:12px">${name}</span><span lvs_elm="MenuSel" class="RightDrop"></span>
+                    {{/if}}
+                    {{else}}<a lvs_elm="GoLogin" projid="${projid}" apptype="${apptype}">未登录</a>
+                    {{/if}}
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

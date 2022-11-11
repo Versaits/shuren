@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_name="cn_crsplan_pageitem" perheit="57" style="position:relative;z-index:1;width:100%;height:100%;
+         {{if bgtype}}{{if bgtype==1}}background-color:${bgcolor};{{else bgtype==2}}background-image:url('${bgimage}');background-position:${bgposition};background-size:${bgsize};{{else bgtype==3}}background-image:linear-gradient(${gradienttype},${startcolor} 0%,${endcolor} 100%);{{/if}}
+         {{else master}}{{if master.bgtype}}{{if master.bgtype==1}}background-color:${master.bgcolor};{{else master.bgtype==2}}background-image:url('${master.bgimage}');background-position:{{if master.bgposition}}${master.bgposition}{{else}}top center{{/if}};background-size:100%;{{else master.bgtype==3}}background-image:linear-gradient(${master.gradienttype},${master.startcolor} 0%,${master.endcolor} 100%);{{/if}}{{/if}}{{if bgopacity}}opacity:${bgopacity};{{/if}}
+         {{/if}}" class="PageCardPanel">
+    {{each(i,elmdata) elements}}
+        {{if elmdata.type=='video'}}
+            <div lvs_elm="video" class="PageElm PageElmVideo" seqidx="${i}" lvs_bind="elements[${i}]" id="videoplay${i}" playurl="${elmdata.url}" style="left:${elmdata.left};top:${elmdata.top};width:${elmdata.width};height:${elmdata.height};{{if elmdata.zindex}}z-index:${elmdata.zindex};{{/if}}">
+                <img width="100%" src="{{if elmdata.image}}${elmdata.image}{{else}}../../Image/videofm.jpg{{/if}}" />
+            </div>
+        {{else elmdata.type=='image'}}
+            <div lvs_elm="image" class="PageElm PageElmImage" picid="${elmdata.picid}" seqidx="${i}" id="image${elmdata.id}" source="${elmdata.image}" style="left:${elmdata.left};top:${elmdata.top};width:${elmdata.width};height:${elmdata.height};{{if elmdata.zindex}}z-index:${elmdata.zindex};{{/if}}">
+                <img width="100%" src="${elmdata.image}" />
+            </div>
+        {{else elmdata.type=='table'}}
+            <div lvs_elm="table" class="PageElm PageElmTable" seqidx="${i}" lvs_bind="elements[${i}]" id="table${elmdata.id}" style="left:${elmdata.left};top:${elmdata.top};width:${elmdata.width};height:${elmdata.height};{{if elmdata.zindex}}z-index:${elmdata.zindex};{{/if}}">
+                {{if elmdata.tabdesc}}
+                <div class="htmlformat">${elmdata.tabdesc}</div>
+                {{else}}
+                <table width="100%" class="BaseTable">
+                    <thead>{{each(h,hddata) theads}}<th contenteditable="true" class="Editable">${hddata.text}</th>{{/each}}</thead>
+                    {{each(r,rowdata) rows}}
+                        {{if r%2==1}}<tr class="GreyTr">{{else}}<tr>{{/if}}
+                        {{each(c,coldata) rowdata.cols}}
+                        <td contenteditable="true" class="PropertyText Editable" style="{{if coldata.fontsize}}font-size:${coldata.fontsize};{{/if}}{{if coldata.fontcolor}}color:${coldata.fontcolor};{{/if}}{{if coldata.textalign}}text-align:${coldata.textalign};{{/if}}">${coldata.text}</td>
+                        {{/each}}
+                        </tr>
+                    {{/each}}
+                </table>
+                {{/if}}
+            </div>
+        {{else elmdata.type=='file'}}
+            <div lvs_elm="file" class="PageElm PageElmFile" seqidx="${i}" id="file${elmdata.id}" source="${elmdata.fileurl}" style="left:${elmdata.left};top:${elmdata.top};width:${elmdata.width};height:${elmdata.height};text-align:center;{{if elmdata.zindex}}z-index:${elmdata.zindex};{{/if}}">
+                <img width="40px" height="40px" src="${elmdata.image}" /><br /><div class="Editable" contenteditable="true" lvs_bind="filename">${filename}</div>
+            </div>
+        {{else elmdata.type=='voice'}}
+            <div lvs_elm="voice" class="PageElm PageElmVoice" seqidx="${i}" lvs_bind="elements[${i}]" id="voiceplay${elmdata.id}" playurl="${elmdata.url}" style="left:${elmdata.left};top:${elmdata.top};width:${elmdata.width};height:${elmdata.height};{{if elmdata.zindex}}z-index:${elmdata.zindex};{{/if}}">
+                <audio width="1" height="1" src="${elmdata.url}"/>
+                <img class="Clicktable" width="100%" mode="widthFix" src="../../Image/voiceplay.png" />
+            </div>
+        {{else elmdata.type=='timer'}}
+            <div lvs_elm="timer" class="PageElm PageElmTimer" seqidx="${i}" lvs_bind="elements[${i}]" id="timer${elmdata.id}" begsec="{{if elmdata.begsec}}${elmdata.begsec}{{else}}0{{/if}}" autoend="${elmdata.autoend}" playsec="${elmdata.playsec}" style="left:${elmdata.left};top:${elmdata.top};width:${elmdata.width};height:${elmdata.height};{{if elmdata.zindex}}z-index:${elmdata.zindex};{{/if}}">
+                <img class="Clicktable" width="100%" mode="widthFix" src="../../Image/timer.png" />
+            </div>
+        {{else elmdata.type=='text'}}
+            <div lvs_elm="text" class="PageElm PageElmText" seqidx="${i}" id="text${elmdata.id}" style="vertical-align:baseline;left:${elmdata.left};top:${elmdata.top};width:${elmdata.width};height:${elmdata.height};{{if elmdata.color}}color:${elmdata.color};{{/if}}{{if elmdata.bgcolor}}{{if elmdata.bgcolor!='#000000'}}background-color:${elmdata.bgcolor};{{/if}}{{/if}}{{if elmdata.fontsize}}font-size:${elmdata.fontsize};{{/if}}{{if elmdata.zindex}}z-index:${elmdata.zindex};{{/if}}{{if elmdata.textalign}}text-align:${elmdata.textalign};{{/if}}{{if elmdata.borderstyle&&elmdata.borderstyle!='none'}}border:${elmdata.bordercolor} ${elmdata.borderstyle} ${elmdata.borderwidth};{{/if}}{{if elmdata.borderradius}}border-radius:${elmdata.borderradius};{{/if}}{{if elmdata.fonttype}}font-family:${elmdata.fonttype};{{/if}}{{if elmdata.lineheight}}line-height:${elmdata.lineheight};{{/if}}{{if elmdata.letterspacing}}letter-spacing:${elmdata.letterspacing};{{/if}}{{if elmdata.fontweight}}font-weight:${elmdata.fontweight};{{/if}}{{if elmdata.fontstyle}}font-style:${elmdata.fontstyle};{{/if}}{{if elmdata.fontdecoration}}font-decoration:${elmdata.fontdecoration};{{/if}}">
+                <div contenteditable="true" class="Editable htmlformat" lvs_bind="elmtext">{{if elmdata.text}}${elmdata.text}{{else}}请输入文字{{/if}}</div>
+            </div>
+        {{else elmdata.type=='shape'}}
+            <div lvs_elm="shape" class="PageElm PageElmText" seqidx="${i}" id="shape${elmdata.id}" style="left:${elmdata.left};top:${elmdata.top};width:${elmdata.width};height:${elmdata.height};{{if elmdata.color}}color:${elmdata.color};{{/if}}{{if elmdata.fontsize}}font-size:${elmdata.fontsize};{{/if}}{{if elmdata.zindex}}z-index:${elmdata.zindex};{{/if}}{{if elmdata.textalign}}text-align:${elmdata.textalign};{{/if}}{{if elmdata.borderstyle&&elmdata.borderstyle!='none'}}border:${elmdata.bordercolor} ${elmdata.borderstyle} ${elmdata.borderwidth};{{/if}}{{if elmdata.borderradius}}border-radius:${elmdata.borderradius};{{/if}}{{if elmdata.fonttype}}font-family:${elmdata.fonttype};{{/if}}{{if elmdata.lineheight}}line-height:${elmdata.lineheight};{{/if}}{{if elmdata.letterspacing}}letter-spacing:${elmdata.letterspacing};{{/if}}{{if elmdata.fontweight}}font-weight:${elmdata.fontweight};{{/if}}{{if elmdata.fontstyle}}font-style:${elmdata.fontstyle};{{/if}}{{if elmdata.fontdecoration}}font-decoration:${elmdata.fontdecoration};{{/if}}">
+                <div class="Clicktable" style="position:relative;width:100%;">{{if elmdata.text}}<div style="width:100%;position:absolute;left:0;top:0;{{if elmdata.zindex}}z-index:${elmdata.zindex+1};{{else}}z-index:10;{{/if}}" class="htmlformat">${elmdata.text}</div>{{/if}}{{if elmdata.svg}}<svg style="width:100%;position:absolute;left:0;top:0;{{if elmdata.zindex}}z-index:${elmdata.zindex};{{else}}z-index:10;{{/if}}" class="htmlformat">${elmdata.svg}</svg>{{/if}}</div>
+            </div>
+        {{else elmdata.type=='sigsel'}}
+            <div lvs_elm="theme" class="PageElm PageElmTheme PageElmSigsel" seqidx="${i}" id="sigsel${elmdata.id}" style="left:${elmdata.left};top:${elmdata.top};width:${elmdata.width};height:${elmdata.height};{{if elmdata.color}}color:${elmdata.color};{{/if}}{{if elmdata.bgcolor}}background-color:${elmdata.bgcolor};{{/if}}{{if elmdata.fontsize}}font-size:${elmdata.fontsize};{{/if}}{{if elmdata.zindex}}z-index:${elmdata.zindex};{{/if}}">
+                <component name="cn.theme.sigsel" basedata="elements[${i}]"></component>
+            </div>
+        {{else elmdata.type=='multsel'}}
+            <div lvs_elm="theme" class="PageElm PageElmTheme PageElmMultsel" seqidx="${i}" id="multsel${elmdata.id}" style="left:${elmdata.left};top:${elmdata.top};width:${elmdata.width};height:${elmdata.height};{{if elmdata.color}}color:${elmdata.color};{{/if}}{{if elmdata.bgcolor}}background-color:${elmdata.bgcolor};{{/if}}{{if elmdata.fontsize}}font-size:${elmdata.fontsize};{{/if}}{{if elmdata.zindex}}z-index:${elmdata.zindex};{{/if}}">
+                <component name="cn.theme.multsel" basedata="elements[${i}]"></component>
+            </div>
+        {{else elmdata.type=='blank'}}
+            <div lvs_elm="theme" class="PageElm PageElmTheme PageElmBlank" seqidx="${i}" id="blank${elmdata.id}" style="left:${elmdata.left};top:${elmdata.top};width:${elmdata.width};height:${elmdata.height};{{if elmdata.color}}color:${elmdata.color};{{/if}}{{if elmdata.bgcolor}}background-color:${elmdata.bgcolor};{{/if}}{{if elmdata.fontsize}}font-size:${elmdata.fontsize};{{/if}}{{if elmdata.zindex}}z-index:${elmdata.zindex};{{/if}}">
+                <component name="cn.theme.blankinp" basedata="elements[${i}]"></component>
+            </div>
+        {{else elmdata.type=='answer'}}
+            <div lvs_elm="theme" class="PageElm PageElmTheme PageElmAnswer" seqidx="${i}" id="answer${elmdata.id}" style="left:${elmdata.left};top:${elmdata.top};width:${elmdata.width};height:${elmdata.height};{{if elmdata.color}}color:${elmdata.color};{{/if}}{{if elmdata.bgcolor}}background-color:${elmdata.bgcolor};{{/if}}{{if elmdata.fontsize}}font-size:${elmdata.fontsize};{{/if}}{{if elmdata.zindex}}z-index:${elmdata.zindex};{{/if}}">
+                <component name="cn.theme.answerinp" basedata="elements[${i}]"></component>
+            </div>
+        {{else elmdata.type=='group'}}
+            <div lvs_elm="group" class="PageElm PageElmGroup PageElmGroupAdd" seqidx="${i}" id="group${elmdata.id}" style="left:${elmdata.left};top:${elmdata.top};width:${elmdata.width};height:${elmdata.height};{{if elmdata.color}}color:${elmdata.color};{{/if}}{{if elmdata.bgcolor}}background-color:${elmdata.bgcolor};{{/if}}{{if elmdata.fontsize}}font-size:${elmdata.fontsize};{{/if}}{{if elmdata.zindex}}z-index:${elmdata.zindex};{{/if}}">
+                <div class="PageGroupBox">
+                    <div class="GroupTitle">分组请求</div>
+                    <div contenteditable="true" class="PropertyText Editable GroupDesc htmlformat" lvs_bind="groupdesc">${elmdata.groupdesc}</div>
+                    <table width="100%">
+                        <tr class="PropertyText"><td align="right">限制最多分组数量：</td><td align="left"><div contenteditable="true" class="Editable htmlformat" lvs_bind="maxgroup">${elmdata.maxgroup}</div></td></tr>
+                        <tr class="PropertyText"><td align="right">限制每分组学员数：</td><td align="left"><div contenteditable="true" class="Editable htmlformat" lvs_bind="maxmem">${elmdata.maxmem}</div></td></tr>
+                        <tr class="PropertyText"><td align="right">分组有效范围：</td><td align="left"><select lvs_bind="grouptype"><option value="class" {{if elmdata.grouptype=='class'}}selected="selected"{{/if}}>本班所有课程有效</option><option value="class" {{if elmdata.grouptype=='lesn'}}selected="selected"{{/if}}>仅本节课程有效</option></select></td></tr>
+                    </table>
+                    <div class="GroupFoot"></div>
+                </div>
+            </div>
+        {{else elmdata.type=='groupres'}}
+            <div lvs_elm="groupres" class="PageElm PageElmGroupRes PageElmGroupResAdd" seqidx="${i}" id="groupres" style="left:${elmdata.left};top:${elmdata.top};width:${elmdata.width};height:${elmdata.height};{{if elmdata.color}}color:${elmdata.color};{{/if}}{{if elmdata.bgcolor}}background-color:${elmdata.bgcolor};{{/if}}{{if elmdata.fontsize}}font-size:${elmdata.fontsize};{{/if}}{{if elmdata.zindex}}z-index:${elmdata.zindex};{{/if}}">
+                <div class="PageGroupBox">
+                    <div class="GroupTitle">分组提交成果</div>
+                    <div contenteditable="true" class="Editable PropertyText GroupDesc" lvs_bind="groupdesc">${elmdata.groupdesc}</div>
+                    <table width="100%" class="PropertyText GrpResTable">
+                        <tr><td>分组一</td><td>分组二</td><td></td><td>分组n</td></tr>
+                        <tr><td>成果一</td><td>成果二</td><td></td><td>成果n</td></tr>
+                    </table>
+                    <div class="GroupFoot"></div>
+                </div>
+            </div>
+        {{else elmdata.type=='task'}}
+            <div lvs_elm="task" class="PageElm PageElmTask" seqidx="${i}" id="task" style="left:${elmdata.left};top:${elmdata.top};width:${elmdata.width};height:${elmdata.height};{{if elmdata.color}}color:${elmdata.color};{{/if}}{{if elmdata.bgcolor}}background-color:${elmdata.bgcolor};{{/if}}{{if elmdata.fontsize}}font-size:${elmdata.fontsize};{{/if}}{{if elmdata.zindex}}z-index:${elmdata.zindex};{{/if}}">
+                <component name="cn.theme.taskpaper" basedata="elements[${i}]"></component>
+            </div>
+        {{/if}}
+    {{/each}}
+    </div>
+</body>
+</html>

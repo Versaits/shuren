@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_club_teammember" lvs_jqexec="lvs_teammember">
+        <div class="flexrow">
+            {{if members}}
+            {{each(m,memdata) members}}
+            <div class="colflex4" style="margin-top:12px">
+                <div class="MemberBox" lvs_elm="MemberDef" idxid="${memdata.id}" dataidx="${m}">
+                    <div class="MemberHead" perheit="100" style="background-image:url('${memdata.image}')">
+                        <span class="MemberCloth">${memdata.clonum}</span>
+                    </div>
+                    <div class="MemberTitle">
+                        ${memdata.name}
+                        <span class="MemberStatus {{if memdata.cardid>0}}MemberCard{{/if}}">{{if memdata.cardid>0}}卡${memdata.cardval}{{else}}${memdata.studscore}分{{/if}}</span>
+                    </div>
+                    <div class="MemberDesc">${memdata.jointime}进队</div>
+                </div>
+            </div>
+            {{/each}}
+            {{/if}}
+        </div>
+        <div class="flexrow">
+            {{if outs}}
+            {{each(o,outdata) outs}}
+            <div class="colflex5" style="margin-top:12px">
+                <div class="MemberBox" lvs_elm="MemberOut" idxid="${outdata.id}" dataidx="${o}">
+                    <div class="MemberHead" perheit="100" style="background-image:url('${outdata.image}')"></div>
+                    <div class="MemberTitle">${outdata.name}</div>
+                </div>
+            </div>
+            {{/each}}
+            {{/if}}
+        </div>
+        <div class="BaseForm" id="MemberShowTmpl" style="display:none">
+            <div class="MemberBox">
+                <img width="100%" src="${image}"/>
+                <div class="MemberTitle">${name}</div>
+                <div class="MemberTitle">${clonum}号</div>
+                <div class="MemberTitle">出生日期：${membbirth}</div>
+                <div class="MemberTitle">进队日期：${jointime}</div>
+                <a class="FormOk button bg-green" idxid="${id}" ttype="More">查看详情</a>&nbsp;&nbsp;<a class="FormOk button bg-red" idxid="${id}" ttype="Quit">设为退队</a>
+            </div>
+        </div>
+        <div class="BaseForm" id="MemberOutTmpl" style="display:none">
+            <div class="MemberBox">
+                <img width="100%" src="${image}"/>
+                <div class="MemberTitle">${name}</div>
+                <div class="MemberTitle">${clonum}号</div>
+                <div class="MemberTitle">出生日期：${membbirth}</div>
+                <div class="MemberTitle">进队日期：${jointime}</div>
+                <a class="FormOk button bg-green" idxid="${id}" ttype="Back">归队</a><a class="FormCancel button bg-grey" idxid="${id}" ttype="Quit">关闭返回</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

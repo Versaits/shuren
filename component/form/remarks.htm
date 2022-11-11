@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_eomponent="cn_form_remarks">
+        {{if remarks.length == 0}}
+            <div class="BaseDesc">暂时还没有评论</div>
+        {{/if}}
+        {{each(r,remdata) remarks}}
+            <div class="RemarkListBox">
+                <div class="RemHead">{{if remdata.remimg!=''}}<img class="TinyUserHead" width="12px" src="${remdata.remimg}" />{{/if}}<span>{{if remdata.remname==''}}学员提交评论{{else}}${remdata.remname}{{/if}}</span><span class="float-right txt-grey">${remdata.time}</span></div>
+                <div class="font-9" class="RemBody">{{if remdata.info==''&&remdata.images.length==0}}<span style="color:#aaaaaa">这家伙很懒，只打了个分</span>{{else}}${remdata.info}{{/if}}{{if remdata.score}}<span class="float-right"><span class="ScoreNum">${remdata.score}</span>分</span>{{/if}}</div>
+                {{if remdata.images}}
+                    {{each(p,picdata) images}}<img class="RemarkPic" width="60%" src="${picdata.image}" />{{/each}}
+                {{/if}}
+            </div>
+        {{/each}}
+    </div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn.cls.baseclsstuds" lvs_jqexec="lvs_cls_basestud">
+        {{if levels}}
+        <div lvs_elm="TagSel">
+        {{each(l,lvldata) levels}}
+            <div style="padding:6px 0">
+            <span class="TagTitle">${lvldata.schoolname}&nbsp;${lvldata.lvlname}：</span>
+            {{each(s,seqdata) seqs}}
+                <span class="TagItem" dataidx="${l},${s}">${seqdata.id}班</span>
+            {{/each}}
+            </div>
+        {{/each}}
+        </div>
+        <div style="text-align:right;display:none" lvs_elm="StudOpe"><a class="button bg-green" lvs_elm="AddBaseStud">添加班级学生</a><a class="button bg-yellow" lvs_elm="UpdBaseStud">修改学生信息</a><a class="button bg-yellow" lvs_elm="UpdStudPass">重置学生密码</a><a class="button bg-red" lvs_elm="DelBaseStud">删除选定学生</a></div>
+        <div lvs_elm="BaseStuds">
+        </div>
+        <div class="BaseForm" id="AddBaseStudForm" title="添加基础班学员" style="display:none">
+            <div class="BaseDesc"><span class="txt-red">*</span>学生姓名</div>
+            <div class="BaseInput"><input type='text' need="1" lvs_bind="studname" placeholder="请输入需要新增的学生姓名" /></div>
+            <div class="BaseDesc"><span class="txt-red">*</span>班级内学号</div>
+            <div class="BaseInput"><input type='text' need="1" lvs_bind="studno" placeholder="请输入需要新增的学生班级内学号" min="1" max="100"/></div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确定添加</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="DelBaseStudForm" title="确认删除基础学员" style="display:none">
+            
+        </div>
+        <div class="BaseForm" id="UpdBaseStudForm" title="确认修改学员信息" style="display:none">
+            
+        </div>
+        {{else studs}}
+        <div class="BaseTmpl" id="DelStudTmpl" style="display:none">
+            <div class="BaseDesc">确认要删除以下学生？</div>
+            <div class="BaseInput">
+            {{each(d,deldata) studs}}
+                {{if d>0}}、{{/if}}${deldata.name}(${deldata.studno})
+            {{/each}}
+            </div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确定删除</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseTmpl" id="UpdStudTmpl" style="display:none">
+            <div class="BaseDesc">确定要修改以下学生的信息？</div>
+            {{each(u,upddata) studs}}
+                <div class="BaseInput flexbox StudItem" idxid="${upddata.id}">
+                    <div class="flex1"><input type="text" lvs_bind="studname" need="1" value="${upddata.name}" /></div>
+                    <div style="width:80px;border-left:#dadada 1px solid"><input lvs_bind="studseq" type="number" need="1" value="${upddata.classseq}" min="1" max="100" /></div>班
+                    <div style="width:80px;border-left:#dadada 1px solid;margin-left:10px;"><input lvs_bind="studno" type="number" need="1" value="${upddata.studno}" min="1" max="100" /></div>号
+                </div>
+            {{/each}}
+            <div class="BaseDesc"><a class="FormOk button bg-green">确定修改</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseTmpl" id="UpdStudPassTmpl" style="display:none">
+            <div class="BaseDesc">确定要重置以下学生的密码？</div>
+            <div class="BaseInput">
+            {{each(d,deldata) studs}}
+                {{if d>0}}、{{/if}}${deldata.name}(${deldata.studno})
+            {{/each}}
+            </div>
+            <div class="BaseDesc">需要设置的新密码：</div>
+            <div class="BaseInput"><input type="text" value="123456" lvs_bind="updpass" /></div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确定设置</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        {{/if}}
+    </div>
+</body>
+</html>

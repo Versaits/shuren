@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <span lvs_component="cn_lesn_lesntips" lvs_jqexec="lvs_lesntips">
+        <span class="LesnTipsStud" lvs_elm="ShowStudStat"><img width="20px" height="20px" src="../../Image/icon/addobj_b.png" style="vertical-align:middle;margin-right:5px"/><span lvs_bind="studnum" title="已学习学生数">{{if studnum}}${studnum}{{else}}0{{/if}}</span></span><span class="LesnTipsTask" lvs_elm="ShowTaskStat"><img width="20px" height="20px" src="../../Image/icon/tasking.png" style="vertical-align:middle;margin-right:5px"/><span lvs_bind="tasknum" title="已提交作业数">${tasknum}</span></span>
+    </span>
+    <div class="BaseForm" id="ShowInfoForm" style="display:none"></div>
+    {{if studs}}
+    <div class="BaseTmpl" id="ShowStudTmpl" style="display:none">
+        <table width="100%" class="BaseTable">
+            <thead><td>学号</td><td>学生</td><td>开始时间</td><td>进度</td><td>提交作业</td></thead>
+            {{each(s,stddata) studs}}
+                {{if s%2==1}}<tr class="GreyTr">{{else}}<tr>{{/if}}
+                <td>${stddata.studno}</td><td>${stddata.name}</td><td>${stddata.checktime}</td><td>${stddata.progress}%</td><td>${stddata.tasknum}</td>
+                </tr>
+            {{/each}}
+        </table>
+    </div>
+    <div class="BaseTmpl" id="ShowClsTaskTmpl" style="display:none">
+        <table width="100%" class="BaseTable">
+            <thead><td>学号</td><td>学生</td>{{each(t,tskdata) tasks}}<td>互动题${t+1}</td>{{/each}}</thead>
+            {{each(s,stddata) studs}}
+                {{if s%2==1}}<tr class="GreyTr">{{else}}<tr>{{/if}}
+                <td>${stddata.studno}</td><td>${stddata.name}</td>{{each(a,ansdata) tasks}}<td><div lvs_elm="Ans_${stddata.id}_${ansdata.id}" class="FormOk" opetype="ShowAns"></div></td>{{/each}}
+                </tr>
+            {{/each}}
+        </table>
+    </div>
+    {{/if}}
+</body>
+</html>

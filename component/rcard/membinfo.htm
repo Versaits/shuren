@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_rcard_membinfo" lvs_jqexec="lvs_rcard_membinfo">
+        <div class="MembInfoBox">
+            <div style="height:100%;padding-bottom:12px" class="MembHeadBox" lvs_elm="HeadBox">
+                <img lvs_elm="MembMainImg" lvs_ref="dialog.SetHeadimg" class="MembMainImg" src="${image}" style="width:100%;display:none" />
+                <div class="HeadDelayShow" style="margin-left:130px;padding-top:20px;animation-delay:7s">
+                    <div class="MembTitle" style="color:Black;text-align:left">${teamname}{{if status!='未发卡'}}<span class="float-right" lvs_ref="set.quit">返回</span>{{/if}}</div>
+                    <div class="MembTitle" style="color:Black;text-align:left">
+                        ${baseno}号<span class="MembBigname">${name}</span><span class="float-right" style="margin-top:24px">{{if status=='未发卡'}}<span class="MembBigname" style="font-size:1.6em"  lvs_elm="ShowCardInfo">${curval}</span>{{else}}<span class="MembBigname" style="font-size:1.6em"  lvs_elm="ShowCardInfo">${curval}</span>{{/if}}</span>
+                    </div>
+                </div>
+                <div class="HeadDelayShow flexbox" style="margin-top:20px;text-align:center;animation-delay:7.8s">
+                    <div class="flex1" lvs_elm="SetMembInfo" {{if status=='未发卡'}}defbox="1"{{/if}}><span class="TitleNum">${infoprog}</span>%<br />设置</span></div>
+                    <div class="flex1" lvs_elm="ShowLesnInfo"><span class="TitleNum">${lesnnum}</span>次<br />训练</div>
+                    <div class="flex1" lvs_elm="ShowMatchInfo" {{if status!='未发卡'}}defbox="1"{{/if}}><span class="TitleNum">${matchnum}</span>场<br />比赛</div>
+                    <div class="flex1" lvs_elm="ShowHonorInfo"><span class="TitleNum">${honornum}</span>项<br />荣誉</div>
+                </div>
+                <div class="MembTitle WordFlytop" style="animation-delay:3.6s;top:42%">${teamname}&nbsp;${baseno}号&nbsp;${name}</div>
+                <div class="MembLitTitle WordFlytop" style="animation-delay:3.9s;top:52%">出生日期：${birthday}</div>
+                <div class="MembLitTitle WordFlytop" style="animation-delay:4.2s;top:58%">训练开始日期：${lesnbeg}</div>
+                <div class="MembLitTitle WordFlytop" style="animation-delay:4.5s;top:64%">平均每周训练次：${weekno}</div>
+                <div class="MembLitTitle WordFlytop" style="animation-delay:4.8s;top:70%">累计训练次数：${lesnnum}</div>
+                <div class="MembLitTitle WordFlytop" style="animation-delay:5.1s;top:76%">累计参赛场次：${matchnum}</div>
+                <div class="MembLitTitle WordFlytop" style="animation-delay:5.4s;top:82%">累计获得荣誉：${honornum}</div>
+            </div>
+            <div lvs_elm="LesnListBox" class="ContainerBox" style="display:none">
+            </div>
+            <div lvs_elm="MatchListBox" class="ContainerBox" style="display:none">
+            </div>
+            <div lvs_elm="HonorListBox" class="ContainerBox" style="display:none">
+            </div>
+            <div lvs_elm="InfoListBox" class="ContainerBox" style="display:none">
+                <div class="MembBox" style="padding:12px 0">
+                    <div class="MembTitle">
+                        <span lvs_bind="memberid">${name}</span>
+                        @<span class="SelMoreBox" lvs_elm="SelTeam">${teams[0].name}</span><span class="RightDrop"></span>
+                    </div>
+                    <div lvs_elm="MembInfoBox" dataidx="0">
+                        <div class="MembLitTitle Editable">球衣号码：<span lvs_bind="baseno" lvs_elm="FormInfo" idxname="球衣号码">${teams[0].baseno}</span></div>
+                        <div class="MembLitTitle Editable">签约类型：<span lvs_bind="memtype" lvs_elm="FormInfo" idxname="签约类型" idxserial="球员-正式球员,外援-编外球员(外援),离开-已离开球队">{{if teams[0].memtype=='球员'}}正式球员{{else}}${memtype}{{/if}}</span></div>
+                        <div class="MembLitTitle Editable">出生日期：<span lvs_bind="birthday" lvs_elm="FormInfo" idxtype="date" idxname="出生日期">${teams[0].birthday}</span></div>
+                        <div class="MembLitTitle Editable">开始训练日期：<span lvs_bind="lesnbeg" lvs_elm="FormInfo" idxtype="date" idxname="开始训练日期">${teams[0].lesnbeg}</span></div>
+                        <div class="MembLitTitle Editable">结束训练日期：<span lvs_bind="lesnend" lvs_elm="FormInfo" idxtype="date" idxname="结束训练日期">{{if teams[0].lesnstatus=='停训'}}${teams[0].lesnend}{{else}}{{/if}}</span></div>
+                        <div class="MembLitTitle Editable">平均每周训练：<span lvs_bind="weekno" lvs_elm="FormInfo" idxname="平均每周训练天数" idxserial="3-3,4-4,5-5,6-6,7-7,2-2,1-1,0-停训">{{if teams[0].weekno==0}}停训{{else}}${teams[0].weekno}{{/if}}</span></div>
+                        <div class="MembLitTitle Editable">场上最佳位置：<span lvs_bind="baseloc" lvs_elm="FormInfo" idxname="场上最佳位置" idxserial="前锋,后腰,左边前,右边前,中后卫,左后卫,右后卫,守门员,前腰">${teams[0].baseloc}</span></div>
+                        <div class="MembLitTitle">信息完备度：${teams[0].prog}%，获得${teams[0].progscore}瓯身价</div>
+                    </div>
+                </div>
+            </div>
+            <div lvs_elm="CardInfoBox" class="ContainerBox" style="display:none">
+                <div class="MembBox" style="padding:12px 0">
+                    <div class="MembLitTitle">当前预计总身价：<span style="font-size:160%;color:#fd9e09">${curval}</span>瓯</div>
+                    {{if status=='未发卡'}}
+                    <div class="MembLitTitle">尚未发行身价卡</div>
+                    {{else}}
+                    <div class="MembLitTitle">当前总发行量：${totalnum}</div>
+                    <div class="MembLitTitle">每张价值：<span style="font-size:160%;color:#fd9e09">${curtbis}</span>元<a class="YellowButton float-right" style="margin-top:0" lvs_ref="dialog.BuyCard">我要收藏</a></div>
+                    {{/if}}
+                    <div class="MembLitTitle">基本信息${infoprog}%完备增长身价：<span style="color:#fd9e09">${progval}</span>瓯</div>
+                    <div class="MembLitTitle">参加${lesnnum}次训练增长身价：<span style="color:#fd9e09">${lesnval}</span>瓯</div>
+                    <div class="MembLitTitle">参加${matchnum}场比赛增长身价：<span style="color:#fd9e09">${matchval}</span>瓯</div>
+                    <div class="MembLitTitle">通过${honornum}项荣誉增长身价：<span style="color:#fd9e09">${honorval}</span>瓯</div>
+                    <div class="BaseDesc" style="display:none"><a class="GreenButton" lvs_elm="GetRCardVal">查看记录</a></div>
+                    <div lvs_elm="RCardValBox" class="BaseBox"></div>
+                </div>
+            </div>
+        </div>
+        <div class="BaseForm" id="CreateCardForm" style="display:none">
+                <div class="BaseDesc"><span class="txt-red">每名球员只进行一次发卡操作，请确认数据完整，发行完成后即进入卡管理，并确认以下信息：</span></div>
+                <div class="BaseDesc">发行俱乐部：${clubname}</div>
+                <div class="BaseDesc">发行基础球队：${teamname}</div>
+                <div class="BaseDesc">发行基础号码：${baseno}</div>
+                <div class="BaseDesc"><span class="txt-red">*</span>请输入身份证号码：</div>
+                <div class="BaseInput"><input type="text" need="1" lvs_bind="idcard" placeholder="请输入身份证号以保障唯一性"/></div>
+                <div class="BaseDesc"><span class="txt-red">*</span>本期发行数量：</div>
+                <div class="BaseInput"><input type="number" need="1" lvs_bind="cardnum" value="1000"/></div>
+                <div class="BaseDesc"><a class="FormOk button bg-green" apiname="rich/card_set" idxkey="membid" opetype="CreateCard" retmode="reload">确定发行</a><a class="FormCancel button bg-yellow">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="CardScoreForm" style="display:none">
+                <div class="BaseDesc">技术积分达到1000分以上才可以发行卡：</div>
+                <div class="BaseDesc">可以通过参加训练、参加比赛、获取荣誉增加技术积分</div>
+                <div class="BaseDesc">参加训练每次获得3-10积分，连续签到积分越高</div>
+                <div class="BaseDesc">参加比赛获得2-100积分</div>
+                <div class="BaseDesc">每项荣誉获得60-800积分</div>
+                <div class="BaseDesc"><a class="FormCancel button bg-green">我知道了</a></div>
+        </div>
+        <div class="BaseForm" id="SetHeadimgForm" style="display:none">
+                <div class="BaseDesc">设置头像图片：</div>
+                <div class="BaseInput"><div class="PicFile" lvs_bind="headimg"><img width="40px" height="40px" src="../../Image/add.png"/></div></div>
+                <div class="BaseDesc"><a class="FormOk button bg-green" apiname="leag/member_set" idxkey="membid" opetype="SetHeadimg" retmode="reload">确定设置</a><a class="FormCancel button bg-yellow">取消操作</a></div>
+        </div>
+    </div>
+</body>
+</html>

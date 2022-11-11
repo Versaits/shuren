@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+ <div lvs_component="cn_elmind_minddemo" lvs_jqexec="lvs_minddemo">
+        <div class="demo_Title1" style="margin-top:100px" id="Div1">思维导图</div>
+        <div class="demo_Description">引入jsmind的js文件，实现思维导图的功能</div>
+<!----        <div class="demo_Title2" style="margin-top:100px" id="">思维导图展示</div>
+        <div class="demo_Description">按照思维导图的数据进行展示</div>
+        <div class="demo_block" style="margin-left:0%;margin-right:0;">
+        <component name="cn.elmind.elmind" basedata="mind:minddata"></component>
+        </div>
+        <div class="demo_Description">示例代码：<br />
+            <textarea class="demo_Code" style="width:80%" >
+                &lt;component name=&quot;cn.elmind.elmind&quot; basedata=&quot;mind:minddata&quot;&gt;&lt;/component&gt;
+            </textarea>
+        </div>
+        <div class="demo_Description">输入数据说明：
+            <table class="demo_Table" width="80%" border="1">
+                <thead><td>输入数据名</td><td>说明</td><td>类型</td></thead>
+                <tr><td>mindoptions.theme </td><td>主题模式(颜色)</td><td>枚举：primary、warning....</td></tr>
+                <tr><td>mindoptions.view</td><td>思维导图与外框之间的距离 </td><td>hmargin:100,        // 思维导图距容器外框的最小水平距离</br>
+			       vmargin:50,         // 思维导图距容器外框的最小垂直距离</br>
+			       line_width:2,       // 思维导图线条的粗细</br>
+			       line_color:'#555'   // 思维导图线条的颜色</td></tr>
+                <tr><td>mindoptions.layout</td><td>节点之间的距离 </td><td>hspace:30,          // 节点之间的水平间距</br>
+			      vspace:20,          // 节点之间的垂直间距</br>
+			      pspace:13           // 节点与连接线之间的水平间距（用于容纳节点收缩/展开控制器）</td></tr>
+                <tr><td>mind</td><td>具体思维导图的数据 </td><td>可以参照demo中的例子 </td></tr>
+            </table>
+        </div>-------->
+         <div class="demo_Title2" style="margin-top:100px" id="Div2">带编辑按钮的思维导图</div>
+        <div class="demo_Description">可以对思维导图进行增加、删除、拖拽等操作</div>
+        <div class="demo_block" style="margin-left:0%;margin-right:0;">
+            <component name="cn.elmind.editmind" ></component>
+        </div>
+        <div class="demo_Description">示例代码：<br />
+            <textarea class="demo_Code" style="width:80%" >
+                &lt;component name=&quot;cn.elmind.editmind&quot; basedata=&quot;mind:minddata&quot;&gt;&lt;/component&gt;
+            </textarea>
+        </div>
+        <div class="demo_Description">输入数据说明：
+            <table class="demo_Table" width="80%" border="1">
+                <thead><td>输入数据名</td><td>说明</td><td>类型</td></thead>
+                <tr><td>mindsource</td><td> 已有的数据</td><td>完整的数据，包括格式参数等 </td></tr>
+                <tr><td>mindresult</td><td>编辑完成的数据 </td><td>完整的数据，包括格式参数等</td></tr>
+            </table>
+        </div>
+</div>
+</body>
+</html>

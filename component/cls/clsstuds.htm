@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn.cls.clsstuds" lvs_jqexec="lvs_class_studs">
+        {{if classes.length==0&&schstudnum==0}}
+            <div class="NullPanel">
+                <img class="NullTips" src="../Image/fedu/nulltip.png"/>
+                <div class="NullText" style="margin-top:34px">目前没有指导中的学员<span style="display:none">，<a lvs_elm="AddTchStud">添加学员</a></span></div>
+            </div>
+        {{/if}}
+        <div class="WSBox" style="padding:32px;">
+            <div class="Title">
+                <select class="tabdef" lvs_elm="SelClass" style="min-width:400px;font-size:15px;padding:3px">{{each(c,clsdata) classes}}<option value="${clsdata.id}">${clsdata.name}(${clsdata.studnum}人)</option>{{/each}}</select>
+                <span class="float-right" style="font-size:14px;font-weight:normal"><a lvs_elm="UpdClsName" class="button bg-green" style="margin-top:0">修改名称</a><a lvs_elm="AddClsStud" class="button bg-green" style="margin-top:0">添加学员</a><a lvs_elm="DelClsStud" class="button bg-red" style="margin-top:0">删除学员</a></span>
+            </div>
+            <div lvs_elm="StudInfoPanel"></div>
+        </div>
+        <div class="BaseForm" id="UpdClsForm" title="修改名称" style="display:none">
+        </div>
+        <div class="BaseTmpl" id="UpdClsNameTmpl" style="display:none">
+            <div class="BaseDesc"><span class="txt-red">*</span>班级新名称：</div>
+            <div class="BaseInput"><input type="text" lvs_bind="classname" value="${classname}" placeholder="请输入班级的新名称" /></div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确定修改</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="AddClsStudForm" title="添加学生" style="display:none">
+            <div class="TypeTab flexbox" lvs_bind="studmode">
+                <div class="TypeItem flex1 active" lvs_ref="tab.SelPanel" idxid="1">查找学生</div>
+                {{if classseq}}<div class="TypeItem flex1" lvs_ref="tab.SelPanel" apiname="leag/stud_list" gettype="EStud.ClsAppStud" idxkey2="classid" idxid="${id}" tmplname="cn.stud.estudsel">添加本班级学生</div>{{/if}}
+                <div class="TypeItem flex1" lvs_ref="tab.SelPanel" idxid="3">新注册学生信息</div>
+            </div>
+            <div class="tabcontent" tabcontainer="1">
+                <div class="BaseDesc">请先输入学员姓名查找已注册学员</div>
+                <div class="BaseInput"><input type="text" lvs_bind="studkey" style="width:80%"/><img class="float-right FormOk" opetype="SearchStud" width="30px" height="24px" src="../../Image/find.gif" /></div>
+                <div class="BaseDesc" lvs_elm="SearchRes"></div>
+            </div>
+            <div class="tabcontent" tabcontainer="${id}" style="display:none"></div>
+            <div class="tabcontent" tabcontainer="3" style="display:none">
+                <div class="BasePanel" lvs_elm="RegUserBox">
+                    <div class="BaseDesc">学员姓名</div>
+                    <div class="BaseInput"><input type="text" lvs_bind="studname" placeholder="学生的真实姓名"/></div>
+                    <div class="BaseDesc">所在年级</div>
+                    <div class="BaseInput"><component name="cn.button.serial" idxid="0" lvs_bind="lvlid" need="1" data-serial="23-初一,25-初二,27-初三" data-placeholder="请选择年级"></component></div>
+                    <div class="BaseDesc">所在班级</div>
+                    <div class="BaseInput"><input type="number" lvs_bind="classseq" placeholder="学生的班级号"/></div>
+                    <div class="BaseDesc">学生学号</div>
+                    <div class="BaseInput"><input type="number" lvs_bind="studno" placeholder="学生的班级学号"/></div>
+                </div>
+            </div>
+            <div class="BaseDesc"><a class="FormOk button bg-green" opetype="AddStudOk">确定提交</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="DelClsStudForm" style="display:none">
+            <div class="BaseDesc">请选择以下需要删除的学员</div>
+            <div class="BaseDesc">
+                <component name="cn.stud.estudsel"></component>
+            </div>
+            <div class="BaseDesc"><a class="button bg-green FormOk">确认删除</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+    </div>
+</body>
+</html>

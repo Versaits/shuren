@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_crsplan_pagelist" lvs_jqexec="lvspagelist">
+        <div class="flexbox">
+            <div class="flex1 PageMenu" lvs_elm="PageMenu" type="pageup"><img class="PageMenuBut" width="16px" height="16px" title="上移一页" src="../../Image/rup.png" /></div>
+            <div class="flex1 PageMenu" lvs_elm="PageMenu" type="pagedown"><img class="PageMenuBut" width="16px" height="16px" title="下移一页" src="../../Image/rdown.png" /></div>
+            <div class="flex1 PageMenu" lvs_elm="PageMenu" type="append"><img class="PageMenuBut" width="16px" height="16px" title="{{if config.tmpltype=='task'}}添加新任务页{{else}}添加新讲义页{{/if}}" src="../../Image/append.png" /></div>
+            {{if config.tmpltype=='task'}}
+            {{else}}
+            <div class="flex1 PageMenu" style="border-left:#dadada 0.5px solid" lvs_elm="PageMenuMore"><img width="16px" height="16px" src="../../Image/rright.png" /></div>
+            {{/if}}
+        </div>
+        {{if pages}}
+        <div class="PageListPreview">
+        {{each(p,pagedata) pages}}
+        <div style="position:relative" perheit="53" class="PageItem {{if pagedata.isnew}}PageItemNew{{else}}{{if pagedata.id==-1}}PageItemNew{{/if}}{{/if}}" {{if pagedata.pagesel}}lvs_ref="${pagedata.pagesel}"{{/if}} lvs_bind="pages[${p}]" listidx="${p}">
+            {{if pagedata.type=='check'}}<span class="PageNum PageNumCheck">检查</span>
+            {{else pagedata.type=='task'}}<span class="PageNum PageNumTask">任务</span>
+            {{else}}
+                <span style="text-align:left"><span class="PageNum PageNumPlan">讲义{{if p+1<10}}0{{/if}}${p+1}</span><br />
+                <span class="PageTime" lvs_elm="PageTimeSet" idxid="${p}"><img width="12px" height="12px" src="../Image/time.png" style="vertical-align:middle;margin-right:2px" />{{if pagedata.playtime}}<span lvs_bind="pagesec">{{if pagedata.playtime<=0}}6{{else}}${pagedata.playtime}{{/if}}</span>''{{/if}}</span>
+                </span>
+            {{/if}}
+            <div style="position:absolute;top:0;z-index:0" class="PageListBox {{if pagedata.type=='check'}}PageCheck{{else pagedata.type=='task'}}PageTask{{else}}PageBox{{/if}}">
+                <component lvs_elm="ListPageItem" name="cn.crsplan.pagecard" data-pages[]="${p}"></component>
+            </div>
+        </div>
+        {{/each}}
+        </div>
+        {{else}}
+        <div class="PageItem" perheit="57" idxid="0"></div>
+        {{/if}}
+    </div>
+</body>
+</html>

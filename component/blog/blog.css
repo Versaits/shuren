@@ -1,0 +1,60 @@
+﻿.BlogBox
+{
+    text-align:left;padding:8px 0;line-height:180%;letter-spacing:1px;
+}
+.BlogBox .BlogTitle
+{
+    font-size:16px;letter-spacing:1.5px
+}
+.BlogBox .BlogText
+{
+    font-size:12px;padding:6px 0
+}
+.BlogBox .BlogOperate
+{
+    font-size:11px;color:#8a8a8a;margin-top:12px;
+}
+.BlogBox .ShowTag
+{
+    border:#fafafa 0.5px solid;border-radius:3px;padding:2px 8px;display:inline-block;text-align:center;margin-left:5px;letter-spacing:3px
+}
+.BlogBox .UserName
+{
+    font-size:12px;margin-top:-8px;border:White 2px solid;padding:2px 0;width:100%;margin-left:-5%;border-radius:12px;text-align:center
+}
+.BlogBox .TchName
+{
+    background-color:#66c2fc
+}
+.BlogBox .StudName
+{
+    background-color:#a6edc1
+}
+.WSBox .MaskTitle
+{
+    text-align:left;padding:8px 5px;background-color:#f7f7f7;font-size:12px;color:#8a8a8a;
+}
+.WSBox .MaskTitle .ShowTag
+{
+    border:#fafafa 0.5px solid;background-color:White;border-radius:3px;padding:2px 8px;display:inline-block;text-align:center;margin-left:5px;letter-spacing:3px;cursor:pointer
+}
+.WSBox .MaskTitle .ShowTag:hover
+{
+    color:#0a4aaa;font-weight:bold
+}
+.WSBox .BlogBaseText
+{
+    text-align:left;margin-top:18px;font-size:15px;color:#4a4a4a;line-height:180%;letter-spacing:1px;text-indent:16px
+}
+.ListItem .ListUser
+{
+    text-align:left;font-size:14px;letter-spacing:1px;padding:5px 0;
+}
+.ListItem .ListTitle
+{
+    text-align:left;text-indent:28px;line-height:180%;letter-spacing:1px;
+}
+.ListItem .ListDesc
+{
+    font-size:12px
+}

@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_play_pageshow" lvs_jqexec="lvs_play_listshow">
+        {{if !playtype||playtype=='lesn'}}
+        {{if istch}}<div style="text-align:right"><a class="button border-green" lvs_ref="router.crstmpl_edit" idxid="${id}">课件编辑</a></div>{{/if}}
+        {{each(p,pagedata) pages}}
+        <div class="PageShowBox" lvs_elm="PageList" dataidx="${p}" perheit="57">
+        </div>
+        {{/each}}
+        {{/if}}
+        {{if !playtype||playtype=='task'}}
+        {{if istch}}<div style="text-align:right"><a class="button border-green"  lvs_ref="router.crstmpl_taskedit" idxid="${id}">作业编辑</a></div>{{/if}}
+        {{each(t,tskdata) tasks}}
+        <div class="PageShowBox" lvs_elm="TaskList" perheit="57" dataidx="${t}">
+            {{if tasks.length==0}}
+                <div class="NullPanel">
+                    <img class="NullTips" src="../../Image/fedu/nulltip.png"/>
+                    {{if istch>0}}
+                    <div class="NullText" style="margin-top:34px">当前课程未设计作业，请点击“<a lvs_ref="router.crstmpl_taskedit" idxid="${id}">作业编辑</a>”进行操作</div>
+                    {{else}}
+                    <div class="NullText" style="margin-top:34px">尚未下发本课程作业，请耐心等待</div>
+                    {{/if}}
+                </div>
+            {{/if}}
+        </div>
+        {{/each}}
+        {{/if}}
+        <div style="height:54px"></div>
+    </div>
+</body>
+</html>

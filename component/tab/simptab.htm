@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="SimpTab" lvs_jqexec="lvssimptab">
+        <div class="SimpTab flexbox">
+            {{each(t,tabdata) tabs}}
+            <div class="SimpItem flex1 {{if t==0}}active{{/if}}" tabidx="${tabdata.tabidx}">${tabdata.tabname}</div>
+            {{/each}}
+        </div>
+        {{each(b,tcontdata) tabs}}
+        <div class="tabcontent SimpContent" tabcontainer="${tcontdata.tabidx}" {{if b>0}}style="display:none"{{/if}}>
+            <div class="htmlformat">${tcontdata.htmltext}</div>
+        </div>
+        {{/each}}
+    </div>
+</body>
+</html>

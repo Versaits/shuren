@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_stud_clsstudstat" lvs_jqexec="lvs_stud_stat">
+        <div>
+            {{if studs.length>0}}
+                <div lvs_bind="StudTasks">
+                    <table class="BaseTable" width="100%">
+                        <thead><td>姓名</td><td>班级</td><td>学号</td><td>总课程数</td><td>签到学习</td><td>学习进度</td><td>作业完成</td><td>操作</td></thead>
+                        {{each(t,statdata) studs}}
+                            {{if (t%2)==1}}<tr class="GreyTr">{{else}}<tr>{{/if}}
+                                <td align="left"><a lvs_elm="ShowStudStat" idxid="${statdata.id}"><img class="TinyUserHead" src="${statdata.custimg}" style="vertical-align:middle"/>${statdata.name}{{if statdata.checknum}}<span class="CheckStatus" style="display:none" title="待我批改的作业数">${statdata.checknum}</span>{{/if}}</a></td>
+                                <td>${statdata.lvlname}${statdata.classseq}班</td>
+                                <td>${statdata.studno}</td>
+                                <td>${statdata.totallesn}</td>
+                                <td>${statdata.lesnnum}</td>
+                                <td>${statdata.progress}%</td>
+                                <td>${statdata.tasknum}/${statdata.alltasknum}</td>
+                                <td><a lvs_elm="ShowStudStat" idxid="${statdata.id}">查看</a></td>
+                            </tr>
+                            <tr><td colspan="8">
+                                <div lvs_elm="StudStat${statdata.id}"></div>
+                            </td></tr>
+                        {{/each}}
+                    </table>
+                </div>
+            {{else}}
+                <div lvs_bind="StudTasks"><span class="txt-grey">没有学员学习数据</span></div>
+            {{/if}}
+        </div>
+    </div>
+</body>
+</html>

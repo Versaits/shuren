@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_club_matchlist" lvs_jqexec="lvs_club_match" class="MatchListBox">
+        {{each(m,matdata) matches}}
+        <div class="MatchListItem" lvs_ref="{{if matdata.status=='结束'}}../lvsleag/matchview.aspx?id=${matdata.id}{{else}}../lvsleag/matchmemb.htm?id=${matdata.id}{{/if}}">
+            <div class="GamesDesc">${matdata.gamesname}</div>
+            <div class="Title flexbox">
+                <div class="flex1"><img class="TinyUserHead" width="20px" height="20px" src="${matdata.oteamlogo}" /><br /><span>${matdata.oteamname}</span></div>
+                <div><span style="font-size:150%">{{if matdata.status=='新建'||matdata.status==''}}-:-{{else}}${matdata.oscore}：${matdata.tscore}{{/if}}</span></div>
+                <div class="flex1"><img class="TinyUserHead" width="20px" height="20px" src="${matdata.tteamlogo}" /><br /><span>${matdata.tteamname}</span></div>
+            </div>
+            <div class="GamesDesc">
+                {{if matdata.status=='结束'}}<span class="txt-grey">已结束</span>
+                {{else matdata.status=='新建'||matdata.status==''}}<span class="txt-green">待开始</span>
+                {{else}}<span class="txt-red">进行中</span>
+                {{/if}}
+            </div>
+            <div class="GamesDesc">${matdata.matchdate}</div>
+        </div>
+        {{/each}}
+        {{if nextcursor}}
+            <div class="NextCursor" cnname="cn.club.matchlist">
+                更多比赛
+            </div>
+        {{/if}}
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_crsplan_vpagelist" lvs_jqexec="lvs_vpagelist">
+        {{each(v,vpdata) outlines}}
+        <div class="VPageItem" dataidx="${v}" style="top:2px;left:${vpdata.leftper}%;height:27px;width:48px;">
+            <div class="ListPageBox {{if vpdata.type=='plan'}}PageBox{{else vpdata.type=='check'}}PageCheck{{/if}}" style="height:27px;color:#8a8a8a;font-weight:bold">
+                ${vpdata.cursec}''<span><img  class="float-right" lvs_elm="DelVPage" style="display:none" width="15px" height="15px" src="../../Image/del.gif"/></span>
+            </div>
+            <div class="VPageDrop"></div>
+        </div>
+        {{/each}}
+    </div>
+    <div class="BaseForm" id="DelVPageForm" style="display:none">
+        <div class="BaseDesc">确认要删除该媒体页面？</div>
+        <div class="BaseDesc"><a class="FormOk button bg-green">确认删除</a><a class="FormCancel button bg-grey">取消操作</a></div>
+    </div>
+</body>
+</html>

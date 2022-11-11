@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_date_prevweek" lvs_jqexec="lvsprevweek">
+        <div style="text-align:left" class="PrevTitle">${title}<span class="float-right"><a lvs_elm="ShowDetail">详情</a></span></div>
+        <table width="100%" lvs_elm="ShowDetail">
+            {{each(s,schdata) schedule.tschds}}
+            <tr>
+                {{each(d,daydata) schdata.subs}}
+                <td valign="top"><div class="SchdDay">{{if daydata.name}}<div class="SchdName {{if daydata.subs&&daydata.subs.length>0}}{{if daydata.subs[0].status=='空闲'}}SchdIdle{{else daydata.subs[0].status=='预约'}}SchdPred{{else daydata.subs[0].status=='休息'}}SchdNull{{else}}SchdBase{{/if}}{{/if}}">${daydata.name}</div>{{/if}}
+                </div></td>
+                {{/each}}
+            </tr>
+            {{/each}}
+        </table>
+    </div>
+</body>
+</html>

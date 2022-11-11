@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_worker_wklist" lvs_jqexec="lvs_worker_wklist">
+        {{if wkdesc}}<div class="TipDesc"><b>${wkdesc}</b>：通过坚持更新球员训练、比赛、荣誉等数据守护球员成长，并获得相应的守护分成</div>{{/if}}
+        {{if isworker==0}}<div class="TipDesc">您还不是守护者，请点击“注册”成为守护者，坚持更新训练、比赛、荣誉等数据，共同守护成长，分享成长收获</div>{{/if}}
+        {{each(w,wkdata) workers}}
+        <div class="WorkerBox">
+            <div class="flexbox">
+                <img class="LitUserHead" src="${wkdata.custimg}" />
+                <div class="flex1">
+                    <div class="WkTitle">${wkdata.name}[${wkdata.level}]</div>
+                    <div class="WkDesc">守护球员数：${wkdata.ttlmem}|守护身价分成：${wkdata.ttlscore}瓯</div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{if isworker==0}}<a class="BottomButton bg-green" lvs_elm="RegWorker">注册守护者</a>{{else}}<a class="BottomButton bg-green" lvs_elm="WorkerTips">守护攻略</a>{{/if}}
+        <div class="BaseForm" id="WkRegForm" title="注册守护者" style="display:none">
+            <div class="BaseDesc"><span class="txt-red">*</span>守护者姓名</div>
+            <div class="BaseInput"><input type="text" lvs_bind="wkname" /></div>
+            <div class="BaseDesc">身份类型</div>
+            <div class="TypeTab flexbox" lvs_bind="comefrom"><div class="TypeItem flex1"  lvs_ref="tab.SelPanel" idxid="家长">家长</div><div class="TypeItem flex1" lvs_ref="tab.SelPanel" idxid="教练">教练</div><div class="TypeItem flex1" lvs_ref="tab.SelPanel" idxid="顾问">顾问</div><div class="TypeItem flex1" lvs_ref="tab.SelPanel" idxid="其他">其他</div></div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确认注册</a><a class="FormCancel button bg-lightgrey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="WkTipsForm" title="守护攻略" style="display:none">
+            <div class="BaseDesc">恭喜您成为成长守护者<br />您可以通过以下方式守护成长：</div>
+            <div class="BaseDesc"><b>完善信息</b>：完善信息可以获得基本虚拟身价</div>
+            <div class="BaseDesc"><a lvs_ref="router.lesnchk" idxid="${idxid}"><b>训练签到</b></a>：协助教练完成签到提升球员身价</div>
+            <div class="BaseDesc"><b>比赛数据</b>：设置比赛参与和结果以提升身价</div>
+            <div class="BaseDesc"><b>荣誉信息</b>：赛事中获得荣誉可以增加身价值</div>
+            <div class="BaseDesc txt-red">通过坚持更新数据保持孩子的热爱，守护孩子坚持踢球，用身价督促孩子成长</div>
+            <div class="BaseDesc txt-red">孩子获得身价提升同时，守护者可分享其中10%的增长。</div>
+            <div class="BaseDesc"><a class="FormCancel button bg-grey">关闭操作</a></div>
+        </div>
+    </div>
+</body>
+</html>

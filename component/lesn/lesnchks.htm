@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_lesn_lesnchks" lvs_jqexec="lvs_lesn_chks">
+        {{if tasks}}
+        {{if tasks.length==0}}
+            <div class="TaskListBox"><div class="GrpResListBox txt-grey">尚无任务要求，请先创建任务要求，再编辑任务反馈</div></div>
+        {{/if}}
+        {{each(t,tskdata) tasks}}
+        <div class="TaskListBox">
+            <div class="LitTitle WSBaseTab flexbox" style="padding-bottom:0">
+                <div style="width:100px">任务${tskdata.seqid}：</div>
+                {{each(s,stepdata) tskdata.steps}}
+                <div class="WSTabItem {{if s==0}}active{{/if}}" idxid="step${stepdata.stepid}" lvs_ref="tab.SelPanel">${stepdata.stepname}</div>
+                {{/each}}
+            </div>
+            {{each(p,stpdata) tskdata.steps}}
+            <div class="tabcontent" tabcontainer="step${stpdata.stepid}" {{if p>0}}style="display:none"{{/if}}>
+                <div class="BaseDesc">评审要求：{{if stpdata.check}}至少${stpdata.check.chknum}人参与评审，${stpdata.check.oknum}人通过{{/if}}</div>
+                <table width="100%" class="BaseTable">
+                    <thead style="padding:5px 0"><td>分组</td><td>成员</td><td>进展</td><td>操作</td></thead>
+                    {{each(g,grpdata) stpdata.groups}}
+                        {{if g%2==1}}<tr class="GreyTr">{{else}}<tr>{{/if}}
+                        <td>${grpdata.name}</td>
+                        <td>${grpdata.members}</td>
+                        <td>{{if grpdata.status=='评审'}}评审结果：<span title="{{if grpdata.check}}{{if grpdata.check.cates}}{{each(c,ctdata) grpdata.check.cates}}${ctdata.name}(${ctdata.rate}%)：${ctdata.score}分；{{/each}}{{/if}}{{if grpdata.check.chkmark!=''}}评语：${grpdata.check.chkmark}{{/if}}{{/if}}">{{if grpdata.check}}${grpdata.check.score}{{else}}${grpdata.chkres}{{/if}}</span>{{else}}${grpdata.status}{{/if}}</td>
+                        <td>{{if istch>0}}<a class="button bg-green" lvs_elm="ProgChk" dataidx1="${t}" dataidx2="${p}" dataidx3="${g}" groupid="${grpdata.id}">评审</a><a class="button bg-grey" lvs_elm="ShareChk" idxid="${grpdata.id}">分享</a>{{/if}}</td>
+                        </tr>
+                    {{/each}}
+                </table>
+            </div>
+            {{/each}}
+        </div>
+        <div class="BaseForm" id="AddChkForm" style="display:none">
+        </div>
+        {{/each}}
+        <div class="BaseForm" id="GrpForm" style="display:none">
+        </div>
+        {{else}}
+        <div class="BaseTmpl" id="AddChkTmpl" style="display:none">
+            {{if check.cates}}
+                {{each(c,ctdata) check.cates}}
+                <div class="BaseDesc"><span class="txt-red">*</span>评审维度${c+1}：${ctdata.name}(${ctdata.rate}%)</div>
+                <div class="BaseInput"><input type="number" lvs_bind="chkscore" need="1" data-slidegrade="1" placeholder="请给出百分制分数"/></div>
+                {{/each}}
+            {{else}}
+            <div class="BaseDesc"><span class="txt-red">*</span>评审结果</div>
+            <div class="BaseDesc"><component name="cn.el_slider.el_slider_input" lvs_bind="chkres" need="1"></component></div>
+            {{/if}}
+            <div class="BaseDesc SelBox" lvs_bind="besttask"><div class="MultSelecting {{if isbesttask}}MultSelected{{/if}}" idxid="1"><img width="30px" height="30px" src="../../Image/biggrant.png" style="vertical-align:middle" />选为模范作业供班级参考</div></div>
+            <div class="BaseDesc">评审说明</div>
+            <div class="BaseInput"><input type="text" lvs_bind="chkmark" placeholder="简单说明评审意见" /></div>
+            <div class="BaseDesc"><a class="button bg-green FormOk">确认提交</a><a class="button bg-grey FormCancel">取消操作</a></div>
+        </div>
+        {{/if}}
+    </div>
+</body>
+</html>

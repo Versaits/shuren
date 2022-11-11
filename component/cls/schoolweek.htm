@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_cls_shoolweek" lvs_jqexec="lvs_cls_week">
+        <div style="width:100%;overflow:auto">
+            <div class="flexbox" style="width:${25*schools.length}%">
+                {{each(s,schdata) schools}}
+                <div class="flex1" lvs_elm="SchoolSel" dataidx="${s}">
+                    <div class="SchoolBox {{if s==0}}SchoolBoxSel{{/if}}">
+                        <div class="BigName">${schdata.name}</div>
+                        <div class="SchDesc">${schdata.address}</div>
+                        <div class="SchDesc">${schdata.contact}</div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        {{each(h,hdata) schools}}
+        <div class="SelPanel" style="display:none" panelid="${h}">
+            {{each(w,wkdata) hdata.date}}
+            <div class="BaseIndex">${wkdata.weekname}</div>
+                {{each(c,clsdata) wkdata.subs}}
+                    <div class="ClassListItem" idxid="${clsdata.id}" lvs_elm="ClassDef">${clsdata.name}.${clsdata.tname}<div class="RightDesc">${clsdata.time}</div></div>
+                {{/each}}
+            {{/each}}
+        </div>
+        {{/each}}
+    </div>
+</body>
+</html>

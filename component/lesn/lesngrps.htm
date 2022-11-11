@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_lesn_lesngrps" lvs_jqexec="lvs_lesn_groups">
+        {{if tasks}}
+        {{if tasks.length==0}}
+            <div class="TaskListBox"><div class="GrpResListBox txt-grey">尚无任务要求，请先创建任务要求，再编辑任务反馈</div></div>
+        {{else}}
+        {{if istch>0}}
+        <div class="TaskListBox" lvs_elm="TaskLesnCfg" style="text-align:right">
+            <div class="flexbox" style="padding:8px 0">
+                <div class="flex1">允许查看其他组作业</div><div style="width:80px"><component name="cn.button.checkbtn" data-isopen="{{if lesncfg}}{{if lesncfg.share}}on{{else}}off{{/if}}{{else}}off{{/if}}" lvs_bind="taskshare"></component></div>
+            </div>
+        </div>
+        {{/if}}
+        {{/if}}
+        {{each(t,tskdata) tasks}}
+        <div class="TaskListBox" lvs_elm="TaskItem${t}">
+            <div class="LitTitle">
+                <div>任务${tskdata.seqid}：<span lvs_elm="TaskTitle"></span><span class="float-right"><a lvs_elm="ShowTaskInfo" dataidx="${t}" idxid="${tskdata.id}" style="font-size:13px;font-weight:normal">查看任务要求</a></span></div>
+            </div>
+            <div class="WSBaseTab flexbox" lvs_elm="TaskInfo">
+                {{if tskdata.steps.length>0}}
+                <table width="100%" class="BaseTable">
+                    <thead><th>分组</th><th>成员</th>
+                    {{each(p,stpdata) tskdata.steps}}
+                        <th><div lvs_elm="ShowStepInfo" dataidx="${t},${p}" style="cursor:pointer">${stpdata.stepname}<br /><span style="font-weight:normal;font-size:12px">{{if stpdata.step}}{{if stpdata.step.restime==1}}每{{else}}最迟{{/if}}${stpdata.step.daynum}天提交：{{if stpdata.step.textres}}图文信息;{{/if}}{{if stpdata.step.fileres}}文件;{{/if}}{{if stpdata.step.taskres}}格式表单;{{/if}}{{if stpdata.step.progres}}项目进度;{{/if}}{{if stpdata.step.mindres}}思维导图;{{/if}}{{if stpdata.step.paperres}}工作纸;{{/if}}{{/if}}</span></div></th>
+                        <th>操作</th>
+                    {{/each}}
+                    <th>分数</th></thead>
+                    {{each(g,grpdata) tskdata.steps[0].groups}}
+                        {{if g%2==1}}<tr class="GreyTr">{{else}}<tr>{{/if}}
+                        <td align="left">${grpdata.name}</td>
+                        <td>${grpdata.members}</td>
+                        {{each(e,edata) tskdata.steps}}
+                            {{each(f,fdata) edata.groups}}
+                                {{if g==f}}
+                                <td lvs_elm="GrpRes" title="查看任务提交内容" {{if fdata.besttask}}class="BestTssk"{{/if}} dataidx1="${t}" dataidx2="${e}" dataidx3="${f}" style="cursor:pointer">
+                                    <div class="flexbox">{{each(r,resdata) fdata.grpreses}}<div class="flex1" style="text-align:right"><span lvs_elm="GrpResItem${resdata.id}" title="{{if resdata.resdesc!=''}}任务内容{{/if}}{{if resdata.resfile}}文件：${resdata.resfile}{{/if}}{{if resdata.resmind}}思维导图{{/if}}" class="{{if resdata.status=='提交'}}GroupRet{{else resdata.status=='草稿'}}GroupSave{{else resdata.status=='完成'}}GroupEnd{{/if}}">{{if resdata.status=='草稿'}}任务草稿{{else}}${resdata.status}成果{{/if}}</span></div>{{/each}}</div>
+                                    {{if edata.prog}}<div class="flexbox" style="height:5px;border-radius:3px;"><div style="background-color:#4afa6a;width:${fdata.prog}%"></div><div class="flex1" style="background-color:#dadada"></div></div>{{/if}}
+                                </td>
+                                <td>
+                                    {{if istch==0}}{{if fdata.ismem}}<a dataidx1="${t}" dataidx2="${e}" groupid="${fdata.id}" lvs_elm="AddResp" title="新增任务进展与反馈"><img width="20px" height="20px" style="cursor:pointer" src="../../Image/bukrecm.png" /></a>{{/if}}
+                                    {{else}}<a class="button bg-green" lvs_elm="ProgChk" dataidx1="${t}" dataidx2="${e}" dataidx3="${f}" groupid="${fdata.id}">评</a>
+                                    {{/if}}
+                                </td>
+                                {{/if}}
+                            {{/each}}
+                        {{/each}}
+                        <td>
+                            <div lvs_elm="GrpCheck" style="cursor:pointer" dataidx1="${t}" dataidx2="${g}">{{each(k,chkdata) grpdata.checks}}<span title="{{if chkdata.check}}{{if chkdata.check.cates}}{{each(c,ctdata) chkdata.check.cates}}${ctdata.name}(${ctdata.rate}%)：${ctdata.score}分；{{/each}}{{/if}}{{if chkdata.check.chkmark!=''}}评语：${chkdata.check.chkmark}{{/if}}{{/if}}">{{if chkdata.check}}${chkdata.check.score}{{else}}${chkdata.chkres}{{/if}}&nbsp;</span>{{/each}}</div>
+                        </td>
+                        </tr>
+                    {{/each}}
+                </table>
+                {{else}}
+                <div class="BaseDesc">没有需要提交的任务要求</div>
+                {{/if}}
+            </div>
+        </div>
+        {{/each}}
+         <div style="text-align:right"><a lvs_elm="JoinGroup" class="button border-green">加入或新建分组</a></div>
+        <div class="BaseForm" id="JoinGrpForm" style="display:none">
+        </div>
+        <div class="BaseForm" id="GrpForm" style="display:none">
+        </div>
+        <div class="BaseForm" id="UpdResForm" style="display:none">
+        </div>
+        <div class="BaseForm" id="ShowForm" title="查看信息"  style="display:none">
+        </div>
+        <div class="BaseForm" id="AddChkForm" style="display:none">
+        </div>
+        {{else groups}}
+        <div class="BaseTmpl" id="JoinGroupTmpl" style="display:none">
+            <div class="BaseDesc">分组设置：{{if config.max>0}}最多建${config.max}组；{{/if}}{{if config.mem>0}}每组最多${config.mem}人；{{/if}}{{if config.sig>0}}允许加入多个组；{{else}}每人只能在一组；{{/if}}{{if config.crt>0}}允许自建分组{{else}}不能自建分组{{/if}}</div>
+            {{if istch>0||iscot>0||config.crt>0}}
+            <div class="TypeTab flexbox"><div class="flex1 TypeItem active" lvs_ref="tab.SelPanel" idxid="join">加入已有分组</div><div class="flex1 TypeItem" lvs_ref="tab.SelPanel" idxid="create">创建新分组</div></div>
+            {{/if}}
+            <div class="tabcontent" tabcontainer="join">
+                <div class="BaseDesc">请选择下面的分组加入</div>
+                {{each(g,grpdata) groups}}
+                <div class="BaseInput" style="margin-top:12px;padding:0 8px">
+                    <div>
+                        <div class="ListTitle">${grpdata.name}<span style="color:#8a8a8a;font-size:11px">（成员:${grpdata.members}）</span><span class="float-right">{{if config.mem>0&&grpdata.mems.length>=config.mem}}<a class="RndButton bg-grey">人数已满</a>{{else}}<a idxid="${grpdata.id}" class="FormOk RndButton border-blue">申请加入</a>{{/if}}</span></div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            <div class="tabcontent" tabcontainer="create" style="display:none">
+                {{if istch>0||iscot>0||config.crt>0}}
+                <div class="BaseDesc">新建分组：</div>
+                <div class="BaseInput">
+                    <div class="flexbox"><div class="flex1"><input type="text" style="width:80%" lvs_bind="groupname" placeholder="请输入新分组名称" /></div><div style="width:120px;text-align:right"><a class="FormOk RndButton border-blue" title="确认新建分组并加入">确定创建</a></div></div>
+                </div>
+                {{/if}}
+            </div>
+            <div class="BaseDesc"><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        {{else checks}}}
+        <div class="BaseTmpl" id="ShowCheckTmpl" style="display:none">
+            {{each(r,resdata) checks}}
+            <div class="BaseListBox">
+                <div class="ListDesc">${resdata.check.chkname}：<span class="txt-red">${resdata.check.score}</span>{{if resdata.besttask}}<img width="24px" height="24px" src="../../Image/biggrant.png" title="模范作业" class="float-right" />{{/if}}</div>
+                {{if resdata.check.chkmark!=''}}
+                <div class="ListDesc">评语：${resdata.check.chkmark}</div>
+                {{/if}}
+                {{if resdata.check.cates}}{{each(c,ctdata) resdata.check.cates}}${ctdata.name}(${ctdata.rate}%)：${ctdata.score}分；{{/each}}{{/if}}
+            </div>  
+            {{/each}}
+        </div>
+        {{else check}}
+        <div class="BaseTmpl" id="AddChkTmpl" style="display:none">
+            {{if check.cates}}
+                {{each(c,ctdata) check.cates}}
+                <div class="BaseDesc"><span class="txt-red">*</span>评审维度${c+1}：${ctdata.name}(${ctdata.rate}%)</div>
+                <div class="BaseInput"><input type="number" lvs_bind="chkscore" need="1" placeholder="请给出百分制分数"/></div>
+                {{/each}}
+            {{else}}
+            <div class="BaseDesc"><span class="txt-red">*</span>评审结果</div>
+            <div class="BaseInput"><component name="cn.el_slider.el_slider_input" lvs_bind="chkres" need="1"></component></div>
+            {{/if}}
+            <div class="BaseDesc">评审说明</div>
+            <div class="BaseInput"><input type="text" lvs_bind="chkmark" placeholder="简单说明评审意见" /></div>
+            <div class="BaseDesc"><a class="button bg-green FormOk">确认提交</a><a class="button bg-grey FormCancel">取消操作</a></div>
+        </div>
+        {{else}}
+        <div class="BaseTmpl" id="AddRespTmpl" style="display:none">
+            {{if progres}}
+            <div class="BaseDesc">当前完成进度（%）</div>
+            <div class="BaseInput"><input type="number" lvs_bind="respprog" placeholder="当前阶段任务进展百分比" /></div>
+            {{/if}}
+            {{if textres}}
+            <div class="BaseDesc">使用图文描述当前进展</div>
+            <div class="BaseInput"><component name="cn.form.richedit" lvs_bind="resptext"></component></div>
+            {{/if}}
+            {{if taskres}}
+            <div class="BaseDesc">请按照格式填写如下表格</div>
+            <div class="BaseDesc">
+                {{if ttname}}${ttname}{{/if}}
+                {{if tdesc}}
+                    <component name="cn.intact.taskans" lvs_bind="resptmpl" data-tmpldesc="${tdesc}"></component>
+                {{else}}
+                    <component name="cn.intact.taskans" lvs_bind="resptmpl" apiname="leag/task_list" gettype="Tmpl.Id" idxkey2="tasktmplid" idxid="${tasktmpl}"></component>
+                {{/if}}
+            </div>
+            {{/if}}
+            {{if paperres}}
+            <div class="BaseDesc">请按照格式完成如下的工作纸</div>
+            <div class="BaseDesc"><component name="cn.intact.taskans" lvs_bind="resppaper" data-tmpldesc="${taskdesc}"></component></div>
+            {{/if}}
+            {{if fileres}}
+            <div class="BaseDesc">上传任务报告文件</div>
+            <div class="BaseDesc"><div class="AttachFile" lvs_bind="respfile"></div></div>
+            <div class="BaseDesc">或上传超过20M的视频文件</div>
+            <div class="BaseDesc"><div class="VodFile" lvs_bind="vodfile"></div></div>
+            {{/if}}
+            {{if mindres}}
+            <div class="BaseDesc">完成思维导图</div>
+            <div class="BaseDesc"><component name="cn.elmind.editmind" lvs_bind="respmind"></component></div>
+            {{/if}}
+            <div class="BaseDesc"><a class="FormOk button bg-green" opetype="RetRes">确定提交</a><a class="FormOk button bg-yellow" opetype="SaveRes">存为草稿</a><a class="FormCancel button bg-grey float-right">取消操作</a></div>
+        </div>
+        {{/if}}
+    </div>
+</body>
+</html>

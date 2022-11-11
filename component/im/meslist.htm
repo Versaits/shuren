@@ -1,0 +1,11 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+        {{each(m,mdata) mesdata}}
+            <div class="MesItem" idxid="${mdata.uid}" idxname="${mdata.name}" caps="${mdata.caps}"><span style="color:{{if mdata.myuid==mdata.uid}}#faaa8a{{else}}#42ba2a{{/if}}">${mdata.name}</span>：<span {{if type=='私信'}}style="color:#fa5a2a" title="私信消息"{{else}}title="群消息"{{/if}}>${mdata.message}</span></div>
+        {{/each}}
+</body>
+</html>

@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_crsplan_matrlitems" lvs_jqexec="lvs_martl_list">
+        <div class="flexrow">
+            {{each(m,mtldata) matrls}}
+            <div class="colflex4" style="margin-top:12px">
+                <div class="FlexItemBox" lvs_elm="MatrlItem" idxid="${mtldata.id}" idxtype="${matrltype}" idxval="{{if matrltype=='pic'}}${mtldata.image}{{/if}}">
+                    <div>
+                        <div class="HeadImg" perheit="57" style="overflow:hidden">
+                            <img src="${mtldata.image}" width="100%" style="object-fix:cover" />
+                            {{if mtldata.isself==0&&mtldata.isshare>0}}<div class="FlexStatus">共享</div>{{/if}}
+                        </div>
+                        <div class="FlexTitle textwrap" title="${mtldata.name}">${mtldata.name}</div>
+                        {{if mtldata.desc}}
+                        <div class="FlexDesc">${mtldata.desc}</div>
+                        {{/if}}
+                    </div>
+                </div>
+                <div class="FlexOpe" lvs_elm="MatrlOpe" style="display:none;width:90%;margin-left:5%">
+                    {{if mtldata.isself>0}}{{if mtldata.isshare>0}}<a opetype="DelShare" idxid="${mtldata.id}" idxtype="${matrltype}" class="DropButton">取消共享</a>{{else}}<a opetype="SetShare" idxid="${mtldata.id}" idxtype="${matrltype}"  class="DropButton">设为共享</a>{{/if}}<a opetype="DelMtl" idxid="${mtldata.id}" idxtype="${matrltype}"  class="DropButton float-right txt-red">删除</a>{{/if}}
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</body>
+</html>

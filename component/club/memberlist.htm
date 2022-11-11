@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_club_memberlist" lvs_jqexec="lvs_club_member">
+        <div class="flexrow">
+            {{each(m,memdata) mems}}
+            <div class="colflex4">
+                <div class="MemChkBox TeamMemBack" lvs_elm="MemShow" dataidx="${m}">
+                    <img class="MemChkImg" width="60px" height="60px" src="${memdata.image}" /><span class="MemCloTitle">${memdata.clonum}</span><br />
+                    <div class="MemNameTitle">${memdata.membname}</div>
+                    <div class="MemDesc">${memdata.studscore}</div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</body>
+</html>

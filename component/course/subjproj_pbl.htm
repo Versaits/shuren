@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_course_crstmpl_pbl" lvs_jqexec="lvs_crstmpl_base">
+        <div class="NaviBox" style="padding:12px 0">
+            <a class="NaviLink" lvs_ref="set.quit" idxid="${id}">我的项目</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a class="NaviLink" lvs_ref="router.projcrs" idxid="${id}">${subjects}：${sname}[项目设计]</a><img lvs_elm="EditCourse" width="16px" height="16px" style="vertical-align:middle;margin-left:6px" src="../../Image/bukrecm.png"/>
+            <span class="float-right">{{if clsnum==0}}<a class="NaviLink" lvs_elm="PublishClass" idxid="${id}">发布项目</a>{{else}}已发布，<a class="NaviLink" lvs_ref="router.projteam" idxid="${classid}">查看</a>{{/if}}</span>
+        </div>
+        <div class="WSBox" style="padding:24px">
+            <div class="flexbox TaskStepBox">
+            {{each(t,tmpldata) tmpls}}
+                <div class="flex1 TaskStepItem {{if t==0}}TaskStepItemSel{{/if}}" lvs_elm="StepItem" dataidx="${t}">
+                    <span class="TaskStepSeq" lvs_bind="seqid" idxname="阶段排序" idxid="${tmpldata.id}">${tmpldata.seqid}</span>
+                    <span class="TaskStepTitle textwrap" title="${tmpldata.title}" lvs_bind="title" idxname="标题" idxid="${tmpldata.id}">${tmpldata.title}</span>
+                </div>
+            {{/each}}
+                <div class="flex1 TaskStepItemAdd" lvs_elm="AddStep">
+                    <span class="TaskStepSeq">+</span>
+                    <span class="TaskStepTitle txt-grey">{{if tmpls.length>0}}添加{{else}}添加新项目阶段{{/if}}</span>
+                </div>
+            </div>
+            <div id="TaskInfoBox" style="margin-top:18px"></div>
+        </div>
+        <div class="BaseForm" id="EditCourseForm" title="编辑项目信息" style="display:none">
+            <div class="BaseDesc">项目名称</div>
+            <div class="BaseInput"><input type="text" lvs_bind="crsname" value="${sname}" /></div>
+            <div class="BaseDesc">项目说明</div>
+            <div class="BaseInput"><textarea lvs_bind="crsdesc">${crsdesc}</textarea></div>
+            <div class="BaseDesc">项目标题图片</div>
+            <div class="BaseInput"><div class="PicFile" lvs_bind="piclist"><img width="20%" src="${titleimg}" /></div></div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确定修改</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="AddStepForm" style="display:none">
+            <div class="BaseDesc"><span class="txt-red">*</span>项目阶段标题：</div>
+            <div class="BaseInput"><input type="text" lvs_bind="crstmplname" placeholder="请输入项目阶段标题" need="1" /></div>
+            <div class="BaseDesc">连续创建数量：</div>
+            <div class="BaseInput"><input type="number" lvs_bind="crtnum" value="1" /></div>
+            <div class="BaseDesc"><a class="button bg-green FormOk">确定创建</a><a class="button bg-grey FormCancel">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="PublishClassForm" style="display:none">
+            <div class="BaseDesc">项目发布名称：</div>
+            <div class="BaseInput"><input type="text" lvs_bind="classname" value="${sname}" /></div>
+            <div class="BaseDesc">项目发布后成员才可以加入并按照流程提交成果</div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确认发布</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+    </div>
+</body>
+</html>

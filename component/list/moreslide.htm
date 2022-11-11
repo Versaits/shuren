@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_list_moreslide" lvs_jqexec="lvs_morelist">
+        <div class="{{if titleclass}}${titleclass}{{else}}ListBaseBox{{/if}}">  
+            <div class="ListTitle flexbox">
+                <div class="LeftTitle">${title}</div>
+                <div class="flex1 RightTitle"><span headref="${moreref}">更多..</span></div>
+            </div>
+            <div class="ListBody XSlideBox">
+                <div class="flexbox" style="width:{{if colnum}}{{if colnum==3}}${list.length*33}%;{{else colnum==4}}${list.length*25}%;{{else colnum==5}}${list.length*20}%;{{else}}${list.length*50}%;{{/if}}{{else}}${list.length*33}%;{{/if}}">
+                    <div style="width:20px"></div>
+                    {{each(l,lstdata) list}}
+                        <div class="flex1 SlideItem">
+                            <img width="100%" src="${lstdata.image}" />
+                            <div class="SlideTitle">${lstdata.name}</div>
+                        </div>
+                        <div style="width:20px"></div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

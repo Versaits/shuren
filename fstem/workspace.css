@@ -1,0 +1,301 @@
+﻿.WorkshopBox{position:fixed; top:72px;left:10%;width:80%; border-radius:15px;border:White 8px solid;box-shadow:5px 5px 5px 5px rgba(200, 200, 200, 0.3);background-color:#f0f5f8;height:89%}
+.WorkTopMenu{ margin-top:24px;background: #FFFFFF;box-shadow: 0 0 3px 0 rgba(50,57,78,0.18);height:60px;line-height:60px;}
+.WorkTopMenu .WorkItem{font-size:11pt;color:#808080;font-weight:bold}
+.WorkTopMenu .WorkItem a{color:#808080;}
+.WorkTopMenu .vactive a{color:#6A79DF;}
+.WorkTopMenu .vactive{ color:#6A79DF }
+.WorkMidSpace{ margin-top:24px }
+.WorkLeftMenu{position:fixed;top:72px;left:10.5%;width:88px;height:88%;border:White 3px solid;border-radius:60px 20px 20px 20px;background-color:#1f7c69;padding-top:50px}
+.WorkLeftMenu .WorkItem{height:80px;padding-top:20px;font-size:10pt;color:White;}
+.WorkLeftMenu .vactive{ background-color:White;border-radius:30px;color:Orange;width:90%;margin-left:5%}
+.WorkLeftMenu .vactive .TinyUserHead{ border:Orange 2px solid}
+.WorkSpace{ margin-left:105px;margin-top:15px;margin-right:15px;margin-bottom:15px;background-color:White;border-radius:12px;height:96%;position:relative;overflow:auto}
+.WorkSpace .BottomBox{ position:absolute;bottom:2px;z-index:2;margin-right:5px;background-color:White;padding-top:5px;padding-bottom:3px}
+.BigWorkSpace{ margin-left:45px;margin-top:15px;margin-right:15px;margin-bottom:15px;background-color:White;border-radius:12px;height:96%;position:relative;overflow:auto}
+.BigWorkSpace .BottomBox{ position:absolute;bottom:2px;z-index:2;margin-right:5px;background-color:White;padding-top:5px;padding-bottom:3px}
+.TabInfoBox{ font-size:10pt;margin:10px;border-bottom:#e2e2e2 1px solid;padding:10px }
+.TabInfoBox .InfoItem{ border-right:#f2f2f2 1px solid}
+.TabInfoBox .BigNum{ padding:16px;font-size:16pt;color:Orange}
+.BaseBox{ padding:12px;font-size:10pt;text-align:left;line-height:180%}
+.WSBaseBox{ font-size:11pt;text-align:left; margin:12px}
+.WSBaseBox .Title{ font-size:14pt; padding-bottom:10px; border-bottom:#d2d2d2 1px solid;}
+.WSBaseBox .Title .PreTitle{ background-color:#4577d4;border-radius:9999px;color:#4577d4;margin-right:5px;}
+.WSBaseBox .Body{ padding:6px;}
+.WSBaseBox .TipNum{ width:20px;height:20px;border-radius:9999px;background-color:red;color:White;text-align:center;line-height:20px;font-size:9pt }
+.WSBaseBox .MidTitle{ font-size:11pt;padding:6px;color:Black}
+.MesListBox{ border:#e2e2e2 1px solid;padding:8px;background-color:#f2f2f2;overflow:auto;}
+.MesListBox .LeftMsgBox{ margin:3px;padding:6px;background-color:White;border-radius:6px;}
+.MesListBox .RightMsgBox{margin:3px;padding:6px;background-color:#6A79DF;color:White;border-radius:6px;text-align:right}
+.MesListBox .UnreadBox{ border-right:red 2px solid; color:DarkRed}
+.WSBaseList {margin:6px;padding:8px; border-bottom:#f2f2f2 1px solid;box-shadow:2px 2px 2px 2px rgba(220, 220, 220, 0.3);border-radius:12px}
+.WSBaseList .TitleImg{ border:#e2e2e2 1px solid;border-radius:5px;box-shadow: 1px 1px 1px 1px rgba(200, 200, 200, 0.3);} 
+.WSBaseList .ListTitle{ margin:12px;font-size:12pt;}
+.WSBaseList .Body{ margin:12px;font-size:10pt;color:#424242}
+.ExpListHead{ padding:8px 0; border-bottom:#f2f2f2 1px solid; text-indent: 24px; text-align:left;font-size:14px; background-image:linear-gradient(0deg, #f2f2ff 0%, #a2a2d2 25%, #ffffff 100%);cursor:pointer }
+.ExpListHead .ExpHeadBody{ display:inline-block;width:80%;padding-top:8px;margin-top:-8px;text-indent:0}
+.ExpListHead:hover{background-color:#f2f6fa}
+.Expanding{ background-image:url('../Image/fedu/expanding.png');background-position:left center;background-repeat:no-repeat;background-size:12px 12px}
+.Expanded{ background-image:url('../Image/fedu/expanded.png');background-position:left center;background-repeat:no-repeat;background-size:12px 12px}
+.ExpSubListItem{    padding:6px 0; text-align:left; text-indent:32px; font-size:13px;color:#6a6a6a; border-bottom:#fafafa 0.5px solid;cursor:pointer}
+.ExpSubListItem:hover{background-color:#fafcff;border-bottom:#caeafa 1px solid;}
+.ExpSubListItemSel{border-right:#82c2f2 4px solid;background-color:#f2feff;font-weight:bold;}
+
+        .EditDiv{ border:#d2d2d2 1px solid;background-color:#f2f2f2;border-radius:4px}
+        .ProgSel{ border-bottom:#2684f2 2px solid; background-color:#e2efff; background-image:url('../Image/disc_expand.png'); background-position:left; background-repeat:no-repeat}
+        .ListItem{ padding:6px;font-size:10pt;color:#8a8a8a; border-bottom:#f2f2f2 1px solid}
+        .Header{ position: fixed;z-index:1800;top:0;width:100%;border-bottom:#f2f2ff 1px solid;fone-size:11pt;background-color:White}
+        .HeaderBox{ position:fixed;z-index:1800;top:0;width:100%;height:64px}
+        .FooterBox{ position:fixed;z-index:1800;bottom:0;width:100%;height:56px}
+        .HeaderMask{ width:100%;height:70px}
+        .FootMask{ width:100%;height:40px }
+        .FootMenu{ position:fixed;z-index:1800;bottom:0;width:100%;height:40px;border-top:#f2f2ff 1px solid; line-height:40px;font-size:10pt;background-color:White}
+        .FootMenu .FootMenuItem{ border-right:#f2f2f2 1px solid;color:#424242;}
+        .FootMenu .FootMenuAct{ font-weight:bold; color:#5386ef}
+        .BaseTabMenu .BaseTabItem{ border-right:#a2a2a2 1px solid;text-align:center;padding-top:12px;padding-bottom:12px;color:#828282}
+        .BaseTabMenu .tabactive{ border-bottom:#428ce2 2px solid;font-weight:bold;color:Black}
+        .small{ font-size:8pt}
+        .WSBaseTab .WSTabItem{ padding:10px 20px 10px 20px;font-size:14px;color:#959595;letter-spacing:1px;font-weight:bold }
+        .WSBaseTab .active{ background-color:White;box-shadow: -1px -1px 0 0 rgba(50,57,78,0.18),1px -1px 0 0 rgba(50,57,78,0.18);margin-bottom:-1px;color:#6A79DF;font-weight:bold}
+        .WSBox{background-color:White;box-shadow: 0 0 3px 0 rgba(50,57,78,0.18);border-radius:4px;}
+        .WSBox .Title{height:42px;line-height:42px;font-size:16px;color:#4A4A4A;border-bottom:#CCCCCC 1px solid;letter-spacing:1px;text-align:left;font-weight:bold}
+        .WSBox .Title .PreTitle{background-color:#4A4A4A;color:#4A4A4A;margin-right:8px;}
+        .WSBox .LitTitle{padding:12px 0;font-size:15px;color:#4A4A4A;border-bottom:#CCCCCC 1px solid;letter-spacing:1px;text-align:left;font-weight:bold}
+        .WSBox .LitTitle .PreTitle{background-image:linear-gradient(135deg,#5786f5 0%,#3766d5 100%);color:White;margin-right:6px;border-radius:99px}
+        .WSListContainer{ background-color:White;box-shadow:0 0 3px 0 raga(50,57,78,0.18)}
+        .NullPanel{ text-align:center;padding-top:70px;padding-bottom:90px;}
+        .NullPanel .NullTips{width:22%;mode:widthFix}
+        .NullPanel .NullText{font-size:14px;color:#6A6A6A;letter-spacing:2.1px}
+        .ItemBox{ background-color:#FAFBFF;color:#4A4A4A;border:#dcdcdc 1px solid;cursor:pointer}
+        .ItemBox .ItemTitle{ margin:10px;font-size:16px;color:#4A4A4A;letter-spacing:1px;text-align:justify}
+        .ItemBox .EditFoot{margin:16px;text-align:left}
+        .ItemBox .ItemFoot{margin:16px;font-size:12px;text-align:left;color:#4A4A4A;letter-spacing:0.88px}
+        .ItemBox .ItemTag{ font-size:12px;color:#808080;letter-spacing:0.75px}
+        .ItemBox .ItemStatus{ z-index:2;border-radius:0 50px 50px 0;background-color:White;}
+        .ItemBox:hover{box-shadow: 0 .25rem .5rem rgba(0,0,0,.175);}
+        .WsButton{display:inline-block;cursor:pointer;text-align:center;line-height:24px;font-weight:bold;padding:0 12px;border-radius:2px;margin:0 5px 0 5px;min-width:50px;font-size:12px}
+        .wsbutton{display:inline-block;cursor:pointer;text-align:center;line-height:24px;font-weight:bold;padding:0 12px;border-radius:2px;margin:0 5px 0 5px;min-width:50px;font-size:12px}
+        .border-wsblue{border:#A7B1F8 1px solid;color:#6A79DF;}
+        .bg-wsgrey{border:#CCCCCC 1px solid;color:White;background-color:#CCCCCC}
+        .border-wsgrey{border:#BBBBBB 1px solid;color:#BBBBBB;background-color:#EFF1FF}
+        .border-wsgrey:hover{color:#6A79DF;border:#6A79DF 1px solid}
+        .bg-wsblue{background-image: linear-gradient(71deg, #4767CA 0%, #C1BCFA 97%);color:White;border:#EFF1FF 1px solid;}
+        .bg-wsblue:hover{background-image: linear-gradient(-71deg, #4767CA 0%, #C1BCFA 97%)}
+        .bg-wsyellow{background-image: linear-gradient(71deg, #f0872d 0%, #f1b777 97%);color:White;border:#EFF1FF 1px solid;}
+        .bg-wsyellow:hover{background-image: linear-gradient(-71deg, #f0872d 0%, #f1b777 97%)}
+        .NaviBox{ text-align:left;font-size:13px;color:Black;letter-spacing:0.75px}
+        .NaviBox .NaviLink{color:#6a6a6a}
+        .HeadBox{margin:0 32px}
+        .HeadBox .HeadImg{background-repeat:no-repeat;background-position:bottom;background-size:100%;position:relative}
+        .HeadBox .HeadImg .MaskTitle{background: inherit;filter: blur(6px);position:absolute;bottom:0;height:80%;width:48%;left:26%;z-index:1}
+        .HeadBox .HeadImg .TopicTitle{background: rgba(245,166,35,0.50);border-radius: 2px;width:48%;left:26%;position:absolute;bottom:0;height:80%;text-align:center;z-index:2}
+        .HeadBox .HeadImg .TopicTitle .MainTitle{margin-top:24px;font-size:24px;color:White;font-weight:bold;letter-spacing:2px;text-shadow: 0 2px 4px rgba(0,0,0,0.58);}
+        .HeadBox .HeadImg .TopicTitle .LitTitle{margin-top:10px;font-size:14px;color:White;letter-spacing:1.17px;text-shadow: 0 1px 2px rgba(0,0,0,0.58);}
+        .EditBox .EditImg{background-repeat:no-repeat;background-position:bottom;background-size:100%;padding-top:60px;padding-bottom:60px}
+        .EditBox .EditPanel{background-color:#FAFBFF;border-radius:2px;font-size:14px;color:#808080}
+        .EditBox .EditPanel .Title{text-align:left;font-size:14px;color:#4A4A4A;font-weight:bold;letter-spacing:0.88px;padding-bottom:10px;border-bottom:#CCCCCC 1px solid;}
+        .EditBox .EditPanel .Title .PreTitle{ background-color:#4A4A4A;color:#4A4A4A;margin-right:8px;}
+        .EditBox .EditFoot{ text-align:center;padding-top:66px;margin-bottom:80px;}
+        .EditInput{ background-color:White;font-size:14px;letter-spacing:1px;width:100%;outline:none;border:white 0px solid;font-family:微软雅黑}
+        .CaptUserHead{ position:absolute;top:0;right:5px;width:16px;height:16px;z-index:1}
+        .WsDialogBox{border-radius:4px;background-color:White;overflow:hidden}
+        .WsDialogBox .WsDlgTitle{background-color:#6A79DF;height:48px;line-height:48px;font-size:16px;text-align:center;letter-spacing:2.4px;color:White}
+        .WsDialogBox .WsDlgBody{color:#6A6A6A;font-size:14px;letter-spacing:1px;text-align:center;padding-top:32px;padding-bottom:32px}
+        .TextTabBox{line-height:32px}
+        .TextTabBox .TextTab{ font-size:14px;color:#959595;font-weight:bold;letter-spacing:1.14px;margin-right:12px;}
+        .TextTabBox .active{color:#6A79DF;letter-spacing:1.14px}
+        .Diver{height:1px;border-bottom:#A7B1F8 dashed 1px;margin-top:30px;}
+        .font-8{font-size:8pt}
+        .font-9{font-size:9pt}
+        .TPBox{margin:6px;padding:6px;background-color:#f2f2f2;border:#424242 1px solid;}
+        .TPBox .TskTitle{ font-size:11pt;font-weight:bold;color:#424268;padding:5px;}
+        .TPBox .TskDesc{ font-size:9pt;color:#a2a2a2;padding:5px}
+        .TPBox .StudEdit{ background-color:White;border:#d2d2d2 1px solid;padding:6px;min-height:120px;}
+        .RRt{width:24px;height:24px;background-image:url('../Image/rright.png');background-size:100%;margin-left:-12px;margin-right:-12px;margin-top:80px;z-index:10}
+        .RLf{width:24px;height:24px;background-image:url('../Image/rleft.png');background-size:100%;margin-left:-12px;margin-right:-12px;margin-top:80px;z-index:10}
+        .RDn{width:24px;height:24px;background-image:url('../Image/rdown.png');background-size:100%;margin-top:-24px;margin-left:45%;z-index:10}
+        .RUp{width:24px;height:24px;background-image:url('../Image/rup.png');background-size:100%;margin-top:-24px;margin-left:45%;z-index:10}
+	    .Tleft{ font-size:15pt;font-weight:bold;color:#424268;padding:5px;}
+	    .Tright{font-size:13pt;font-weight:bold;color:#424268;padding:5px;float:right;_position:relative; }
+	    .Tline{width:100%;height:1px;border-top:solid 3px;}
+        .RTable{margin-top:5px;display:table;border-collapse:separate;border:1px solid #ccc;width: 100%;table-layout : fixed ;}
+        .RTable tr td:first-child{background:rgb(230,104,20);color:white;width:1%;font-size:15pt;font-weight:bold;}
+        .RTable th{ font-size:15pt;font-weight:bold;background:rgb(230,104,20);color:white;height:50px}
+        .RTable tr th, .RTable tr td {border-bottom:1px solid #ccc;border-left:1px solid #ccc;}
+        .RTable tr td{height:100px;width:16%}
+        .TaskCheckEdit{ background-color:#f2f2f2;border:#d2d2d2 1px solid;border-bottom:#828282 1px solid;height:60px;line-height:160%;}
+        .TaskScore{ background-color:#fefefe;border:#d2d2d2 1px solid;border-bottom:#828282 1px solid; height:60px;line-height:60px;font-size:18pt;color:Red;text-align:center}
+        .LoginPanel .BaseInput{border:#C5CDD4 1px solid;border-radius:9999px;width:100%;padding:8px 0 8px 0px;margin-top:20px;text-align:left}
+        .LoginPanel .BaseInput input{border:0px;outline-style:none;font-size:11pt;color:#4A4A4A;background-color:rgba(255,255,255,0.00);width:90%;margin-left:8px;}
+        .LoginPanel .InputButton{background-image: linear-gradient(71deg, #4767CA 0%, #C1BCFA 97%);border-radius: 50px;width:100%;font-size:11pt;padding:8px 0 8px 0;margin-top:20px;box-shadow:10px 10px 10px #BCC4FA;color:White}
+        .LoginPanel .GreyButton{background-color: #cccccc;border-radius: 50px;width:100%;font-size:11pt;padding:8px 0 8px 0;margin-top:20px;color:White}
+        .LoginPanel .ErrorInfo{font-size:12px;color:#959595;letter-spacing:1px}
+.MesListItem{ padding:8px;background-color:White;border-bottom:#e2e2e2 1px solid;}
+.MesListItemSel{ background-color:#EFF1FF;font-weight:bold }
+.MesNumTip{padding:1px 5px 1px 5px;border-radius:999px;border:White 1px solid;color:White;background-color:#E96777;margin-left:-8px;margin-top:-8px;font-size:6px;}
+ .Selecting{font-size:11pt;color:#4A4A4A;border:#dadada 1px solid;border-radius:5px;padding:3px 0;text-align:center;margin:5px 0 0 5px}
+ .MultSelecting{font-size:11pt;color:#4A4A4A;border:#dadada 1px solid;border-radius:5px;padding:3px 8px;text-align:center;margin:5px 0 0 5px;background-image:url('../Image/unchecked.png');background-repeat:no-repeat;background-size:8px 8px;background-position:3px center}
+ .Selected{background-color:#daecff;background-image:url('../Image/right_ok_b.png');background-position:right top;background-repeat:no-repeat;border:#356fa5 1px solid;color:Red;}
+ .MultSelected{background-color:#daecff;background-image:url('../Image/right_ok_b.png');background-position:right top;background-repeat:no-repeat;border:#356fa5 1px solid;color:Red;}
+
+.DialogBox
+{
+    border-radius:8px;
+    font-size:11pt;
+    background-color:White;
+    text-align:left;
+}
+.DialogBox .Title
+{
+    background-color:#e7e7ff;
+    font-size:14pt;
+    text-align:center;
+    padding:5px 2px 5px 2px
+}
+.DialogBox .HeadTitle
+{
+    background-image:linear-gradient(18deg, #6a9aea 0%, #aacafa 97%);
+    padding:8px 0;
+    border-radius:8px 8px 0 0;
+    text-indent:8px;
+    color:White
+}
+.DialogBox .LitTitle
+{
+    padding:8px 16px 8px 16px;
+    font-size:12pt;
+}
+.DialogBox .BaseBody
+{
+    background-color:#fafafa;
+    margin-top:-6px;
+    border-left:#aacafa 2px solid;
+    border-top:#aacafa 2px solid;
+    border-right:#aacafa 4px solid;
+    border-bottom:#aacafa 4px solid;
+    box-shadow:5px 5px 5px 5px 0.5;
+    border-radius:8px;
+    padding:12px 0;
+    text-align:left
+}
+.DialogBox .BaseBody .DialogBodyInfo
+{
+    width:94%;
+    margin-left:3%;
+}
+
+.PanelBox
+{
+    background-image:linear-gradient(135deg,#eaeaea 0%,#fafafa 30%, #e2e2e2 100%);
+    font-size:13px;
+    line-height:180%;
+    padding:12px;
+    border:#d7d7d7 1px solid;
+    border-radius:3px;
+    box-shadow:5px 5px 5px 5px rgba(200, 200, 200, 0.3);
+    text-align:left;
+}
+.PanelBox .ListItem
+{
+    padding:3px 0;
+    border-bottom:#eaeaea 1px solid;
+    cursor:pointer;
+}
+.PanelBox .ListItem:hover
+{
+    background-color:#d7d7d7;
+}
+.PanelBox .TagItem
+{
+    display:inline-block;
+    padding:3px 8px;
+    background-color:#f2f2f2;
+    border:#e2e2e2 1px solid;
+    border-radius:99px;
+    margin-left:5px;
+}
+.BaseTitle{ font-size:14pt; padding-bottom:10px; text-align:left; border-bottom:#d2d2d2 0.5px solid;}
+.BaseTitle .PreTitle{ background-color:#4577d4;border-radius:9999px;color:#4577d4;margin-right:5px;}
+.BaseDesc{ color:#8a8a8a;font-size:12px;line-height:180%;letter-spacing:1.2px;text-align:left}
+.MainNaviBox
+{
+    border:#dadada 1px solid;
+    border-radius:12px;
+    background-position:right bottom;
+    background-size:100%;
+    text-align:left;
+    box-shadow:0 8px 12px rgba(180,200,240,0.4);
+}
+.MainNaviBox .NaviTitle
+{
+    margin-top:18px;
+    margin-left:24px;
+    letter-spacing:1.8px;
+    font-size:20px;
+    color:#3b698c;
+    font-weight:bold;
+    text-shadow:2px 1px 3px #8aafff;
+}
+.MainNaviBox .NaviDesc
+{
+    margin-top:6px;
+    margin-left:24px;
+    font-size:12px;
+    color:#3b698c;
+    letter-spacing:1px;
+}
+.MainNaviBox:hover
+{
+    cursor:pointer;
+    box-shadow:3px 5px 3px rgba(128,160,230,0.5);
+}
+.MainNaveBox .NaviTitle:hover
+{
+    color:#4a4a4a;
+}
+.TextTab .TextTabItem
+{
+    font-size:16px;
+    display:inline-block;
+    color:#6a6a6a;
+    cursor:pointer;
+    padding:3px 6px;
+}
+.TextTab .active
+{
+    color:#007bff;
+    border-bottom:#007bff 2px solid;
+}
+
+::-webkit-scrollbar {
+    width:12px;
+}
+::-webkit-scrollbar-track {
+-webkit-box-shadow:inset 0 0 3px rgba(100,100,100,0.3);
+background-color:rgba(180,220,255,0.5);
+border-radius:10px;
+}
+::-webkit-scrollbar-thumb {
+border-radius:10px;
+background:rgba(120,160,255,0.5);
+-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+background:rgba(255,0,0,0.4);
+}
+
+.WSBaseTab .ListTipNum
+{
+    background-color:Red;
+    display:inline-block;
+    width:12px;
+    height:12px;
+    font-size:10px;
+    line-height:12px;
+    text-align:center;
+    color:White;
+    text-indent:0;
+    margin-left:3px;
+    border-radius:99px;
+    font-weight:lighter;
+    border:White 1px solid;
+}

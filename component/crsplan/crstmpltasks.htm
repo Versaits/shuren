@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_course_crstmpltasks" lvs_jqexec="lvs_crstmpl_tasks">
+        <div style="text-align:right;padding:12px 0">
+            {{if readonly}}{{else}}
+            <a class="button border-green" lvs_ref="router.crstmpl_taskedit" idxid="${id}">编辑任务</a>
+            {{/if}}
+        </div>
+        {{if tasks.length==0}}
+            <div class="NullPanel">
+                <img class="NullTips" src="../Image/fedu/nulltip.png"/>
+                <div class="NullText" style="margin-top:34px">该阶段尚未下发任务目标</div>
+            </div>
+        {{/if}}
+        {{each(t,tskdata) tasks}}
+        <div class="TaskListBox" lvs_elm="TaskBox_${t}" perheit="57">
+            
+        </div>
+        {{/each}}
+    </div>
+</body>
+</html>

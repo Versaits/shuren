@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="LesnGroup" lvs_jqexec="lvslesngroup">
+        <table width="100%" border="1" class="LesnGroupTable">
+            <tr>
+                {{each(g,grpdata) groups}}
+                    <td align="center"><div class="GroupTitle" seqidx="${g}">${grpdata.name}</div></td>
+                {{/each}}
+                {{if params.maxgroup>0&&params.maxgroup>groups.length}}
+                    <td><a lvs_elm="AddGroup"><img class="LitUserHead" src="../../Image/add.png" />新分组</a></td>
+                {{/if}}
+            </tr>
+            <tr>
+                {{each(p,gdata) groups}}
+                    <td valign="top" align="left">
+                    {{each(m,memdata) gdata.mems}}
+                    <div class="GroupMem">${memdata.name}{{if memdata.isself>0}}<a lvs_elm="QuitGroup" idxid="${gdata.id}" class="float-right"><img width="15px" height="15px" src="../../Image/del.gif" /></a>{{/if}}</div>
+                    {{/each}}
+                    {{if params.maxmem>0&&params.maxmem>gdata.mems.length&&ismem<=0}}
+                    <a lvs_elm="JoinGroup" idxid="${gdata.id}" class="button bg-green" data-grpname="gdata.name">加入分组</a>
+                    {{/if}}
+                    </td>
+                {{/each}}
+            </tr>
+        </table>
+        <div class="BaseForm" id="AddGrpForm" style="display:none">
+            <div class="BaseDesc">分组名称：</div>
+            <div class="BaseInput"><input type="text" lvs_bind="groupname" placeholder="请输入分组名称"/></div>
+            <div class="BaseDesc"><a class="FormOk button bg-green" ttype="addgrp">确定创建</a><a class="FormCancel button bg-grey">关闭取消</a></div>
+        </div>
+        <div class="BaseForm" id="JoinGrpForm" style="display:none">
+            <div class="BaseDesc">确定要加入分组(${grpname})？</div>
+            <div class="BaseDesc"><a class="FormOk button bg-green" ttype="joingrp">确定加入</a><a class="FormCancel button bg-grey">关闭取消</a></div>
+        </div>
+        <div class="BaseForm" id="QuitGrpForm" style="display:none">
+            <div class="BaseDesc">确定要退出该分组(${grpname})？</div>
+            <div class="BaseDesc"><a class="FormOk button bg-green" ttype="quitgrp">确定退出</a><a class="FormCancel button bg-grey">关闭取消</a></div>
+        </div>
+    </div>
+</body>
+</html>

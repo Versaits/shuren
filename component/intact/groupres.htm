@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="LesnGroupRes" lvs_jqexec="lvsgroupres">
+        <table width="100%" border="1" class="LesnGroupTable">
+            <tr>
+                {{each(g,grpdata) groups}}
+                    <td align="center"><div class="GroupTitle" seqidx="${g}">${grpdata.name}</div></td>
+                {{/each}}
+            </tr>
+            <tr>
+                {{each(p,gdata) groups}}
+                    <td valign="top" align="center">
+                        {{if gdata.resid==0}}{{if gdata.ismem>0}}<a lvs_elm="AddGrpRes" idxid="${gdata.id}"><img class="LitUserHead" src="../../Image/add.png" /><br />提交成果</a>{{/if}}
+                        {{else}}
+                            <a lvs_elm="ShowGrpRes" idxid="${gdata.resid}">
+                                <img class="LitUserHead" src="../../Image/favored.png" />
+                                <div class="GrpResDesc">
+                                    <div>${gdata.studname}</div>
+                                    <div>${gdata.restime}</div>
+                                </div>
+                            </a>
+                            {{if gdata.iscreater}}<div style="text-align:right"><a lvs_elm="DelGrpRes" idxid="${gdata.resid}" style="color:Red">删除</a></div>{{/if}}
+                        {{/if}}
+                    </td>
+                {{/each}}
+            </tr>
+        </table>
+        <div class="BaseForm" id="AddGrpResForm" style="display:none">
+            <div class="BaseDesc">内容介绍说明：</div>
+            <div class="BaseInput"><input type="text" lvs_bind="groupdesc" placeholder="请输入对提交成果的说明"/></div>
+            <div class="TypeTab flexbox">
+                <div class="TypeItem flex1 active" idxid="text" lvs_ref="tab.SelPanel">文字描述</div>
+                <div class="TypeItem flex1" idxid="pic" lvs_ref="tab.SelPanel">图片</div>
+                <div class="TypeItem flex1" idxid="vod" lvs_ref="tab.SelPanel">文件附件</div>
+                <div class="TypeItem flex1" idxid="link" lvs_ref="tab.SelPanel">文件链接</div>
+            </div>
+            <div class="TabContainer tabcontent" tabcontainer="text">
+                <div class="BaseDesc"><textarea style="height:450px;width:100%" lvs_bind="restext"></textarea></div>
+            </div>
+            <div class="TabContainer tabcontent" tabcontainer="pic" style="display:none">
+                <div class="BaseDesc"><div class="PicFile" lvs_bind="respics"><img src="../../Image/add.png" /></div></div>
+            </div>
+            <div class="TabContainer tabcontent" tabcontainer="vod" style="display:none">
+                <div class="BaseDesc"><div class="VodFile" lvs_bind="resvod"><img src="../../Image/add.png" /></div></div>
+            </div>
+            <div class="TabContainer tabcontent" tabcontainer="link" style="display:none">
+                <div class="BaseInput"><input lvs_bind="reslink" type="text" placeholder="请拷贝文件附件的链接"/></div>
+            </div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确定提交</a><a class="FormCancel button bg-grey">关闭取消</a></div>
+        </div>
+        <div class="BaseForm" id="ShowGrpResForm" style="display:none">
+            <div lvs_elm="ShowResBox"></div>
+            <div class="BaseDesc"><a class="FormCancel button bg-grey">关闭取消</a></div>
+        </div>
+        <div class="BaseForm" id="DelGrpResForm" style="display:none">
+            <div class="BaseDesc">确定要删除您提交的成果？</div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确定删除</a><a class="FormCancel button bg-grey">关闭取消</a></div>
+        </div>
+    </div>
+</body>
+</html>

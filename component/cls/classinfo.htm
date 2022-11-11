@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_cls_classinfo" lvs_jqexec="lvs_classinfo">
+        <div class="NaviBox" style="padding:12px 0">
+            {{if params.estudid<0}}
+            <a class="NaviLink" lvs_ref="router.tchclass" idxid="0">我的授课</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a class="NaviLink" lvs_ref="router.classinfo" idxid="${id}">${type}：${name}</a>
+            {{else}}
+            {{if type=='课题'}}<a class="NaviLink" lvs_ref="router.studteam" idxid="0">我的课题</a>{{else}}<a class="NaviLink" lvs_ref="router.studlesn" idxid="0">我的班级</a>{{/if}}&nbsp;&nbsp;>&nbsp;&nbsp;<a class="NaviLink" lvs_ref="router.classinfo" idxid="${id}">${type}：${name}</a>
+            {{/if}}
+        </div>
+        <div class="WSBox" style="padding:24px">
+            <div class="LitTitle">指导老师：{{if tchinfo}}${tchinfo.name}{{else}}${tname}{{/if}}</div>
+            {{each(l,lsndata) lesns}}
+            <div class="BaseClassList flexbox">
+                <div style="width:80px;padding:6px"><img width="100%" src="${lsndata.titleimg}" /></div>
+                <div class="flex1" style="text-align:left">
+                    <div class="ClsTitle">第${lsndata.seqid}课.${lsndata.title}</div>
+                    <div class="ClsDesc">时间：${lsndata.begdate}&nbsp;${lsndata.begtime}</div>
+                    <div class="ClsDesc">学习状态：{{if lsndata.progress>=100}}<span style="color:darkgreen">已完成</span>{{else lsndata.progress<=0}}<span style="color:#8a8a8a"">未开始{{else}}<span style="color:Orange">${lsndata.progress}%;</span>{{/if}}{{if lsndata.taskunnum>0}}${lsndata.taskunnum}项作业待完成{{else lsndata.taskingnum>0}}${lsndata.taskingnum}项作业待批改{{else lsndata.taskednum>0}}${lsndata.taskednum}项作业已批改{{/if}}</div>
+                </div>
+                <div style="width:160px;text-align:right">
+                    {{if lsndata.progress}}
+                        {{if lsndata.progress>=100}}<a class="button border-green" lvs_ref="router.tchlesn" idxid="${lsndata.id}">再次学习</a>
+                        {{else lsndata.progess>0}}<a class="button border-green" lvs_ref="router.tchlesn" idxid="${lsndata.id}">继续学习</a>
+                        {{else}}<a class="button border-green" lvs_ref="router.tchlesn" idxid="${lsndata.id}">开始学习</a>
+                        {{/if}}
+                    {{else}}
+                    <a class="button border-green" lvs_ref="router.tchlesn" idxid="${lsndata.id}">开始学习</a>
+                    {{/if}}
+                    {{if lsndata.tasknum}}
+                        {{if lsndata.taskednum+lsndata.taskingnum>=lsndata.tasknum}}<a class="button border-yellow" lvs_ref="router.studtask" idxid="${lsndata.id}">查看作业</a>
+                        {{else}}<a class="button border-yellow" lvs_ref="router.studtask" idxid="${lsndata.id}">完成作业</a>
+                        {{/if}}
+                    {{/if}}
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</body>
+</html>

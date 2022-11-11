@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn.cls.applyclass" lvs_jqexec="lvs_cls_classlist">
+      <div class="flexrow">
+            {{each(c,clsdata) classes}}
+            <div class="colflex3" style="margin-top:12px">
+                <div class="FlexItemBox" lvs_elm="ClassItem" idxid="${clsdata.id}">
+                    <div>
+                        <div class="HeadImg" perheit="57">
+                            <img width="100%" src="${clsdata.image}" />
+                            {{if clsdata.subjects}}<div class="FlexStatus">${clsdata.subjects}</div>{{/if}}
+                        </div>
+                        <div class="FlexTitle textwrap" title="${clsdata.name}">${clsdata.name}</div>
+                        <div class="FlexDesc">课程数：${clsdata.lesnnum}<span class="float-right">${clsdata.tname}</span></div>
+                    </div>
+                    <div class="FlexOpe"><a class="button border-green" lvs_elm="JoinCls" idxid="${clsdata.id}">申请加入</a></div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+      </div>
+</body>
+</html>

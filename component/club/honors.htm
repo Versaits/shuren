@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_club_honors" lvs_jqexec="lvs_club_honor">
+        {{if isadd}}
+        <div style="padding:6px 0;text-align:right"><a class="GreenButton" lvs_ref="../lvsleag/honors.htm?mid=${membid}"><img width="16px" height="16px" src="../../Image/add.png" />荣誉</a></div>
+        {{/if}}
+        {{if list}}
+        {{each(h,hndata) list}}
+        <div class="HonorList" lvs_elm="HonorDef" idxid="${hndata.id}" dataidx="${h}">
+            <div class="flexbox">
+                <div style="width:25%"><img class="HonorHead" src="${hndata.honorlogo}"/></div>
+                <div class="flex1">
+                    <div class="HonorTitle">${hndata.gamesname}&nbsp;${hndata.honorname}</div>
+                    <div class="HonorLitTitle">
+                        {{if hndata.membid>0}}个人荣誉：${hndata.membname}
+                        {{else}}${hndata.teamname}{{if hndata.gamestype>=4&&hndata.endseq==1}}<img width="16px" height="16px" src="../../Image/star_1.png" />{{/if}}
+                        {{/if}}
+                    </div>
+                    <div class="HonorDesc">${hndata.gamesdate}</div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{else}}
+        <div class="BaseTmpl" id="ShowHonorTmpl" style="display:none">
+            <div class="BaseHonorBox" style="text-align:center">
+                <img width="60%" src="${honorlogo}" />
+                <div class="HonorTitle">${gamesname}</div>
+                <div class="HonorTitle">${honorname}</div>
+                {{if membid>0}}<div class="HonorTitle">个人荣誉获得者：${membname}</div>
+                {{else}}<div class="HonorTitle">获得者：${teamname}</div>{{if gamestype>=4&&endseq==1}}<div class="HonorDesc">由于在${gameslevel}赛事中获得冠军，标记<img width="16px" height="16px" src="../../Image/star_1.png" /></div>{{/if}}
+                {{/if}}
+                <div class="HonorDesc" style="margin-top:8px">
+                    {{if gmmembs}}名单：{{each(m,memdata) gmmembs}}<span style="margin-left:6px">${memdata.membname}</span>{{/each}}
+                    {{if ismemb==0}}<a class="FormOk" lvs_elm="AddGmmemb" idxid="${gamesid}">加入名单</a>{{/if}}
+                    {{/if}}
+                </div>
+                {{if pics}}{{each(p,picdata) pics}}<img width="60%" src="${picdata.image}" />{{/each}}{{/if}}
+                <div class="HonorDesc">${honordesc}</div>
+                <div style="text-align:right"><a class="FormCancel button bg-yellow">关闭</a></div>
+            </div>
+        </div>
+        {{/if}}
+    </div>
+</body>
+</html>

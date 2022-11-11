@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_course_projcrs" lvs_jqexec="lvs_projcrs">
+        {{if projcrs}}
+        <div class="WSBaseTab flexbox">
+            <div class="WSTabItem" lvs_ref="tab.SelPanel" idxid="prepare">我设计的项目</div>
+            <div class="WSTabItem active" lvs_ref="tab.SelPanel" idxid="publish">我发布的项目</div>
+            <div class="WSTabItem" lvs_ref="tab.SelPanel" idxid="memteam">我参与的项目</div>
+        </div>
+        <div class="tabcontent" tabcontainer="prepare" style="display:none">
+            {{each(t,pcdata) projcrs}}
+            <div class="ProjCrsListBox" idxid="${pcdata.id}" style="text-align:left">
+                <span class="CrsTitle">${pcdata.name}</span><span class="float-right" style="font-size:75%"><span class="txt-grey">${pcdata.status}</span><span class="CrsOpe"><a lvs_elm="DeleteCrs" idxid="${pcdata.id}" class="button border-red" style="margin-top:0">删除</a><a lvs_ref="router.projcrs" idxid="${pcdata.id}" class="button border-green" style="margin-top:0">设计</a></span></span>
+            </div>
+            {{/each}}
+            <a lvs_elm="AddSubjproj" class="WsButton bg-wsblue">申请新项目</a>
+        </div>
+        <div class="tabcontent" tabcontainer="publish">
+            <component name="cn.cls.teamclslist" basedata="list:tchteams"></component>
+        </div>
+        <div class="tabcontent" tabcontainer="memteam" style="display:none">
+            <component name="cn.cls.teamclslist" basedata="list:memteams"></component>
+            <a lvs_elm="ApplyTeam" class="WsButton bg-wsblue">参与新项目</a>
+        </div>
+        <div class="BaseForm" id="DeleteForm" style="display:none">
+            <div class="BaseDesc">确认要删除该项目？</div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确认删除</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="AddCrsForm" style="display:none">
+            <div class="BaseDesc"><span class="txt-red">*</span>项目分类</div>
+            <div class="BaseInput"><input type="text" lvs_bind="subjs" placeholder="项目所在的学科分类或其他分类" /></div>
+            <div class="BaseDesc"><span class="txt-red">*</span>项目名称</div>
+            <div class="BaseInput"><input type="text" lvs_bind="name" placeholder="请输入项目名称" /></div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确认添加</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="JoinForm" style="display:none"></div>
+        {{else}}
+        <div class="BaseTmpl" id="JoinProjTmpl" style="display:none">
+            <div class="BaseDesc">请选择想要参与的项目</div>
+            <div class="BaseDesc">
+                {{if classes.length==0}}
+                    <div class="NullPanel">
+                        <img class="NullTips" src="../../Image/fedu/nulltip.png"/>
+                        <div class="NullText" style="margin-top:34px">没有可以参与的项目了</div>
+                    </div>
+                {{else}}
+                {{each(p,prjdata) classes}}
+                    <div class="BaseListBox">
+                        <div class="LitTitle">${prjdata.name}<span class="float-right"><a class="FormOk button border-blue" idxid="${prjdata.id}">申请加入</a></span></div>
+                        <div class="BaseListDesc">负责人：${prjdata.tname}<span class="float-right"></span></div>
+                        <div class="Desc">${prjdata.desc}</div>
+                    </div>
+                {{/each}}
+                {{/if}}
+            </div>
+        </div>
+        {{/if}}
+    </div>
+</body>
+</html>

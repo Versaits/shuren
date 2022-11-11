@@ -1,0 +1,95 @@
+﻿.contentBox{
+   border: 1px solid #dadada;
+   width: 100%;
+   border-radius: 30px;
+  }
+.contentBox .btnBox{
+    width: 100%;
+    height: 29px;
+    border-radius: 30px;
+    -webkit-border-radius:30px;
+    -moz-border-radius:30px;
+    background-color: white;
+    position: relative;
+    cursor: pointer;
+}
+.contentBox .slidbtn{
+    width: 28px;
+    height: 28px;
+    border:1px solid #dadada;
+    border-radius: 30px;
+    -webkit-border-radius:30px;
+    -moz-border-radius:30px;
+    background-color: #fff;
+    position: absolute;
+}
+
+.TagTitle
+{
+    font-size:15px;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+.TagItem
+{
+    font-size:15px;
+    display:inline-block;
+    color:#007bff;
+    margin-left:6px;
+    margin-top:6px;
+    cursor:pointer;
+    padding:2px 6px;
+    background-color:White;
+    border:#eaeaea 1px solid;
+    border-radius:3px;
+}
+.TagActive
+{
+    background-color:#007bff!important;
+    border-radius:3px;
+    color:White!important;
+}
+.PanelBox
+{
+    background-image:linear-gradient(105deg,#fafafa 0%,#ffffff 30%, #f8f8f8 100%);
+    font-size:14px;
+    line-height:180%;
+    padding:12px;
+    border:#d7d7d7 1px solid;
+    border-radius:3px;
+    box-shadow:2px 3px 5px 5px rgba(200, 200, 200, 0.3);
+    text-align:left;
+}
+.PanelBox .ListItem
+{
+    padding:5px 0;
+    border-bottom:#eaeaea 1px solid;
+    cursor:pointer;
+    font-size:120%;
+    letter-spacing:1px;
+}
+.PanelBox .ListItem:hover
+{
+    background-color:#d7d7d7;
+}
+.PanelBox .TagItem
+{
+    display:inline-block;
+    padding:3px 8px;
+    background-color:#f2f2f2;
+    border:#e2e2e2 1px solid;
+    border-radius:99px;
+    margin-left:5px;
+}
+.VodProgress
+{
+    border-radius:3px 0 0 3px;
+    background-image:linear-gradient(180deg,#b0efad 0%,#ecfaeb 20%,#9edd9b 40%,#39b333 80%,#83de7e 100%);
+    height:10px;
+    margin-top:10px;
+}
+.VodProgText
+{
+    font-size:13px;
+    color:#6a6a6a;
+}

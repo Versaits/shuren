@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_course_crstmpllist" lvs_jqexec="lvs_course_crstmpls">
+        <div class="NaviBox" style="padding:12px 0">
+            <a class="NaviLink" lvs_ref="router.tchcrs" idxid="${id}">我的备课</a>&nbsp;&nbsp;>&nbsp;&nbsp;${subjects}：${sname}
+        </div>
+        <div class="WSBox" style="padding:24px">
+            <div class="flexbox">
+                <div style="width:240px;min-height:500px">
+                    <div class="WSBaseTab flexbox tabhead">
+                        <div class="WSTabItem active" idxid="crs" lvs_ref="tab.SelPanel">课程目录</div>
+                        <div class="WSTabItem" idxid="tmpl" lvs_ref="tab.SelPanel">课程模板</div>
+                    </div>
+                    <div class="CrsListBox WSListContainer tabcontent" tabcontainer="crs">
+                        <div class="BaseListHead" style="text-align:right"><a class="WsButton bg-wsblue" lvs_elm="AddCrs">创建课程</a></div>
+                        <div class="CrsList" lvs_elm="CrsList"></div>
+                    </div>
+                    <div class="CrsListBox WSListContainer tabcontent" tabcontainer="tmpl" style="display:none">
+                        <div class="BaseListHead" style="text-align:right"><a class="WsButton bg-wsblue" lvs_elm="AddTmpl">创建模板</a></div>
+                        <div class="CrsList" lvs_elm="TmplList"></div>
+                    </div>
+                </div>
+                <div class="flex1">
+                    <div lvs_elm="CrsTmplBox">
+                        <component name="cn.course.crsstat"></component>
+                    </div>
+                </div>
+            </div>
+            <div class="BaseForm" id="AddCrsTmplForm" title="创建课程" style="display:none">
+                <div class="BaseDesc"><span class="txt-red">*</span>本节课标题：</div>
+                <div class="BaseInput"><input type="text" lvs_bind="crstmplname" placeholder="请输入本节课主题内容" need="1" /></div>
+                <div class="BaseDesc">课程所属模块：</div>
+                <div class="BaseInput"><component name="cn.button.serial" basedata="list:modules" lvs_bind="crstmplmodule" data-curval="" data-serial="{{each(m,moddata) modules}},${moddata.sname}{{/each}}"></component></div>
+                <div class="BaseDesc">选择使用课程模板：</div>
+                <div class="BaseInput"><component name="cn.button.serial" basedata="list:basetmpls" lvs_bind="crstmplmodal" data-curval="0" data-serial="0-不使用模板{{each(p,tpldata) basetmpls}},${tpldata.id}-${tpldata.title}{{/each}}"></component></div>
+                <div class="BaseDesc"><a class="button bg-green FormOk">确定创建</a><a class="button bg-grey FormCancel">取消操作</a></div>
+            </div>
+            <div class="BaseForm" id="AddTmplForm" title="创建模板" style="display:none">
+                <div class="BaseDesc"><span class="txt-red">*</span>模板名称：</div>
+                <div class="BaseInput"><input type="text" lvs_bind="crstmplname" placeholder="请输入课程模板的名称" need="1" /></div>
+                <div class="BaseDesc"><a class="button bg-green FormOk">确定创建</a><a class="button bg-grey FormCancel">取消操作</a></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

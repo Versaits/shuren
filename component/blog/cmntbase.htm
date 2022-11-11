@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_blog_cmntbase" lvs_jqexec="lvs_community">
+        <div class="Title"><span class="PreTitle">.</span>${name}<span class="float-right"><a lvs_ref="toggle.AddBlog" class="wsbutton bg-wsblue">+发表</a></div>
+        <div style="margin-top:12px">
+            <component name="cn.tab.tagtab" basedata="tags:tags" data-tagname="TagIdx"></component>
+        </div>
+        {{each(b,blogdata) blogs}}
+            <div class="BlogBox" TagIdx="${blogdata.taglist}">
+                <div class="flexbox">
+                    <div class="padding">
+                        <img class="LitUserHead" src="${blogdata.userimg}"><div class="UserName {{if blogdata.userid>0}}StudName{{else}}TchName{{/if}} textwrap">${blogdata.username}</div>
+                    </div>  
+                    <div class="BlogText flex1" lvs_ref="router.blog" idxid="${blogdata.id}">
+                        <div class="BlogTitle">${blogdata.title}</div>
+                        <div class="txt-grey textwrap">${blogdata.oristr}</div>
+                        <div class="BlogOperate">
+                            {{if blogdata.attitudes_count>0}}<span class="BlogTop"></span>{{/if}}
+                            <span class="ShowTag">${blogdata.grant_count}赞</span>
+                            <span class="ShowTag">${blogdata.comments_count}评</span>
+                            <span class="ShowTag">${blogdata.save_count}收藏</span>
+                            <span class="ShowTag">${blogdata.folo_count}关注</span>
+                            <span class="float-right">${blogdata.created_at}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</body>
+</html>

@@ -1,0 +1,549 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{174D8B1C-06C2-4206-815B-C0D0DE051E0D}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>shuren</RootNamespace>
+    <AssemblyName>shuren</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About.aspx" />
+    <Content Include="Account\ChangePassword.aspx" />
+    <Content Include="Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Register.aspx" />
+    <Content Include="bin\shuren.dll" />
+    <Content Include="bin\shuren.pdb" />
+    <Content Include="component\animate\animate.css" />
+    <Content Include="component\animate\animate.js" />
+    <Content Include="component\animate\flying.htm" />
+    <Content Include="component\blog\blog.css" />
+    <Content Include="component\blog\blog.js" />
+    <Content Include="component\blog\blogbase.htm" />
+    <Content Include="component\blog\cmntaddblog.htm" />
+    <Content Include="component\blog\cmntbase.htm" />
+    <Content Include="component\blog\cmntlist.htm" />
+    <Content Include="component\button\button.css" />
+    <Content Include="component\button\button.js" />
+    <Content Include="component\button\button_demo.htm" />
+    <Content Include="component\button\checkbtn.htm" />
+    <Content Include="component\button\grant.htm" />
+    <Content Include="component\button\scorenum.htm" />
+    <Content Include="component\button\serial.htm" />
+    <Content Include="component\button\tagsel.htm" />
+    <Content Include="component\cardlist\cardlist.css" />
+    <Content Include="component\cardlist\cardlist.js" />
+    <Content Include="component\cardlist\cards2.htm" />
+    <Content Include="component\card\basedesc.htm" />
+    <Content Include="component\card\card.css" />
+    <Content Include="component\card\card.js" />
+    <Content Include="component\card\card_demo.htm" />
+    <Content Include="component\card\headcard.htm" />
+    <Content Include="component\cls\applyclass.htm" />
+    <Content Include="component\cls\baseclsstuds.htm" />
+    <Content Include="component\cls\basedesc.htm" />
+    <Content Include="component\cls\classinfo.htm" />
+    <Content Include="component\cls\classlist.htm" />
+    <Content Include="component\cls\cls.css" />
+    <Content Include="component\cls\cls.js" />
+    <Content Include="component\cls\clslesns.htm" />
+    <Content Include="component\cls\clslesnstat.htm" />
+    <Content Include="component\cls\clsstuds.htm" />
+    <Content Include="component\cls\cls_demo.htm" />
+    <Content Include="component\cls\flexclass.htm" />
+    <Content Include="component\cls\projteam.htm" />
+    <Content Include="component\cls\schoolweek.htm" />
+    <Content Include="component\cls\selclasses.htm" />
+    <Content Include="component\cls\studclasslist.htm" />
+    <Content Include="component\cls\studlesns.htm" />
+    <Content Include="component\cls\tchtask.htm" />
+    <Content Include="component\cls\teamclslist.htm" />
+    <Content Include="component\cls\topiccls.htm" />
+    <Content Include="component\cls\topicclslist.htm" />
+    <Content Include="component\cls\topicteam.htm" />
+    <Content Include="component\cls\topicteambak.htm" />
+    <Content Include="component\club\club.css" />
+    <Content Include="component\club\club.js" />
+    <Content Include="component\club\gamesmatch.htm" />
+    <Content Include="component\club\honors.htm" />
+    <Content Include="component\club\match.htm" />
+    <Content Include="component\club\matchlist.htm" />
+    <Content Include="component\club\matmemlist.htm" />
+    <Content Include="component\club\memberlist.htm" />
+    <Content Include="component\club\membhonors.htm" />
+    <Content Include="component\club\memblesns.htm" />
+    <Content Include="component\club\membmatchs.htm" />
+    <Content Include="component\club\membranks.htm" />
+    <Content Include="component\club\teamcheck.htm" />
+    <Content Include="component\club\teaminfo.htm" />
+    <Content Include="component\club\teamlist.htm" />
+    <Content Include="component\club\teammember.htm" />
+    <Content Include="component\course\course.css" />
+    <Content Include="component\course\course.js" />
+    <Content Include="component\course\course_demo.htm" />
+    <Content Include="component\course\crsclass.htm" />
+    <Content Include="component\course\crsfiles.htm" />
+    <Content Include="component\course\crslist.htm" />
+    <Content Include="component\course\crssolus.htm" />
+    <Content Include="component\course\crsstat.htm" />
+    <Content Include="component\course\crstasks.htm" />
+    <Content Include="component\course\crstaskstep.htm" />
+    <Content Include="component\course\crstmplbase.htm" />
+    <Content Include="component\course\crstmpllist.htm" />
+    <Content Include="component\course\crstmpl_pbl.htm" />
+    <Content Include="component\course\crstmpl_plan.htm" />
+    <Content Include="component\course\precrslist.htm" />
+    <Content Include="component\course\projcrs.htm" />
+    <Content Include="component\course\subjcrs.htm" />
+    <Content Include="component\course\subjproj_pbl.htm" />
+    <Content Include="component\course\tchtmpls.htm" />
+    <Content Include="component\crsplan\crspblstep.htm" />
+    <Content Include="component\crsplan\crsplan.css" />
+    <Content Include="component\crsplan\crsplan.js" />
+    <Content Include="component\crsplan\crstmplchks.htm" />
+    <Content Include="component\crsplan\crstmplgrps.htm" />
+    <Content Include="component\crsplan\crstmpltasks.htm" />
+    <Content Include="component\crsplan\crttable.htm" />
+    <Content Include="component\crsplan\headmenu.htm" />
+    <Content Include="component\crsplan\matrlitems.htm" />
+    <Content Include="component\crsplan\matrllist.htm" />
+    <Content Include="component\crsplan\moveframe.htm" />
+    <Content Include="component\crsplan\pagecard.htm" />
+    <Content Include="component\crsplan\pageitem.htm" />
+    <Content Include="component\crsplan\pagelist.htm" />
+    <Content Include="component\crsplan\pagetool.htm" />
+    <Content Include="component\crsplan\videoline.htm" />
+    <Content Include="component\crsplan\vpagelist.htm" />
+    <Content Include="component\date\date.css" />
+    <Content Include="component\date\date.js" />
+    <Content Include="component\date\monthschd.htm" />
+    <Content Include="component\date\prevweek.htm" />
+    <Content Include="component\dif\cust_custdemo.htm" />
+    <Content Include="component\dif\cust_logindemo.htm" />
+    <Content Include="component\dif\dif.css" />
+    <Content Include="component\dif\dif.js" />
+    <Content Include="component\dif\edu_actdemo.htm" />
+    <Content Include="component\dif\edu_crsdemo.htm" />
+    <Content Include="component\dif\edu_examdemo.htm" />
+    <Content Include="component\dif\edu_schdemo.htm" />
+    <Content Include="component\dif\edu_tchdemo.htm" />
+    <Content Include="component\dif\leag_clsdemo.htm" />
+    <Content Include="component\dif\leag_lesndemo.htm" />
+    <Content Include="component\dif\leag_studdemo.htm" />
+    <Content Include="component\dif\leag_taskdemo.htm" />
+    <Content Include="component\doc\cmntdemo.htm" />
+    <Content Include="component\doc\difdemo.htm" />
+    <Content Include="component\doc\doc.css" />
+    <Content Include="component\doc\doc.js" />
+    <Content Include="component\doc\jqdemo.htm" />
+    <Content Include="component\doc\othdemo.htm" />
+    <Content Include="component\doc\pagedemo.htm" />
+    <Content Include="component\doc\routdemo.htm" />
+    <Content Include="component\doc\tmpldemo.htm" />
+    <Content Include="component\elchart\barchart.htm" />
+    <Content Include="component\elchart\chart_demo.htm" />
+    <Content Include="component\elchart\echarts.min.js" />
+    <Content Include="component\elchart\elchart.css" />
+    <Content Include="component\elchart\elchart.htm" />
+    <Content Include="component\elchart\elchart.js" />
+    <Content Include="component\elchart\elchart_wubei.js" />
+    <Content Include="component\elchart\gauge.htm" />
+    <Content Include="component\elcolor\color - 副本.htm" />
+    <Content Include="component\elcolor\color.htm" />
+    <Content Include="component\elcolor\colordemo.htm" />
+    <Content Include="component\elcolor\elcolor - 副本.css" />
+    <Content Include="component\elcolor\elcolor.css" />
+    <Content Include="component\elcolor\elcolor.js" />
+    <Content Include="component\elmind\editmind.htm" />
+    <Content Include="component\elmind\elmind.css" />
+    <Content Include="component\elmind\elmind.htm" />
+    <Content Include="component\elmind\elmind.js" />
+    <Content Include="component\elmind\elmindp.js" />
+    <Content Include="component\elmind\jsmind.css" />
+    <Content Include="component\elmind\jsmind.draggable.js" />
+    <Content Include="component\elmind\jsmind.js" />
+    <Content Include="component\elmind\jsmind.screenshot.js" />
+    <Content Include="component\elmind\minddemo.htm" />
+    <Content Include="component\el_cascader\cascader_demo.htm" />
+    <Content Include="component\el_cascader\el_cascader.css" />
+    <Content Include="component\el_cascader\el_cascader.htm" />
+    <Content Include="component\el_cascader\el_cascader.js" />
+    <Content Include="component\el_city\city_demo.htm" />
+    <Content Include="component\el_city\el_city.css" />
+    <Content Include="component\el_city\el_city.htm" />
+    <Content Include="component\el_city\el_city.js" />
+    <Content Include="component\el_city\el_cityselect.htm" />
+    <Content Include="component\el_datepicker\datepicker_demo.htm" />
+    <Content Include="component\el_datepicker\el_datepicker.css" />
+    <Content Include="component\el_datepicker\el_datepicker.htm" />
+    <Content Include="component\el_datepicker\el_datepicker.js" />
+    <Content Include="component\el_datepicker\el_rangepicker.htm" />
+    <Content Include="component\el_image\el_image.css" />
+    <Content Include="component\el_image\el_image.js" />
+    <Content Include="component\el_image\image_demo.htm" />
+    <Content Include="component\el_image\previewimg.htm" />
+    <Content Include="component\el_input\el_input.css" />
+    <Content Include="component\el_input\el_input.js" />
+    <Content Include="component\el_input\inputicon.htm" />
+    <Content Include="component\el_input\inputpara.htm" />
+    <Content Include="component\el_input\input_demo.htm" />
+    <Content Include="component\el_search\el_search.css" />
+    <Content Include="component\el_search\el_search.htm" />
+    <Content Include="component\el_search\el_search.js" />
+    <Content Include="component\el_search\search_demo.htm" />
+    <Content Include="component\el_slider\el_slider.css" />
+    <Content Include="component\el_slider\el_slider.htm" />
+    <Content Include="component\el_slider\el_slider.js" />
+    <Content Include="component\el_slider\el_slider_input.htm" />
+    <Content Include="component\el_slider\el_slider_step - 副本.htm" />
+    <Content Include="component\el_slider\el_slider_step.htm" />
+    <Content Include="component\el_slider\slider_demo.htm" />
+    <Content Include="component\form\crsclass.htm" />
+    <Content Include="component\form\form.css" />
+    <Content Include="component\form\form.js" />
+    <Content Include="component\form\imginput.htm" />
+    <Content Include="component\form\paperform.htm" />
+    <Content Include="component\form\remarks.htm" />
+    <Content Include="component\form\richedit.htm" />
+    <Content Include="component\form\vlntapply.htm" />
+    <Content Include="component\frame\frame.css" />
+    <Content Include="component\frame\frame.js" />
+    <Content Include="component\head\basefoot.htm" />
+    <Content Include="component\head\basehead.htm" />
+    <Content Include="component\head\fstemhead.htm" />
+    <Content Include="component\head\head.css" />
+    <Content Include="component\head\head.js" />
+    <Content Include="component\icon\222.png" />
+    <Content Include="component\icon\el_icon_addbrother.png" />
+    <Content Include="component\icon\el_icon_addchild.png" />
+    <Content Include="component\icon\el_icon_arrow_down.png" />
+    <Content Include="component\icon\el_icon_bgcolor.png" />
+    <Content Include="component\icon\el_icon_bottom.png" />
+    <Content Include="component\icon\el_icon_close.png" />
+    <Content Include="component\icon\el_icon_close===.png" />
+    <Content Include="component\icon\el_icon_collapse.png" />
+    <Content Include="component\icon\el_icon_date---.png" />
+    <Content Include="component\icon\el_icon_date.png" />
+    <Content Include="component\icon\el_icon_delete.png" />
+    <Content Include="component\icon\el_icon_down.png" />
+    <Content Include="component\icon\el_icon_expand.png" />
+    <Content Include="component\icon\el_icon_fontsize.png" />
+    <Content Include="component\icon\el_icon_Italics.png" />
+    <Content Include="component\icon\el_icon_left.png" />
+    <Content Include="component\icon\el_icon_left1.png" />
+    <Content Include="component\icon\el_icon_ll.png" />
+    <Content Include="component\icon\el_icon_ll2.png" />
+    <Content Include="component\icon\el_icon_remove.png" />
+    <Content Include="component\icon\el_icon_right.png" />
+    <Content Include="component\icon\el_icon_right1.png" />
+    <Content Include="component\icon\el_icon_rr.png" />
+    <Content Include="component\icon\el_icon_rr1.png" />
+    <Content Include="component\icon\el_icon_rr1111.png" />
+    <Content Include="component\icon\el_icon_textcolor.png" />
+    <Content Include="component\icon\el_icon_top.png" />
+    <Content Include="component\icon\el_icon_up.png" />
+    <Content Include="component\icon\el_icon_upload.png" />
+    <Content Include="component\icon\el_icon_weight.png" />
+    <Content Include="component\icon\el_icon_zoomIn.png" />
+    <Content Include="component\icon\el_icon_zoomOut.png" />
+    <Content Include="component\icon\e_icon_arrow_.png" />
+    <Content Include="component\icon\e_icon_arrow_up.png" />
+    <Content Include="component\images\demo1.JPG" />
+    <Content Include="component\images\demo10.png" />
+    <Content Include="component\images\demo2.JPG" />
+    <Content Include="component\images\demo3.JPG" />
+    <Content Include="component\images\demo4.JPG" />
+    <Content Include="component\images\demo5.JPG" />
+    <Content Include="component\images\demo6.JPG" />
+    <Content Include="component\images\demo7.png" />
+    <Content Include="component\images\demo8.png" />
+    <Content Include="component\images\demo9.png" />
+    <Content Include="component\im\im.css" />
+    <Content Include="component\im\im.js" />
+    <Content Include="component\im\lesnim.htm" />
+    <Content Include="component\im\meslist.htm" />
+    <Content Include="component\intact\group.htm" />
+    <Content Include="component\intact\groupres.htm" />
+    <Content Include="component\intact\intact.css" />
+    <Content Include="component\intact\intact.js" />
+    <Content Include="component\intact\taskans.htm" />
+    <Content Include="component\lesn\grpexhibit.htm" />
+    <Content Include="component\lesn\lesn.css" />
+    <Content Include="component\lesn\lesn.js" />
+    <Content Include="component\lesn\lesnchks.htm" />
+    <Content Include="component\lesn\lesnexhibits.htm" />
+    <Content Include="component\lesn\lesnform.htm" />
+    <Content Include="component\lesn\lesngrouppanel.htm" />
+    <Content Include="component\lesn\lesngrpblog.htm" />
+    <Content Include="component\lesn\lesngrps.htm" />
+    <Content Include="component\lesn\lesnlist.htm" />
+    <Content Include="component\lesn\lesnmembs.htm" />
+    <Content Include="component\lesn\lesntabs.htm" />
+    <Content Include="component\lesn\lesntaskres.htm" />
+    <Content Include="component\lesn\lesntasks.htm" />
+    <Content Include="component\lesn\lesntips.htm" />
+    <Content Include="component\lesn\pbllesn.htm" />
+    <Content Include="component\lesn\taskexhs.htm" />
+    <Content Include="component\lesn\taskstat.htm" />
+    <Content Include="component\list\baselist.htm" />
+    <Content Include="component\list\explist.htm" />
+    <Content Include="component\list\flexlist.htm" />
+    <Content Include="component\list\histories.htm" />
+    <Content Include="component\list\imggrid.htm" />
+    <Content Include="component\list\list.css" />
+    <Content Include="component\list\list.js" />
+    <Content Include="component\list\list_demo.htm" />
+    <Content Include="component\list\morelist.htm" />
+    <Content Include="component\list\moreslide.htm" />
+    <Content Include="component\list\ranklist.htm" />
+    <Content Include="component\list\sellist.htm" />
+    <Content Include="component\list\siglist.htm" />
+    <Content Include="component\login\fstemlogin.htm" />
+    <Content Include="component\login\login.css" />
+    <Content Include="component\login\login.js" />
+    <Content Include="component\mayi\company.htm" />
+    <Content Include="component\mayi\future.htm" />
+    <Content Include="component\mayi\mayi.css" />
+    <Content Include="component\mayi\mayi.js" />
+    <Content Include="component\mayi\product.htm" />
+    <Content Include="component\mayi\project.htm" />
+    <Content Include="component\menu\basemenu.htm" />
+    <Content Include="component\menu\menu.css" />
+    <Content Include="component\menu\menu.js" />
+    <Content Include="component\menu\submenu.htm" />
+    <Content Include="component\play\expressInstall.swf" />
+    <Content Include="component\play\flvplayer.swf" />
+    <Content Include="component\play\lesnend.htm" />
+    <Content Include="component\play\lesnpage.htm" />
+    <Content Include="component\play\lesnplay.htm" />
+    <Content Include="component\play\pageshow.htm" />
+    <Content Include="component\play\play.css" />
+    <Content Include="component\play\play.js" />
+    <Content Include="component\play\swf2js.js" />
+    <Content Include="component\play\swfobject.js" />
+    <Content Include="component\play\swfplay.htm" />
+    <Content Include="component\play\SwfTest.html" />
+    <Content Include="component\play\taskshow.htm" />
+    <Content Include="component\play\themeshow.htm" />
+    <Content Include="component\play\videoplay.htm" />
+    <Content Include="component\prop\prop.css" />
+    <Content Include="component\prop\prop.js" />
+    <Content Include="component\prop\styleset.htm" />
+    <Content Include="component\rcard\membinfo.htm" />
+    <Content Include="component\rcard\playercard.htm" />
+    <Content Include="component\rcard\printcard.htm" />
+    <Content Include="component\rcard\rcard.css" />
+    <Content Include="component\rcard\rcard.js" />
+    <Content Include="component\rcard\vallist.htm" />
+    <Content Include="component\slide\lvsslide.htm" />
+    <Content Include="component\slide\slide.css" />
+    <Content Include="component\slide\slide.js" />
+    <Content Include="component\stud\baseinfo.htm" />
+    <Content Include="component\stud\clsstudstat.htm" />
+    <Content Include="component\stud\estudsel.htm" />
+    <Content Include="component\stud\headbaseinfo.htm" />
+    <Content Include="component\stud\projstudstat.htm" />
+    <Content Include="component\stud\stud.css" />
+    <Content Include="component\stud\stud.js" />
+    <Content Include="component\stud\topicstat.htm" />
+    <Content Include="component\tab\menutab.htm" />
+    <Content Include="component\tab\simptab.htm" />
+    <Content Include="component\tab\tab.css" />
+    <Content Include="component\tab\tab.js" />
+    <Content Include="component\tab\tab_demo.htm" />
+    <Content Include="component\tab\tagtab.htm" />
+    <Content Include="component\tch\tch.css" />
+    <Content Include="component\tch\tch.js" />
+    <Content Include="component\tch\tchinfo.htm" />
+    <Content Include="component\theme\addanswerform.htm" />
+    <Content Include="component\theme\addblankform.htm" />
+    <Content Include="component\theme\addselform.htm" />
+    <Content Include="component\theme\answerinp.htm" />
+    <Content Include="component\theme\answerinpshow.htm" />
+    <Content Include="component\theme\basefile.htm" />
+    <Content Include="component\theme\baseshow.htm" />
+    <Content Include="component\theme\blankinp.htm" />
+    <Content Include="component\theme\blankinpshow.htm" />
+    <Content Include="component\theme\multsel.htm" />
+    <Content Include="component\theme\multselshow.htm" />
+    <Content Include="component\theme\sigsel.htm" />
+    <Content Include="component\theme\sigselshow.htm" />
+    <Content Include="component\theme\taskcheck.htm" />
+    <Content Include="component\theme\taskgrpres.htm" />
+    <Content Include="component\theme\taskpaper.htm" />
+    <Content Include="component\theme\taskpapershow.htm" />
+    <Content Include="component\theme\theme.css" />
+    <Content Include="component\theme\theme.js" />
+    <Content Include="component\theme\themelist.htm" />
+    <Content Include="component\theme\tmplform.htm" />
+    <Content Include="component\tooltip\tooltip.css" />
+    <Content Include="component\tooltip\tooltip.js" />
+    <Content Include="component\user\bloguser.htm" />
+    <Content Include="component\user\user.css" />
+    <Content Include="component\user\user.js" />
+    <Content Include="component\worker\wklist.htm" />
+    <Content Include="component\worker\worker.css" />
+    <Content Include="component\worker\worker.js" />
+    <Content Include="fstem\fstem.css" />
+    <Content Include="fstem\fstembase.css" />
+    <Content Include="fstem\workspace.css" />
+    <Content Include="fstem\ws.htm" />
+    <Content Include="obj\Debug\shuren.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\shuren.dll" />
+    <Content Include="obj\Debug\shuren.pdb" />
+    <Content Include="Scripts\html5upload.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.timers-1.2.js" />
+    <Content Include="Scripts\jquery.tmpl.min.js" />
+    <Content Include="Scripts\lvs.js" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\Web.config" />
+    <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>57044</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

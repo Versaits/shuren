@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div class="BaseDesc">${basedesc}</div>
+    <div class="BaseDesc"><span class="txt-red">*</span>志愿者姓名：</div>
+    <div class="BaseInput"><input type="text" need="1" lvs_bind="workername" placeholder="请输入申请志愿者的姓名" /></div>
+    <div class="BaseDesc"><span class="txt-red">*</span>志愿者年龄：</div>
+    <div class="BaseInput"><input type="number" need="1" lvs_bind="yearold" value="20" /></div>
+    <div class="BaseDesc"><span class="txt-red">*</span>联系号码：</div>
+    <div class="BaseInput"><input type="text" need="1" lvs_bind="mobile" placeholder="请输入手机号码便于联系" /></div>
+    {{if edulevel}}
+    <div class="BaseDesc">学历：</div>
+    <div class="BaseInput"><input type="text" lvs_bind="edulevel" placeholder="请输入您的学历" /></div>
+    {{/if}}
+    {{if hobby}}
+    <div class="BaseDesc">兴趣爱好：</div>
+    <div class="BaseInput"><input type="text" lvs_bind="hobby" placeholder="请输入您的兴趣爱好" /></div>
+    {{/if}}
+    {{if comefrom}}
+    <div class="BaseDesc"><span class="txt-red">*</span>当前职业：</div>
+    <div class="BaseInput"><input type="text" need="1" lvs_bind="comefrom" placeholder="请输入当前从事的职业" /></div>
+    {{/if}}
+    <div class="BaseDesc"><a class="button bg-green FormOk">确定申请</a><a class="button bg-grey FormCancel">取消操作</a></div>
+</body>
+</html>

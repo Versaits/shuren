@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_lesn_lesngrpblog" lvs_jqexec="lvs_lesn_grpblog">
+        {{if grpreses.length == 0}}
+            <div class="NullPanel"><div class="NullTips">该阶段任务尚无提交内容，不能进行交流</div></div>
+        {{/if}}
+        {{each(r,resdata) grpreses}}
+        <div class="BaseList" idxid="${resdata.id}">
+            <div class="flexbox">
+                <img class="TinyUserHead" src="${resdata.crtimg}" />
+                <div class="flex1">
+                    <div class="GrpBlogHead"><span class="AuthorName">${resdata.crtname}@${resdata.groupname}</span>：<span class="float-right txt-grey">${resdata.time}{{if resdata.status=="评审"}}<span class="txt-red">添加批改</span>{{else}}<span class="txt-red">新增反馈</span>{{/if}}</span></div>
+                    <div class="GrpBlogBody">
+                        {{if resdata.stepid>0}}<div>${resdata.stepname}</div>{{/if}}
+                        {{if resdata.chkres != ""}}
+                        ${resdata.tchname}<span class="txt-red">批改：</span><span title="{{if resdata.check}}{{if resdata.check.cates}}{{each(c,ctdata) resdata.check.cates}}${ctdata.name}(${ctdata.rate}%)：${ctdata.score}分；{{/each}}{{/if}}{{if resdata.check.chkmark!=''}}评语：${resdata.check.chkmark}{{/if}}{{/if}}">{{if resdata.check}}${resdata.check.score}{{else}}${resdata.chkres}{{/if}}</span>
+                        {{/if}}
+                        {{if resdata.resdesc}}<div class="htmlformat">${resdata.resdesc}</div>{{/if}}
+                        {{if resdata.resfile}}<div><a href="${resdata.fileurl}" download="${resdata.resfile}">下载${resdata.resfile}</a></div>{{/if}}
+                        {{if resdata.resprog}}<div>反馈进展：${resdata.resprog}%</div>{{/if}}
+                    </div>
+                    <div class="GrpBlogFoot"><a lvs_elm="GrpresBlog" idxid="${resdata.id}" blogid="${resdata.blogid}" lesnid="${id}">讨论{{if resdata.commnum>0}}(${resdata.commnum}){{/if}}</a></div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_theme_taskcheck" lvs_jqexec="lvs_task_check">
+        <div style="height:500px;overflow:auto">
+        <table border="1" width="100%">
+            <thead><td>学员：${studname}</td><td>提交时间：${time}</td><td>成绩：{{if ansscore}}{{if ansscore==1}}A{{else ansscore==2}}B{{else ansscore==3}}C{{else ansscore==4}}驳回{{else}}${ansscore}{{/if}}{{/if}}</td></thead>
+            {{each(t,tskdata) tasks}}
+                {{if t==0}}{{if tskdata.checkmark!=""}}<tr><td colspan="4">导师评语：${tskdata.checkmark}</td></tr>{{/if}}{{/if}}
+                <tr><td colspan="4" style="background-color:#F2F2F2">作业${t+1}</td></tr>
+                <tr><td colspan="4">
+                    <div>
+                        {{if tskdata.tasktype=='Plan'&&tskdata.taskitem}}
+                            {{if tskdata.taskitem.elements[0].type=='task'}}<div  class="htmlformat">${tskdata.taskitem.elements[0].taskdesc}</div>
+                            {{else tskdata.taskitem.elements[0].type=='answer'}}<div><component name="cn.theme.answerinpshow" basedata="tasks[${t}].taskitem.elements[0]" data-pageid="${pageid}" data-noanswer="1"></component></div>
+                            {{else tskdata.taskitem.elements[0].type=='sigsel'}}<div><component name="cn.theme.sigselshow" basedata="tasks[${t}].taskitem.elements[0]" data-pageid="${pageid}" data-noanswer="1"></component></div>
+                            {{/if}}
+                        {{else tskdata.taskitem}}
+                            <component name="cn.theme.baseshow" basedata="tasks[${t}].taskitem"></component>
+                        {{else}}
+                            <div class="htmlformat">${tskdata.ansdesc}</div>
+                        {{/if}}
+                    </div>
+                </td></tr>
+            {{/each}}
+        </table>
+        </div>
+        {{if tasks.length<0}}
+            {{if tasks[0].status=='提交'}}
+                <div class="BaseDesc">设置作业评分</div><div class="flexbox SelBox" lvs_bind="TaskScore"><div class="flex1 Selecting" idxid="1">A</div><div class="flex1 Selecting" idxid="2">B</div><div class="flex1 Selecting" idxid="3">C</div><div class="flex1 Selecting" idxid="4">驳回</div></div>
+            <a class="FormOk button bg-green">确定设置</a>
+            {{/if}}
+        {{/if}}
+        <a class="FormCancel button bg-grey">取消操作</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_blog_blogbase" lvs_jqexec="lvs_blog_base">
+        <div class="Title"><span class="PreTitle">.</span>${title}<span class="float-right"></div>
+        <div class="MaskTitle">
+            <div>
+                ${bloguser.name}于${created_at}发布
+                <span class="float-right">
+                    <component name="cn.button.grant" class="ShowTag" data-granttype="blog" data-grantid="${id}" data-grantnum="${grant_count}" data-width="18px"></component>
+                    <span class="ShowTag" lvs_ref="dialog.Comment" idxid="${userid}"><img width="18px" height="18px" src="../Image/comment.png" style="vertical-align:middle;margin-right:2px"/>${comments_count}讨论</span>
+                    <span class="ShowTag" lvs_ref="{{if issaved}}dialog.UnfavorBlog{{else}}dialog.FavorBlog{{/if}}" idxid="${userid}"><img width="18px" height="18px" src="{{if issaved}}../Image/favered.png{{else}}../Image/faver.png{{/if}}" style="vertical-align:middle;margin-right:2px"/>${save_count}收藏</span>
+                    <span class="ShowTag" lvs_ref="{{if isfolo}}dialog.UnfoloBlog{{else}}dialog.FoloBlog{{/if}}" idxid="${userid}"><img width="18px" height="18px" src="{{if isfolo}}../Image/foloed.png{{else}}../Image/folo.png{{/if}}" style="vertical-align:middle;margin-right:2px"/>${folo_count}关注</span>
+                </span>
+            </div>
+            <div>
+                标签：{{each(t,tagdata) tags}}<div class="TagItem">${tagdata}</div>{{/each}}
+            </div>
+        </div>
+        <div class="BlogBaseText">
+            <div class="htmlformat">${text}</div>
+        </div>
+        {{if images}}
+        <div class="BlogImageList">
+            <component name="cn.list.imggrid" basedata="images"></component>
+        </div>
+        {{/if}}
+        <div style="margin-top:24px">
+            <div class="Title"><span class="PreTitle">.</span>讨论区<span class="float-right"></div>
+            {{if comments_count==0}}
+            <div class="NullPanel">
+                <img class="NullTips" src="../Image/fedu/nulltip.png"/>
+                <div class="NullText" style="margin-top:34px">当前还没有人参与讨论，<a lvs_ref="dialog.Comment" idxid="${id}">我要参与讨论</a></div>
+            </div>
+            {{/if}}
+            {{each(c,comdata) comments}}
+            <div class="ListItem">
+                <div class="ListUser"><a lvs_ref="dialog.ShowUser">${comdata.user.name}</a></div>
+                <div class="ListTitle">${comdata.text}</div>
+                {{if comdata.pics}}
+                <div style="width:90%;margin-left:5%"><component name="cn.list.imggrid" basedata="images:comments[${c}].pics"></component></div>
+                {{/if}}
+                <div class="ListDesc txt-grey" style="text-align:right">${comdata.created_at}</div>
+            </div>
+            {{/each}}
+        </div>
+        <div class="BaseForm" id="CommentForm" style="display:none" title="讨论内容">
+            <div class="BaseDesc"><span class="txt-red">*</span>参与讨论的内容：</div>
+            <div class="BaseInput"><textarea lvs_bind="comment" encode="url" placeholder="请输入参与讨论的内容"></textarea></div>
+            <div class="BaseDesc">需要上传的图片：</div>
+            <div class="BaseInput"><div class="PicFile AddPics" lvs_bind="piclist"></div></div>
+            <div class="BaseDesc"><a class="FormOk wsbutton bg-wsblue" apiname="statuses/comment_add" idxkey2="blogid" idxkey="userid" idxid="${id}" retmode="router.blog">确定发表</a><a class="FormCancel wsbutton bg-wsgrey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="FavorBlogForm" style="display:none" title="收藏主题">
+            <div class="BaseDesc">收藏该内容后将可以在“我的收藏”中找到该内容</div>
+            <div class="BaseDesc">收藏夹名称：</div>
+            <div class="BaseInput"><input type="text" lvs_bind="favname" placeholder="请输入收藏夹名称以助于整理"/></div>
+            <div class="BaseDesc"><a class="FormOk wsbutton bg-wsblue" apiname="statuses/blog_set" idxkey2="blogid"  idxkey="userid" idxid="${id}" opetype="Favor" retmode="router.blog">确定收藏</a><a class="FormCancel wsbutton bg-wsgrey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="FoloBlogForm" style="display:none" title="关注主题">
+            <div class="BaseDesc">关注该内容后该主题讨论内容将发送消息到绑定的微信</div>
+            <div class="BaseDesc"><a class="FormOk wsbutton bg-wsblue" apiname="statuses/blog_set" idxkey2="blogid" idxkey="userid" idxid="${id}" opetype="Folo" retmode="router.blog">确定关注</a><a class="FormCancel wsbutton bg-wsgrey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="UnfavorBlogForm" style="display:none" title="取消收藏主题">
+            <div class="BaseDesc">确认要取消收藏该主题？</div>
+            <div class="BaseDesc"><a class="FormOk wsbutton bg-wsblue" apiname="statuses/blog_set" idxkey2="blogid" idxkey="userid" idxid="${id}" opetype="Unfavor"  retmode="router.blog">确认操作</a><a class="FormCancel wsbutton bg-wsgrey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="UnfoloBlogForm" style="display:none" title="取消关注主题">
+            <div class="BaseDesc">确认要取消关注该主题</div>
+            <div class="BaseDesc"><a class="FormOk wsbutton bg-wsblue" apiname="statuses/blog_set" idxkey2="blogid" idxkey="userid" idxid="${id}" opetype="Unfolo"  retmode="router.blog">确认操作</a><a class="FormCancel wsbutton bg-wsgrey">取消操作</a></div>
+        </div>
+    </div>
+</body>
+</html>

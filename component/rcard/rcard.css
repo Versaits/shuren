@@ -1,0 +1,411 @@
+﻿@keyframes clubflying
+{
+    0%{left:50%;top:500px;width:100px;opacity: 0.0;filter: alpha(opacity=0);transform:rotate(-0.2turn);}
+    100%{left:0;top:0;width:40%;height:320px;opacity: 1;filter: alpha(opacity=100);transform:rotate(0);}
+}
+@keyframes teamflying
+{
+    0%{right:50%;top:500px;width:100px;opacity: 0.0;filter: alpha(opacity=0);transform:rotate(0.2turn);}
+    100%{right:0;top:0;width:45%;opacity: 1;filter: alpha(opacity=100);transform:rotate(0);}
+}
+@keyframes membflying
+{
+    0%{left:50%;bottom:500px;width:100px;opacity: 0.0;filter: alpha(opacity=0);transform:rotate(-0.2turn);}
+    100%{left:0;bottom:0;width:60%;opacity: 1;filter: alpha(opacity=100);transform:rotate(0);}
+}
+@keyframes cardflying
+{
+    0%{right:50%;bottom:500px;width:100px;opacity: 0.0;filter: alpha(opacity=0);transform:rotate(-0.2turn);}
+    100%{right:0;bottom:0;width:45%;opacity: 1;filter: alpha(opacity=100);transform:rotate(0);}
+}
+@keyframes shirtflying
+{
+    0%{left:50%;bottom:500px;width:100px;opacity: 0.0;filter: alpha(opacity=0);transform:rotate(-0.2turn);}
+    100%{left:0;bottom:50px;width:16px;opacity: 1;filter: alpha(opacity=100);transform:rotate(0);}
+}
+@keyframes titleheadflying
+{
+    0%{left:0;top:0;width:100%;border-radius:0;transform:rotate(1.0turn);}
+    100%{left:10%;top:36px;width:90px;height:90px;border-radius:99px;border:White 3px solid;transform:rotate(0);}
+}
+@keyframes titleboxing
+{
+    0%{width:96%;margin-left:2%}
+    100%{width:96%;margin-left:2%;height:140px;}
+}
+
+
+@keyframes wordflying
+{
+    0%{left:10%;bottom:100px;opacity:0.0;filter:alpha(opacity=0);font-size:12px}
+    30%{left:20%;bottom:400px;opacity:1;filter:alpha(opacity=1);font-size:20px;font-weight:normal}
+    45%{left:20%;bottom:360px;opacity:0.8;filter:alpha(opacity=0.8);font-size:18px;font-weight:bold}
+    100%{left:10px;bottom:0;opacity:0.0;filter:alpha(opacity=0);font-size:10px}
+}
+@keyframes wordrightflying
+{
+    0%{left:40%;bottom:100px;opacity:0.0;filter:alpha(opacity=0);font-size:12px}
+    30%{left:20%;bottom:400px;opacity:1;filter:alpha(opacity=1);font-size:22px;font-weight:normal}
+    45%{left:20%;bottom:360px;opacity:0.8;filter:alpha(opacity=0.8);font-size:20px;font-weight:bold}
+    100%{left:80%;bottom:0;opacity:0.0;filter:alpha(opacity=0);font-size:10px}
+}
+@keyframes wordflyingtop
+{
+    0%{position:absolute;left:4%;top:45%;opacity:1;filter:alpha(opacity=1)}
+    100%{left:70%;top:0;opacity:0.0;filter:alpha(opacity=0);font-size:10px}
+}
+@keyframes delayshow
+{
+    0%{opacity: 0.0;filter: alpha(opacity=0);}
+    100%{opacity: 1;filter: alpha(opacity=100);}
+}
+
+.RCardBox
+{
+    width:100%;
+    overflow:hidden;
+    background-position:center center;
+    background-size:100%;
+    background-repeat:no-repeat;
+}
+.RCardBox .MainImg
+{
+    position:absolute;
+    z-index:0;
+}
+.RCardBox .ClubInfo
+{
+    background-position:top left;
+    background-size:100%;
+    background-repeat:no-repeat;
+    background-image:url('../../Image/rcard/clubback.png');
+    z-index:1;
+}
+.RCardBox .ClubAnimate
+{
+    opacity: 0.0;
+    filter: alpha(opacity=0);
+    animation-name:clubflying;
+    animation-duration:1.5s;
+    animation-iteration-count: 1;
+    animation-delay:1s;
+    animation-timing-function:ease;
+    animation-fill-mode: forwards;
+}
+.RCardBox .ClubInfo .ClubName
+{
+    font-size:13px;
+    color:White;
+    letter-spacing:1.2px;
+    text-align:center;
+    padding:8px 0;
+}
+.RCardBox .TeamInfo
+{
+    width:55%;
+    background-image:linear-gradient(180deg, #0f014b 0%, #2305a6 100%);
+    text-align:center;
+    padding:12px;
+    font-size:18px;
+    color:White;
+    letter-spacing:1.0px;
+    text-shadow:0 0 8px #fed497;
+    border-radius:0 0 0 18px;
+    z-index:2;
+}
+.RCardBox .TeamAnimate
+{
+    opacity: 0.0;
+    filter: alpha(opacity=0);
+    animation-name:teamflying;
+    animation-duration:2.0s;
+    animation-iteration-count: 1;
+    animation-delay:1.2s;
+    animation-timing-function:ease;
+    animation-fill-mode: forwards;
+}
+.RCardBox .ShirtInfo
+{
+    width:16px;
+    text-align:center;
+    border-radius:0 12px 12px 0;
+    overflow:hidden;
+    z-index:10;
+    color:#e0e0e0;
+    text-shadow:0 0 5px #fea487;
+}
+.RCardBox .ShirtAnimate
+{
+    opacity: 0.0;
+    filter: alpha(opacity=0);
+    animation-name:shirtflying;
+    animation-duration:1.2s;
+    animation-iteration-count: 1;
+    animation-delay:1.5s;
+    animation-timing-function:ease;
+    animation-fill-mode: forwards;
+}
+.RCardBox .MembInfo
+{
+    background-image:linear-gradient(0deg, #0344a4 0%, #2a76e9 100%);
+    border-radius:0 24px 0 0;
+    padding:24px 0 10px 0;
+    z-index:3;
+}
+.RCardBox .MembAnimate
+{
+    opacity: 0.0;
+    filter: alpha(opacity=0);
+    animation-name:membflying;
+    animation-duration:1.5s;
+    animation-iteration-count: 1;
+    animation-delay:1.5s;
+    animation-timing-function:ease;
+    animation-fill-mode: forwards;
+}
+.RCardBox .MembInfo .MembName
+{
+    font-size:20px;
+    color:White;
+    text-align:center;
+}
+.RCardBox .MembInfo .MembBigname
+{
+    font-size:20px;
+    font-weight:bold;
+    color:#fccd69;
+    text-align:center;
+    text-shadow:5px 5px 8px #cadafa;
+}
+.RCardBox .MembInfo .MembLesnNum
+{
+    height:8px;
+    border-radius:0 3px 3px 0;
+    background-image:linear-gradient( 90deg, #d7f7d1 0%, #3be21a 100%);
+}
+.RCardBox .MembInfo .MembMatchNum
+{
+    height:8px;
+    border-radius:0 3px 3px 0;
+    background-image:linear-gradient( 90deg, #fae8d0 0%, #f3ac51 100%);
+}
+.RCardBox .MembInfo .MembHonorNum
+{
+    height:8px;
+    border-radius:0 3px 3px 0;
+    background-image:linear-gradient( 90deg, #d1f4fb 0%, #54d0ea 100%);
+}
+.RCardBox .CardInfo
+{
+    background-image:url('../../Image/rcard/cardback.png');
+    background-position:right top;
+    background-repeat:no-repeat;
+    background-size:100%;
+    z-index:4;
+}
+.RCardBox .CardAnimate
+{
+    opacity: 0.0;
+    filter: alpha(opacity=0);
+    animation-name:cardflying;
+    animation-duration:2.5s;
+    animation-iteration-count: 1;
+    animation-delay:1.6s;
+    animation-timing-function:ease;
+    animation-fill-mode: forwards;
+}
+.RCardBox .CardInfo .CardVal
+{
+    text-align:center;
+    font-size:32px;
+    color:White;
+    padding-top:30px;
+}
+.RCardBox .CardInfo .CardLitval
+{
+    height:10px;
+    width:70%;
+    margin-left:18%;
+    border-radius:99px;
+    overflow:hidden;
+}
+
+.RCardBox .CardInfo .LesnVal
+{
+    background-image:linear-gradient( 180deg, #019516 0%, #bbfcc4 10%, #50cc62 60%, #05a41b 100%);
+    height:8px;
+}
+.RCardBox .CardInfo .MatchVal
+{
+    background-image:linear-gradient( 180deg, #d8800d 0%, #f9dcb7 10%, #e0a65b 60%, #c37107 100%);
+    height:8px;
+}
+.RCardBox .CardInfo .HonorVal
+{
+    background-image:linear-gradient( 180deg, #11cfd1 0%, #b0eeef 10%, #2aced0 60%, #08989a 100%);
+    height:8px;
+}
+.RCardBox .CardDelay
+{
+    opacity: 0.0;
+    filter: alpha(opacity=0);
+    animation-name:delayshow;
+    animation-duration:3s;
+    animation-iteration-count: 1;
+    animation-delay:10.2s;
+    animation-timing-function:ease;
+    animation-fill-mode: forwards;
+}
+.RCardBox .MembDelay
+{
+    opacity: 0.0;
+    filter: alpha(opacity=0);
+    animation-name:delayshow;
+    animation-duration:3s;
+    animation-iteration-count: 1;
+    animation-delay:9.2s;
+    animation-timing-function:ease;
+    animation-fill-mode: forwards;
+}
+.RCardBox .FlyWord
+{
+    color:White;
+    letter-spacing:1.1px;
+    position:absolute;
+    bottom:-20px;
+    left:0;
+    animation-name:wordflying;
+    animation-duration:5s;
+    animation-iteration-count: 1;
+    animation-delay:4.8s;
+    animation-timing-function:ease;
+    animation-fill-mode: forwards;
+}
+.RCardBox .FlyRightWord
+{
+    color:#fbf0b6;
+    letter-spacing:1.1px;
+    position:absolute;
+    bottom:-20px;
+    left:0;
+    animation-name:wordrightflying;
+    animation-duration:6s;
+    animation-iteration-count: 1;
+    animation-delay:4.8s;
+    animation-timing-function:ease;
+    animation-fill-mode: forwards;
+}
+
+.BaseInfoBox
+{
+    border:White 2px solid;
+    border-radius:5px;
+    background-image:linear-gradient(45deg, #e4f0fe 0%, #cde2fa 50%, #edf5fd 100%);
+    text-align:center;
+    font-size:15px;
+}
+.BaseInfoBox .BaseInfoTitle
+{
+    padding:8px 0;
+    color:#4a4a6a;
+}
+.BaseInfoBox .BaseInfoDesc
+{
+    padding:6px 0;
+    color:#6a6a7a;
+    font-size:13px;
+}
+.MembTitle
+{
+    padding:6px 0;
+    text-align:center;
+    font-size:16px;
+    letter-spacing:1px;
+    color:#4a4a6a;
+    
+}
+.MembLitTitle
+{
+    padding:6px;
+    font-size:15px;
+    color:#6a6a7a;
+    text-align:left;
+    width:92%;
+    margin-left:4%;
+    border-bottom:#dadada 1px solid;
+}
+.MembLitDesc
+{
+    padding:6px;
+    font-size:12px;
+    color:#9a9a9a;
+    text-align:left;
+    width:92%;
+    margin-left:4%;
+}
+.MembMainImg
+{
+    position:absolute;
+    animation-name:titleheadflying;
+    animation-duration:2.2s;
+    animation-iteration-count: 1;
+    animation-delay:0.8s;
+    animation-timing-function:ease;
+    animation-fill-mode: forwards;
+}
+.MembInfoBox
+{
+    padding-top:12px;
+    background-color:#edfdf0;
+}
+.MembHeadBox
+{
+    border-radius:8px;
+    border:White 2px solid;
+    background-image:url('../../Image/club/membak.png');
+    background-position:center top;
+    background-repeat:no-repeat;
+    background-size:100%;
+    animation-name:titleboxing;
+    animation-duration:1.2s;
+    animation-iteration-count: 1;
+    animation-delay:1.0s;
+    animation-timing-function:ease;
+    animation-fill-mode: forwards;
+}
+.WordFlytop
+{
+    position:absolute;
+    left:4%;
+    width:92%;
+    animation-name:wordflyingtop;
+    animation-duration:1.6s;
+    animation-iteration-count: 1;
+    animation-delay:1.8s;
+    animation-timing-function:ease;
+    animation-fill-mode: forwards;
+}
+.HeadDelayShow
+{
+    opacity: 0.0;
+    filter: alpha(opacity=0);
+    animation-name:delayshow;
+    animation-duration:1.5s;
+    animation-iteration-count: 1;
+    animation-delay:5s;
+    animation-timing-function:ease;
+    animation-fill-mode: forwards;
+}
+.MembHeadBox .TitleNum
+{
+    font-size:22px;
+    font-weight:bold;
+    color:#6a6a6a;
+}
+.MembHeadBox .MembBigname
+{
+    font-size:2.0em;
+    font-weight:bold;
+    color:#fccd69;
+    text-shadow:2px 2px 5px #8a9aaf;
+}

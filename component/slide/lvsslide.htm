@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="LvsSlide" lvs_jqexec="lvsslide">
+        <div class="SlideBack" style="background-image:url('{{if slides.length>1}}${slides[1].image}{{/if}}')">
+            {{each(s,slddata) slides}}
+            <div class="SlideItem {{if s==0}}SlideItemAct{{/if}}" slideidx="${s}" {{if s>0}}style="display:none"{{/if}}>
+                <img width="100%" src="${slddata.image}" {{if slddata.url!=''}}lvs_ref="${slddata.url}"{{/if}}/>
+                {{if slddata.title!=''}}
+                <div class="SlideTitle textwrap">
+                    <div class="SlideText">${slddata.title}
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+            {{/each}}
+        </div>
+        <div class="SlideDotBox flexbox">
+            {{each(d,dotdata) slides}}
+            <div class="flex1"><div class="SlideDot SlideDot${d} {{if d==0}}SlideAct{{/if}}" idxid="${d}"></div></div>
+            {{/each}}
+        </div>
+    </div>
+</body>
+</html>

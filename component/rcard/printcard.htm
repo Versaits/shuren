@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_rcard_printcard">
+        <div class="RCardBox" style="width:1080px;height:1720px;position:relative;overflow:hidden">
+            <div style="position:absolute;left:${img.left};top:${img.top};width:${img.width};z-index:1">
+                <img width="100%" src="${image}" />
+            </div>
+            <div class="ClubInfo" style="position:absolute;left:0;top:0;width:432px;height:518px">
+                <div class="ClubName" style="font-size:220%">${clubname}</div>
+                <img width="30%" class="ClubLogo" style="margin-left:20%" src="${clublogo}" />
+            </div>
+            <div class="TeamInfo" style="position:absolute;right:0;top:0;">
+                {{each(s,stardata) stars}}
+                    <img width="10px" height="10px" style="margin-left:3px" src="../../Image/star_1.png" />
+                {{/each}}
+                <div class="TeamName" style="font-size:220%">${teamname}</div>
+            </div>
+            <div class="MembInfo" style="position:absolute;left:0;bottom:0;width:60%">
+                <div class="MembName" style="font-size:220%">${baseno}<span style="font-size:24px">号</span><span class="MembBigname" style="font-size:150%">${name}</span></div>
+                <div>
+                    <div style="width:${lesnnum*100/3000}%"><div class="MembLesnNum"></div></div>
+                    <div style="width:${matchnum*100/1000}%"><div class="MembMatchNum"></div></div>
+                    <div style="width:${honornum}%"><div class="MembHonorNum"></div></div>
+                </div>
+            </div>
+            <div class="ShirtInfo" style="position:absolute;left:0;bottom:100px;width:45px">
+                {{each(t,shtdata) shirts}}<div style="background-color:${shtdata.name}"><span style="font-size:smaller;color:White;height:${600/shirts.length}px;line-height:${600/shirts.length}px;">${shtdata.id}</span></div>{{/each}}
+            </div>
+            <div class="CardInfo" style="position:absolute;right:0;bottom:0;width:540px;height:216px">
+                <div class="CardVal" style="font-size:220%">${curval}</div>
+                <div class="flexbox CardLitval">
+                    <div style="width:${lesnval*100/curval}%" class="LesnVal"></div>
+                    <div style="width:${matchval*100/curval}%" class="MatchVal"></div>
+                    <div style="width:${honorval*100/curval}%" class="HonorVal"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,194 @@
+﻿.SetPanel
+{
+    font-size:14px;
+    line-height:280%;
+    color:#4A4A4A;
+}
+.SetPanel input
+{
+    width:180px;
+    border:#dadada 1px solid;
+    border-radius:3px;
+    font-size:14px; 
+    height:28px; 
+}
+
+.SetPanel input[type='radio']
+{    
+    width:30px;
+    margin-left:8%;
+    font-size:12px;
+    height:20px;
+    vertical-align:middle;    
+}
+
+.TypeTab
+{
+    align-items: center;   
+    width:247px;
+    margin-top: 10px;
+    margin-bottom:10px;
+}
+.TypeTab .TypeItem
+{
+    
+    font-size:12px;    
+    border:#dadada 1px solid;
+    border-radius:3px;
+    vertical-align: middle;   
+    width:80px;
+    text-align: center;  
+}
+.TypeTab .active
+{
+    background-color:#1a73e8;
+    font-weight:bold;
+}
+
+.SeleRow
+{
+    width: 100%;    
+    align-items: center;  
+    line-height:280%;  
+}
+
+.SeleRow .InputItem
+{
+    width:40%;    
+    border:#dadada 1px solid;
+    border-radius:3px;
+    font-size:14px; 
+    height:28px;
+    vertical-align: middle;  
+
+}
+
+.SelItem
+{
+    border:#dadada 1px solid;
+    border-radius:3px;
+    font-size:14px; 
+    height:32px;   
+    align-items: center;
+    
+}
+
+.CheckBtnRow
+{  
+    align-items: center;   
+    width:247px;
+    margin-top: 10px;
+    margin-bottom:10px;
+}
+.CheckBtnRow .BtnItem
+{
+    
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    font-size: 14px;
+    padding: 0 15px;
+    height: 30px;
+    text-align: center;
+    cursor: pointer;    
+    border-radius:3px;
+}
+.CheckBtnRow .SingleBtn
+{
+    
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    font-size: 14px;
+    padding: 0 15px;
+    height: 30px;
+    text-align: center;
+    cursor: pointer;    
+    border-radius:3px;
+}
+
+.CheckBtnRow .active
+{
+    background-color:#1a73e8;
+
+}
+.CheckBtnRow .i-icon {
+    display: inline-block;
+    color: inherit;
+    font-style: normal;
+    line-height: 0;
+    text-align: center;
+    text-transform: none;
+    vertical-align: middle;   
+}
+
+.ColorBtnRow
+{
+    align-items: center;   
+    width:85%;
+    margin-top: 10px;
+}
+.ColorBtnRow input
+{
+    width:30px;
+    height:15px;
+    margin-top:40%
+   
+}
+.ColorBtnRow .ColorBtnRow
+{
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    font-size: 8px;
+    padding: 0 15px;
+    height: 32px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.off{
+   display: inline-block;
+   padding: 3px;
+   text-align: left;
+    padding-left: 35px;
+ }
+  .on{
+ display: none;
+  padding:3px;
+  text-align: left;
+ padding-left: 5px;       
+   }
+
+.elecontainer {
+    display: table;
+    }
+.elerow {
+    display: table-row;
+   
+    }
+    
+.cell-left {
+    display: table-cell;
+    width: 35%;
+    height: 30px;
+    overflow:hidden;
+    }   
+.cell-right {
+        display: table-cell;
+        width: 65%;
+        height: 30px;
+        border:1 solid blue;
+        
+        overflow:hidden;
+        }  
+
+.pic
+{
+        width:247px;
+        height:139px;
+        border:#4A4A4A 1px dotted;
+        overflow:hidden; 
+        margin-top:10px;
+        text-align:center;
+        vertical-align:middle; 
+        line-height: 139px;
+        font-size: 28px;
+}

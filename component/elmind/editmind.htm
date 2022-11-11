@@ -1,0 +1,269 @@
+﻿<!DOCTYPE html PUBli class="mindli"C "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+<div lvs_component="cn_elmind_elmind" lvs_jqexec="lvseditmind">
+  
+    <div class="mind_container" style="border:solid 1px red">
+        <div class="mind_toolbar" style="border:solid 1px green">
+           
+          <!------  <span class="mind_outline" title="新建" id="openempty">
+                <span class="mind_toolbar_icon">
+                    <img class="mind_icon_source"  src="./icon/e_icon_arrow.png" style="" />
+                </span>
+            </span>------>
+            
+            <span class="mind_outline" title="插入同级主题" id="addbrother">
+                <span class="mind_toolbar_icon">
+                    <img class="mind_icon_source"  src="../../component/icon/el_icon_addbrother.png" style="" />
+                </span>
+            </span>
+            <span class="mind_outline" title="插入下级主题" id="addchild">
+                <span class="mind_toolbar_icon">
+                    <img class="mind_icon_source"  src="../../component/icon/el_icon_addchild.png" style="" />
+                </span>
+            </span>
+             <span class="mind_outline" title="删除" id="removenode">
+                <span class="mind_toolbar_icon">
+                    <img class="mind_icon_source"  src="../../component/icon/el_icon_remove.png" style="" />
+                </span>
+            </span>
+            <span class="mind_outline" title="上移" id="moveup">
+                <span class="mind_toolbar_icon">
+                    <img class="mind_icon_source"  src="../../component/icon/el_icon_up.png" style="" />
+                </span>
+            </span>
+            <span class="mind_outline" title="下移" id="movedown">
+                <span class="mind_toolbar_icon">
+                    <img class="mind_icon_source"  src="../../component/icon/el_icon_down.png" style="" />
+                </span>
+            </span>
+            <span class="mind_outline" title="移到顶部" id="movetofirst">
+                <span class="mind_toolbar_icon">
+                    <img class="mind_icon_source"  src="../../component/icon/el_icon_top.png" style="" />
+                </span>
+            </span>
+            <span class="mind_outline" title="移到底部" id="movetolast">
+                <span class="mind_toolbar_icon">
+                    <img class="mind_icon_source"  src="../../component/icon/el_icon_bottom.png" style="" />
+                </span>
+            </span>
+          
+            <span class="mind_outline" title="大小" id="changesize">
+                <span class="mind_toolbar_icon">
+                    <img class="mind_icon_source"  src="../../component/icon/el_icon_fontsize.png" style="" />
+                </span>
+            </span>
+            <span class="mind_outline" title="字体颜色" id="changetextcolor">
+                <span class="mind_toolbar_icon">
+                    <img class="mind_icon_source"  src="../../component/icon/el_icon_textcolor.png" style="" />
+                </span>
+            </span>
+      <span class="mind_outline" title="背景颜色" id="changebgcolor">
+                <span class="mind_toolbar_icon">
+                    <img class="mind_icon_source"  src="../../component/icon/el_icon_bgcolor.png" style="" />
+                </span>
+            </span>
+            <span class="mind_outline" title="粗体" id="Span5">
+                <span class="mind_toolbar_icon">
+                    <img class="mind_icon_source"  src="../../component/icon/el_icon_weight.png" style="" />
+                </span>
+            </span>
+            <span class="mind_outline" title="斜体" id="Span6">
+                <span class="mind_toolbar_icon">
+                    <img class="mind_icon_source"  src="../../component/icon/el_icon_Italics.png" style="" />
+                </span>
+            </span>
+         
+             <span class="mind_outline" title="展开" id="expandall">
+                <span class="mind_toolbar_icon">
+                    <img class="mind_icon_source"  src="../../component/icon/el_icon_expand.png" style="" />
+                </span>
+            </span>
+             <span class="mind_outline" title="收起" id="collapseall">
+                <span class="mind_toolbar_icon">
+                    <img class="mind_icon_source"  src="../../component/icon/el_icon_collapse.png" style="" />
+                </span>
+            </span>
+             <span class="mind_outline" title="放大" id="zoomIn">
+                <span class="mind_toolbar_icon">
+                    <img class="mind_icon_source"  src="../../component/icon/el_icon_zoomIn.png" style="" />
+                </span>
+            </span>
+             <span class="mind_outline" title="缩小" id="zoomOut">
+                <span class="mind_toolbar_icon">
+                    <img class="mind_icon_source"  src="../../component/icon/el_icon_zoomOut.png" style="" />
+                </span>
+            </span>
+    <!------     <span class="mind_outline" title="导出数据" id="getnodearray">
+                <span class="mind_toolbar_icon">
+                    <img class="mind_icon_source"  src="./icon/el_icon_upload.png" style="" />
+                </span>
+            </span>------->
+        </div>
+        <div id="jsmindedit_container${id}" class="jsmind_container"></div>
+        <div style="display:none">
+            <input class="file" type="file" id="image-chooser" accept="image/*"/>
+        </div>
+       
+        <div class="mind_menu" id="fonttype" style="display:none;width:150px;z-index: 9999;">
+            <div class="mind_menu_item" >
+                <div class="mind_inline_block mind_menu_item_left" style=""></div>
+                <div class="mind_inline_block mind_menu_item_right">
+                    <span class="fonttypeItem" style="font-family: SimSun;" fontname="SimSun" >宋体</span>
+                </div>
+            </div>
+            <div class="mind_menu_item">
+                <div class="mind_inline_block mind_menu_item_left" style=""></div>
+                <div class="mind_inline_block mind_menu_item_right">
+                    <span class="fonttypeItem" style="font-family: FangSong_GB2312;"fontname="FangSong_GB2312">仿宋</span>
+                </div>
+            </div>
+             <div class="mind_menu_item">
+                <div class="mind_inline_block mind_menu_item_left" style=""></div>
+                <div class="mind_inline_block mind_menu_item_right">
+                    <span class="fonttypeItem" style="font-family: Microsoft YaHei;" fontname="Microsoft YaHei" >微软雅黑</span>
+                </div>
+            </div>
+            <div class="mind_menu_item">
+                <div class="mind_inline_block mind_menu_item_left" style=""></div>
+                <div class="mind_inline_block mind_menu_item_right">
+                    <span class="fonttypeItem" style="font-family: SimHei;"fontname="SimHei">黑体</span>
+                </div>
+            </div>
+             <div class="mind_menu_item">
+                <div class="mind_inline_block mind_menu_item_left" style=""></div>
+                <div class="mind_inline_block mind_menu_item_right">
+                    <span class="fonttypeItem" style="font-family: KaiTi_GB2312;"fontname="KaiTi_GB2312">楷体</span>
+                </div>
+            </div>
+            <div class="mind_menu_item">
+                <div class="mind_inline_block mind_menu_item_left" style=""></div>
+                <div class="mind_inline_block mind_menu_item_right">
+                    <span class="fonttypeItem" style="font-family: Arial;" fontname="Arial">Arial</span>
+                </div>
+            </div>
+            <div class="mind_menu_item">
+                <div class="mind_inline_block mind_menu_item_left" style=""></div>
+                <div class="mind_inline_block mind_menu_item_right">
+                    <span class="fonttypeItem" style="font-family: Arial Black;" fontname="Arial Black">Arial Black</span>
+                </div>
+            </div>
+         </div>
+         <div class="mind_menu" id="fontsize" style="display:none;width:150px;z-index: 9999;">
+            <div class="mind_menu_item" >
+                <div class="mind_inline_block mind_menu_item_left" style=""></div>
+                <div class="mind_inline_block mind_menu_item_right">
+                    <span class="fontsizeItem" style="font-size: 10px;" fontsize="10">10</span>
+                </div>
+            </div>
+            <div class="mind_menu_item">
+                <div class="mind_inline_block mind_menu_item_left" style=""></div>
+                <div class="mind_inline_block mind_menu_item_right">
+                    <span class="fontsizeItem" style="font-size: 12px;"fontsize="12">12</span>
+                </div>
+            </div>
+             <div class="mind_menu_item">
+                <div class="mind_inline_block mind_menu_item_left" style=""></div>
+                <div class="mind_inline_block mind_menu_item_right">
+                    <span class="fontsizeItem" style="font-size: 16px;"fontsize="16" >16</span>
+                </div>
+            </div>
+            <div class="mind_menu_item">
+                <div class="mind_inline_block mind_menu_item_left" style=""></div>
+                <div class="mind_inline_block mind_menu_item_right">
+                    <span class="fontsizeItem" style="font-size: 18px;"fontsize="18">18</span>
+                </div>
+            </div>
+             <div class="mind_menu_item">
+                <div class="mind_inline_block mind_menu_item_left" style=""></div>
+                <div class="mind_inline_block mind_menu_item_right">
+                    <span class="fontsizeItem" style="font-size: 24px;"fontsize="24">24</span>
+                </div>
+            </div>
+            <div class="mind_menu_item">
+                <div class="mind_inline_block mind_menu_item_left" style=""></div>
+                <div class="mind_inline_block mind_menu_item_right">
+                    <span class="fontsizeItem" style="font-size: 32px;"fontsize="32">32</span>
+                </div>
+            </div>
+         </div>
+        <div class="mind_menu" id="colorselect" style="display:none;z-index: 9999;">
+            <table class="ke-colorpicker-table" cellpadding="0" cellspacing="0" border="0">
+    <tbody>
+	<tr >
+		<td colspan="6" class="ke-colorpicker-cell-top" title="无颜色" unselectable="on">无颜色
+</td>
+
+	</tr>
+	<tr >
+		<td class="ke-colorpicker-cell" title="#E53333" unselectable="on">
+			<div class="color-item" unselectable="on" style="background-color: rgb(229, 51, 51);"></div>
+		</td>
+
+		<td class="ke-colorpicker-cell" title="#E56600" unselectable="on">
+			<div class="color-item" unselectable="on" style="background-color: rgb(229, 102, 0);"></div>
+		</td>
+		<td class="ke-colorpicker-cell" title="#FF9900" unselectable="on">
+			<div class="color-item" unselectable="on" style="background-color: rgb(255, 153, 0);"></div>
+		</td>
+		<td class="ke-colorpicker-cell" title="#64451D" unselectable="on">
+			<div class="color-item" unselectable="on" style="background-color: rgb(100, 69, 29);"></div>
+		</td>
+		<td class="ke-colorpicker-cell" title="#DFC5A4" unselectable="on">
+			<div class="color-item" unselectable="on" style="background-color: rgb(223, 197, 164);"></div>
+		</td>
+		<td class="ke-colorpicker-cell" title="#FFE500" unselectable="on">
+			<div class="color-item" unselectable="on" style="background-color: rgb(255, 229, 0);"></div>
+		</td>
+	</tr>
+	<tr >
+		<td class="ke-colorpicker-cell" title="#009900" unselectable="on">
+			<div class="color-item" unselectable="on" style="background-color: rgb(0, 153, 0);"></div>
+		</td>
+		<td class="ke-colorpicker-cell" title="#006600" unselectable="on">
+            <div class="color-item" unselectable="on" style="background-color: rgb(0, 102, 0);"></div>
+        </td>
+        <td class="ke-colorpicker-cell" title="#99BB00" unselectable="on">
+            <div class="color-item" unselectable="on" style="background-color: rgb(153, 187, 0);"></div>
+        </td>
+        <td class="ke-colorpicker-cell" title="#B8D100" unselectable="on">
+            <div class="color-item" unselectable="on" style="background-color: rgb(184, 209, 0);"></div>
+        </td>
+<td class="ke-colorpicker-cell" title="#60D978" unselectable="on"><div class="color-item" unselectable="on" style="background-color: rgb(96, 217, 120);"></div>
+</td>
+<td class="ke-colorpicker-cell" title="#00D5FF" unselectable="on"><div class="color-item" unselectable="on" style="background-color: rgb(0, 213, 255);"></div>
+</td>
+</tr><tr><td class="ke-colorpicker-cell" title="#337FE5" unselectable="on"><div class="color-item" unselectable="on" style="background-color: rgb(51, 127, 229);"></div>
+</td>
+<td class="ke-colorpicker-cell" title="#003399" unselectable="on"><div class="color-item" unselectable="on" style="background-color: rgb(0, 51, 153);"></div>
+</td>
+<td class="ke-colorpicker-cell" title="#4C33E5" unselectable="on"><div class="color-item" unselectable="on" style="background-color: rgb(76, 51, 229);"></div>
+</td>
+<td class="ke-colorpicker-cell" title="#9933E5" unselectable="on"><div class="color-item" unselectable="on" style="background-color: rgb(153, 51, 229);"></div>
+</td>
+<td class="ke-colorpicker-cell" title="#CC33E5" unselectable="on"><div class="color-item" unselectable="on" style="background-color: rgb(204, 51, 229);"></div>
+</td>
+<td class="ke-colorpicker-cell" title="#EE33EE" unselectable="on"><div class="color-item" unselectable="on" style="background-color: rgb(238, 51, 238);"></div>
+</td>
+</tr><tr><td class="ke-colorpicker-cell" title="#FFFFFF" unselectable="on"><div class="color-item" unselectable="on" style="background-color: rgb(255, 255, 255);"></div>
+</td>
+<td class="ke-colorpicker-cell" title="#CCCCCC" unselectable="on"><div class="color-item" unselectable="on" style="background-color: rgb(204, 204, 204);"></div>
+</td>
+<td class="ke-colorpicker-cell" title="#999999" unselectable="on"><div class="color-item" unselectable="on" style="background-color: rgb(153, 153, 153);"></div>
+</td>
+<td class="ke-colorpicker-cell" title="#666666" unselectable="on"><div class="color-item" unselectable="on" style="background-color: rgb(102, 102, 102);"></div>
+</td>
+<td class="ke-colorpicker-cell" title="#333333" unselectable="on"><div class="color-item" unselectable="on" style="background-color: rgb(51, 51, 51);"></div>
+</td>
+<td class="ke-colorpicker-cell" title="#000000" unselectable="on"><div class="color-item" unselectable="on" style="background-color: rgb(0, 0, 0);"></div>
+</td>
+</tr></tbody></table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

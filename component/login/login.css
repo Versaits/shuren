@@ -1,0 +1,19 @@
+﻿        .LvsLoginPanel{ background: rgba(0,0,0,0.24);border-radius: 2px;text-align:center}
+        .LvsLoginPanel .ErrorInfo{color:#F9C3D9;letter-spacing:1px;font-size:9pt}
+        .LvsLoginPanel .InputUser{border:#C5CDD4 1px solid;border-radius:9999px;width:100%;padding:8px 0 8px 0px;background-image:url('../../Image/fedu/user_inp.png');background-size:15px 15px;background-position:12px center;background-repeat:no-repeat;margin-top:20px;background-color:White}
+        .LvsLoginPanel .InputUser input{border:0px;outline-style:none;font-size:11pt;color:#4A4A4A;background-color:rgba(255,255,255,0.00);width:80%;margin-left:10%;background-color:White}
+        .LvsLoginPanel .InputPass{border:#C5CDD4 1px solid;border-radius:9999px;width:100%;padding:8px 0 8px 0;background-image:url('../../Image/fedu/pass_inp.png');background-size:15px 15px;background-position:12px center;background-repeat:no-repeat;margin-top:20px;background-color:White}
+        .LvsLoginPanel .InputPass input{border:0px;outline-style:none;font-size:11pt;color:#4A4A4A;background-color:rgba(255,255,255,0.00);width:80%;margin-left:10%;background-color:White}
+        .LvsLoginPanel .PanelInput{border:#C5CDD4 1px solid;border-radius:9999px;width:80%;margin-left:10%;padding:8px 0 8px 0px;margin-top:20px;text-align:left;background-color:White}
+        .LvsLoginPanel .PanelInput input{border:0px;outline-style:none;font-size:11pt;color:#4A4A4A;background-color:rgba(255,255,255,0.00);width:80%;margin-left:8px;background-color:White}
+        .LvsLoginPanel .InputButton{background-image: linear-gradient(71deg, #4767CA 0%, #C1BCFA 97%);border-radius: 50px;width:100%;font-size:14px;padding:8px 0 8px 0;margin-top:20px;color:White;letter-spacing:3.68px;font-weight:bold;text-align:center}
+        .LvsLoginPanel .GreyButton{background-color: #cccccc;border-radius: 50px;width:100%; text-align:center; font-size:11pt;padding:8px 0 8px 0;margin-top:20px;color:White}
+        .LvsLoginPanel .InputButton:hover{background-image: linear-gradient(-71deg, #4767CA 0%, #C1BCFA 97%);border:##E96777 1px solid;text-align:center}
+        .LvsLoginPanel .FuncButton{margin-top:20px;font-size:9pt;text-align:left;}
+        .LvsLoginPanel .ErLogin{border-top:#F9C3D9 1px solid;width:80%;margin-left:10%;margin-top:40px}
+        .LvsLoginPanel .ErLogin .TitleHead{ margin-top:-10px;color:#F9C3D9;background-color:#871568;font-size:9pt;width:20%;margin-left:40%;}
+        .LvsLoginPanel .ErLogin .TitleDesc{ color:#FDEEFF;font-size:18px;margin-top:20%;letter-spacing:2.47px}
+        .LvsLoginPanel .ErLogin .ErCode{width:70%;margin-top:16px}
+        .ContainerBox{background-color:White;border-radius:5px;overflow:hidden;margin-top:12px}
+        .ContainerBox .CntTitle{background-image:url('../../Image/fedu/loginhead.png');background-position:top;background-size:100%;font-size:12pt;padding-top:12px;padding-bottom:12px;color:White;font-weight:bolder}
+        .ContainerBox .CntBody{padding-top:40px;padding-bottom:50px;width:80%;margin-left:10%}

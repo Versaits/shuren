@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_list_flexlist" lvs_jqexec="lvs_baselist">
+        <div class="flexrow">
+            {{each(l,lstdata) list}}
+            {{if lstdata.undisplay&&lstdata.undisplay==1}}
+            {{else}}
+            <div class="colflex{{if cols}}${cols}{{else}}2{{/if}}" style="margin-top:{{if margintop}}${margintop}px{{else}}12px{{/if}}">
+                <div class="FlexItemBox" lvs_elm="ListItem" {{if lstdata.url}}linkurl="${lstdata.url}"{{else}}trigger="${lstdata.basetrigger}"{{/if}} idxid="${lstdata.id}">
+                    <div>
+                        <div class="HeadImg" perheit="{{if imgheit}}${imgheit}{{else}}57{{/if}}" style="background-image:url('${lstdata.image}')">
+                            {{if lstdata.status}}<div class="FlexStatus">${lstdata.status}</div>{{/if}}
+                        </div>
+                        <div class="FlexTitle textwrap" title="${lstdata.title}">${lstdata.title}</div>
+                        {{if lstdata.desc}}
+                        <div class="FlexDesc">${lstdata.desc}</div>
+                        {{/if}}
+                        {{if lstdata.opes}}
+                        <div class="FlexOpe">
+                            {{each(o,opedata) lstdata.opes}}
+                            <a lvs_elm="FlexTrigger" trigger="${opedata.trigger}" class="{{if opedata.butclass}}${opedata.butclass}{{else}}button{{/if}} {{if opedata.butstyle}}${opedata.butstyle}{{else}}border-blue{{/if}}" idxid="${lstdata.id}" idxname="${lstdata.title}">{{if opedata.name=='Edit'}}<img width="20px" height="20px" trigger="${opedata.trigger}" idxid="${lstdata.id}" idxname="${lstdata.title}" src="../../Image/bukrecm.png" />{{else}}${opedata.name}{{/if}}</a>
+                            {{/each}}
+                        </div>
+                        {{/if}}
+                        {{if lstdata.extinfo}}
+                        <div class="FlexExt htmlformat">${lstdata.extinfo}</div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+            {{/each}}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_lesn_pbllesn" lvs_jqexec="lvs_pbllesn">
+        <div class="flexbox">
+            <div style="width:160px" class="BaseListBox">
+                <div style="min-height:320px;font-size:14px">
+                    {{each(t,tndata) tasknames}}
+                    <div class="BaseListItem" lvs_elm="${tndata.id}" dataidx="${t}">${tndata.name}</div>
+                    {{/each}}
+                </div>
+            </div>
+            <div class="flex1">
+                <div lvs_elm="TopicLesn" style="width:96%;margin-left:2%">
+                    <div class="LesnBasePanel">
+                        <div>开始日期：<span lvs_bind="begdate" idxtype="date" idxname="开始日期">${begdate}</span><span style="display:none" lvs_bind="begtime" idxtype="time" idxname="开始时间">${begtime}</span></div>
+                        <div>结束日期：<span lvs_bind="enddate" idxtype="date" idxname="结束日期">{{if enddate>begdate}}${enddate}{{else}}${begdate}{{/if}}</span><span style="display:none" lvs_bind="endtime" idxtype="time" idxname="结束时间">${endtime}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

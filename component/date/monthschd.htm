@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="MonthSchd" lvs_jqexec="lvsmonthschd">
+            {{if retprev}}<div style="text-align:right"><a lvs_elm="RetPrev">返回</a></div>{{/if}}
+            <div class="flexbox"><div class="flex1 SchdIdle SchdItem">开放</div><div style="width:8px"></div><div class="flex1 SchdPred SchdItem">预约</div><div style="width:8px"></div><div class="flex1 SchdNull SchdItem">休息</div></div>
+            <div style="padding:10px;text-align:center">
+                <a class="float-left greybutton" lvs_elm="PredNext" daynum="${daynum}" idxid="${lastidx}">${lastname}</a><span style="font-size:18px">${curname}</span><a class="float-right greybutton" daynum="${daynum}" lvs_elm="PredNext" idxid="${nextidx}">${nextname}</a>
+            </div>
+            <table width="100%">
+                <thead><td>周一</td><td>周二</td><td>周三</td><td>周四</td><td>周五</td><td>周六</td><td>周日</td></thead>
+                {{each(s,scddata) tschds}}
+                    {{if s%2==1}}<tr style="background-color:#F3FAFF">{{else}}<tr style="background-color:White">{{/if}}
+                    {{each(d,daydata) scddata.subs}}
+                    <td valign="top">
+                            <div class="SchdDay" {{if daydata.name!=''}}{{if isself>0}}lvs_ref="${configevt}"{{else}}lvs_ref="${predateevt}"{{/if}}{{/if}} curday="${daydata.begdate}" weekno="${daydata.weekday}" restype="${restype}" resid="${resid}"><span class="SchdName">${daydata.name}</span>
+                            {{if daydata.subs&&daydata.subs.length>0}}
+                            {{each(t,tmdata) daydata.subs}}
+                                <div class="{{if tmdata.status=='空闲'}}SchdIdle{{else tmdata.status=='休息'}}SchdNull{{else tmdata.status=='预约'}}SchdPred{{else tmdata.status=='课程'}}SchdLesn{{/if}} {{if tmdata.ispreder>0}}SchdPreder{{/if}} SchdItem" predname="${tmdata.name}" predtime="${tmdata.hour}:{{if tmdata.min<10}}0{{/if}}${tmdata.min}" predmobile="${tmdata.mobile}" fees="${tmdata.fees}" idxid="${tmdata.id}" predstatus="${tmdata.status}" predlong="${tmdata.long}" endtime="${tmdata.endhour}:{{if tmdata.endmin<10}}0{{/if}}${tmdata.endmin}" ispreder="${tmdata.ispreder}" meettype="${tmdata.meettype}" address="${tmdata.address}" payed="${tmdata.payed}" preddesc="${tmdata.sdesc}">
+                                    <span class="txt-grey">${tmdata.hour}:{{if tmdata.min<10}}0{{/if}}${tmdata.min}-${tmdata.endhour}:{{if tmdata.endmin<10}}0{{/if}}${tmdata.endmin}</span>
+                                </div>
+                            {{/each}}
+                            {{else daydata.name}}<div class="SchdItem SchdBase"></div>
+                            {{/if}}
+                            </div>
+                    </td>
+                    {{/each}}
+                    </tr>
+                {{/each}}
+            </table>
+    </div>
+</body>
+</html>

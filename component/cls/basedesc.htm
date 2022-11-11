@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="BaseDesc" lvs_jqexec="classbasedesc">
+        <div>
+            {{if exams}}{{if exams.length>0}}
+            <div class="LitTitle">考试计划：</div>
+            <div class="padding">
+                    {{each(e,exmdata) exams}}
+                        <div class="ExpListItem">
+                            <div class="Title">${exmdata.name}<span class="float-right"><a class="RightExp" lvs_ref="{{if isstud==0&&isself==0}}dialog.AlertMem{{else}}clsexam?id=${exmdata.id}{{/if}}">参加考试</a></span></div>
+                            <div class="LitTitle">{{if exmdata.limitmin>0}}考试时长：${exmdata.limitmin}分钟{{else}}考试时长：不限时长{{/if}}</div>
+                        </div>
+                    {{/each}}
+            </div>
+            {{/if}}{{/if}}
+            {{if showlesn>0}}
+            {{if lesns.length==0}}
+                <div class="LitTitle"><span class="txt-grey">暂未安排课程计划{{if isself>1}}<a class="greybutton float-right" lvs_ref="addlesn?cls=${id}">添加课程</a>{{/if}}</span></div>
+            {{else}}
+            <div class="LitTitle">课程计划：{{if isself>1}}<a class="greybutton float-right" lvs_ref="addlesn?cls=${id}">添加课程</a>{{/if}}</div>
+                <table width="96%" style="margin-left:2%;margin-top:30px">
+                {{each(l,lsndata) lesns}}
+                    <tr style="font-size:12px;color:#828282;height:32px;background-color:#f2f2f2;padding:2px;border-radius:5px;">
+                        <td align="left">${lsndata.time}</td><td align="left"><a lvs_ref="lesninfo?id=${lsndata.id}" style="font-size:16px">${lsndata.title}</a></td><td align="right">{{if lsndata.status==''}}等待{{else}}${lsndata.status}{{/if}}</td><td><a class="RightExp" lvs_ref="lesninfo?id=${lsndata.id}">查看</a></td>
+                    </tr>
+                {{/each}}
+                </table>
+            {{/if}}
+            {{/if}}
+        </div>
+        {{if showtch>0}}
+        <div style="margin-top:12px">
+            <div class="LitTitle" {{if tchinfo}}lvs_ref="tchinfo?id=${tchinfo.id}{{/if}}">主讲师：{{if tchinfo}}${tchinfo.name}<span class="float-right"><a class="RightExp">&nbsp;</a>{{/if}}</div>
+            {{if showdtl}}<div class="htmlformat ClassDesc">{{if tchinfo}}${tchinfo.desc}{{/if}}</div>{{/if}}
+        </div>
+        {{/if}}
+        {{if showcot>0}}
+        {{if cots}}
+            {{each(c,cotdata) cots}}
+            <div style="margin-top:12px">
+                <div class="LitTitle" lvs_ref="tchinfo?id=${cotdata.id}">辅助讲师：${cotdata.name}<a class="RightExp"></a></div>
+                {{if showdtl>0}}<div class="htmlformat ClassDesc">${cotdata.desc}</div>{{/if}}
+            </div>
+            {{/each}}
+        {{/if}}
+        {{/if}}
+        {{if sdesc!=""}}
+        <div style="margin-top:12px">
+            <div class="LitTitle" style="display:none">其他说明：</div>
+            <div class="htmlformat EditText ClassDesc" lvs_bind="ClassDesc">${sdesc}</div>
+        </div>
+        {{/if}}
+        <div class="BaseForm" id="AlertMemForm" title="尚未参加班级" style="display:none">
+            <div class="BaseDesc"></div>
+            <div class="LifeDlgForm DlgForm">
+                    <div class="NullPanel">
+                        <div class="NullTips" src="../Image/nulltip.png"/>
+                        <div class="NullText">您尚未加入学习班，不能参加考试，请先加入</div>
+                    </div>
+                <div class="ButtonBox flexbox">
+                    <a class="FormCancel DlgButton bg-grey flex1">关闭返回</a><a class="FormOk DlgButton bg-green flex1" idxid="${id}">确认加入</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

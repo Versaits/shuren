@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_el_slider_input" lvs_jqexec="lvs_el_slider">
+        <div class="flexbox">
+            <div class="flex el_slider flex1">
+                <div class="{{if slidegrade}}el_slider_runway_grade{{else}}el_slider_runway{{/if}}" style="width:auto" >
+                    <div class="el_slider_bar" > </div>
+                        <div class = "el_slider_button_wrapper" >
+                            <div class="el_slider_button"  ></div>   
+                        </div>  
+                </div>     
+            </div>
+            <div class="el_plussub" id="plussub"style="width:120px">
+                <span  class="el_sub">-</span>
+                    <input class="" lvs_bind="InputNum" value="${curval}"  type="text" >
+                <span  class="el_plus">+</span>
+            </div>
+        </div>
+     </div>
+</body>
+</html>

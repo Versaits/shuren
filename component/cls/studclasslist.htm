@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_cls_studclasslist" lvs_jqexec="lvs_cls_classlist">
+        <table class="BaseTable" width="100%">
+            <thead><tr><th>班级</th><th>授课教师</th><th>发布课程</th><th>学生数</th><th>操作</th></tr></thead>
+            {{each(c,clsdata) classes}}
+            {{if c%2==1}}<tr class="GreyTr">{{else}}<tr>{{/if}}
+                <td align="left"><b>${clsdata.name}</b></td>
+                <td>${clsdata.tname}</td>
+                <td>${clsdata.lesnnum}</td>
+                <td>${clsdata.studnum}</td>
+                <td><a lvs_ref="{{if baseref}}${baseref}{{else clsdata.type=='课题'}}router.topicteam{{else}}router.clsinfo{{/if}}" idxid="${clsdata.id}">查看></a></td>
+            </tr>
+            {{/each}}
+        </table>
+    </div>
+
+</body>
+</html>

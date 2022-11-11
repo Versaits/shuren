@@ -1,0 +1,23 @@
+﻿.RemarkListBox
+{
+    padding:24px 0;
+    border-bottom:#dadada 1px solid;
+}
+.RemarkListBox .RemHead
+{
+    background-color:#fafafa;
+    font-size:14px;
+    color:#4a4a4a;
+}
+.RemarkListBox .RemBody
+{
+    padding:12px 0;
+    letter-spacing:1px;
+}
+.RemarkListBox .ScoreNum
+{
+    font-size:24px;
+    color:#e9ac07;
+    font-weight:bold;
+    letter-spacing:1.2px;
+}

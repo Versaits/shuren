@@ -1,0 +1,15 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_menu_basemenu" lvs_jqexec="lvs_menu_base">
+        <div class="flexbox">
+            {{each(m,menudata) list}}
+                <div class="BaseItem flex1" lvs_ref="{{if menudata.apiname}}data.${menudata.gettype}{{else}}${menudata.ref}{{/if}}" {{if menudata.apiname}}apiname="${menudata.apiname}"{{/if}} idxkey="${menudata.idxkey}" idxkey2="${menudata.idxkey2}" idxid="${menudata.id}" tmplname="${menudata.tmplname}" datares="${containerelm}"><a href="#${menudata.id}">${menudata.name}</a></div>
+            {{/each}}
+        </div>
+    </div>
+</body>
+</html>

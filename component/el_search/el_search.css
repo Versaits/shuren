@@ -1,0 +1,29 @@
+﻿.el_search_panel 
+{
+    margin-top:3px;
+    display: flex;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+
+.el_search_line {
+    
+    overflow: hidden;
+    line-height:1.8;
+}
+
+
+
+.el_search_line .el_search_item {
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 6px;
+    background: #E3F1FF;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-left:5px;
+    margin-top:5px;
+    corlor:#ECECEC;
+}

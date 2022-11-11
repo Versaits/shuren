@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_play_themeshow" lvs_jqexec="lvs_play_theme">
+        {{each(i,elmdata) elements}}
+            {{if elmdata.type=='sigsel'}}
+            <div class="PageThemeBox">
+                <div lvs_elm="theme" class="LesnPageElm PageElmTheme PageElmSigsel" seqidx="${i}" id="sigsel${elmdata.id}" style="{{if elmdata.color}}color:${elmdata.color};{{/if}}{{if elmdata.fontsize}}font-size:${elmdata.fontsize};{{/if}}">
+                    <component name="cn.theme.sigselshow" basedata="elements[${i}]" data-pageid="${pageid}" data-lesnid="${lesnid}" data-mode="1" data-seqid="${i}"></component>
+                </div>
+            </div>
+            {{else elmdata.type=='multsel'}}
+            <div class="PageThemeBox">
+                <div lvs_elm="theme" class="LesnPageElm PageElmTheme PageElmMultsel" seqidx="${e}" id="multsel${elmdata.id}" style="{{if elmdata.color}}color:${elmdata.color};{{/if}}{{if elmdata.fontsize}}font-size:${elmdata.fontsize};{{/if}}">
+                    <component name="cn.theme.multselshow" basedata="elements[${i}]" data-pageid="${pageid}" data-lesnid="${lesnid}" data-mode="1" data-seqid="${i}"></component>
+                </div>
+            </div>
+            {{else elmdata.type=='blank'}}
+            <div class="PageThemeBox">
+                <div lvs_elm="theme" class="LesnPageElm PageElmTheme PageElmBlank" seqidx="${i}" id="blank${elmdata.id}" style="{{if elmdata.color}}color:${elmdata.color};{{/if}}{{if elmdata.fontsize}}font-size:${elmdata.fontsize};{{/if}}">
+                    <component name="cn.theme.blankinpshow" basedata="elements[${i}]" data-pageid="${pageid}" data-lesnid="${lesnid}" data-mode="1" data-seqid="${i}"></component>
+                </div>
+            </div>
+            {{else elmdata.type=='answer'}}
+            <div class="PageThemeBox">
+                <div lvs_elm="theme" class="LesnPageElm PageElmTheme PageElmAnswer" seqidx="${i}" id="answer${elmdata.id}" style="{{if elmdata.color}}color:${elmdata.color};{{/if}}{{if elmdata.fontsize}}font-size:${elmdata.fontsize};{{/if}}">
+                    <component name="cn.theme.answerinpshow" basedata="elements[${i}]" data-pageid="${pageid}" data-lesnid="${lesnid}" data-mode="1" data-seqid="${i}"></component>
+                </div>
+            </div>
+            {{else elmdata.type=='task'}}
+            <div class="PageThemeBox">
+                <div lvs_elm="task" class="LesnPageElm PageElmTask PageElmTheme" seqidx="${i}" id="task${elmdata.id}" style="{{if elmdata.color}}color:${elmdata.color};{{/if}}{{if elmdata.bgcolor}}background-color:${elmdata.bgcolor};{{/if}}{{if elmdata.fontsize}}font-size:${elmdata.fontsize};{{/if}}">
+                    <component name="cn.theme.taskpapershow" basedata="elements[${i}]" data-pageid="${pageid}" data-lesnid="${lesnid}" data-mode="1" data-seqid="${i}"></component>
+                </div>
+            </div>
+            {{/if}}
+        {{/each}}
+    </div>
+</body>
+</html>

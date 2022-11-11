@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_jqexec="lvs_basefile" lvs_component="cn_theme_basefile" idxid="{{if files}}${files}{{else}}${id}{{/if}}">
+        <div class="ListDesc" lvs_elm="BaseFile">文件：${resfile}</div>
+        {{if filelist}}
+        {{each(f,fldata) filelist}}
+        <div class="ListDesc AnsFile">文件：${fldata.resfile}<span class="float-right"><a href="${fldata.fileurl}" download="${fldata.resfile}">下载</a></span></div>
+        {{/each}}
+        {{/if}}
+        {{if editmode}}<a class="button bg-green" lvs_elm="AddAttach">上传文件</a><a class="button bg-yellow" lvs_elm="AddVideo">上传视频</a>{{/if}}
+        <div class="BaseDesc">说明：重新上传的文件将覆盖原文件</div>
+    </div>
+</body>
+</html>

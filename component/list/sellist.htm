@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="SelList" lvs_jqexec="lvssellist" class="SelListBox">
+        <div class="flexbox">
+        {{each(i,lstdata) list}}
+            <div class="SelListItem flex1" idxid="${lstdata.id}">{{if lstdata.image}}<img class="TinyUserHead" src="${lstdata.image}" style="vertical-align:middle;margin-right:6px" />{{/if}}${lstdata.sname}{{if lstdata.status}}<span class="float-right txt-grey">${lstdata.status}</span>{{/if}}</div>
+            {{if colnum}}{{if (i%colnum)==colnum-1}}</div><div class="flexbox">{{/if}}{{else}}</div><div class="flexbox">{{/if}}
+        {{/each}}
+        </div>
+    </div>
+</body>
+</html>

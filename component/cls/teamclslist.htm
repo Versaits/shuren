@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_cls_teamclslist" lvs_jqexec="lvs_teamclass">
+        {{each(c,clsdata) list}}
+        <div class="BaseClassList">
+            <div class="flexbox">
+                <div style="width:50%;text-align:left" class="ClsTitle">${clsdata.name}</div>
+                <div style="width:20%" class="ClsDesc">负责人:${clsdata.tname}</div>
+                <div style="width:10%" class="ClsDesc">成员:${clsdata.studnum}</div>
+                <div class="flex1" class="ClsOpe">{{if clsdata.memstatus=='申请'}}<span class="txt-grey">审核中，请等待</span>{{else}}<a class="button border-green" lvs_ref="router.projteam" idxid="${clsdata.id}">查看明细</a>{{/if}}</div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</body>
+</html>

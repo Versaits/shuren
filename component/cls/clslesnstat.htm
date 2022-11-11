@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_cls_clslesnstat" lvs_jqexec="lvs_class_lesns">
+        {{if lesns}}
+        <table class="BaseTable" width="100%">
+            <thead><td>课程名称</td><td>授课时间</td><td>平均进度</td><td>总下发作业</td><td>已完成作业</td><td>待批改作业</td><td>操作</td></thead>
+            {{each(l,lsndata) lesns}}
+            {{if (l%2)==1}}<tr class="GreyTr">{{else}}<tr>{{/if}}
+                <td align="left"><a lvs_ref="router.tchlesn" idxid="${lsndata.id}"><img width="50px" style="vertical-align:middle;margin-right:6px" src="${lsndata.titleimg}"/><b>${lsndata.title}</b></a></td>
+                <td>${lsndata.time}</td>
+                <td><div lvs_elm="Percent" mode="2" max="100" num="${lsndata.prog}"></div></td>
+                <td>${lsndata.alltask}</td><td>${lsndata.chkedtask}</td><td><span lvs_bind="ChkingTask">${lsndata.chkingtask}</span></td>
+                <td><a lvs_elm="CheckTask" lvs_ref="router.tchlesn" idxid="${lsndata.id}">查看课程</a></td>
+            </tr>
+            {{/each}}
+        </table>
+        <div class="BaseForm" id="CheckTaskForm" title="批改作业" style="display:none">
+            <div component="cn.theme.taskcheck"></div>
+        </div>
+        {{else}}
+        {{/if}}
+    </div>
+</body>
+</html>

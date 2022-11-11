@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_course_crstmpl_plan" lvs_jqexec="lvs_crstmpl_plan">
+        <div class="WSBaseTab flexbox tabhead" lvs_elm="MainTab" style="margin-left:12px">
+            <div class="WSTabItem active" tabdef="1" lvs_ref="tab.SelPanel" idxid="tmplbase">封面</div>
+            <div class="WSTabItem" lvs_ref="tab.SelPanel" idxid="planpage">课件</div>
+            <div class="WSTabItem" lvs_ref="tab.GetData" apiname="edu/course_list" tmplname="cn.course.crssolus" gettype="CrsTmpl.Solus" idxkey="teacher" idxkey2="crstmplid" idxid="${id}">教案</div>
+            <div class="WSTabItem" lvs_ref="tab.GetData" apiname="edu/course_list" tmplname="cn.course.crstasks" gettype="CrsTmpl.TaskGrpres" idxkey="teacher" idxkey2="crstmplid" idxid="${id}">{{if grade=='Common'}}作业{{else}}任务|作业{{/if}}</div>
+            {{if tmpltype!='模板'}}
+            <div class="WSTabItem" lvs_ref="tab.GetData" apiname="edu/course_list" tmplname="cn.course.crsfiles" gettype="CrsTmpl.Files" datares="CourseMore" idxkey="teacher" idxkey2="crstmplid" idxid="${id}">附件</div>
+            <div class="WSTabItem" lvs_ref="tab.GetData" apiname="edu/course_list" tmplname="cn.course.crsclass" gettype="CrsTmpl.Classes" datares="CourseMore" idxkey="teacher" idxkey2="crstmplid" idxid="${id}">授课</div>
+            <div class="WSTabItem" lvs_ref="tab.GetData" apiname="edu/course_list" tmplname="cn.course.tchtmpls" gettype="CrsTmpl.TchTmpls" idxkey="teacher" idxkey2="crstmplid" idxid="${id}">个人</div>
+            {{/if}}
+        </div>
+        <div lvs_elm="MainTabBox">
+            <div class="tabcontent" tabcontainer="tmplbase">
+                <div class="CrsMainInfoBox">
+                    <div class="BaseDesc" style="width:92%;margin-left:4%">以下信息可直接点击修改<span class="float-right"><a lvs_elm="DelTmpl" class="button bg-red" idxid="${id}">删除项目过程</a></span></div>
+                    <div class="CrsBaseBox" style="width:92%;margin-left:4%;margin-top:12px">
+                        <div class="CrsTitle" lvs_bind="title" lvs_elm="ItemEdit" idxname="课程标题">{{if title==''}}空白{{else}}${title}{{/if}}</div>
+                        <div class="TagList">
+                            <span class="TagItem" lvs_elm="ItemEdit" lvs_bind="module" idxname="所属章节" idxid="${module}" idxserial="{{each(m,moddata) modules}}{{if m>0}},{{/if}}${moddata.sname}{{/each}}">{{if module==''}}缺省{{else}}${module}{{/if}}</span>
+                            <span class="TagItem" lvs_elm="ItemEdit" lvs_bind="seqid" idxname="课程顺序" idxid="${id}">第${seqid}课</span>
+                            <span class="TagItem float-right" lvs_elm="ItemEdit" lvs_bind="status" idxname="课程状态" idxid="${status}" idxserial="新建,发布,停用,删除">{{if status==''}}新建{{else}}${status}{{/if}}</span>
+                        </div>
+                    </div>
+                    <div style="width:92%;margin-left:4%;margin-top:12px">
+                        <div><img width="100%" class="CrsHeadImg" lvs_elm="ItemEdit" src="${titleimg}" lvs_bind="titleimg" idxname="标题图片" idxtype="pic"/></div>
+                    </div>
+                    <div class="CrsBaseBox" style="width:92%;margin-left:4%">
+                        <div class="CrsDesc htmlformat" lvs_elm="ItemEdit" lvs_bind="desc" idxname="详细介绍" idxtype="textarea">{{if desc==''}}无详细介绍{{else}}${deschtml}{{/if}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="tabcontent" tabcontainer="planpage" style="display:none">
+                <div class="CrsMainInfoBox">
+                    <div class="ScrollBarHead"><span class="PreTitle">.</span>讲义课件【{{if pages}}${pages.length}{{else}}0{{/if}}页】<span class="float-right"><a class="button border-yellow" lvs_ref="router.crstmpl_edit" idxid="${id}">编辑讲义</a></span></div>
+                        {{if pages}}
+                        {{if pages.length==0}}
+                            <div class="NullPanel">
+                                <img class="NullTips" src="../Image/fedu/nulltip.png"/>
+                                <div class="NullText" style="margin-top:34px">还没有创建课件讲义，<a lvs_ref="router.crstmpl_edit" idxid="${id}">点击创建编辑</a></div>
+                            </div>
+                        {{/if}}
+                        {{else}}
+                            <div class="NullPanel">
+                                <img class="NullTips" src="../Image/fedu/nulltip.png"/>
+                                <div class="NullText" style="margin-top:34px">还没有创建课件讲义，<a lvs_ref="router.crstmpl_edit" idxid="${id}">点击创建编辑</a></div>
+                            </div>
+                        {{/if}}
+                    <div style="height:8px"></div>
+                    <div class="flexrow" style="padding:10px 0">
+                        {{if pages}}
+                        {{each(p,pagedata) pages}}
+                        <div class="colflex5" style="margin-top:8px">
+                            <div class="FlexItemBox" perheit="57" lvs_elm="PagePreview" dataidx="${p}">
+                            </div>
+                        </div>
+                        {{/each}}
+                        {{/if}}
+                    </div>
+                </div>
+                <div class="CrsMainInfoBox" style="margin-top:12px">
+                    <div class="ScrollBarHead"><span class="PreTitle">.</span>课内测验</div>
+                    <div style="height:8px"></div>
+                    <div class="ScrollBarBox" lvs_elm="PageExams" style="padding:8px 0">
+                    </div>
+                </div>
+            </div>
+            <div class="WSListContainer tabcontent WSBox" tabcontainer="data" lvs_elm="CourseMore" style="display:none">
+             
+            </div>
+        </div>
+        <div class="BaseForm" id="DelTmplForm" style="display:none">
+            <div class="BaseDesc">确认要删除该项目过程？删除后相关信息丢失并无法恢复，请注意操作</div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确定删除</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+    </div>
+</body>
+</html>

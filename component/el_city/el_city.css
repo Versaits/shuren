@@ -1,0 +1,141 @@
+﻿.el_citytabs
+{
+    width:450px;
+    overflow: hidden;
+    border-radius:3px;
+    
+}
+.el_citytabs_header {
+    padding: 0;
+    position: relative;
+    margin: 0 0 15px;
+}
+
+.el_citytabs_nav-wrap {
+    overflow: hidden;
+    margin-bottom: -1px;
+    position: relative;
+}
+.el_citytabs_nav-scroll {
+    overflow: hidden;
+}
+
+.el_citytabs_nav {
+    white-space: nowrap;
+    position: relative;
+    transition: transform .3s;
+    
+    z-index: 2;
+    
+}
+
+.el_citytabs_active_bar {
+    
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background-color: #409eff;
+    z-index: 1;
+    transition: transform .3s cubic-bezier(.645,.045,.355,1);
+    list-style: none;
+    width:140px;
+}
+
+.el_citytabs_item 
+{
+    padding: 0 20px;
+    height: 40px;
+    box-sizing: border-box;
+    line-height: 40px;
+    display: inline-block;
+    list-style: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: #303133;
+    position: relative;
+    text-align:center;
+}
+
+.el_citytabs_item.is_active {
+    color: #409eff;
+    border-bottom:solid 3px #409eff;
+}
+
+.el_citytabs_content {
+    overflow: hidden;
+    position: relative;
+}
+
+.el_city_table {
+    font-size: 12px;
+   margin-top:3px;
+    border-collapse: collapse;
+    text-align:center;
+    table-layout: fixed;
+    width: 100%;
+    table-layout:fixed,
+}
+.el_city_table td {
+    text-align: center;
+    padding: 8px 0;
+    cursor: pointer;
+}
+.el_city_table td .cell {
+    width: 60px;
+    height: 36px;
+    display: block;
+    line-height: 36px;
+    color: #606266;
+    margin: 0 auto;
+    border-radius: 18px;
+}
+.el_city_table td.{
+    position:relative;
+    color:#409EFF;
+    font-weight:700
+}
+
+.el_city_table td.available {
+    color: #606266;
+}
+.el_city_table td.available:hover{
+color:#409EFF}
+
+.el_cityselrow
+{
+    height:40px;
+    overflow: hidden;
+    border-radius:3px;
+    
+}
+.el_citysel
+{
+    margin-right:5px;
+    
+}
+
+.el_cityselItem
+{
+    font-size:16px;
+    border-radius:3px;
+    margin-right:3px;
+    height:30px;
+    margin:5px 0;
+    width:100%;
+    
+    
+    }
+
+.el_cityBtn {
+    width: 60px;
+    height: 30px;
+    margin:5px 10px;
+    border-radius: 4px;
+    border: 1px solid #409eff;
+    outline: none;
+      background-color: #409eff;
+   float:right;
+
+   
+
+}

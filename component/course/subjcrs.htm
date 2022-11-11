@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_course_subjcrs" lvs_jqexec="lvs_course_subjcrs" lvs_prexec="lvs_course_data">
+        <a class="button bg-green float-right" lvs_elm="AddCourse">创建学科</a>
+        {{if courses}}
+        {{if tag1}}
+            <div style="text-align:left;padding:6px 0">
+                <component name="cn.button.tagsel" lvs_elm="TagSel1" basedata="tags:${tag1}" data-title="${tag1name}" data-isall="1"></component>
+            </div>
+        {{/if}}
+        {{if tag2}}
+            <div style="text-align:left;padding:6px 0">
+                <component name="cn.button.tagsel" lvs_elm="TagSel2" basedata="tags:${tag2}" data-title="类型" data-isall="1"></component>
+            </div>
+        {{/if}}
+        <div style="text-align:left;padding:6px 0">
+            <div lvs_elm="TagSel3"></div>
+        </div>
+        <div lvs_elm="CourseList" style="margin-top:10px">
+        </div>
+        {{/if}}
+    </div>
+    <div id="ConfirmTmpl" style="display:none">确认要进行${ope}操作？<br /><a class="button bg-green FormOk">确认</a><a class="button bg-yellow FormCancel">取消</a></div>
+    <div id="CrsListForm" style="display:none" class="BaseForm"></div>
+    <div class="BaseForm" id="AddCrsForm" style="display:none">
+        <div class="BaseDesc"><span class="txt-red">*</span>所属学科科目</div>
+        <div class="BaseInput"><component name="cn.button.serial" lvs_bind="subjects" basedata="list:subjs" data-serial="{{each(s,subjdata) subjs}}{{if s>0}},{{/if}}${subjdata.sname}{{/each}}" data-placeholder="请选择或输入课程归属学科类型" need="1"></component></div>
+        <div class="BaseDesc"><span class="txt-red">*</span>学科名称</div>
+        <div class="BaseInput"><input type="text" lvs_bind="crsname" need="1" placeholder="请输入该课程标题名称" /></div>
+        <div class="BaseDesc"><span class="txt-red">*</span>学科类型</div>
+        <div class="BaseInput"><component name="cn.button.serial" lvs_bind="crsgrade" basedata="list:grades" data-serial="Common-常规课程,Career-项目化学习课程" data-placeholder="请输入课程分类级别"></component></div>
+        <div class="BaseDesc"><span class="txt-red">*</span>标题图片</div>
+        <div class="BaseInput"><div class="PicFile" lvs_bind="piclist"></div></div>
+        <div class="BaseDesc"><a class="FormOk button bg-green">确定创建</a><a class="FormCancel button bg-grey">取消操作</a></div>
+    </div>
+    <div class="BaseForm" id="UpdCrsTmpl" style="display:none">
+        <div class="BaseDesc"><span class="txt-red">*</span>所属学科科目</div>
+        <div class="BaseInput"><component name="cn.button.serial" lvs_bind="subjects" basedata="list:subjs" data-idxid="${subjects}" data-serial="{{each(s,subjdata) subjs}}{{if s>0}},{{/if}}${subjdata.sname}{{/each}}" data-placeholder="请选择或输入课程归属学科类型" need="1"></component></div>
+        <div class="BaseDesc"><span class="txt-red">*</span>学科名称</div>
+        <div class="BaseInput"><input type="text" lvs_bind="crsname" need="1" value="${name}" placeholder="请输入该课程标题名称" /></div>
+        <div class="BaseDesc"><span class="txt-red">*</span>学科类型</div>
+        <div class="BaseInput"><component name="cn.button.serial" lvs_bind="crsgrade" basedata="list:grades" data-idxid="${grade}" data-serial="Common-常规课程,Career-项目化学习课程,Tmpl-项目化学习模板" data-placeholder="请输入课程分类级别"></component></div>
+        <div class="BaseDesc"><span class="txt-red">*</span>标题图片</div>
+        <div class="BaseInput"><div class="PicFile" lvs_bind="piclist">{{if titleimg}}<img width="15%" src="${titleimg}" />{{/if}}</div></div>
+        <div class="BaseDesc"><a class="FormOk button bg-green" opetype="Upd">确定修改</a><a class="FormCancel button bg-grey">取消操作</a><a class="FormOk button bg-red float-right" opetype="Del">删除学科</a></div>
+    </div>
+    <div class="BaseForm" id="DelCrsForm" style="display:none">
+        <div class="BaseDesc">确定要删除该学科？删除后将进入删除列表，需要后台管理员才可以进行恢复操作，请慎重</div>
+        <div class="BaseDesc"><a class="FormOk button bg-green">确定删除</a><a class="FormCancel button bg-red">取消操作</a></div>
+    </div>
+</body>
+</html>

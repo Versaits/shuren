@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_course_crspblstep" lvs_jqexec="lvs_crspblstep">
+        <div class="flexbox">
+            <div style="width:160px" class="BaseListBox">
+                <div style="min-height:320px;font-size:14px">
+                    {{each(t,tndata) tasknames}}
+                    <div class="BaseListItem" lvs_elm="${tndata.id}" dataidx="${t}">${tndata.name}</div>
+                    {{/each}}
+                </div>
+                <a class="button bg-red" lvs_elm="DelCrstmpl" idxid="${id}">删除项目过程</a>
+            </div>
+            <div class="flex1">
+                <div id="CrsStep" style="width:96%;margin-left:2%"></div>
+            </div>
+        </div>
+        <div class="BaseForm" id="DelCrsForm" style="display:none">
+            <div class="BaseDesc">确定要删除此项目化过程？</div>
+            <div class="BaseDesc"><a class="button bg-green FormOk">确认删除</a><a class="button bg-grey FormCancel">取消操作</a></div>
+        </div>
+    </div>
+</body>
+</html>

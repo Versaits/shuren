@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_cls_topiccls" lvs_jqexec="lvs_topicclass">
+            <div class="WSBox" style="padding:32px 0">
+                {{if topic}}
+                <div class="HeadBox">
+                    <div class="EditContainer" lvs_bind="ShowContainer">
+                        <div class="HeadImg" perheit="15" style="background-image:url('${topic.titleimg}')">
+                            <div class="MaskTitle"></div>
+                            <div class="TopicTitle"><div class="MainTitle">${topic.name}{{if topic.isself>0}}<span class="font-8" style="margin-top:10px" lvs_elm="EditTopicCls" idxid="${topic.id}"><img width="12px" height="12px" src="../Image/fstem/edittp.png" />&nbsp;编辑</span>{{/if}}</span></div><div class="LitTitle"><img width="14px" height="14px" src="../Image/fedu/topictype.png"/>${topic.crsname}</div></div>
+                        </div>
+                    </div>
+                    <div class="EditContainer" lvs_bind="EditContainer" style="display:none">
+                        <div class="HeadImg" lvs_bind="TeamImg" perheit="15" style="background-image:url('${topic.titleimg}')">
+                            <div class="EditContainer" lvs_bind="EditContainer" style="position:absolute;top:45%;width:100%;text-align:center"><a lvs_elm="UploadTeamImg" class="WsButton bg-wsblue">重新上传</a></div>
+                        </div>
+                    </div>
+                    <div class="flexbox" style="margin-top:14px">
+                        <div style="width:28%" class="EditBox">
+                            <div class="EditPanel" style="padding:24px">
+                                <div class="Title">
+                                    <span class="PreTitle">.</span>团队成员
+                                    {{if topic.isself>0}}<a class="float-right WsButton border-wsgrey" lvs_elm="DisposeTopicTeam" idxid="${topic.id}">解散团队</a>
+                                    {{else topic.isstud>0&&topic.status=='申请'}}<a class="float-right WsButton border-wsgrey" lvs_elm="QuitTopicClass" idxid="${topic.isstud}">撤销申请</a>
+                                    {{else topic.isstud>0}}<a class="float-right WsButton border-wsgrey" lvs_elm="QuitTopicClass" idxid="${topic.isstud}">退出团队</a>
+                                    {{else}}<a class="float-right WsButton bg-wsblue" lvs_elm="JoinTeamApply" idxid="${topic.id}">申请加入</a>
+                                    {{/if}}
+                                </div>
+                                {{each(s,studdata) topic.studs}}
+                                <div class="flexbox" style="margin-top:14px">
+                                    {{if studdata.manager>0}}
+                                    <div style="position:relative">
+                                        <img class="CaptUserHead" src="../Image/fedu/captain.png"/>
+                                        <img class="LitUserHead" src="${studdata.custimg}"/>
+                                    </div>
+                                    {{else}}
+                                    <img class="LitUserHead" src="${studdata.custimg}"/>
+                                    {{/if}}
+                                    <div class="flex1 padding" style="text-align:left">
+                                        <span class="font-10"><b>${studdata.name}</b>{{if studdata.manager>0}}<span class="font-9 txt-grey">（队长）</span>{{/if}}</span><br/>
+                                        <span class="font-9 txt-grey">${studdata.studzone}</span>{{if topic.isself>0&&studdata.manager==0}}<span class="font-9 float-right"><a class="txt-grey" lvs_elm="StudStatus" idxid="${studdata.id}" idxname="${studdata.name}" sta="离开">移除</a></span>{{/if}}
+                                    </div>
+                                </div>
+                                {{/each}}
+                                {{if topic.checks}}
+                                <div class="Diver"></div>
+                                {{each(c,chkdata) topic.checks}}
+                                <div class="flexbox" title="申请理由：${chkdata.remark1}">
+                                    <img class="LitUserHead" src="${chkdata.custimg}"/>
+                                    <div class="flex1 padding" style="text-align:left">
+                                        <span class="font-10"><b>${chkdata.name}</b></span><br/>
+                                        <span class="font-9 txt-grey">${chkdata.zone}</span><span class="font-8 float-right"><a class="txt-grey" lvs_elm="StudStatus" sta="拒绝" idxid="${chkdata.id}" idxname="${chkdata.name}">拒绝</a>&nbsp;<span class="txt-grey">|</span>&nbsp;<a lvs_elm="StudStatus" sta="正常" idxid="${chkdata.id}" idxname="${chkdata.name}">同意</a></span>
+                                    </div>
+                                </div>
+                                {{/each}}
+                                {{/if}}
+                            </div>
+                            {{if topic.teacher}}
+                            <div class="EditPanel" style="margin-top:14px;padding:24px">
+                                <div class="Title"><span class="PreTitle">.</span>辅导老师</div>
+                                <div class="padding flexbox">
+                                    <img class="LitUserHead" src="${topic.teacher.image}"/>
+                                    <div class="flex1 txt-left">
+                                        <span class="font-10"><b>${topic.teacher.name}</b></span><br/>
+                                        <span class="font-9 txt-grey">${topic.teacher.nick}</span>
+                                    </div>
+                                </div>
+                                {{if istch}}{{if istch>0}}
+                                <div class="padding" style="text-align:right">
+                                    <a class="WsButton bg-wsblue" lvs_elm="DelTeacher" idxid="${topic.id}">解除指导</a>
+                                </div>
+                                {{/if}}{{/if}}
+                            </div>
+                            {{/if}}
+                        </div>
+                        <div class="flex1 EditBox">
+                            <div class="EditContainer" lvs_bind="ShowContainer">
+                                <div class="EditPanel" style="margin-left:14px;padding:24px">
+                                    <div class="Title"><span class="PreTitle">.</span>团队简介</div>
+                                    <div class="BaseText" style="margin-top:18px;margin-bottom:40px;text-align:left">${topic.sdesc}</div>
+                                </div>
+                                <div class="EditPanel" style="margin-left:14px;padding:24px;margin-top:14px">
+                                    <div class="Title"><span class="PreTitle">.</span>上传成果<span class="font-8" style="color:#8B909F;letter-spacing:0.2px;font-weight:normal">支持PDF、word、ppt、图片(png、jpg、jpeg、bmp格式)、视频(mp4格式) 等文件</span></div>
+                                    <div style="margin-top:18px;margin-bottom:18px;text-align:left">
+                                        {{if topic.isself>=0||topic.isstud>0}}
+                                            <div lvs_bind="TeamAttach">
+                                            {{if topic.attach.id==0}}
+                                                <div class="AttachFile"><span class="txt-grey">尚未上传成果，请点击右侧按钮上传</span><div class="ClickUpload float-right"><a class="WsButton bg-wsblue">点击上传文件</a></div></div><a lvs_bind="AttachOk" lvs_elm="TeamAttachOk" idxid="${topic.id}">&nbsp;</a>
+                                            {{else}}
+                                                <div class="AttachFile"><a href="${topic.attach.url}" download="${topic.attach.title}"><img widht="16px" height="16px" style="vertical-align:middle" src="${topic.attach.image}"/>文件：${topic.attach.title}</a><span class="txt-grey font-9">(${topic.attach.time})</span><div class="ClickUpload float-right"><a class="WsButton bg-wsblue">点击更新文件</a></div></div><a lvs_bind="AttachOk" lvs_elm="TeamAttachOk" idxid="${topic.id}">&nbsp;</a>
+                                            {{/if}}
+                                            </div>
+                                        {{else}}
+                                        {{/if}}
+                                    </div>
+                                </div>
+                                <div class="EditPanel" style="margin-left:14px;padding:24px;margin-top:14px">
+                                    <div class="Title"><span class="PreTitle">.</span>导师批改</div>
+                                    <div style="margin-top:18px;margin-bottom:18px;text-align:left">
+                                        {{if topic.istch}}{{if topic.istch>0}}<span class="float-right"><a class="WsButton bg-wsblue" lvs_elm="AddRem">新增批改</a></span>{{/if}}{{/if}}
+                                        {{if topic.rems}}
+                                            {{if topic.rems.length==0}}<span class="txt-grey">导师尚未批改</span>{{/if}}
+                                            <table width="100%" class="BaseTable">
+                                                <thead><td>导师</td><td>批改意见</td><td>批改结果</td></thead>
+                                                {{each(r,remdata) topic.rems}}
+                                                {{if (r%2)==1}}<tr class="GreyTr">{{else}}<tr>{{/if}}
+                                                <td>${remdata.sname}</td><td>${remdata.info}</td><td><span class="RemScore">{{if remdata.score==1}}A{{else remdata.score==2}}B{{else remdata.score==3}}C{{else remdata.score==4}}驳回{{/if}}</span></td>
+                                                </tr>
+                                                {{/each}}
+                                            </table>
+                                        {{/if}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="EditContainer" lvs_bind="EditContainer" style="display:none">
+                                <div class="EditPanel" style="margin-left:14px;padding:24px">
+                                    <div class="Title"><span class="PreTitle">.</span>团队简介</div>
+                                    <div class="InfoBox">
+                                        <table width="100%">
+                                            {{if topic.courseid>0}}<tr><td><div style="height:46px;line-height:46px">项目课题：</div></td><td align="left">${topic.crsname}</td></tr>{{/if}}
+                                            <tr><td><div style="height:46px;line-height:46px;">*团队名称：</div></td><td><input class="EditInput" style="height:46px;line-height:46px;margin-bottom:16px" lvs_bind="UpdTeamName" type="text" need="1" value="${topic.name}" placeholder="请输入团队名称"/></td></tr>
+                                            <tr><td><div style="margin-top:14px">团队描述：</div></td><td><textarea class="EditInput" style="padding-top:14px;padding-left:14px;height:200px" lvs_bind="UpdTeamDesc" placeholder="请简单描述团队想要解决的问题及方案">${topic.sdesc}</textarea></td></tr>
+                                        </table>
+                                        <div class="EditFoot"><a lvs_elm="EditCancel" class="WsButton border-wsgrey">取消</a><a lvs_elm="EditOk" class="WsButton bg-wsblue" idxid="${topic.id}">提交</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+        <div class="BaseForm" id="DisposeForm" style="display:none">
+            {{if topic}}
+            <div class="BaseDesc">
+                确定解散“${topic.name}”团队吗？<br/>
+                <div style="margin-top:40px"><a class="FormOk WsButton bg-wsblue">确定解散</a><a class="FormCancel WsButton border-wsgrey">我再想想</a></div>
+            </div>
+            {{/if}}
+        </div>
+        <div class="BaseForm" id="DelTeacherForm" style="display:none">
+            <div class="BaseDesc">
+            {{if topic}}
+                确定解除对“${topic.name}”团队的指导吗？<br/>
+                <div style="margin-top:40px"><a class="FormOk WsButton bg-wsblue">确定解除</a><a class="FormCancel WsButton border-wsgrey">我再想想</a></div>
+            {{/if}}                
+            </div>
+        </div>
+        <div class="BaseForm" id="AddRemForm" style="display:none">
+            <div class="BaseDesc">
+            {{if topic}}
+                对“${topic.name}”团队的任务进行批改<br/>
+            {{/if}}
+            </div>
+            <div class="BaseDesc">批改意见：</div>
+            <div class="BaseInput"><textarea lvs_bind="reminfo" placeholder="请对团队的成果进行评价"></textarea></div>
+            <div class="BaseDesc">批改结论：</div>
+            <div class="BaseDesc"><div class="flexbox TypeTab" lvs_bind="remscore"><div class="flex1 TypeItem" tabidx="1" lvs_ref="tab.SelPanel">A</div><div class="flex1 TypeItem" tabidx="2" lvs_ref="tab.SelPanel">B</div><div class="flex1 TypeItem" tabidx="3" lvs_ref="tab.SelPanel">C</div><div class="flex1 TypeItem" tabidx="4" lvs_ref="tab.SelPanel">驳回</div></div></div>
+            <div class="BaseDesc">                
+                <div style="margin-top:30px"><a class="FormOk WsButton bg-wsblue">确定批改</a><a class="FormCancel WsButton border-wsgrey">我再想想</a></div>
+            </div>
+        </div>
+        <div class="DlgTmpl" id="QuitStudTmpl" style="display:none">
+            <div class="BaseDesc">${tipinfo}</div>
+            <div class="BaseDesc"><a class="FormOk WsButton bg-wsblue">确定操作</a><a class="FormCancel WsButton border-wsgrey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="QuitClsForm" style="display:none">
+                {{if topic}}
+                <div class="BaseDesc">
+                    确定退出“${topic.name}”团队吗？<br/>
+                    <div style="margin-top:40px"><a class="FormOk WsButton bg-wsblue">确定退出</a><a class="FormCancel WsButton border-wsgrey">我再想想</a></div>
+                </div>
+                {{/if}}
+        </div>
+    </div>
+</body>
+</html>

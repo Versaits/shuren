@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_course_course_demo" lvs_jqexec="lvs_course_demo">
+        <div class="demo_Title1" style="margin-top:50px">课程设计基础显示内容</div>
+        <div class="demo_Description">学习平台中教师备课使用的课程设计基础页</div>
+        <div class="demo_block" style="">
+            <div style="width:80%">
+                <component name="cn.course.crstmplbase"></component>
+            </div>
+        </div>
+        <div class="demo_Description">示例代码：<br />
+            <input class="demo_Code" style="width:80%" type="text" value="<component name=&quot;cn.course.crstmplbase&quot;></component>"/>
+        </div>
+        <div class="demo_Description">输入数据说明：
+            <table class="demo_Table" width="80%" border="1">
+                <thead><td>输入数据名</td><td>说明</td><td>类型</td></thead>
+                <tr><td>id</td><td>课程设计索引号</td><td>整数</td></tr>
+                <tr><td>titleimg</td><td>标题图片</td><td>字符串</td></tr>
+                <tr><td>title</td><td>课程标题</td><td>字符串</td></tr>
+                <tr><td>seqid</td><td>课程序号</td><td>整数</td></tr>
+                <tr><td>status</td><td>当前状态</td><td>字符串</td></tr>
+                <tr><td>desc</td><td>详细描述</td><td>HTML格式字符串</td></tr>
+                <tr><td>lesnnum</td><td>已上课程数</td><td>整数</td></tr>
+                <tr><td>memnum</td><td>学员学习数</td><td>整数</td></tr>
+                <tr><td>readnum</td><td>浏览数</td><td>整数</td></tr>
+                <tr><td>modules</td><td>可选模块列表</td><td>列表</td></tr>
+                <tr><td>modules[].sname</td><td>模块名称</td><td>字符串</td></tr>
+                <tr><td>levels</td><td>年级列表</td><td>列表</td></tr>
+                <tr><td>levels[].id</td><td>年级号</td><td>整数</td></tr>
+                <tr><td>levels[].name</td><td>年级名称</td><td>字符串</td></tr>
+                <tr><td>moretmpls</td><td>本设计对应的更多设计模板</td><td>List&lt;CrsTmpl&qt;</td></tr>
+            </table>
+        </div>
+        <div class="demo_Title1" style="margin-top:50px" id="MenuTab">班级排班日历</div>
+        <div class="demo_Title1" style="margin-top:50px" id="TagTab">项目化课程团队</div>
+    </div>
+
+</body>
+</html>

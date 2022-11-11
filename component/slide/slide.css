@@ -1,0 +1,47 @@
+﻿.SlideBack
+{
+    background-size:100%;
+    background-position:top center;
+    background-repeat:no-repeat;
+}
+.SlideItem
+{
+    width:100%;
+}
+.SlideTitle
+{
+    
+}
+.SlideDotBox
+{
+    margin-top:-12px;
+    margin-left:40%;
+    width:20%;
+    z-index:1;
+}
+.SlideDotBox .SlideDot
+{
+    margin-left:8px;
+    background-color:White;
+    border-radius:9999px;
+    width:8px;
+    height:8px
+}
+.SlideDotBox .SlideAct
+{
+    background-color:Orange;
+}
+.SlideTitle
+{
+    margin-top:-50px;
+}
+.SlideTitle .SlideText
+{
+    font-size:16px;
+    display:inline-block;
+    width:100%;color:White;
+    height:50px;
+    line-height:40px;
+    text-indent:10px;
+    background-color:rgba(80,80,80,0.5)
+}

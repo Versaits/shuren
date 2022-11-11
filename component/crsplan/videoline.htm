@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_crsplan_videoline" lvs_jqexec="lvstimeline" style="height:108px">
+        <div class="VTimeLineBox">
+            <div class="flexbox">
+                <div style="width:40px"></div>
+                <div class="TimeHead flex1"><span class="float-left">0"</span><span lvs_bind="totalsec" totalsec="${totalsec}" cursec="${currsec}" class="float-right"><span lvs_bind="totalhour">${hour}</span>:<span lvs_bind="totalminute">${minute}</span>:<span lvs_bind="totalsecond">${second}</span></span></div>
+            </div>
+            <div class="flexbox">
+                <div style="width:40px">
+                    <a lvs_elm="AddVPage" class="VButton"><img width="60%" src="../../Image/append.png"/></a>
+                </div>
+                <div class="TimeVPageZone" lvs_elm="TimeVPage">
+                    <component name="cn.crsplan.vpagelist"></component>
+                </div>
+            </div>
+            <div class="TimeBox flexbox" lvs_elm="TimeBox">
+                <div style="width:40px"><a lvs_elm="VPlay" playing="1"><img width="60%" src="../../Image/photopause.png" style="margin-top:10px" /></a></div>
+                <div class="TimeFlow flex1" lvs_elm="TimeFlow">
+                    <span class="TimeOff"></span>
+                    <div class="TimeSpan">
+                        <div lvs_elm="TimeLineTm" class="TimeLineShow" lvs_bind="currtm" currsec="0.0">0:00</div>
+                        <div lvs_elm="TimeLineAdd" style="display:none" class="TimeLineAdd"></div>
+                    </div>
+                    <div class="TimeOver" style="display:none">
+                        <div class="TimeOverShow" lvs_bind="tipstm"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="BaseTmpl" id="AddVPageTmpl" style="display:none">
+            <div class="BaseDesc">添加媒体播放过程中的讲义页面</div>
+            <div class="BaseDesc">添加位置（媒体播放时间，单位秒）</div>
+            <div class="BaseInput"><input type="number" value="${cursec}" lvs_bind="cursec" /></div>
+            <div class="BaseDesc">页面类型</div>
+            <div class="TypeTab flexbox" lvs_bind="pagetype"><div class="TypeItem flex1 active" lvs_ref="tab.SelPanel" idxid="plan" tabidx="plan">普通讲义</div><div class="TypeItem flex1" lvs_ref="tab.SelPanel" idxid="check" tabidx="check">检查点</div></div>
+            <div class="tabcontent" tabcontainer="plan">
+                <div class="BaseDesc">本页面播放时长：（单位秒）</div>
+                <div class="BaseInput"><input type="number" lvs_bind="pagetime" value="6" /></div>
+            </div>
+            <div class="tabcontent" tabcontainer="plan">
+                <div class="BaseDesc">需要完成检查页面中的任务后才能继续播放</div>
+            </div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确定添加</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+    </div>
+</body>
+</html>

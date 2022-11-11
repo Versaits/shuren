@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+ <div lvs_component="cn_el_rangepicker" lvs_jqexec="lvs_el_datepicker">
+    <div class="el_date_rangepicker">
+         <div class="el_input_box el_input_inner" id="dateinput" >            
+            <input class="dateRange" lvs_bind="StartData" type="text"  placeholder="开始时间" />
+            <span class="el_range_separator">至</span>
+            <input class="dateRange" lvs_bind="EndData" type="text"  placeholder="结束时间" />
+            <img class="el_input_clear"  src="./icon/el_icon_close.png"  style="display:none" />
+        </div>
+        <div class="el_date_rangepicker_body data" style="display:none">
+            <div class="el_date_rangepicker_content is_left" id="startDate" >
+                <div class="el_date_rangepicker_header "  >
+                    <img class="el_picker_panel_icon_btn el_date_picker_prev_btn el_range_prevYear"  src="./icon/el_icon_ll.png"  />
+                    <img class="el_picker_panel_icon_btn el_date_picker_prev_btn el_range_prevMonth" src="./icon/el_icon_left.png"  />
+                    <span class="el_date_rangepicker_header_label" ><span lvs_bind="startYear"></span>年</span>
+                    <span class="el_date_rangepicker_header_label"><span lvs_bind="startMonth"></span>月</span>
+                </div>
+                <table class="el_date_table"  id="startTable">
+                        <tbody>
+                            <tr>
+                                <th>日</th>
+                                <th>一</th>
+                                <th>二</th>
+                                <th>三</th>
+                                <th>四</th>
+                                <th>五</th>
+                                <th>六</th>
+                            </tr>
+                        </tbody>
+                 </table>
+            </div>
+             <div class="el_date_rangepicker_content is_right" >
+                <div class="el_date_rangepicker_header is_right" id="endDate" >
+                    <span class="el_date_rangepicker_header_label" ><span lvs_bind="endYear"></span>年</span>
+                    <span class="el_date_rangepicker_header_label"><span lvs_bind="endMonth"></span>月</span>
+                     <img class="el_picker_panel_icon_btn el_date_picker_next_btn el_range_nextYear"  id="endMonth" src="./icon/el_icon_rr.png"  />
+                <img class="el_picker_panel_icon_btn el_date_picker_next_btn el_range_nextMonth"  id="endYear" src="./icon/el_icon_right.png"  />
+                </div>
+                <table class="el_date_table" id="endTable">
+                        <tbody>
+                            <tr>
+                                <th>日</th>
+                                <th>一</th>
+                                <th>二</th>
+                                <th>三</th>
+                                <th>四</th>
+                                <th>五</th>
+                                <th>六</th>
+                            </tr>
+                        </tbody>
+                 </table>
+            </div>
+        </div>
+       
+      
+    </div>
+</div>
+</body>
+</html>

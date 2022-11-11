@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div class="demo_Title1" style="margin-top:100px" id="el_slider">Slider 滑块</div>
+    <div class="demo_Description">通过拖动滑块在一个固定区间内进行选择</div>
+    <div class="demo_Title2" style="margin-top:50px">基础用法</div>
+    <div class="demo_Description">带max、min 和当前值 curval;如果一个页面中多个组件参数值会互相影响</div>
+
+    <div class="demo_block" style="">
+        <component name="cn.el_slider.el_slider" data-curval="40" data-step="1"  ></component>
+    </div>
+    <div class="demo_Description">示例代码：<br />
+      
+        <textarea class="demo_Code" style="width:80%" >
+            &lt;component name=&quot;cn.el_slider.el_slider&quot; data-curval=&quot;40&quot;&gt;&lt;/component&gt;
+        </textarea>
+    </div>
+    <div class="demo_Description">输入数据说明：
+        <table class="demo_Table" width="80%" border="1">
+            <thead><td>输入数据名</td><td>说明</td><td>类型</td></thead>
+            <tr><td>max</td><td>最大值</td><td>整数</td></tr>
+            <tr><td>min</td><td>最大值</td><td>整数</td></tr>
+            <tr><td>curval</td><td>缺省当前值</td><td>整数</td></tr>
+        </table>
+    </div>
+  
+      <div class="demo_Title2" style="margin-top:50px">带有输入框</div>
+    <div class="demo_Description">通过输入框设置精确数值</div>
+    <div class="demo_block" style="">
+        <component name="cn.el_slider.el_slider_input"  data-curval="60" data-step="1"></component>
+    </div>
+    <div class="demo_Description">示例代码：<br />
+        <textarea class="demo_Code" style="width:80%" >
+            &lt;component name=&quot;cn.el_slider.el_slider_input&quot; data-curval=&quot;40&quot;&gt;&lt;/component&gt;
+        </textarea>
+    </div>
+    <div class="demo_Description">输入数据说明：
+        <table class="demo_Table" width="80%" border="1">
+            <thead><td>输入数据名</td><td>说明</td><td>类型</td></thead>
+            <tr><td>max</td><td>最大值</td><td>整数</td></tr>
+            <tr><td>min</td><td>最大值</td><td>整数</td></tr>
+            <tr><td>curval</td><td>缺省当前值</td><td>整数</td></tr>
+        </table>
+    </div>
+
+       <div class="demo_Title2" style="margin-top:50px">分等级的输入框</div>
+    <div class="demo_Description">通过参数来区别是否分级，不同等级显示不同颜色</div>
+    <div class="demo_block" style="">
+        <component name="cn.el_slider.el_slider_input"  basedata="slidegrade:data" data-curval="60" data-step="1" data-slidegrade="1"></component>
+    </div>
+    <div class="demo_Description">示例代码：<br />
+        <textarea class="demo_Code" style="width:80%" >
+            &lt;component name=&quot;cn.el_slider.el_slider_input&quot; data-curval=&quot;40&quot;&gt;&lt;/component&gt;
+        </textarea>
+    </div>
+    <div class="demo_Description">输入数据说明：
+        <table class="demo_Table" width="80%" border="1">
+            <thead><td>输入数据名</td><td>说明</td><td>类型</td></thead>
+            <tr><td>max</td><td>最大值</td><td>整数</td></tr>
+            <tr><td>min</td><td>最大值</td><td>整数</td></tr>
+            <tr><td>curval</td><td>缺省当前值</td><td>整数</td></tr>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="ExpList" lvs_jqexec="lvsexplist">
+        {{if list.length==0}}
+        <div class="ExpBox"><span class="txt-grey">点击<a lvs_elm="AddList">新建</a>开始创建数据</span></div>
+        {{/if}}
+        {{each(l,lstdata) list}}
+        <div class="ExpBox">
+            <div class="ExpListHead {{if expted}}Expanded{{else}}Expanding{{/if}} {{if lstdata.isdef}}ExpListSel{{/if}}" idxid="${lstdata.id}" dataidx="${l}">
+                <span class="ExpHeadBody">
+                    {{if lstdata.seqid}}${lstdata.seqid}.{{/if}}${lstdata.sname}
+                    {{if listedit}}<span class="float-right"><img lvs_elm="ListEdit" dataidx="${l}" style="display:none" width="16px" height="16px" src="../../Image/bukrecm.png" /></span>{{/if}}
+                </span>
+            </div>
+            <div class="ExpListBody" {{if expted}}{{else}}style="display:none"{{/if}}>
+                {{if lstdata.sub}}{{each(s,subdata) lstdata.sub}}
+                <div class="ExpSubListItem" {{if selref}}lvs_ref="${selref}"{{/if}} dataidx="${l},${s}" idxid="${subdata.id}" idxname="${subdata.sname}" trigger="${subdata.trigger}">
+                    {{if subdata.subseq}}${subdata.subseq}.{{/if}}${subdata.sname}{{if subdata.tipnum}}<span title="${subdata.tipname}" class="ListTipNum">${subdata.tipnum}</span>{{/if}}
+                    {{if subedit}}<span style="margin-left:16px"><img lvs_elm="SubEdit" dataidx="${l},${s}" style="display:none" width="16px" height="16px" src="../../Image/bukrecm.png" /></span>{{/if}}
+                </div>
+                {{/each}}{{/if}}
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</body>
+</html>

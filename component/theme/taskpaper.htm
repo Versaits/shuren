@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_theme_taskpaper" lvs_jqexec="lvsthemeset" class="PageThemeBox">
+        <div class="ThemeTitle">{{if title}}{{if title!=''}}${title}{{else}}工作纸{{/if}}{{else}}工作纸{{/if}}</div>
+        {{if score}}<div class="ThemeDesc">${score}分</div>{{/if}}
+        {{if taskpaper}}
+            <div class="ThemeOpe"><a lvs_elm="ShowTheme" class="button bg-grey Clicktable">查看工作纸</a></div>
+        {{else id}}
+            <div class="ThemeOpe"><a lvs_elm="ShowTheme" class="button bg-grey Clicktable">查看工作纸</a></div>
+        {{else}}
+            <div class="ThemeOpe"><a lvs_elm="SelPaper" class="button bg-grey Clicktable">选择工作纸</a></div>
+        {{/if}}
+        <div class="ThmPanelBox" style="position:relative;display:none">
+            <div class="ThemeTitle flexbox"><div class="PropertyText Editable ThemeTitleEdit flex1" contenteditable="true" lvs_bind="title" style="{{if titlefont}}font-size:${titlefont};{{/if}}{{if titlecolor}}color:${titlecolor};{{/if}}">{{if title}}${title}{{else}}工作纸{{/if}}</div>
+                <div style="width:36px;text-align:center"><img width="24px" height="24px" lvs_elm="ClosePanel" src="../../Image/close.png" /></div>
+            </div>
+            <div class="htmlformat" lvs_elm="TaskDesc">${taskdesc}</div>
+        </div>
+        <div class="BaseForm" id="SelPaperForm" title="选择工作纸" style="display:none">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_cls_projteam" lvs_jqexec="lvs_teamclass">
+        <div class="NaviBox" style="padding:12px 0">
+            <a class="NaviLink" lvs_ref="baserouter.tchproj" idxid="0">我的项目</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a class="NaviLink" lvs_ref="router.projteam" idxid="${id}">${type}：${name}</a>
+        </div>
+        <div class="WSBox" style="padding:24px">
+            <div class="flexbox LesnStepBox">
+                <div class="flex1 ClsStudItem" lvs_elm="StudItem" style="width:80px">
+                    <span class="LesnStepSeq">${studnum}</span>
+                    <span class="LesnStepTitle textwrap">项目组成员</span>
+                </div>
+            {{each(l,lesndata) lesns}}
+                <div class="flex1 LesnItem" lvs_elm="LesnItem" dataidx="${l}">
+                    <span class="LesnStepSeq">${lesndata.seqid}</span>
+                    <span class="LesnStepTitle textwrap" title="${lesndata.title}">${lesndata.title}</span>
+                </div>
+                <div class="RightItem"></div>
+            {{/each}}
+            </div>
+            <div id="LesnInfoBox" style="margin-top:18px">
+                {{if groups}}
+                <table width="96%" class="BaseTable">
+                    <thead><td>分组</td><td>成员</td>{{each(n,ndata) lesns}}<td>${ndata.title}</td>{{/each}}</thead>
+                    {{each(g,grpdata) groups}}
+                        {{if (g%2)==1}}<tr class="GreyTr">{{else}}<tr>{{/if}}
+                        <td>${grpdata.name}</td><td>${grpdata.members}</td>
+                        {{each(p,statdata) stats}}
+                            <td lvs_elm="ShowResp" idxid="${statdata.id}">{{if statdata.prog<0}}{{else}}<div style="font-size:10px;color:#8a8a8a">${statdata.respnum}条反馈<br />${statdata.maxtime}</div><div style="width:${statdata.prog}%;height:5px;background-color:#12c242;"></div>{{/if}}</td>
+                        {{/each}}
+                        </tr>
+                    {{/each}}
+                </table>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

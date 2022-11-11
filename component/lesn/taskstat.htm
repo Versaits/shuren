@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_lesn_taskstat" lvs_jqexec="lvs_lesn_taskstat">
+        {{if studs}}
+        <table width="100%" class="BaseTable">
+            <thead><td>学号</td><td>学生</td>{{each(t,tskdata) tasks}}<td><a lvs_elm="ShowTaskTheme" dataidx="${t}">{{if tskdata.type=='TTask'}}作业题{{else}}互动题{{/if}}${t+1}</a></td>{{/each}}<td>评价</td></thead>
+            {{each(s,stddata) studs}}
+                {{if s%2==1}}<tr class="GreyTr">{{else}}<tr>{{/if}}
+                <td>${stddata.studno}</td><td>${stddata.name}</td>{{each(a,ansdata) tasks}}<td><div lvs_bind="Ans_${stddata.id}_${ansdata.id}" lvs_elm="ShowAns"></div></td>{{/each}}
+                <td><div lvs_bind="CheckTask_${stddata.id}" lvs_elm="ShowCheck"></div></td>
+                </tr>
+            {{/each}}
+        </table>
+        <div class="BaseForm" id="ShowThemeForm" title="查看题目" style="display:none"></div>
+        <div class="BaseForm" id="AddCheckForm" title="添加评价" style="display:none"></div>
+        {{else tasks}}
+        <div class="BaseForm" id="CheckTaskTmpl" style="display:none">
+            <div style="max-height:500px;overflow:auto">
+                {{each(t,taskdata) tasks}}
+                <div class="BaseDesc">第${t+1}题</div>
+                <div class="BaseInput"><component name="cn.theme.baseshow" basedata="tasks[${t}]"></component></div>
+                {{/each}}
+            </div>
+            <div class="BaseDesc"><span class="txt-red">*</span>评价分数</div>
+            <div class="BaseDesc"><component name="cn.el_slider.el_slider_input" lvs_bind="checkscore" need="1"></component></div>
+            <div class="BaseDesc">评审说明</div>
+            <div class="BaseInput"><input type="text" lvs_bind="checkrem" placeholder="简单说明批改意见" /></div>
+            <div class="BaseDesc"><a class="button bg-green FormOk">确认提交</a><a class="button bg-grey FormCancel">取消操作</a></div>
+       </div>
+        {{/if}}
+    </div>
+</body>
+</html>

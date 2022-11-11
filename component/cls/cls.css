@@ -1,0 +1,150 @@
+﻿.SchoolBox
+{
+    width:96%;
+    margin-left:2%;
+    margin-top:10px;
+    padding:16px 0;
+    background-color:White;
+    border:#cacaca 1px solid;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    border-radius:5px;    
+    text-align:center;
+}
+.SchoolBox .BigName
+{
+    color:#4A4A4A;
+    font-size:16px;
+    font-weight:bold;
+}
+.SchoolBox .SchDesc
+{
+    color:#aaaaaa;
+    font-size:10px;
+}
+.RemScore
+{
+    display:inline-block;
+    padding:8px;
+    font-size:20px;
+}
+
+.LesnStepBox
+{
+}
+.LesnStepBox .LesnItem
+{
+    padding:8px 0;
+    text-align:center;
+    background-color:#d2effa;
+    margin-left:14px;
+    font-size:15px;
+    color:#4a4a4a;
+    cursor:pointer;
+    letter-spacing:1.2px;
+    height:32px;
+}
+.LesnStepBox .RightItem
+{
+    display:inline-block;
+    width:0;
+    height:0;
+    border-left:8px solid transparent;
+    border-right:0;
+    border-top:White 24px solid;
+    border-bottom:White 24px solid;
+    margin-left:-8px;
+}
+.LesnStepBox .ClsStudItem
+{
+    background-color:#fcd194;
+    padding:8px 0;
+    border-radius:8px;
+    line-height:32px;
+    font-size:14px;
+}
+.LesnStepBox .StudItemSel
+{
+    background-color:#fdac70!important;
+    border:#fb9952 2px solid;
+}
+.LesnStepBox .LesnItemSel
+{
+    background-color:#a2d2fa!important;
+}
+.LesnStepBox .LesnStepSeq
+{
+    float:left;
+    margin-left:-12px;
+    display:inline-block;
+    background-color:#2282d2;
+    color:White;
+    text-align:center;
+    border-radius:999px;
+    margin-top:4px;
+    width:24px;
+    height:24px;
+    line-height:24px;
+    font-size:11px;
+    cursor:text;
+}
+.LesnStepBox .LesnStepTitle
+{
+    line-height:32px;
+    cursor:text;
+    font-size:14px;
+}
+.BaseClassList
+{
+    border:#fafafa 1px solid;
+    padding:8px 6px;
+    margin-top:6px;
+    border-radius:3px;
+    box-shadow:1px 1px 2px #cacfef;
+    font-size:12px;
+    background-color:White;
+}
+.BaseClassList .ClsTitle
+{
+    font-size:15px;
+    color:#4a4a4a;
+    letter-spacing:1.2px;
+}
+.BaseClassList .ClsDesc
+{
+    font-size:12px;
+    letter-spacing:1.5px;
+    color:#8a8a8a;
+}
+
+.BaseClassList .ClsOpe
+{
+    font-size:12px;
+    letter-spacing:1.2px;
+    color:#8a8a8a;
+}
+.BaseClassList .ClsOpe .button
+{
+    margin-top:0!important;
+    line-height:24px!important;
+}
+
+.ExpLeftTitle
+{
+    display:inline-block;
+    width:20px;
+    height:20px;
+    background-image:url('../../Image/expleft.png');
+    background-size:100% 100%;
+    background-position:center center;
+    margin-right:8px;
+}
+.ExpDownTitle
+{
+    display:inline-block;
+    width:20px;
+    height:20px;
+    background-image:url('../../Image/expdown.png');
+    background-size:100% 100%;
+    background-position:center center;
+    margin-right:8px;
+}

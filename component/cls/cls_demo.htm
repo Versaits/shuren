@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_cls_cls_demo" lvs_jqexec="lvs_cls_demo">
+        <div class="demo_Title1" style="margin-top:50px" id="el_slider">班级基本描述组件</div>
+        <div class="demo_Description"></div>
+        <div class="demo_block" style="">
+            <div style="width:80%">
+                <component name="cn.cls.basedesc"></component>
+            </div>
+        </div>
+        <div class="demo_Description">示例代码：<br />
+            <input class="demo_Code" style="width:80%" type="text" value="<component name=&quot;cn.cls.basedesc&quot;></component>"/>
+        </div>
+        <div class="demo_Description">输入数据说明：
+            <table class="demo_Table" width="80%" border="1">
+                <thead><td>输入数据名</td><td>说明</td><td>类型</td></thead>
+                <tr><td>id</td><td>班级索引号</td><td>整数</td></tr>
+                <tr><td>sdesc</td><td>班级描述</td><td>HTML格式化字符串</td></tr>
+                <tr><td>showlesn</td><td>是否显示课程明细</td><td>枚举：1-显示，0-不显示</td></tr>
+                <tr><td>lesns</td><td>课程计划列表</td><td>数组</td></tr>
+                <tr><td>lesns[].id</td><td>课程索引号</td><td>整数</td></tr>
+                <tr><td>lesns[].title</td><td>课程标题</td><td>字符串</td></tr>
+                <tr><td>lesns[].time</td><td>课程时间</td><td>字符串</td></tr>
+                <tr><td>lesns[].status</td><td>课程状态</td><td>字符串</td></tr>
+                <tr><td>showtch</td><td>是否显示教师信息</td><td>枚举：1-显示，0-不显示</td></tr>
+                <tr><td>showcot</td><td>是否显示辅助教师信息</td><td>枚举：1-显示，0-不显示</td></tr>
+                <tr><td>tchinfo</td><td>教师信息</td><td>对象</td></tr>
+                <tr><td>tchinfo.id</td><td>教师索引号</td><td>整数</td></tr>
+                <tr><td>tchinfo.name</td><td>教师姓名</td><td>字符串</td></tr>
+                <tr><td>tchinfo.desc</td><td>教师描述</td><td>字符串</td></tr>
+                <tr><td>cots</td><td>辅助教师列表</td><td>数组</td></tr>
+                <tr><td>cots[].id</td><td>辅助教师索引号</td><td>整数</td></tr>
+                <tr><td>cots[].name</td><td>辅助教师姓名</td><td>字符串</td></tr>
+                <tr><td>cots[].desc</td><td>辅助教师描述</td><td>字符串</td></tr>
+            </table>
+        </div>
+        <div class="demo_Title1" style="margin-top:50px" id="MenuTab">班级排班日历</div>
+        <div class="demo_Title1" style="margin-top:50px" id="TagTab">项目化课程团队</div>
+    </div>
+
+</body>
+</html>

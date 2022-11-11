@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_lesn_lesngrouppanel" lvs_jqexec="lvs_lesn_grpstat">
+        <div id="LesnInfoBox" style="margin-top:18px">
+            <div class="BaseTitle">当前章节：${curmodseq}.${curmodule}{{if istch>0||iscot>0}}<span class="float-right" style="font-size:14px;font-weight:normal"><a class="button bg-green" idxid="${id}" modseq="${curmodseq}" lvs_elm="DownFile">打包下载文件</a></span>{{/if}}</div>
+            {{if groups}}
+            <table width="96%" class="BaseTable">
+                <thead><td>分组</td><td>成员</td>{{each(n,ndata) lesns}}<td>${ndata.title}</td>{{/each}}<td>操作</td></thead>
+                {{each(g,grpdata) groups}}
+                    {{if (g%2)==1}}<tr class="GreyTr">{{else}}<tr>{{/if}}
+                    <td>${grpdata.name}</td><td>${grpdata.members}</td>
+                    {{each(p,statdata) stats}}
+                        <td lvs_elm="ShowResp" idxid="${statdata.id}">{{if statdata.prog<0}}{{else}}<div style="font-size:10px;color:#8a8a8a">${statdata.respnum}条反馈<br />${statdata.maxtime}</div><div style="width:${statdata.prog}%;height:5px;background-color:#12c242;"></div>{{/if}}</td>
+                    {{/each}}
+                        <td>{{if istch>0||iscot>0}}<a lvs_elm="ShowGrpTask" class="button bg-green" idxid="${grpdata.id}">查看任务</a>{{/if}}</td>
+                    </tr>
+                {{/each}}
+            </table>
+            {{/if}}
+        </div>
+    </div>
+</body>
+</html>

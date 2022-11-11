@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_cls_flexclass" lvs_jqexec="lvs_cls_classlist">
+        <div class="flexrow">
+            {{each(c,clsdata) classes}}
+            <div class="colflex3" style="margin-top:12px">
+                <div class="FlexItemBox" lvs_elm="ClassItem" lvs_ref="{{if clsdata.type=='课题'}}router.topicteam{{else}}router.clsinfo{{/if}}" idxid="${clsdata.id}">
+                    <div>
+                        <div class="HeadImg" perheit="57" style="background-image:url('${clsdata.image}')">
+                            {{if clsdata.subjects}}<div class="FlexStatus">${clsdata.subjects}</div>{{/if}}
+                        </div>
+                        <div class="FlexTitle textwrap" title="${clsdata.name}">${clsdata.name}</div>
+                        <div class="FlexDesc">课程数：${clsdata.lesnnum}<span class="float-right">${clsdata.tname}</span></div>
+                    </div>
+                    {{if joinope}}
+                    <div class="FlexOpe"><a class="button border-green" lvs_elm="JoinCls" idxid="${clsdata.id}">申请加入</a></div>
+                    {{/if}}
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <div class="BaseForm" id="StudJoinFrom" title="报课申请" style="display:none">
+            <div class="BaseDesc">确认学员姓名：</div>
+            <div class="BaseInput"><input type="text" value="${studname}" placeholder="确认学员姓名" lvs_bind="studname" /></div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确认申请</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+   </div>
+</body>
+</html>

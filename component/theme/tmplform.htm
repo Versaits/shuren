@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_theme_tmplform" lvs_jqexec="lvs_tmplform">
+        <div class="BaseDesc flexbox" lvs_bind="GridConfig" style="display:none"><div class="MultSelecting flex1" idxid="TchEdit">教师可编辑</div><div class="MultSelecting flex1" idxid="StudEdit">学生可编辑</div><div class="MultSelecting flex1" idxid="NumStat">数据需统计</div></div>
+        {{if tasktmpl==-1}}
+        {{if tdesc}}
+            <div class="BaseDesc"><div lvs_bind="tasktmpldesc"></div></div>
+        {{else}}
+            <div class="BaseDesc" lvs_bind="tasktmpldesc">
+                <table width="100%" class="TmplTable">
+                    <thead><th width="40%"><span class="TchEdit" contenteditable="true">条目名称</span><img class="HideButton" lvs_elm="AddCol" style="display:none" src="../../Image/append.png" /></th><th width="40%"><span class="TchEdit" contenteditable="true">提交内容</span><img class="HideButton" lvs_elm="AddCol" style="display:none" src="../../Image/append.png" /></th><th width="20%"><span class="TchEdit" contenteditable="true">备注</span><img class="HideButton" lvs_elm="AddCol" style="display:none" src="../../Image/append.png" /></th></thead>
+                    <tr>
+                        <td ><div class="TchEdit" contenteditable="true"></div></td><td><div class="StudEdit" contenteditable="true"></div></td><td><span class="TchEdit" contenteditable="true"></span><img class="HideButton" lvs_elm="AddRow" style="display:none" src="../../Image/append.png" /></td>
+                    </tr>
+                    <tr>
+                        <td ><div class="TchEdit" contenteditable="true"></div></td><td><div class="StudEdit" contenteditable="true"></div></td><td><span class="TchEdit" contenteditable="true"></span><img class="HideButton" lvs_elm="AddRow" style="display:none" src="../../Image/append.png" /></td>
+                    </tr>
+                    <tr>
+                        <td ><div class="TchEdit" contenteditable="true"></div></td><td><div class="StudEdit" contenteditable="true"></div></td><td><span class="TchEdit" contenteditable="true"></span><img class="HideButton" lvs_elm="AddRow" style="display:none" src="../../Image/append.png" /></td>
+                    </tr>
+                    <tr>
+                        <td ><div class="TchEdit" contenteditable="true"></div></td><td><div class="StudEdit" contenteditable="true"></div></td><td><span class="TchEdit" contenteditable="true"></span><img class="HideButton" lvs_elm="AddRow" style="display:none" src="../../Image/append.png" /></td>
+                    </tr>
+                    <tr>
+                        <td ><div class="TchEdit" contenteditable="true"></div></td><td><div class="StudEdit" contenteditable="true"></div></td><td><span class="TchEdit" contenteditable="true"></span><img class="HideButton" lvs_elm="AddRow" style="display:none" src="../../Image/append.png" /></td>
+                    </tr>
+                </table>
+            </div>
+        {{/if}}
+        {{else}}
+        <div lvs_bind="tasktmpldesc"></div>
+        {{/if}}
+        <div class="BaseDesc"><a lvs_elm="SaveTaskTmpl" class="button bg-green" style="display:none">保存</a></div>
+        <div class="BaseForm" id="AddColForm" title="添加表格列" style="display:none">
+            <div class="BaseDesc">增加的列标题：</div>
+            <div class="BaseInput"><input type="text" lvs_bind="colname" /></div>
+            <div class="BaseDesc">增加的列属性：</div>
+            <div class="TypeTab flexbox" lvs_bind="edittype"><div class="TypeItem flex1 active" lvs_ref="tab.SelPanel" tabidx="tchedit">学生不可编辑</div><div class="TypeItem flex1" lvs_ref="tab.SelPanel" tabidx="studedit">学生可编辑</div></div>
+            <div class="BaseDesc"><a class="button bg-green FormOk">确认添加</a><a class="button bg-grey FormCancel">取消操作</a></div>
+        </div>
+    </div>
+
+</body>
+</html>

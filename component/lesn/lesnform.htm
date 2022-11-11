@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_lesn_lesnform">
+        {{if files}}
+        <div class="BaseTmpl" id="LesnFileTmpl" style="display:none">
+            {{each(f,filedata) files}}
+            <div class="BaseListBox" style="margin-top:12px;padding:8px 5px">
+                ${f+1}.${filedata.name}<span class="float-right"><a href="${filedata.url}" download="${filedata.name}">下载</a></span>
+            </div>
+            {{/each}}
+        </div>
+        {{/if}}
+    </div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_lesn_lesnexhibits" lvs_jqexec="lvs_lesn_exhibits">
+        {{if exhibits}}
+        {{if istch}}<div style="text-align:right"><a class="button bg-green" lvs_elm="AddExh">选择展评小组</a><a class="button bg-yellow" lvs_elm="SelExhTask">选择展评内容</a></div>{{/if}}
+        {{if exhibits.length==0}}
+            <div class="NullPanel">
+                <img class="NullTips" src="../Image/fedu/nulltip.png"/>
+                <div class="NullText" style="margin-top:20px">{{if istch}}当前班级未选择展评作业，可点击“添加展评作业”增加{{else}}您的小组尚无展评任务，请等待老师操作{{/if}}</div>
+            </div>
+        {{else}}
+            <div style="text-align:left">
+            <select lvs_elm="ExhNameSel"><option value="">全部展评活动</option>{{each(n,namedata) exhnames}}<option>${namedata}</option>{{/each}}</select>
+            </div>
+        {{/if}}
+        {{each(e,exhdata) exhibits}}
+        <div class="BaseListBox" lvs_elm="ExhibitItem" idxname="${exhdata.exhname}">
+            <div class="flexbox">
+                <div style="width:240px;padding:10px">
+                    <img width="100%" src="${exhdata.image}" lvs_bind="image" />
+                    <span class="txt-grey float-left">浏览人数：${exhdata.readnum}</span><span {{if istch}}lvs_elm="ShowRem"{{/if}} idxid="${exhdata.id}" class="txt-grey float-right" style="cursor:pointer">平均评分：${exhdata.remscore}</span>
+                </div>
+                <div class="flex1">
+                    <div class="ExhTitle">作品名称：<span lvs_bind="title">{{if exhdata.title==''}}未命名{{else}}${exhdata.title}{{/if}}</span><a lvs_elm="EditExhInfo" title="可以编辑基本信息以展示" dataidx="${e}" idxid="${idxid}"><img width="20px" height="20px" src="../../Image/bukrecm.png" /></a><span class="float-right" style="font-size:14px;font-weight:normal">{{if istch}}<a lvs_elm="DelExh" class="button border-red" idxid="${exhdata.id}" style="margin-top:0">删除</a>{{/if}}</span></div>
+                    <div class="ExhDesc">展评活动：<span lvs_bind="exhname">${exhdata.exhname}</span>{{if istch}}<a lvs_elm="EditExhName" title="调整展评活动" dataidx="${e}" idxid="${idxid}"><img width="20px" height="20px" src="../../Image/bukrecm.png" /></a>{{/if}}</div>
+                    <div class="ExhDesc">完成小组：${exhdata.grpname}&nbsp;&nbsp;(${exhdata.grpmembers})</div>
+                    <div class="ExhDesc">参展内容：<span class="float-right">{{if istch}}<a lvs_elm="PreviewExh" class="button border-green" idxid="${exhdata.id}">预览</a><a class="button border-green" lvs_elm="SelGrpRes" idxid="${exhdata.id}" groupid="${exhdata.groupid}" style="margin-top:0;display:none">选择展示</a>{{/if}}</span></div>
+                    <div class="ExhDesc">指导老师：${exhdata.tname}</div>
+                    {{if id<0}}<div class="flexrow">
+                        {{each(t,tskdata) exhdata.tasks}}
+                        <div class="colflex6">
+                            <div class="FlexItemBox" style="margin-top:5px" lvs_elm="ShowRes" idxid="${tskdata.id}" dataidx="${e},${t}">
+                                ${tskdata.sname}<br /><span style="font-size:10px;color:#aaaaaa">${tskdata.title}</span>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        <div class="BaseForm" id="AddExhForm" title="添加展评小组" style="display:none"></div>
+        <div class="BaseForm" id="SelTaskForm" title="选择展评内容" style="display:none"></div>
+        <div class="BaseForm" id="DelExhForm" title="确认删除操作" style="display:none">
+            <div class="BaseDesc">确认将该小组任务从展评列表中删除？该操作不会删除任务本身</div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确认删除</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="SelResForm" title="选择任务" style="display:none"></div>
+        <div class="BaseForm" id="RemForm" title="查看评论" style="display:none">
+            <component load="dialog" name="cn.form.remarks"></component>
+        </div>
+        <div class="BaseForm" id="EditInfoForm" title="修改展评信息" style="display:none">
+        </div>
+        {{else exhnames}}
+        <div class="BaseTmpl" id="AddExhTmpl" style="display:none">
+            <div class="BaseDesc"><span class="txt-red">*</span>选择展评活动或创建新展评活动</div>
+            <div class="BaseInput"><component lvs_bind="exhname" name="cn.button.serial" data-curval="{{if exhnames.length>0}}${exhnames[0]}{{/if}}" data-serial="{{each(n,nmdata) exhnames}}{{if n>0}},{{/if}}${nmdata}{{/each}}"></component></div>
+            <div class="BaseDesc">选择入选展评的小组<span class="MultSelecting FormOk" opetype="SelAll">全选</span></div>
+            <div class="BaseDesc SelBox" lvs_bind="exhgroups">
+                {{each(g,grpdata) groups}}
+                <div class="flexbox">
+                    <div class="MultSelecting flex1 {{if grpdata.exhid}}MultSelected{{/if}}" idxid="${grpdata.id}">分组：${grpdata.name}(<span class="txt-grey">成员：${grpdata.members}</span>)</div>
+                    <div style="width:80px"><a class="button bg-grey FormOk" opetype="ShowTask" idxid="${grpdata.id}">查看作业</a></div>
+                </div>
+                {{/each}}
+            </div>
+            <div class="BaseDesc"><a class="button bg-green FormOk" opetype="AddExhOk">确认添加</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseTmpl" id="EditNameTmpl" style="display:none">
+            <div class="BaseDesc">选择新的展评活动或创建新活动</div>
+            <div class="BaseInput"><component lvs_bind="exhname" name="cn.button.serial" data-curval="${exhname}" data-serial="{{each(n,nmdata) exhnames}}{{if n>0}},{{/if}}${nmdata}{{/each}}"></component></div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确认调整</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        {{else}}
+        <div class="BaseTmpl" id="SelResTmpl" style="display:none">
+            <div class="BaseDesc">请选择以下列表所列的内容作为展评作品</div>
+            <div class="BaseDesc"><a class="button bg-green FormOk">确认选择</a><a class="button bg-grey FormCancel">取消操作</a></div>
+            <div class="BaseDesc"><component load="dialog" class="SelBox" name="cn.lesn.lesntaskres" data-editsel="1" lvs_bind="selres"></component></div>
+        </div>
+        <div class="BaseTmpl" id="SelTaskTmpl" style="display:none">
+            <div class="BaseDesc">请选择以下需要展评的任务结果</div>
+            <div class="BaseDesc SelBox" lvs_bind="seltasks">
+                {{each(t,tskdata) tasks}}
+                    {{if tskdata.steps}}
+                    {{each(s,stpdata) tskdata.steps}}
+                    <div class="MultSelecting {{if stpdata.exhibit}}{{else}}MultSelected{{/if}}" idxid="${tskdata.id}-${stpdata.stepid}">${tskdata.sname}-${stpdata.stepname}</div>
+                    {{/each}}
+                    {{/if}}
+                {{/each}}
+            </div>
+            <div class="BaseDesc"><a class="button bg-green FormOk">确认选择</a><a class="button bg-grey FormCancel">取消操作</a></div>
+        </div>
+        <div class="BaseTmpl" id="EditInfoTmpl" style="display:none">
+            <div class="BaseDesc"><span txt-red">*</span>展评作品名称</div>
+            <div class="BaseInput"><input type="text" lvs_bind="exhtitle" need="1" value="${exhtitle}" /></div>
+            <div class="BaseDesc">展评作品封面图片</div>
+            <div class="BaseInput"><div class="PicFile" lvs_bind="exhimage"><img width="20%" src="${image}" /></div></div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确定修改</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        {{/if}}
+    </div>
+</body>
+</html>

@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn.doc.jqdemo">
+        <div class="demo_Title1" style="margin-top:50px" id="el_slider">标准场景切换操作$(container).lvstoggle</div>
+        <div class="demo_Description">将其他类型为Container的内容隐藏并显示container所指示的内容，一般用于单页面多场景切换时使用</div>
+        <div class="demo_block" style="">
+            $('#ListContainer').lvstoggle(okfunc);<br />
+        </div>
+        <div class="demo_Description">示例代码：<br />
+            <textarea class="demo_Code" style="width:80%">
+            </textarea>
+        </div>
+        <div class="demo_Description">数据说明：
+            <table class="demo_Table" width="80%" border="1">
+                <thead><td>接口数据</td><td>说明</td><td>类型</td></thead>
+            </table>
+        </div>
+
+        <div class="demo_Title1" style="margin-top:50px" id="SetPageData">统一对话框操作$(container).unidialog</div>
+        <div class="demo_Description">电脑/手机统一方式打开对话框</div>
+        <div class="demo_block" style="">
+            $('body').unidialog(formname, formdata,okfunc);<br />
+            formname - 对话框中加载的表单名称。<br />
+            formdata - 表单数据，一般包含页面令牌和页面索引。<br />
+            okfunc-当用户按下FormOk类操作时的回调函数
+        </div>
+        <div class="demo_Description">示例代码：<br />
+            <textarea class="demo_Code" style="width:80%">
+            </textarea>
+        </div>
+        <div class="demo_Description">数据说明：
+            <table class="demo_Table" width="80%" border="1">
+                <thead><td>接口数据</td><td>说明</td><td>类型</td></thead>
+            </table>
+        </div>
+
+        <div class="demo_Title1" style="margin-top:50px" id="FormDialog">表单数据控制的对话框操作$(container).formdialog</div>
+        <div class="demo_Description">通过表单数据控制打开对话框</div>
+        <div class="demo_block" style="">
+            $('body').formdialog(formdata,okfunc);<br />
+            formdata - 表单控制数据，一般包含如下内容<br />
+            idxname - 需要修改的数据名称。<br />
+            idxtype-需要修改的输入数据类型，包含：textarea、text、date、time、pic等<br />
+            idxserial-输入数据可选择数据列表，格式如：1-AAA,2-BBB,3-DDDD<br />
+            idxkey-需要修改的数据字段名称<br />
+            idxval-需要修改的数据值<br />
+            token-页面令牌<br />
+            idxid-页面索引
+
+        </div>
+        <div class="demo_Description">示例代码：<br />
+            <textarea class="demo_Code" style="width:80%">
+            </textarea>
+        </div>
+        <div class="demo_Description">数据说明：
+            <table class="demo_Table" width="80%" border="1">
+                <thead><td>接口数据</td><td>说明</td><td>类型</td></thead>
+            </table>
+        </div>
+
+        <div class="demo_Title1" style="margin-top:50px" id="BasePanel">标准弹出面板操作$(container).basepanel</div>
+        <div class="demo_Description">在页面中的某个位置弹出面板并操作</div>
+        <div class="demo_block" style="">
+            $('body').basepanel(styledata,okfunc(curbox));<br />
+            styledata - 样式控制数据，一般包含如下内容<br />
+            width - 宽度。<br />
+            left-页面中相对left位置<br />
+            top-页面中相对的top位置<br />
+            padding-是否需要外框留空<br />
+            curbox-弹出的面板容器，可以往容器中添加要显示的内容
+
+        </div>
+        <div class="demo_Description">示例代码：<br />
+            <textarea class="demo_Code" style="width:80%">
+            </textarea>
+        </div>
+        <div class="demo_Description">数据说明：
+            <table class="demo_Table" width="80%" border="1">
+                <thead><td>接口数据</td><td>说明</td><td>类型</td></thead>
+            </table>
+        </div>
+        <div class="demo_Title1" style="margin-top:50px" id="GetBind">获得页面元素绑定的数据$(container).getbind</div>
+        <div class="demo_Description">在容器内找到标记lvs_bind属性的数据，如$(curbox).getbind("mydata"),就是找到curbox选择器代表的容器内有lvs_bind=mydata属性的元素对应的值</div>
+        <div class="demo_block" style="">
+            $(curbox).getbind(bindname);<br />
+            bindname - 绑定器名称<br />
+      
+        </div>
+        <div class="demo_Description">示例代码：<br />
+            <textarea class="demo_Code" style="width:80%">
+            </textarea>
+        </div>
+        <div class="demo_Description">数据说明：
+            <table class="demo_Table" width="80%" border="1">
+                <thead><td>接口数据</td><td>说明</td><td>类型</td></thead>
+            </table>
+        </div>
+        <div class="demo_Title1" style="margin-top:50px" id="SetBind">页面元素绑定的数据修改$(container).setbind</div>
+        <div class="demo_Description">在容器内找到标记lvs_bind属性的数据并修改</div>
+        <div class="demo_block" style="">
+            $(curbox).setbind(bindname, data);<br />
+            bindname - 绑定器名称<br />
+            data-要设置的数据
+        </div>
+        <div class="demo_Description">示例代码：<br />
+            <textarea class="demo_Code" style="width:80%">
+            </textarea>
+        </div>
+        <div class="demo_Description">数据说明：
+            <table class="demo_Table" width="80%" border="1">
+                <thead><td>接口数据</td><td>说明</td><td>类型</td></thead>
+            </table>
+        </div>
+        <div class="demo_Title1" style="margin-top:50px" id="SetData">页面元素绑定的数据批量更新$(container).SetData</div>
+        <div class="demo_Description">在容器内容按照结构批量修改页面数据</div>
+        <div class="demo_block" style="">
+            $(curbox).SetData(curdata, setdata);<br />
+            curdata - 同时需要设置的页面数据<br />
+            setdata-需要更新到页面的数据，同时更新视图和数据
+        </div>
+        <div class="demo_Description">示例代码：<br />
+            <textarea class="demo_Code" style="width:80%">
+            </textarea>
+        </div>
+        <div class="demo_Description">数据说明：
+            <table class="demo_Table" width="80%" border="1">
+                <thead><td>接口数据</td><td>说明</td><td>类型</td></thead>
+            </table>
+        </div>
+
+    </div>
+</body>
+</html>

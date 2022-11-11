@@ -1,0 +1,263 @@
+﻿.PageThemeBox
+{
+    width:100%;
+    border:#fafafe 2px solid;
+    overflow:visible;
+    border-radius:6px;
+    box-shadow:2px 2px 3px rgba(180,180,200,0.5);
+    line-height:120%;
+}
+.ThmPanelBox
+{
+    width:720px;
+    margin-left:-300px;
+    margin-top:-20px;
+    overflow:hidden;
+    z-index:2009;
+    background-color:White;
+    border:#eaeaea 1px solid;
+    border-radius:6px;
+    box-shadow:2px 2px 2px rgba(160,160,200,0.5);
+}
+.ThmPanelBox .PropertySet
+{
+    font-size:12px;
+    font-weight:normal;
+    text-align:right;
+    padding:5px 0;
+}
+.PageThemeBox .ThemeTitle
+{
+    text-align:left;
+    font-weight:bold;
+    padding:6px 0;
+    background-image:linear-gradient(71deg,#b9ddfe 0%,#ddedfc 97%);
+    font-size:1em;
+}
+.PageThemeBox .ThemeDesc
+{
+    font-size:0.7em;
+    text-align:center;
+    color:#8a8a8a;
+    padding:12px 0;
+}
+.PageThemeBox .ThemeOpe
+{
+    padding:8px 0;
+    font-size:0.6em;
+    text-align:center;
+}
+.PageThemeBox .ThemeAnswer
+{
+    background-image:linear-gradient(71deg,#ddedfc 0%,#f0fdff 97%);
+}
+.PageThemeBox .ThemeProblem
+{
+    text-align:left;
+    color:#4A4A4A;
+    padding:4px 0;
+    line-height:160%;
+    letter-spacing:1.2px;
+    font-size:1em;
+    width:96%;
+    margin-left:2%;
+}
+.PageThemeBox .ThemeOption
+{
+    text-align:left;
+    padding:5px 0;
+    color:#4A4A4A;
+    font-size:0.9em;
+    width:96%;
+    margin-left:2%;
+}
+.PageThemeBox .ThemeOption .OptionItem
+{
+    padding:3px 0;
+}
+.PageElmTheme
+{
+    font-size:1.8vw;
+}
+.ThemeAnswer
+{
+    text-align:left;
+    padding:6px 0;
+    color:Red;
+}
+.OptionSeling
+{
+    display:inline-block;
+    padding:3px 15px;
+    border:#dadada 1px solid;
+    border-radius:999px;
+    margin-left:6px;
+}
+.OptionSeled
+{
+    border:Red 1px solid;
+    background-color:#ffd2c2;
+}
+.OptionItemSeling
+{
+    border:#dadada 1px solid;
+    padding:2px 12px;
+    border-radius:999px;
+    margin-top:5px;
+}
+.OptionItemSeled
+{
+    border:#8aaafa 2px solid;
+    background-color:#caeaff;
+}
+.ThemeAnswer
+{
+    text-align:center;
+    margin-top:8px;
+}
+.ThemeAnswerInp
+{
+    margin-top:8px;
+    border:#f2f2f2 0.5px solid;
+    border-radius:5px;
+    line-height:180%;
+    letter-spacing:1px;
+}
+.ThemeAnswerInp img
+{
+    max-width:100%;
+}
+.ThemeAnswer .AnsButton
+{
+    padding:6px 12px;
+    border-radius:999px;
+    background-color:#4262f2;
+    color:White;
+}
+.ThemeAnswer .AnsButton:hover
+{
+    cursor:pointer;
+    font-weight:bolder;
+}
+.PropertyTextSel
+{
+    border:#ff8aca 0.5px dotted;
+}
+.PropertyImgSel
+{
+    border:#ff8aca 0.5px dotted;
+}
+.InputBlank
+{
+    font-size:inherit;
+    border-top:White 0 solid;
+    border-left:White 0 solid;
+    border-right:White 0 solid;
+    border-bottom:#6a6a6a 1px solid;
+    color:#4a4a6a;
+}
+.AnsFileBox
+{
+    border:#dadada 1px solid;
+    background-color:#fafcff;
+    width:90%;
+    margin-left:2%;
+    margin-top:12px;
+    border-radius:6px;
+    color:#6a8aaa;
+    padding:24px;
+    text-align:center;
+    font-size:16px;
+}
+.TmplTable
+{
+    width:100%;
+    border-top:#dadada 0.5px solid;
+    border-left:#dadada 0.5px solid;
+    border-right:#dadada 1px solid;
+    border-bottom:#dadada 1px solid;
+    box-shadow:1px 1px 2px rgba(160,180,200,0.5);
+    border-radius:2px;
+    color:#4a4a4a;
+    border-collapse:collapse;
+}
+.TmplTable thead
+{
+    text-align:center;
+    font-weight:bold;
+    padding:8px 0;
+    line-height:160%;
+    letter-spacing:1px;
+    font-size:16px;
+    background-color:#eaeaea;
+}
+.TmplTable tr td
+{
+    border:#eaeaea 0.5px solid;
+    padding:3px 2px;
+}
+.TmplTable tr th
+{
+    border:#eaeaea 0.5px solid;
+    padding:5px 2px;
+}
+.TmplTable tr:hover
+{
+    background-color:#f2f2ff;
+}
+.TmplTable .TchEdit
+{
+    cursor:text;
+}
+.TmplTable .TchEdit:hover
+{
+    border:#dadada 1px solid;
+}
+.TmplTable .StudEdit
+{
+    border-bottom:#dadada 1px solid;
+    height:20px;
+}
+.TmplTable .HideButton
+{
+    width:16px;
+    height:16px;
+    cursor:pointer;
+    border-radius:99px;
+    float:right;
+    vertical-align:bottom;
+}
+.TmplTable .ItemSel
+{
+    background-color:#fafeff;
+    border:#dadada 0.5px dotted;
+}
+.TmplTable .NumStat
+{
+    background-color:#fffefa;
+    border:#fefcf8 1px solid;
+}
+.TmplTable span.TchEdit
+{
+    min-width:80%;
+    display:inline-block;
+    padding:2px;
+}
+.TmplTable span.StudEdit
+{
+    min-width:80%;
+    display:inline-block;
+    padding:2px;
+}
+.TmplTable div.TchEdit
+{
+    padding:2px;
+    width:98%;
+    display:inline-block;
+}
+.TmplTable div.StudEdit
+{
+    padding:2px;
+    width:98%;
+    display:inline-block;
+}

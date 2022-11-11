@@ -1,0 +1,480 @@
+﻿
+.SelListBox
+{
+    padding:12px 0;
+    width:96%;
+    margin-left:2%;
+}
+.SelListItem
+{
+    padding:5px 0;
+    font-size:12px;
+    color:#4A4A4A;
+}
+.SelListItem:hover
+{
+    border-bottom:#82c2f2 1px solid;
+    font-weight:bold;
+}
+.SelListItemSel
+{
+    border:#82c2f2 1px solid;
+    background-color:#d2f2ff;
+    font-weight:bold;
+}
+.BaseListBox
+{
+    margin:8px;
+    border:#c2c2c2 1px solid;
+    background-color:White
+}
+.BaseListBox .Title
+{
+     padding: 12px;
+     border-bottom:#e2e2e2 1px solid;
+     text-align:left 
+}
+.BaseListBox .Title .PreTitle
+{    
+    background-color:#4577d4;
+    border-radius:9999px;    
+    color:#4577d4;    
+    margin-right:5px;
+}
+.BaseListBox .RightTab
+{
+    float:right;
+    display:inline-block;
+    padding:3px 8px;
+    border-radius:5px 0 0 5px;
+    background-image:linear-gradient( 135deg, #5fabf8 0%, #c4e1ff 100% );
+    color:#6a6a6a;
+    font-size:12px;
+}
+
+.ListImgBox
+{
+    background-position:center center;
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+}
+.SubMenuPanel
+{
+    font-size:15px;
+}
+.SubMenuPanel .SubMenuItem
+{
+    padding:5px 0;
+    letter-spacing:1px;
+    border-bottom:#eaeaea 0.5px solid;
+}
+.SubMenuPanel .SubMenuItem:hover
+{
+    background-color:#f0f0f0;
+}
+
+.ImageGrid
+{
+    overflow:hidden;
+    border:#eaeaea 0.5px solid;
+}
+
+.FlexItemBox
+{
+    width:90%;
+    margin-left:5%;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    border:1px solid rgba(0,0,0,.125);
+    border-radius:0.25rem;
+    background-color:White;
+    cursor:pointer;
+}
+.FlexItemBoxSel
+{
+    border:#42a2c8 2px solid!important;
+    font-weight:bold;
+}
+.FlexItemBox:hover
+{
+    box-shadow: 0 .25rem .5rem rgba(0,0,0,.175);
+}
+.FlexItemBox .HeadImg
+{
+    background-position:center center;
+    background-size:100%;
+    background-repeat:no-repeat;
+    overflow:hidden;
+}
+.FlexItemBox .HeadStatus
+{
+    display:inline-block;
+    padding:2px 8px;
+    border-radius:0 6px 6px 0;
+    border:White 1px solid;
+    box-shadow:1px 1px 2px rgba(128,128,128,0.5);
+    font-size:14px;
+    letter-spacing:1.2px;
+}
+.FlexItemBox .HeadGold
+{
+    background-image:linear-gradient(135deg,#fbc214 0%,#fde9ac 10%,#f4d473 50%,#f5c531 90%,#ffdb6d 100%);
+    color:#4a4a4a;
+}
+.FlexItemBox .HeadSilver
+{
+    background-image:linear-gradient(135deg,#cbcbcb 0%,#fbfbf9 10%,#d7d8d5 50%,#c9c9c8 90%,#f5f5f5 100%);
+    color:#4a4a4a;
+}
+.FlexItemBox .HeadBronze
+{
+    background-image:linear-gradient(135deg,#f4b36e 0%,#fbd4aa 10%,#eca85e 50%,#e6943c 90%,#f8cb9c 100%);
+    color:#4a4a4a;
+}
+.FlexItemBox .HeadOther
+{
+    background-image:linear-gradient(135deg,#6ea5ff 0%,#bdd4fa 10%,#87b1f7 50%,#bdd4fa 90%,#6ea5ff 100%);
+    color:#4a4a4a;
+}
+.FlexItemBox .FlexStatus
+{
+    margin-top:10px;
+    padding:4px 8px;
+    border-radius:0 5px 5px 0;
+    background:rgba(0,128,64,0.7);
+    color:White;
+    font-size:12px;
+    display:inline-block;
+    margin-left:0;
+    float:left;
+}
+.FlexItemBox .FlexTitle
+{
+    font-size:14px;
+    padding:6px 0;
+}
+.FlexItemBox .FlexDesc
+{
+    font-size:12px;
+    color:#8a8a8a;
+    padding:4px 0;
+    line-height:150%;
+    letter-spacing:1px;
+}
+.FlexItemBox .FlexOpe
+{
+    font-size:14px;
+    padding:3px 0;
+}
+.ListBase1
+{
+    width:96%;
+    margin-left:2%;
+    border:#7adaff 1px solid;
+    border-radius:5px;
+    overflow:hidden;
+    background-image:linear-gradient(30deg, #d6f3fa 0%, #ffffff 100%);
+}
+.ListBase1 .ListTitle
+{
+    background-image:linear-gradient(0deg, #3d6fb2 0%, #489fe2 30%, #add8fa 70%, #dceffd 100%);
+}
+.ListBase1 .ListTitle .LeftTitle
+{
+    background-image:linear-gradient(0deg, #7bc4fb 0%,#a0d5fd 30%, #add8fa 70%, #dceffd 100%);
+    padding:5px 16px;
+    font-size:15px;
+    border-radius:0 0 12px 0;
+    color:#4A4A4A;
+    font-weight:bold;
+    overflow:hidden;
+}
+.ListBase1 .ListTitle .RightTitle
+{
+    background-image:linear-gradient(0deg, #3d6fb2 0%, #489fe2 30%, #367ee0 70%, #217af3 100%);
+    padding:5px 8px;
+    font-size:12px;
+    border-radius:12px 0 0 0;
+    color:White;
+    text-align:right;
+    overflow:hidden;
+}
+.ListBase1 .ListItem
+{
+    width:80%;
+    margin-top:12px;
+    margin-left:10%;
+    background-color:White;
+    border-radius:5px;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    color:#3d6fb2;
+    font-size:14px;
+    padding:5px 6px;
+}
+.MatchListItem
+{
+    width:100%;
+    margin-top:12px;
+    background-color:White;
+    border-radius:5px;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    color:#3d6fb2;
+    font-size:13px;
+    padding:5px 6px;
+}
+
+.ListBase2
+{
+    width:96%;
+    margin-left:2%;
+    border:#71e079 1px solid;
+    border-radius:5px;
+    overflow:hidden;
+    background-image:linear-gradient(30deg, #d6fad8 0%, #ffffff 100%);
+}
+.ListBase2 .ListTitle
+{
+    background-image:linear-gradient(0deg, #05810d 0%, #16891e 30%, #b0ebb4 70%, #ccf5cf 100%);
+}
+.ListBase2 .ListTitle .LeftTitle
+{
+    background-image:linear-gradient(0deg, #71e079 0%,#8bec92 30%, #b0ebb4 70%, #ccf5cf 100%);
+    padding:5px 16px;
+    font-size:15px;
+    border-radius:0 0 12px 0;
+    color:#4A4A4A;
+    font-weight:bold;
+    overflow:hidden;
+}
+.ListBase2 .ListTitle .RightTitle
+{
+    background-image:linear-gradient(0deg, #05810d 0%, #16891e 30%, #3d9443 70%, #5ec465 100%);
+    padding:5px 8px;
+    font-size:12px;
+    border-radius:12px 0 0 0;
+    color:White;
+    text-align:right;
+    overflow:hidden;
+}
+.ListBase2 .ListItem
+{
+    width:80%;
+    margin-top:12px;
+    margin-left:10%;
+    background-color:White;
+    border-radius:5px;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    color:#05810d;
+    font-size:14px;
+    padding:5px 6px;
+}
+.ListBase2 .SlideItem
+{
+    margin-top:12px;
+    background-color:White;
+    border-radius:5px;
+    overflow:hidden;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    color:#05810d;
+    border:#ccf5cf 0.5px solid;
+    font-size:14px;
+}
+.XSlideBox
+{
+    width:100%;
+    overflow:visible;
+}
+.BaseListItem
+{
+    padding:8px 3px;
+    border-bottom:#f2f2f2 0.5px solid;
+    font-size:13px;
+    color:#4a4a4a;
+    letter-spacing:1.2px;
+    background-color:White;
+}
+.BaseListItemSel
+{
+    background-color:#a2d2fa;
+    color:#2a2a2a;
+    font-weight:bold;
+    border-bottom:#cacaca 1px solid;
+    border-right:#2282d2 2px solid;
+}
+.BaseListItem:hover
+{
+    background-color:#e2e2f2;
+    color:#2a2a2a;
+    font-weight:bold;
+}
+.ExpBox .ListTipNum
+{
+    background-color:Red;
+    display:inline-block;
+    width:14px;
+    height:14px;
+    font-size:11px;
+    line-height:14px;
+    text-align:center;
+    color:White;
+    text-indent:0;
+    margin-left:5px;
+    border-radius:99px;
+    border:White 1px solid;
+}
+.ExpBox .ExpListSel
+{
+    background-color:#f2feff;
+    border-bottom:#82c2f2 1px solid;
+}
+
+.GoldBox
+{
+    background-image:linear-gradient(135deg,#fbc214 0%,#fde9ac 10%,#f4d473 50%,#f5c531 90%,#ffdb6d 100%);
+    border-radius:6px;
+    width:90%;
+    margin-left:5%;
+    margin-top:12px;
+    padding:6px;
+    box-shadow:2px 2px 4px rgba(244,228,172,0.5);
+}
+.GoldBox .RankHeadBox
+{
+    background-color:#faf1d7;
+    color:#6b5103;
+}
+.GoldBox .RankImg
+{
+    border:#fbe099 3px solid;
+}
+.SilverBox
+{
+    background-image:linear-gradient(135deg,#cbcbcb 0%,#fbfbf9 10%,#d7d8d5 50%,#c9c9c8 90%,#f5f5f5 100%);
+    border-radius:6px;
+    width:90%;
+    margin-left:5%;
+    margin-top:12px;
+    padding:6px;
+    box-shadow:2px 2px 4px rgba(244,228,172,0.5);
+}
+.SilverBox .RankHeadBox
+{
+    background-color:White;
+    color:#6a6a6a;
+}
+.SilverBox .RankImg
+{
+    border:#e3e3e2 3px solid;
+}
+.BronzeBox
+{
+    background-image:linear-gradient(135deg,#f4b36e 0%,#fbd4aa 10%,#eca85e 50%,#e6943c 90%,#f8cb9c 100%);
+    border-radius:6px;
+    width:90%;
+    margin-left:5%;
+    margin-top:12px;
+    padding:6px;
+    box-shadow:2px 2px 4px rgba(244,228,172,0.5);
+}
+.BronzeBox .RankHeadBox
+{
+    background-color:#fcebd6;
+    color:#774100;
+}
+.BronzeBox .RankImg
+{
+    border:#fed9b5 3px solid;
+}
+
+.RankHeadBox
+{
+    border-radius:6px;
+    text-align:center;
+    font-size:15px;    
+}
+.RankHeadBox .RankImg
+{
+    border-radius:9999px;
+    margin-top:20px;
+    vertical-align:bottom;
+    object-fit:cover;
+}
+.RankHeadBox .HeadName
+{
+    padding:6px 0;
+    font-size:16px;
+    letter-spacing:1.2px;
+}
+.RankHeadBox .HeadNum
+{
+    font-size:18px;
+    font-weight:bold;
+    padding 8px 0:
+}
+.RankHeadBox .TitleDesc
+{
+    display:inline-block;
+    width:30px;
+    height:30px;
+    background-image:url('../../Image/clo_blue.png');
+    background-position:center center;
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+    line-height:30px;
+    font-size:14px;
+    text-align:center;
+    color:White;
+    margin-left:-30px;
+}
+.BaseListTable
+{
+    font-size:16px;
+    letter-spacing:1.2px;
+}
+.BaseListTable tr td
+{
+    padding:6px 0;
+}
+.BaseListTable .GreyTr
+{
+    background-color:#eaeaef;
+}
+
+.BaseListTable .UserHead
+{
+    border-radius:999px;
+    border:White 2px solid;
+    box-shadow:1px 1px 1px rgba(128,128,128,0.5);
+}
+.GoldToken
+{
+    display:inline-block;
+    width:15px;
+    height:15px;
+    background-image:url('../../Image/no1.png');
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-size:100%;
+    margin-left:3px;
+}
+.SilverToken
+{
+    display:inline-block;
+    width:15px;
+    height:15px;
+    background-image:url('../../Image/no2.png');
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-size:100%;
+    margin-left:3px;
+}
+.BronzeToken
+{
+    display:inline-block;
+    width:15px;
+    height:15px;
+    background-image:url('../../Image/no3.png');
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+    margin-left:3px;
+}

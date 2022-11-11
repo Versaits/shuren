@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_rcard_vallist" lvs_jqexec="lvs_rcard_vallist">
+        {{each(v,valdata) vals}}
+        <div class="BaseList">
+            <div class="ListTitle">[{{if valdata.inctype==1}}训练{{else valdata.inctype==2}}比赛{{else}}荣誉{{/if}}]${valdata.incdesc}</div>
+            <div class="ListDesc">${valdata.timestamp}<span class="ListStatus">+${valdata.incnum}</span></div>
+        </div>
+        {{/each}}
+        {{if nextcursor}}
+        <div class="NextCursor"  cnname="cn.rcard.vallist">
+            更多记录
+        </div>
+        {{/if}}
+    </div>
+</body>
+</html>

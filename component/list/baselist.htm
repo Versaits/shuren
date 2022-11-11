@@ -1,0 +1,13 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_list_baselist" lvs_jqexec="lvs_baselist">
+        {{each(l,lstdata) list}}
+            <div class="BaseListItem {{if lstdata.isdef}}{{if lstdata.isdef>0}}BaseListItemSel{{/if}}{{/if}}" lvs_elm="ListItem" idxname="${lstdata.title}" {{if lstdata.basetrigger}}trigger="${lstdata.basetrigger}"{{/if}} idxid="${lstdata.id}">{{if lstdata.seqid}}${lstdata.seqid}.{{/if}}${lstdata.title}</div>
+        {{/each}}
+    </div>
+</body>
+</html>

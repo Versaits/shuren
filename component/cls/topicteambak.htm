@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn.cls.topicteam" lvs_jqexec="lvs_teamclass">
+        <div class="NaviBox" style="padding:12px 0">
+            {{if istch>0||iscot>0}}
+                <a class="NaviLink" lvs_ref="router.tchstud" idxid="${id}">我的项目课程</a>
+            {{else}}
+                <a class="NaviLink" lvs_ref="router.studteam" idxid="${id}">我的项目学习</a>
+            {{/if}}
+            &nbsp;&nbsp;>&nbsp;&nbsp;<a class="NaviLink" lvs_ref="router.topicteam" idxid="${id}">${type}：<span lvs_bind="classname">${name}</span></a>{{if istch>0||iscot>0}}<a lvs_elm="EditTeam"><img width="16px" height="16px" src="../../Image/bukrecm.png" /></a>{{/if}}
+            {{if modules.length>0}}&nbsp;&nbsp;>&nbsp;&nbsp;<a class="NaviLink" lvs_elm="SelModule">${curmodule}<span class="GreyDropdown"></span></a>{{/if}}
+        </div>
+        <div class="WSBox" style="padding:24px">
+            {{if status=='申请'}}
+                <div class="NullPanel">
+                    <img class="NullTips" src="../Image/fedu/nulltip.png"/>
+                    <div class="NullText" style="margin-top:34px">您的加入申请正在审批中，请耐心等待</div>
+                </div>
+            {{else status=='未加入'}}
+                <div class="NullPanel">
+                    <img class="NullTips" src="../Image/fedu/nulltip.png"/>
+                    <div class="NullText" style="margin-top:34px">您尚未加入该项目，请先<a lvs_ref="router.applyclass">申请加入</a></div>
+                </div>
+            {{else status=='离开'}}
+                <div class="NullPanel">
+                    <img class="NullTips" src="../Image/fedu/nulltip.png"/>
+                    <div class="NullText" style="margin-top:34px">您已离开项目，如需要请再次<a lvs_ref="router.applyclass">申请加入</a></div>
+                </div>
+            {{else}}
+            <div class="flexbox LesnStepBox">
+                <div class="ClsStudItem" style="width:100px" lvs_elm="StudItem">
+                    <span class="LesnStepSeq"><img width="100%" mode="widthFix" src="../../Image/defstud.png" /></span>
+                    <span class="LesnStepTitle">项目成员(${studnum})</span>
+                </div>
+            {{each(l,lesndata) lesns}}
+                {{if curmodseq==0||curmodseq==lesndata.modseq}}
+                <div class="flex1 LesnItem" lvs_elm="LesnItem" dataidx="${l}">
+                    <span class="LesnStepSeq">${lesndata.seqid}</span>
+                    <span class="LesnStepTitle" title="${lesndata.title}">${lesndata.title}</span>
+                </div>
+                <div class="RightItem"></div>
+                {{/if}}
+            {{/each}}
+            </div>
+            <div id="LesnInfoBox" style="margin-top:18px">
+                {{if groups}}
+                <table width="96%" class="BaseTable">
+                    <thead><td>分组</td><td>成员</td>{{each(n,ndata) lesns}}{{if curmodseq==0||curmodseq==ndata.modseq}}<td>${ndata.title}</td>{{/if}}{{/each}}</thead>
+                    {{each(g,grpdata) groups}}
+                        {{if (g%2)==1}}<tr class="GreyTr">{{else}}<tr>{{/if}}
+                        <td>${grpdata.name}</td><td>${grpdata.members}</td>
+                        {{each(p,statdata) stats}}
+                            <td lvs_elm="ShowResp" idxid="${statdata.id}">{{if statdata.prog<0}}{{else}}<div style="font-size:10px;color:#8a8a8a">${statdata.respnum}条反馈<br />${statdata.maxtime}</div><div style="width:${statdata.prog}%;height:5px;background-color:#12c242;"></div>{{/if}}</td>
+                        {{/each}}
+                        </tr>
+                    {{/each}}
+                </table>
+                {{if istch==0&&iscot==0}}
+                <a class="button border-green" lvs_elm="JoinGroup">加入分组</a>
+                {{else}}
+                <a class="button border-green" lvs_elm="CrtGroup">创建分组</a>
+                {{/if}}
+                {{/if}}
+            </div>
+            {{/if}}
+        </div>
+        <div class="BaseForm" id="JoinGrpForm" title="分组操作" style="display:none"></div>
+        <div class="BaseForm" id="CrtGrpFrom" title="创建分组" style="display:none">
+            <div class="BaseDesc"><span class="txt-red">*</span>新分组名称</div>
+            <div class="BaseInput"><input type="text" lvs_bind="groupname" placeholder="请输入预设的分组名称" /></div>
+            <div class="BaseDesc"><a class="button bg-green FormOk">确认创建</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="EditTeamForm" title="修改信息" style="display:none">
+            <div class="BaseDesc">课题项目名称</div>
+            <div class="BaseInput"><input type="text" value="${name}" lvs_bind="classname" /></div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确认修改</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="SelModuleForm" title="选择系列课程" style="display:none">
+            <div class="BaseDesc">请选择课程系列</div>
+            <div class="BaseDesc">
+                {{each(m,moddata) modules}}
+                <div class="Selecting FormOk" style="padding:8px;font-size:16px;text-align:left" idxid="${moddata.id}" idxname="${moddata.sname}">课程${moddata.id}.${moddata.sname}</div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

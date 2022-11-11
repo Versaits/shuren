@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_cls_classlist" lvs_jqexec="lvs_cls_classlist">
+        <div style="text-align:right"><a class="button bg-green" lvs_elm="AddRepCls">新建授课班级</a></div>
+        <table class="BaseTable" width="100%">
+            <thead><tr><th>班级</th><th>授课教师</th><th>发布课程</th><th>学生数</th><th>操作</th></tr></thead>
+            {{each(c,clsdata) classes}}
+            {{if c%2==1}}<tr class="GreyTr">{{else}}<tr>{{/if}}
+                <td align="left"><b>${clsdata.name}</b></td>
+                <td>${clsdata.tname}</td>
+                <td><a lvs_elm="ShowClsLesn" idxid="${clsdata.id}">${clsdata.lesnnum}</a></td>
+                <td><a lvs_elm="ShowClsStud" idxid="${clsdata.id}">${clsdata.studnum}</a></td>
+                <td><a lvs_ref="{{if baseref}}${baseref}{{else clsdata.type=='课题'}}router.topicteam{{else}}router.clsinfo{{/if}}" idxid="${clsdata.id}">查看></a></td>
+            </tr>
+            {{/each}}
+        </table>
+        <div class="BaseForm" id="AddTopicClsForm" style="display:none">
+            <div class="BaseDesc">开课类型：</div>
+            <div class="TypeTab flexbox" lvs_bind="ttype">
+                <div class="TypeItem flex1 active" tabidx="1" idxid="1" lvs_ref="tab.SelPanel">班级必修课</div>
+                <div class="TypeItem flex1" tabidx="2" idxid="2" lvs_ref="tab.SelPanel">社团课</div>
+            </div>
+            <div class="tabcontent" tabcontainer="1">
+                <div class="BaseDesc">说明：请正确选择班级，设置后班级学生自动加入学习</div>
+                <div class="BaseDesc">开课学校：</div>
+                <div class="BaseInput"><component name="cn.button.serial" lvs_bind="schoolid" basedata="school" data-unwrite="1" data-idxid="1420" data-serial="1420-树人学校,1615-力人学校"></component></div>
+                <div class="BaseDesc">开课年级：</div>
+                <div class="BaseInput"><component name="cn.button.serial" lvs_bind="lvlid" basedata="level" data-idxid="" data-unwrite="1" data-serial="23-初一,25-初二,27-初三"></component></div>
+                <div class="BaseDesc">开课班级：</div>
+                <div class="BaseInput"><input type="text" lvs_bind="seqno" placeholder="请输入班级号,可以使用“,”隔开多个班级"/></div>
+            </div>
+            <div class="tabcontent" tabcontainer="2" style="display:none">
+                <div class="BaseDesc">社团名称：</div>
+                <div class="BaseInput"><input type="text" lvs_bind="classname" placeholder="请给出标志性的社团课名称"/></div>
+                <div class="BaseDesc">限制参与人数：</div>
+                <div class="BaseInput"><input type="number" lvs_bind="maxnum" placeholder="如无需限制人数，请填0" /></div>
+            </div>
+            <div class="BaseDesc">开课日期：</div>
+            <div class="BaseInput"><input type="date" lvs_bind="begdate" /></div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确定提交</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="ShowInfoForm" style="display:none"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_crsplan_crstmplgrps" lvs_jqexec="lvs_crstmpl_grps">
+        {{if tasks}}
+        {{if tasks.length==0}}
+            <div class="TaskListBox"><div class="GrpResListBox txt-grey">尚无任务要求，请先创建任务要求，再编辑任务反馈</div></div>
+        {{/if}}
+        {{each(t,tskdata) tasks}}
+        <div class="TaskListBox">
+            {{if tasks.length>1}}
+            <div class="Title">任务${tskdata.seqid}：</div>
+            {{/if}}
+            {{each(g,grdata) tskdata.grpreses}}
+            <div class="GrpResListBox" lvs_elm="GrpResBox">
+                <div class="GrpResTitle">${grdata.stepid}.${grdata.stepname}：<span class="txt-grey" style="font-size:80%">{{if grdata.step.desc}}${grdata.step.desc}{{/if}}</span><span class="float-right"><img lvs_elm="EditGrpRes" idxid="${grdata.id}" dataidx="${t},${g}" width="20px" height="20px" src="../../Image/bukrecm.png" /></span></div>
+                <div class="GrpResDesc" style="text-align:left">要求：{{if grdata.step.resptime==1 && grdata.step.evday}}每${grdata.step.evday}天{{else grdata.step.daynum}}在任务开始${grdata.step.daynum}天内{{/if}}反馈以下格式内容：</div>
+                {{if grdata.step.textres}}<div class="GrpResDesc" style="text-align:left;text-indent:10px"><b>文字进展</b>：使用图文形式反馈任务进展；</div>{{/if}}
+                {{if grdata.step.progres}}<div class="GrpResDesc" style="text-align:left;text-indent:10px"><b>进度数据</b>：以百分比反馈任务进度</div>{{/if}}
+                {{if grdata.step.fileres}}<div class="GrpResDesc" style="text-align:left;text-indent:10px"><b>报告文件</b>；以文件的形式提交任务结果</div>{{/if}}
+                {{if grdata.step.mindres}}<div class="GrpResDesc" style="text-align:left;text-indent:10px"><b>思维导图</b>；以思维导图提交任务结果</div>{{/if}}
+                {{if grdata.step.taskres}}
+                    <div class="GrpResDesc" style="text-align:left;text-indent:10px"><b>格式表格</b>：<select lvs_elm="TaskTmplSel" dataidx="${t},${g}"><option value="0">请选择格式表单</option>{{each(m,ttdata) tasktmpls}}<option value="${ttdata.id}" {{if ttdata.id==grdata.step.tasktmpl}}selected="selected"{{/if}}>${ttdata.name}</option>{{/each}}<option value="-1" {{if grdata.step.tasktmpl==-1}}selected="selected"{{/if}}>自定义格式表单</option></select></div>
+                    <div lvs_elm="TaskTmplDesc">
+                        <component name="cn.theme.tmplform" basedata="step:step" data-tasktmpl="${grdata.step.tasktmpl}" data-dataidx="${t},${g}" data-ttname="${grdata.step.ttname}" data-tdesc="{{if grdata.step.tdesc}}${grdata.step.tdesc}{{else}}{{each(d,tmpdata) tasktmpls}}{{if tmpdata.id==grdata.step.tasktmpl}}${tmpdata.sdesc}{{/if}}{{/each}}{{/if}}"></component>
+                    </div>
+                {{/if}}
+                {{if grdata.step.paperres}}
+                    <div class="GrpResDesc" style="text-align:left;text-indent:10px"><b>工作纸</b>：使用定制的格式化工作纸</div>
+                    <div lvs_elm="TaskPaperDesc" dataidx="${t},${g}">
+                    </div>
+                {{/if}}
+            </div>
+            <div class="GrpResListBox">
+                <div class="GrpResDesc" style="text-align:left">评审/批改要求<span class="float-right"><img lvs_elm="EditGrpChk" idxid="${grdata.id}" dataidx="${t},${g}" width="20px" height="20px" src="../../Image/bukrecm.png" /></span></div>
+                <div class="GrpResDesc" style="text-align:left">{{if grdata.check}}{{if grdata.check.chknum}}至少${grdata.check.chknum}人参与评审，${grdata.check.oknum}人评审通过{{else}}评审要求：无{{/if}}{{else}}评审要求：无{{/if}}</div>
+                {{if grdata.check}}
+                {{if grdata.check.cates}}
+                    {{each(c,ctdata) grdata.check.cates}}
+                        <div class="GrpResDesc">评审维度${c+1}：${ctdata.name}（权重${ctdata.rate}%）</div>
+                    {{/each}}
+                {{else}}
+                    <div class="GrpResDesc">多维度评审要求：无</div>
+                {{/if}}
+                {{/if}}
+            </div>
+            {{/each}}
+            {{if grade}}{{if grade=='Career'}}<div class="GrpResListBox txt-grey" style="text-align:center;cursor:pointer;padding:8px 0" lvs_elm="AddGrpRes" idxid="${tskdata.id}">+添加任务提交内容</div>{{/if}}{{/if}}
+        </div>
+        {{/each}}
+        <div class="BaseForm" id="AddGrpForm" style="display:none">
+            <div class="BaseDesc"><span class="txt-red">*</span>任务提及内容标题</div>
+            <div class="BaseInput"><input type="text" lvs_bind="stepname" placeholder="任务提交内容"/></div>
+            <div class="BaseDesc">任务提交周期</div>
+            <div class="TypeTab flexbox" lvs_bind="resptime"><div class="flex1 TypeItem active" lvs_ref="tab.SelPanel" idxid="circle" tabidx="1">周期循环提交</div><div class="flex1 TypeItem" lvs_ref="tab.SelPanel" idxid="once" tabidx="2">一次性提交</div></div>
+            <div class="tabcontent" tabcontainer="circle">
+                <div class="BaseDesc">周期反馈的天数</div>
+                <div class="BaseInput"><input type="number" lvs_bind="evday" placeholder="每隔该天数进行一次进度反馈" /></div>
+            </div>
+            <div class="tabcontent" tabcontainer="once" style="display:none">
+                <div class="BaseDesc">最迟提交天数</div>
+                <div class="BaseInput"><input type="number" lvs_bind="daynum" placeholder="在该天数内完成反馈" /></div>
+            </div>
+            <div class="BaseDesc">提交格式（可使用多种格式提交）</div>
+            <div class="BaseDesc"><div class="SelBox flexbox"><div class="MultSelecting flex1" lvs_bind="textres" idxid="1">图文信息</div><div class="MultSelecting flex1" lvs_bind="taskres" idxid="4">定制表单</div><div class="MultSelecting flex1" lvs_bind="paperres" idxid="6">工作纸</div><div class="MultSelecting flex1" lvs_bind="progres" idxid="2">任务进度</div><div class="MultSelecting flex1" lvs_bind="fileres" idxid="3">提交文件</div><div class="MultSelecting flex1" lvs_bind="mindres" idxid="5">思维导图</div></div></div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确认添加</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="SaveTmplForm" style="display:none">
+            <div class="BaseDesc">可将本自定义格式表单存储为模板，供本人今后使用？</div>
+            <div class="BaseDesc"><span class="txt-red">*</span>表单存储名称：</div>
+            <div class="BaseInput"><input type="text" lvs_bind="tmplname" /></div>
+            <div class="BaseDesc"><a class="button bg-green FormOk" opetype="SaveOk">确定保存</a><a class="button bg-grey FormCancel" opetype="NoSave">取消操作</a></div>
+        </div>
+        {{else}}
+        <div class="BaseTmpl" id="UpdGrpTmpl" style="display:none">
+            <div class="BaseDesc"><span class="txt-red">*</span>任务提交内容标题</div>
+            <div class="BaseInput"><input type="text" lvs_bind="stepname" value="${stepname}" placeholder="任务提交内容"/></div>
+            <div class="BaseDesc">任务提交周期</div>
+            <div class="TypeTab flexbox" lvs_bind="resptime"><div class="flex1 TypeItem {{if step.resptime==1}}active{{/if}}" lvs_ref="tab.SelPanel" idxid="circle" tabidx="1">周期循环提交</div><div class="flex1 TypeItem {{if step.resptime==2}}active{{/if}}" lvs_ref="tab.SelPanel" idxid="once" tabidx="2">一次性提交</div></div>
+            <div class="tabcontent" tabcontainer="circle" {{if step.resptime==2}}style="display:none"{{/if}}>
+                <div class="BaseDesc">周期反馈的天数</div>
+                <div class="BaseInput"><input type="number" lvs_bind="evday" value="${step.evday}" placeholder="每隔该天数进行一次进度反馈" /></div>
+            </div>
+            <div class="tabcontent" tabcontainer="once" {{if step.resptime==1}}style="display:none"{{/if}}>
+                <div class="BaseDesc">最迟提交天数</div>
+                <div class="BaseInput"><input type="number" lvs_bind="daynum" value="${step.daynum}" placeholder="在该天数内完成反馈" /></div>
+            </div>
+            <div class="BaseDesc">提交格式（可使用多种格式提交）</div>
+            <div class="BaseDesc"><div class="SelBox flexbox"><div class="MultSelecting flex1 {{if step.textres}}MultSelected{{/if}}" lvs_bind="textres" idxid="1">图文信息</div><div class="MultSelecting {{if step.taskres}}MultSelected{{/if}} flex1" lvs_bind="taskres" idxid="4">定制表单</div><div class="MultSelecting flex1" lvs_bind="paperres" idxid="6">工作纸</div><div class="MultSelecting flex1 {{if step.progres}}MultSelected{{/if}}" lvs_bind="progres" idxid="2">任务进度</div><div class="MultSelecting flex1 {{if step.fileres}}MultSelected{{/if}}" lvs_bind="fileres" idxid="3">提交文件</div><div class="MultSelecting flex1 {{if step.mindres}}MultSelected{{/if}}" lvs_bind="mindres" idxid="5">思维导读</div></div></div>
+            <div class="BaseDesc"><a class="FormOk button bg-green" ope="Update">确认修改</a><a class="FormCancel button bg-grey">取消操作</a><a class="FormOk button bg-red float-right" ope="Delete">删除本阶段</a></div>
+        </div>
+        {{/if}}
+    </div>
+</body>
+</html>

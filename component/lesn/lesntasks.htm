@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_lesn_lesntask" lvs_jqexec="lvs_lesn_task">
+        <div class="WSBaseTab flexbox tabhead" lvs_elm="LesnTask">
+            <div class="WSTabItem" {{if classtype!='课题'}}tabdef="1"{{/if}} lvs_ref="tab.GetData" apiname="leag/lesn_list" tmplname="cn.lesn.taskstat" gettype="Lesn.ClsTaskStat" datares="LesnRes" idxkey="teacher" idxkey2="lesnid" idxid="${id}">学生答题汇总{{if ansnum}}<span class="ListTipNum" title="已提交作业数">${ansnum}</span>{{/if}}</div>
+            <div class="WSTabItem" {{if classtype=='课题'}}tabdef="1"{{/if}} lvs_ref="tab.GetData" apiname="leag/lesn_list" tmplname="cn.lesn.lesngrps" gettype="Lesn.TaskGrpres" datares="LesnRes" idxkey="teacher" idxkey2="lesnid" idxid="${id}" lvs_prexec="lvs_lesn_grpdata">分组任务提交{{if resnum}}<span class="ListTipNum" title="已提交任务数">${resnum}</span>{{/if}}</div>
+            <div class="WSTabItem" lvs_ref="tab.GetData" apiname="leag/lesn_list" tmplname="cn.lesn.lesnexhibits" gettype="Lesn.TaskExhibit" datares="LesnRes" idxkey="estudid" idxkey2="lesnid" idxid="${id}" lvs_prexec="lvs_lesn_preexhibit">任务展评</div>
+            <div class="WSTabItem" lvs_ref="tab.GetData" apiname="leag/lesn_list" style="display:none" tmplname="cn.lesn.lesngrpblog" gettype="Lesn.TaskGrpblog" datares="LesnRes" idxkey="teacher" idxkey2="lesnid" idxid="${id}" lvs_prexec="lvs_lesn_grpdata">学习与交流</div>
+        </div>
+        <div class="WSListContainer tabcontent WSBox" tabcontainer="def">
+        </div>
+        <div class="WSListContainer tabcontent WSBox" tabcontainer="data" lvs_elm="LesnRes" style="display:none">
+            
+        </div>
+    </div>
+</body>
+</html>

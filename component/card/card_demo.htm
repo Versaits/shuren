@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_card_card_demo" lvs_jqexec="lvs_card_demo">
+        <div class="demo_Title1" style="margin-top:50px" id="el_slider">标题卡片</div>
+        <div class="demo_Description">图文显示标题的描述卡片</div>
+        <div class="demo_block" style="">
+            <div style="width:50%">
+                <component name="cn.card.headcard"></component>
+            </div>
+        </div>
+        <div class="demo_Description">示例代码：<br />
+            <input class="demo_Code" style="width:80%" type="text" value="<component name=&quot;cn.card.headcard&quot;></component>"/>
+        </div>
+        <div class="demo_Description">输入数据说明：
+            <table class="demo_Table" width="80%" border="1">
+                <thead><td>输入数据名</td><td>说明</td><td>类型</td></thead>
+                <tr><td>backimg</td><td>标题背景图片</td><td>字符串</td></tr>
+                <tr><td>pertop</td><td>标题图片高度（屏幕宽百分比，缺省50）</td><td>整数</td></tr>
+                <tr><td>image</td><td>标题图片（圆形）</td><td>字符串</td></tr>
+                <tr><td>name</td><td>标题名称</td><td>字符串</td></tr>
+                <tr><td>desc1</td><td>标题描述1</td><td>字符串</td></tr>
+                <tr><td>desc2</td><td>标题描述2</td><td>字符串</td></tr>
+                <tr><td>menus</td><td>标题菜单</td><td>数组</td></tr>
+                <tr><td>menus[].num/icon</td><td>数字类菜单/图标类菜单二选一</td><td>整数/字符串</td></tr>
+                <tr><td>menus[].name</td><td>菜单名称</td><td>字符串</td></tr>
+                <tr><td>menus[].ref</td><td><a lvs_ref="dialog.RefDesc">菜单响应处理</a></td><td>字符串</td></tr>
+            </table>
+        </div>
+</body>
+</html>

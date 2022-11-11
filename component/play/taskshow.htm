@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_play_taskshow" lvs_jqexec="lvs_play_taskshow">
+        {{if tasktype}}
+        {{if tasktype==''||tasktype=='lesn'}}
+            {{each(p,pgdata) pages}}
+                <component name="cn.play.themeshow" basedata="${pages[${p}].item}" data-lesnid="${lesnid}" data-pageid="${pageid}"></component>
+            {{/each}}
+        {{/if}}
+        {{if tasktype==''||tasktype=='task'}}
+            {{each(t,tskdata) tasks}}
+                <component name="cn.play.themeshow" basedata="${tasks[${t}].item}" data-lesnid="${lesnid}" data-pageid="${pageid}"></component>
+            {{/each}}
+        {{/if}}
+        {{else}}
+            {{each(t,tskdata) tasks}}
+                <component name="cn.play.themeshow" basedata="${tasks[${t}].item}" data-lesnid="${lesnid}" data-pageid="${pageid}"></component>
+            {{/each}}
+        {{/if}}
+    </div>
+</body>
+</html>

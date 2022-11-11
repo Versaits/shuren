@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn.cls.topicteam" lvs_jqexec="lvs_teamclass">
+        <div class="NaviBox" style="padding:12px 0">
+            {{if istch>0||iscot>0||params.estudid<0}}
+                <a class="NaviLink" lvs_ref="router.tchclass" idxid="${id}">我的项目课程</a>
+            {{else}}
+                <a class="NaviLink" lvs_ref="router.studteam" idxid="${id}">我的项目学习</a>
+            {{/if}}
+            &nbsp;&nbsp;>&nbsp;&nbsp;<a class="NaviLink" lvs_ref="router.topicteam" idxid="${id}">${type}：<span lvs_bind="classname">${name}</span></a>{{if istch>0||iscot>0}}<a lvs_elm="EditTeam"><img width="16px" height="16px" src="../../Image/bukrecm.png" /></a>{{/if}}
+        </div>
+        <div class="WSBox" style="padding:24px">
+            {{if status=='申请'}}
+                <div class="NullPanel">
+                    <img class="NullTips" src="../Image/fedu/nulltip.png"/>
+                    <div class="NullText" style="margin-top:34px">您的加入申请正在审批中，请耐心等待</div>
+                </div>
+            {{else status=='未加入'}}
+                <div class="NullPanel">
+                    <img class="NullTips" src="../Image/fedu/nulltip.png"/>
+                    <div class="NullText" style="margin-top:34px">您尚未加入该项目，请先<a lvs_ref="router.applyclass">申请加入</a></div>
+                </div>
+            {{else status=='离开'}}
+                <div class="NullPanel">
+                    <img class="NullTips" src="../Image/fedu/nulltip.png"/>
+                    <div class="NullText" style="margin-top:34px">您已离开项目，如需要请再次<a lvs_ref="router.applyclass">申请加入</a></div>
+                </div>
+            {{else}}
+                <div class="flexbox">
+                    <div style="width:240px" class="CrsLeftList">
+                        <div class="CrsLeftListBox" lvs_elm="ClsLesnList"></div>
+                    </div>
+                    <div class="flex1">
+                        <div lvs_elm="ClsLesnInfoBox" style="margin-left:12px">
+                        </div>
+                    </div>
+                </div>
+            {{/if}}
+        </div>
+        <div class="BaseForm" id="JoinGrpForm" title="分组操作" style="display:none"></div>
+        <div class="BaseForm" id="CrtGrpFrom" title="创建分组" style="display:none">
+            <div class="BaseDesc"><span class="txt-red">*</span>新分组名称</div>
+            <div class="BaseInput"><input type="text" lvs_bind="groupname" placeholder="请输入预设的分组名称" /></div>
+            <div class="BaseDesc"><a class="button bg-green FormOk">确认创建</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="EditTeamForm" title="修改信息" style="display:none">
+            <div class="BaseDesc">课题项目名称</div>
+            <div class="BaseInput"><input type="text" value="${name}" lvs_bind="classname" /></div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确认修改</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="SelModuleForm" title="选择系列课程" style="display:none">
+            <div class="BaseDesc">请选择课程系列</div>
+            <div class="BaseDesc">
+                {{each(m,moddata) modules}}
+                <div class="Selecting FormOk" style="padding:8px;font-size:16px;text-align:left" idxid="${moddata.id}" idxname="${moddata.sname}">课程${moddata.id}.${moddata.sname}</div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

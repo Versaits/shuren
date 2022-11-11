@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="MenuTab" lvs_jqexec="lvsmenutab">
+        <div class="MenuTab flexbox">
+            {{each(m,menudata) tabmenus}}
+                <div class="MenuItem flex1 {{if menudata.isdef}}vactive{{/if}}" apiname="${menudata.apiname}" refresh="${menudata.datatype}" idxkey="${menudata.idxkey}" tabidx="${menudata.id}" tmplname="${menudata.tmplname}">
+                    ${menudata.title}
+                </div>
+            {{/each}}
+        </div>
+        <div class="TabContainer"></div>
+    </div>
+</body>
+</html>

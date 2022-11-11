@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_course_crssolus" lvs_jqexec="lvs_course_solution">
+        {{each(s,soludata) solus}}
+        <div class="CrsMainInfoBox" {{if s>0}}style="margin-top:12px"{{/if}}>
+            <div class="ScrollBarHead"><span class="PreTitle">.</span>教案${s+1}：<span lvs_elm="SoluTitle${s}">${soludata.title}</span><span class="float-right"><a lvs_elm="DelSolu" dataidx="${s}" title="删除教案"><img width="12px" height="12px" src="../../Image/del.gif" /></a></span></div>
+            <div class="ScrollBarBody">
+                <div style="padding:24px;text-align:left" class="htmlformat" lvs_elm="SoluItem${s}">${soludata.plandesc}</div>
+                <div style="text-align:right"><a class="button bg-green" lvs_elm="EditSolu" dataidx="${s}">编辑</a></div>
+            </div>
+        </div>
+        {{/each}}
+        <div style="text-align:right"><a class="button bg-green" lvs_elm="AddSolu">新建教案</a></div>
+        <div class="BaseForm" id="DelForm" title="确认删除操作" style="display:none">
+            <div class="BaseDesc">确认要删除该教案吗？删除后无法恢复</div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确认删除</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="AddSoluForm" title="增加教案" style="display:none">
+            <div class="BaseDesc">教案标题</div>
+            <div class="BaseInput"><input type="text" lvs_bind="solutitle" placeholder="请输入教案的标题"/></div>
+            <div class="BaseDesc">教案正文</div>
+            <div class="BaseDesc"><div class="RichEdit" lvs_bind="soludesc"></div></div>
+            <div class="BaseDesc"><a class="button bg-green FormOk">确认新建</a><a class="button bg-grey FormCancel">取消操作</a></div>
+        </div>
+    </div>
+</body>
+</html>

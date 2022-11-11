@@ -1,0 +1,12 @@
+﻿.BaseItemActive
+{
+    color:#007bff;
+}
+.BaseItem a
+{
+    color:#484848 !important;
+}
+.BaseItemActive a
+{
+    color:#007bff !important;
+}

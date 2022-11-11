@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="SigList" lvs_jqexec="lvssiglist">
+        {{each(l,lstdata) list}}
+        {{if lstdata.time}}<div class="TimeSpan">${lstdata.time}</div>{{/if}}
+        <div class="BaseListBox" lvs_ref="{{if lstdata.url}}${lstdata.url}((else}}${listref}?id=${lstdata.id}{{/if}}">
+            <div class="ListImgBox" perheit="{{if perheit}}${perheit}{{else}}45{{/if}}" style="background-image:url('{{if lstdata.titleimg}}${lstdata.titleimg}{{else}}${lstdata.image}{{/if}}')"></div>
+            <div class="Title">
+            {{if lstdata.title}}${lstdata.title}
+            {{else lstdata.name}}${lstdata.name}
+            {{/if}}
+            {{if lstdata.num}}<span class="Body RightTab">${lstdata.num}</span>{{/if}}
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</body>
+</html>

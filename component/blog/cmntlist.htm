@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_blog_cmntlist" lvs_jqexec="lvs_community">
+        {{each(c,cmudata) commus}}
+        <div class="ListItem flexbox" lvs_ref="router.cmnt" idxid="${cmudata.id}">
+            <div class="flex1" style="text-align:left">
+                <div style="font-size:120%;color:#4a4a4a;padding:6px 0">${cmudata.name}</div>
+                <div class="txt-grey ListDesc">本周热度：${cmudata.weeknum}</div>
+            </div>
+        </div>
+        {{/each}}
+        <div style="text-align:right">
+            <a lvs_elm="AddCommu" class="wsbutton bg-wsblue">申请新类</a>
+        </div>
+        <div class="BaseForm" id="ApplyCommuForm" style="display:none">
+            <div class="BaseDesc"><span class="txt-red">*</span>分类名称</div>
+            <div class="BaseInput"><input type="name" need="1" lvs_bind="communame" placeholder="起一个明确清晰的名字"/></div>
+            <div class="BaseDesc">内容描述：</div>
+            <div class="BaseInput"><textarea lvs_bind="commudesc" placeholder="对分类内容进行简单描述"></textarea></div>
+            <div class="BaseDesc">标志图片：</div>
+            <div class="BaseInput"><div class="PicFile" lvs_bind="commupic"><img width="36px" height="36px" src="../Image/add.png"/></div></div>
+            <div class="BaseDesc"><a class="FormOk wsbutton bg-wsblue">确认申请</a><a class="FormCancel wsbutton bg-wsgrey">取消操作</a></div>
+        </div>
+    </div>
+</body>
+</html>

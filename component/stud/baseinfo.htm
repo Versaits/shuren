@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_stud_baseinfo">
+        <div class="WSBox" style="padding:24px">
+            <div class="Container" id="ListContainer">
+                <div style="margin-top:20px;width:60%;margin-left:20%;min-width:200px">
+                    <div style="text-align:center"><img class="UserHead" src="${image}"/></div>
+                    <div style="margin-top:12px;text-align:left;color:#808080;font-size:14px;line-height:34px;letter-spacing:1px">
+                        账号：${userlogin}@${projname}<br/>
+                        姓名：${name}<br/>
+                        单位：${schoolname}<br/>
+                        手机：${mobile}<br/>
+                        邮箱：${usermail}<br />
+                        <a lvs_ref="set.fstem.GoLogout" apptype="${apptype}" projid="${projid}" class="button bg-yellow">退出登录</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

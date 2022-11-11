@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn.course.crsclass", lvs_jqexec="lvs_crsclass">
+        <div style="padding:24px">
+            {{if tmplings}}
+            <div class="LitTitle"><span class="PreTitle">.</span>待授课的班级列表<span class="float-right"><a class="WsButton bg-wsblue" lvs_elm="BatchLesn">批量班级授课</a></span></div>
+            {{if tmplings.length>0}}
+            <table class="BaseTable" width="100%">
+                <thead><th>授课班名称</th><th>授课教师</th><th>学生数量</th><th>已发课程</th><th>操作</th></thead>
+                {{each(i,ingdata) tmplings}}
+                    {{if (i%2)==1}}<tr class="GreyTr">{{else}}<tr>{{/if}}
+                    <td align="left">${ingdata.name}</td><td>${ingdata.tname}</td><td><a lvs_elm="ShowClsStud" idxid="${ingdata.id}">${ingdata.studnum}</a></td><td><a lvs_elm="ShowClsLesn" idxid="${ingdata.id}">${ingdata.lesnnum}</a></td><td align="right"><a lvs_elm="PublishLesn" idxid="${ingdata.id}" class="button border-blue">发布授课</a></td>
+                    </tr>
+                {{/each}}
+            </table>
+            {{else}}
+                <div class="BaseDesc">当前没有待授课的班级，如需要可以创建班级</div>
+            {{/if}}
+            <div class="LitTitle"><span class="PreTitle">.</span>已授课的班级列表</div>
+            <table class="BaseTable" width="100%">
+                <thead><th>授课班名称</th><th>授课教师</th><th>学生数量</th><th>已发课程</th><th>操作</th></thead>
+                {{each(i,eddata) tmpleds}}
+                {{if (i%2)==1}}<tr class="GreyTr">{{else}}<tr>{{/if}}
+                <td align="left">${eddata.name}</td><td>${eddata.tname}</td><td><a lvs_elm="ShowClsStud" idxid="${eddata.id}">${eddata.studnum}</a></td><td><a lvs_elm="ShowClsLesn" idxid="${eddata.id}">${eddata.lesnnum}</a></td><td></td>
+                </tr>
+                {{/each}}
+            </table>
+            {{/if}}
+            <div class="BaseForm" id="BatchLesnForm" style="display:none">
+                <div class="BaseDesc">选择需要发布授课的班级</div>
+                <div class="BaseDesc">
+                    <div class="SelBox" lvs_bind="classlist">
+                        {{each(g,gdata) tmplings}}
+                        <div class="MultSelecting" idxid="${gdata.id}">${gdata.name}【${gdata.tname}】</div>
+                        {{/each}}
+                    </div>
+                </div>
+                <div class="BaseDesc"><a class="FormOk button bg-green">确认批量发布</a><a class="FormCancel button bg-grey">取消操作</a></div>
+            </div>
+            <div class="BaseForm" id="CreateClassForm" style="display:none">
+                <div class="BaseDesc">说明：请正确选择班级，设置后班级学生自动加入学习</div>
+                <div class="BaseDesc">开课学校：</div>
+                <div class="TypeTab flexbox" lvs_bind="schoolid"><div class="TypeItem active flex1" tabidx="1420" idxid="1420" lvs_ref="tab.SelPanel">树人学校</div><div class="TypeItem flex1" tabidx="1615" idxid="1615" lvs_ref="tab.SelPanel">力人学校</div></div>
+                <div class="BaseDesc">开课年级：</div>
+                <div class="BaseInput"><component name="cn.button.serial" basedata="lvl" lvs_bind="lvlid" data-idxid="" data-serial="23-初一,25-初二,27-初三"></component></div>
+                <div class="BaseDesc">开课班级：</div>
+                <div class="BaseInput"><component name="cn.button.serial" basedata="seq" lvs_bind="classseq"  data-idxid="" data-dtype="num" data-minmax="1-30" data-col="5"></component></div>
+                <div class="BaseDesc"><a class="FormOk button bg-green">确定创建</a><a class="FormCancel button bg-grey">取消操作</a></div>
+            </div>
+            <div class="BaseForm" id="PublishForm" style="display:none">
+                <div class="BaseDesc">确认要发布该节课程进行授课？</div>
+                <div class="BaseDesc">授课日期：</div>
+                <div class="BaseInput"><input type="date" lvs_bind="lesndate" /></div>
+                <div class="BaseDesc">授课时间：</div>
+                <div class="BaseInput"><input type="time" lvs_bind="lesntime" /></div>
+                <div class="BaseDesc"><a class="FormOk button bg-green">确认发布</a><a class="FormCancel button bg-grey">取消操作</a></div>
+            </div>
+            <div class="BaseForm" id="ShowInfoForm" style="display:none">
+            </div>
+            {{if studs}}
+            <div class="BaseTmpl" id="ClsStudListTmpl" style="display:none">
+                <div class="BaseDesc">当前已有${studs.length}人参与学习</div>
+                <div class="BaseDesc">
+                    <div class="flexrow">
+                        {{each(s,stddata) studs}}
+                        <div class="colflex5" style="margin-top:12px">
+                            <div class="StudListBox">
+                                <div class="StudTitle">${stddata.name}</div>
+                                <div class="StudDesc">${stddata.lvlname}${stddata.classseq}班${stddata.studno}号</div>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+                <div class="BaseDesc"><a class="FormOk button bg-green">查看详细信息</a><a class="FormCancel button bg-grey">关闭返回</a></div>
+            </div>
+            {{/if}}
+            {{if lesns}}
+            <div class="BaseTmpl" id="ClsLesnListTmpl" style="display:none">
+                <div class="BaseDesc">当前已发布${lesns.length}节课</div>
+                <div class="BaseDesc">
+                    <div>
+                        {{each(m,moddata) modules}}
+                            <div class="ModuleBox">
+                            {{if moddata.sub}}{{if moddata.sub.length>0}}
+                            <div class="BaseTitle" style="padding:12px;font-size:16px;"><b>${moddata.sid}.${moddata.name}</b>{{if moddata.sub.length>0}}<span class="float-right" style="padding-right:12px"><img class="FormOk" opetype="lockmodule" idxid="${moddata.sub[0].id}" width="60px"{{if moddata.sub[0].status=='锁定'}}title="设置全章节为开放状态" islock="1" src="../../Image/islock.png"{{else}}title="设置全章节为未开放锁定状态" islock="0" src="../../Image/isopen.png"{{/if}}</span>{{/if}}</div>
+                            {{each(s,subdata) moddata.sub}}
+                            <div class="BaseListBox" style="margin-top:8px;padding:8px;">
+                                <div class="LesnListBox">
+                                    <div class="LesnTitle" style="font-size:16px;color:#4a4a4a;">{{if subdata.modseq>0}}${subdata.modseq}.{{/if}}${subdata.seqid}.${subdata.title}<span class="float-right"><img class="FormOk" opetype="locklesn" idxid="${subdata.id}" width="60px"{{if subdata.status=='锁定'}}title="锁定状态，学生不能查看" islock="1" src="../../Image/islock.png"{{else}}title="开放状态，学生可查看" islock="0" src="../../Image/isopen.png"{{/if}}</span></div>
+                                    <div class="LesnDesc">授课时间：${subdata.time}<span class="float-right">已完成人数：${subdata.studnum}</span></div>
+                                </div>
+                            </div>
+                            {{/each}}
+                            {{/if}}{{/if}}
+                            </div>
+                        {{/each}}
+                        <div style="text-align:right"><a class="button border-green FormOk" opetype="lesnmore">发布更多课程</a></div>
+                        <div lvs_elm="MoreLesn" style="display:none">
+                            <div class="SelBox" lvs_bind="replesns">
+                                {{if lesnings.length==0}}
+                                <div class="BaseDesc">没有可发布的课程了</div>
+                                {{/if}}
+                                {{each(r,repdata) lesnings}}
+                                <div class="MultSelecting" idxid="${repdata.id}">{{if repdata.modseq>0}}${repdata.modseq}.{{/if}}${repdata.seqid}.{{if repdata.module}}${repdata.module}-{{/if}}${repdata.title}</div>
+                                {{/each}}
+                            </div>
+                            {{if lesnings.length >0}}
+                            <div style="text-align:right"><a class="button bg-green FormOk" opetype="replesn">确认发布课程</a></div>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+                <div class="BaseDesc"><a class="FormOk button bg-green" opetype="showinfo">查看详细信息</a><a class="FormCancel button bg-grey">关闭返回</a></div>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</body>
+</html>

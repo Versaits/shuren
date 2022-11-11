@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_cls_studlesns" lvs_jqexec="lvs_class_studs">
+        {{if lesns}}
+        <div class="padding">
+        <table class="BaseTable" width="100%">
+            <thead><td align="left">课程</td><td>学习进度</td><td>作业数</td><td>作业状态</td><td>得分</td><td></td></thead>
+            {{each(l,lsndata) lesns}}
+                {{if (l%2)==1}}<tr class="GreyTr">{{else}}<tr style="background-color:White">{{/if}}
+                    <td align="left">${lsndata.title}</td><td><div lvs_elm="Percent" mode="2" max="100" num="${lsndata.progress}"></div></td><td>${lsndata.tasknum}</td><td>${lsndata.taskstatus}</td><td>{{if lsndata.taskscore}}{{if lsndata.taskscore==1}}A{{else lsndata.taskscore==2}}B{{else lsndata.taskscore==3}}C{{else lsndata.taskscore==4}}驳回{{else}}${lsndata.taskscore}{{/if}}{{/if}}</td><td>{{if lsndata.tasknum>0}}<a lvs_elm="ShowLesnTaskInfo" lesnid="${lsndata.id}" studid="${lsndata.studid}">查看作业</a>{{/if}}</td>
+                </tr>
+            {{/each}}
+        </table>
+        </div>
+        <div class="BaseForm" id="ShowTaskForm" title="查看作业" style="display:none">
+            <div component="cn.theme.taskcheck"></div>
+        </div>
+        {{else}}
+        <div class="BaseTmpl" id="StudTaskTmpl" style="display:none">
+        </div>
+        {{/if}}
+    </div>
+</body>
+</html>

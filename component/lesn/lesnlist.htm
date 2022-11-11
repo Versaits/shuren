@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_lesn_lesnlist">
+        <div class="flexrow" lvs_elm="HeadLesn">
+            {{each(l,lsndata) lesns}}
+            <div class="colflex{{if colnum}}${colnum}{{else}}6{{/if}}" style="margin-top:8px">
+                <div class="FlexItemBox" {{if lsndata.clstype=='课题'}}lvs_ref="router.topicteam?lesn=${lsndata.id}" idxid="${lsndata.classid}"{{else}}lvs_ref="router.tchlesn" idxid="${lsndata.id}"{{/if}}>
+                    <div class="HeadImg" perheit="57">
+                        <img style="object-fit:cover" width="100%" src="${lsndata.titleimg}" />
+                    </div>
+                    <div class="FlexDesc textwrap" title="${lsndata.clsname}">${lsndata.clsname}</div>
+                    <div class="FlexDesc textwrap" title="${lsndata.title}">《${lsndata.title}》</div>
+                    <div class="FlexDesc" style="color:#8a8a8a;font-size:12px;text-align:left">${lsndata.timestr}</div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</body>
+</html>

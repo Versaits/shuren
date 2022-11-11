@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_list_ranklist" lvs_jqexec="lvs_list_ranklist">
+        {{if headnum}}
+        <div class="flexbox">
+            {{each(h,hddata) list}}
+            {{if h<headnum}}
+            <div class="flex1">
+                <div class="{{if h==0}}GoldBox{{else h==1}}SilverBox{{else h==2}}BronzeBox{{else}}OtherBox{{/if}}" {{if trigger}}lvs_elm="SelItem" idxid="${hddata.id}" dataidx="${h}"{{/if}}>
+                    <div class="RankHeadBox">
+                        <img class="RankImg" width="80px" height="80px" src="${hddata.image}" />{{if hddata.headdesc}}<span class="TitleDesc">${hddata.headdesc}</span>{{/if}}<br />
+                        <div class="HeadName">${hddata.name}</div>
+                        <div class="HeadNum">${hddata.num}</div>
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+            {{/each}}
+        </div>
+        {{/if}}
+        <table width="100%" class="BaseListTable">
+        {{each(l,lstdata) list}}
+            {{if headnum&&headnum>l}}
+            {{else}}
+            <tr {{if l%2==1}}class="GreyTr"{{/if}} {{if lstdata.isself}}style="font-weight:bold"{{/if}} {{if trigger}}lvs_elm="SelItem" idxid="${lstdata.id}" dataidx="${l}"{{/if}}>
+            <td width="10%">{{if l==0}}<img width="16px" height="16px" src="../../Image/no1.png" />{{else l==1}}<img width="16px" height="16px" src="../../Image/no2.png" />{{else l==2}}<img width="16px" height="16px" src="../../Image/no3.png" />{{else}}<span class="ListNo">${l+1}</span>{{/if}}</td>
+            <td width="15%">{{if lstdata.image}}<img class="UserHead" style="width:24px;height:24px;vertical-align:middle;margin-right:12px" src="${lstdata.image}"/>{{/if}}</td>
+            <td width="60%" align="center" valign="middle">{{if lstdata.headdesc}}${lstdata.headdesc}.{{/if}}${lstdata.name}</td>
+            <td align="right"><span class="StatNum">${lstdata.num}</span></td>
+            </tr>
+            {{/if}}
+        {{/each}}
+        </table>
+    </div>
+</body>
+</html>

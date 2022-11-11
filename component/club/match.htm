@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_club_match" lvs_jqexec="lvs_club_match">
+        <div style="text-align:center" class="MatchListItem">
+            <div style="color:#8a8a8a;font-size:12px;" lvs_elm="GamesDef" idxid="${gamesid}">${gamesname}</div>
+            <div class="flexbox" style="font-size:14px;color:#4a4a4a;margin-top:6px;">
+                <div class="flex1" lvs_elm="TeamDef" idxid="${oteam}">
+                    <img class="TinyUserHead" width="20px" height="20px" src="${oteamlogo}" style="vertical-align:middle" /><br />
+                    ${oteamname}
+                </div>
+                <div style="width:100px">
+                    {{if status=='未赛'||status==''}}-:-{{else}}${oscore} : ${tscore}{{/if}}
+                    {{if status=='未赛'||status==''}}<br /><span style="color:#8a8a8a;font-size:12px">等待中</span>{{else status=='结束'}}<br /><span style="color:DarkGreen;font-size:12px">已结束</span>{{else}}<span style="color:Red;font-size:12px">进行中</span>{{/if}}
+                </div>
+                <div class="flex1" lvs_elm="TeamDef" idxid="${tteam}">
+                    <img class="TinyUserHead" width="20px" height="20px" src="${tteamlogo}" style="vertical-align:middle" /><br />
+                    ${tteamname}
+                </div>
+            </div>
+            <div style="color:#8a8a8a;font-size:10px;margin-top:8px">${matchdate}</div>
+        </div>
+    </div>
+</body>
+</html>

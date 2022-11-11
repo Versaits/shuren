@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_lesn_lesntaskres" lvs_jqexec="lvs_lesn_taskres">
+        {{each(t,tskdata) tasks}}
+        <div class="BaseTitle">${tskdata.sname}</div>
+        <div class="TaskDescItem" dataidx="${t}">${tskdata.taskdesc}</div>
+        {{each(s,stpdata) tskdata.steps}}
+            <div class="LitTitle">任务成果${stpdata.stepid}：${stpdata.stepname}</div>
+            <div class="TaskResItem" dataidx="${t},${s}"></div>
+        {{/each}}
+        {{/each}}
+    </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_stud_estudsel">
+        <div class="SelBox" lvs_bind="studlist">
+            {{if studs}}{{if studs.length==0}}<div class="BaseDesc">没有找到对应学生</div>{{/if}}{{/if}}
+            <div class="flexbox">
+                {{each(s,studdata) studs}}
+                <div class="flex1 MultSelecting" idxid="${studdata.id}" idxname="${studdata.name}" studno="${studdata.serialno}" seqid="${studdata.classseq}">
+                    ${studdata.name}{{if studdata.serialno!=''}}<br /><span style="font-size:10px;color:#8a8a8a">${studdata.lvlname}${studdata.classseq}班${studdata.serialno}号</span>{{/if}}
+                </div>
+                {{if (s%5) == 4}}</div><div class="flexbox" style="margin-top:8px">{{/if}}
+                {{/each}}
+                {{if studs.length%5==1}}<div class="flex1"></div><div class="flex1"></div><div class="flex1"></div><div class="flex1"></div>{{/if}}
+                {{if studs.length%5==2}}<div class="flex1"></div><div class="flex1"></div><div class="flex1"></div>{{/if}}
+                {{if studs.length%5==3}}<div class="flex1"></div><div class="flex1"></div>{{/if}}
+                {{if studs.length%5==4}}<div class="flex1"></div>{{/if}}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_course_crstasks" lvs_jqexec="lvs_course_crstasks">
+        {{if grade=='Career'}}
+        <div class="CrsMainInfoBox">
+            <div class="ScrollBarHead"><span class="PreTitle">.</span>任务分组设置</div>
+            <div class="ScrollBarBody" style="padding:18px 8px;font-size:14px;color:#6a6a6a" lvs_elm="GrpConfig">
+                <div class="flexbox">
+                    <div style="min-width:80px;text-align:right;padding:8px 0">最多分组数：</div><div class="BaseInput" style="min-width:60px;max-width:90px;margin-left:0"><input type="number" lvs_bind="max" /></div>
+                    <div style="min-width:80px;text-align:right;padding:8px 0">每组最多人：</div><div class="BaseInput" style="min-width:60px;max-width:90px;margin-left:0"><input type="number" lvs_bind="mem" /></div>
+                    <div style="min-width:80px;text-align:right;padding:8px 0">允许加入多组：</div><div style="max-width:80px;min-width:60px"><component name="cn.button.checkbtn" lvs_bind="sig" basedata="sigcfg"></component></div>
+                    <div style="min-width:80px;text-align:right;padding:8px 0">允许学生建组：</div><div  style="max-width:80px;min-width:60px"><component name="cn.button.checkbtn" lvs_bind="crt" basedata="crtcfg"></component></div>
+                </div>
+                <div style="text-align:right"><a class="button bg-green" lvs_elm="SaveConfig" style="display:none">保存设置</a></div>
+            </div>
+        </div>
+        {{/if}}
+        {{if tasks.length>0}}
+        {{each(t,tskdata) tasks}}
+        <div class="CrsMainInfoBox" style="margin-top:12px">
+            <div class="ScrollBarHead"><span class="PreTitle">.</span>课后任务/作业${t+1}<span class="float-right"><a lvs_elm="DelCrsTask" dataidx="${t}" title="删除任务"><img width="12px" height="12px" src="../../Image/del.gif" /></a></span></div>
+            <div class="ScrollBarBody">
+                <div style="height:8px"></div>
+                <span class="float-right"><a lvs_elm="EditCrsTask" dataidx="${t}"><img width="20px" height="20px" src="../../Image/bukrecm.png" /></a></span>
+                <div class="FlexItemBox" style="padding:12px 0;text-align:left" lvs_elm="TaskItem${t}" dataidx="${t}">
+                </div>
+                <div style="text-align:right"><a class="button bg-green" style="display:none" lvs_elm="SaveTask${t}">确认保存</a></div>
+                <div lvs_elm="TaskGrpres${tskdata.id}" taskid="${tskdata.id}" style="width:90%;margin-left:5%"></div>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+        <div class="FixRngButton" style="right:20px;bottom:40px" lvs_elm="AddTypeTask">+</div>
+        <div class="BaseForm" id="AddCrsTaskForm" title="添加任务/作业" style="display:none">
+            <div class="BaseDesc" style="width:92%;margin-left:4%">任务描述：</div>
+            <div class="BaseDesc" style="width:92%;margin-left:4%"><div class="RichEdit" lvs_bind="taskdesc"></div></div>
+            <div lvs_elm="TaskStepBox" style="font-size:14px">
+                <div lvs_elm="TaskStepItem">
+                    <div class="BaseDesc" style="width:92%;margin-left:4%">任务提交内容1：</div>
+                    <img class="FormOk float-right" opetype="DelStep" width="12px" height="12px" src="../../Image/del.gif" />
+                    <component name="cn.course.crstaskstep"></component>
+                </div>
+                <div lvs_elm="TaskStepItem">
+                    <div class="BaseDesc" style="width:92%%;margin-left:4%">任务提交内容2：</div>
+                    <img class="FormOk float-right" opetype="DelStep" width="12px" height="12px" src="../../Image/del.gif" />
+                    <component name="cn.course.crstaskstep"></component>
+                </div>
+            </div>                
+            <div class="BaseDesc"  style="width:92%;margin-left:4%;text-align:right"><a class="FormOk button bg-yellow" opetype="AddStep" title="添加步骤">+</a></div>
+            <div class="BaseDesc" style="width:92%;margin-left:4%"><a class="FormOk button bg-green" opetype="AddTask">确认添加</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="DelTaskForm" title="确认删除" style="display:none">
+            <div class="BaseDesc">确认删除该任务？如果该任务已发布并有学员已提交结果，也将一并删除，删除后无法再恢复</div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确认删除</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+    </div>
+</body>
+</html>

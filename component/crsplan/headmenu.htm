@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_crsplan_headmenu" lvs_jqexec="lvsheadmenu">
+        <div class="HeadMenuBox flexbox">
+            {{each(m,menudata) menus}}
+            <div class="MenuItem {{if menudata.sub}}MenuSub{{/if}}" idxid="${menudata.id}" {{if menudata.sub}}lvs_elm="Menu${menudata.id}"{{else menudata.ref}}lvs_ref="${menudata.ref}"{{/if}}>
+                {{if menudata.image}}<img width="32px" height="32px" style="vertical-align:middle;margin-right:5px" src="${menudata.image}"/>{{else menudata.svg}}{{/if}}${menudata.name}
+            </div>
+            {{/each}}
+        </div>
+        {{each(s,subdata) menus}}
+            {{if subdata.sub}}
+            <div class="SubMenuBox" lvs_elm="SubMenu${subdata.id}" style="display:none">
+                {{each(i,itemdata) subdata.sub}}
+                <div class="SubMenuItem" lvs_ref="${itemdata.ref}">${itemdata.subname}</div>
+                {{/each}}
+            </div>
+            {{/if}}
+        {{/each}}
+    </div>
+</body>
+</html>

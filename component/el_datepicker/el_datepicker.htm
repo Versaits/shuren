@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_el_datepicker" lvs_jqexec="lvs_el_datepicker">
+    <div class="el_datepicker">
+         <div class="el_input_box el_input_inner" id="dateinput" >            
+            <input lvs_bind="InputData" type="text"  placeholder="选择日期"  data-todayYear ="" todayMonth/>
+            <img class="el_input_clear"  src="./icon/el_icon_close.png"  style="display:none" />
+        </div>
+
+        <div class="el_picker_panel data "  style="border:solid 1px red;display:none">
+            <div class="el_date_picker_header " id="dateheader" style="border:solid 1px blue">
+                <img class="el_picker_panel_icon_btn el_date_picker_prev_btn el_datatable_prevYear"  src="./icon/el_icon_ll.png"  />
+                <img class="el_picker_panel_icon_btn el_date_picker_prev_btn el_datatable_prevMonth" src="./icon/el_icon_left.png"  />
+                
+                <span class="el_date_picker_header_label" ><span lvs_bind="todayYear"></span>年</span>
+                <span class="el_date_picker_header_label"><span lvs_bind="todayMonth"></span>月</span>
+                <img class="el_picker_panel_icon_btn el_date_picker_next_btn el_datatable_nextYear"  id="nextMonth" src="./icon/el_icon_rr.png"  />
+                <img class="el_picker_panel_icon_btn el_date_picker_next_btn el_datatable_nextMonth"  id="nextYear" src="./icon/el_icon_right.png"  />
+            </div>
+
+             <div class="el_picker_panel_content" id="datetable" style="border:solid 1px gray">
+                <table class="el_date_table">
+                    <tbody>
+                        <tr>
+                            <th>日</th>
+                            <th>一</th>
+                            <th>二</th>
+                            <th>三</th>
+                            <th>四</th>
+                            <th>五</th>
+                            <th>六</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                        </tr>
+                           
+                    </tbody>
+                </table>
+             </div>
+        </div>
+        <div class="el_picker_panel year" style="border:solid 1px blue;display:none" >
+            <div class="el_date_picker_header" id="yearheader" style="border:solid 1px blue">
+                <img class="el_picker_panel_icon_btn el_date_picker_prev_btn el_yeartable_prevYear"  src="./icon/el_icon_ll.png"  />
+                <span class="el_date_picker_header_label"style=""><span lvs_bind="minYear"></span>年</span>
+                <span class="el_date_picker_header_label"style="">-----</span>
+                <span class="el_date_picker_header_label"style=""><span lvs_bind="maxYear"></span>年</span>
+                <img class="el_picker_panel_icon_btn el_date_picker_next_btn el_yeartable_nextYear"  src="./icon/el_icon_rr.png"  />
+            </div>
+            <div class="el_picker_panel_content" id="yeartable" style="border:solid 1px gray">
+                <table class="el_year_table">
+                    <tbody>
+                        <tr>
+                            <td>2020</td>
+                            <td>2020</td>
+                            <td>2020</td>
+                            <td>2020</td>
+
+                        </tr>
+                        <tr>
+                            <td>2020</td>
+                            <td>2020</td>
+                            <td>2020</td>
+                            <td>2020</td>
+
+                        </tr>
+                        <tr>
+                            <td>2020</td>
+                            <td>2020</td>
+                        </tr>
+                    </tbody>                
+                </table>
+            </div>
+        </div>
+        <div class="el_picker_panel month" style="display:none">
+             <div class="el_date_picker_header" id="monthheader"style="border:solid 1px blue">
+                <img class="el_picker_panel_icon_btn el_date_picker_prev_btn"  src="./icon/el_icon_ll.png"  />
+                <span class="el_date_picker_header_label" style="border:solid 1px green"><span lvs_bind="todayYear"></span>年</span>
+                <img class="el_picker_panel_icon_btn el_date_picker_next_btn"  src="./icon/el_icon_rr.png"  />
+            </div>
+             <div class="el_picker_panel_content" id="monthtable" style="border:solid 1px gray">
+                <table class="el_month_table" >
+                    <tbody>
+                        <tr>
+                            <td><a class="cell">1月</a></td>
+                            <td><a class="cell">2月</a></td>
+                            <td><a class="cell">3月</a></td>
+                            <td><a class="cell">4月</a></td>
+                        </tr>
+                        <tr>
+                            <td><a class="cell">5月</a></td>
+                            <td><a class="cell">6月</a></td>
+                            <td ><a class="cell">7月</a></td>
+                            <td><a class="cell">8月</a></td>
+                        </tr>
+                        <tr>
+                            <td><a class="cell">9月</a></td>
+                            <td><a class="cell">10月</a></td>
+                            <td><a class="cell">11月</a></td>
+                            <td><a class="cell">12月</a></td>
+                        </tr>
+                    </tbody>                
+                </table>
+            </div>
+        </div>
+        </div>
+    </div>
+
+</body>
+</html>

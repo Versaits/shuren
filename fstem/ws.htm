@@ -1,0 +1,349 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>项目化学习平台</title>
+    <link type="text/css" rel="Stylesheet" href="../fstem/fstembase.css" />
+    <link type="text/css" rel="Stylesheet" href="../fstem/fstem.css" />
+    <link rel="stylesheet" href="../fstem/workspace.css"/>
+    <link rel="icon" href="http://tuanju.js.cn/Image/fzlogo.png" sizes="32x32"/>
+    <style type="text/css">
+    </style>    
+    <script type="text/javascript" src="../Scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="../Scripts/lvs.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.timers-1.2.js"></script>
+    <script type="text/javascript" src="../Scripts/html5upload.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/x-jquery-tmpl" id="MainSpaceTmpl">
+        <div class="FrameBox" frameidx="1">
+            <div class="HeaderBox" id="divHeadMenu">
+                <component name="cn.head.basehead" basedata="user" data-logo="../../Image/sr/sr_logos.png" data-title="树人学校项目化学习平台" data-back="#007bff"></component>
+            </div>
+            <div class="HeaderMask"></div>
+            <div class="MainBody">
+                <div class="Container" id="ListContainer">
+                    <div class="WorkMidSpace" style="margin-top:0" lvs_elm="WorkSpace"></div>
+                </div>
+                <div class="Container" id="ShowContainer" style="display:none"></div>
+                <div class="Container" id="BlogContainer" style="display:none"></div>
+                <div class="Container" id="PlayContainer" style="display:none"></div>
+            </div>
+            <div style="height:36px;"></div>
+            <div class="FooterBox" style="position:fixed;bottom:0;height:36px;line-height:36px">
+                <component name="cn.head.basefoot" data-title="南师附中树人学校信息学科教研组指导 Copyright ©上海凡智教育科技有限公司 All Rights Reserved" data-back="#007bff"></component>
+            </div>
+        </div>
+        <div class="BaseForm" id="OperateForm" style="display:none"></div>
+    </script>
+    <script type="text/x-jquery-tmpl" id="TchBaseTmpl">
+        <div style="padding-top:24px">
+            <div class="WSBox" style="padding:12px 24px">
+                <component name="cn.stud.headbaseinfo"></component>
+            </div>
+            <div style="margin-top:24px">
+                <div class="flexbox">
+                    <div class="flex1 MainNaviBox" perheit="80" lvs_ref="router.tchcrs"  style="background-image:url('../Image/ws/tchbak1.png')">
+                        <div class="NaviTitle">备课</div><div class="NaviDesc">教师对课程进行设计准备</div>
+                    </div>
+                    <div style="width:24px"></div>
+                    <div  class="flex1 MainNaviBox" perheit="80" lvs_ref="router.tchclass" style="background-image:url('../Image/ws/tchbak2.png')">
+                        <div class="NaviTitle">授课</div><div class="NaviDesc">教师的课程授课安排</div>
+                    </div>
+                    <div style="width:24px"></div>
+                    <div  class="flex1 MainNaviBox" perheit="80" lvs_ref="router.tchstud" style="background-image:url('../Image/ws/tchbak3.png')">
+                        <div class="NaviTitle">我的学生</div><div class="NaviDesc">教师查看学生学习数据</div>
+                    </div>
+                    <div style="width:24px"></div>
+                    <div  class="flex1 MainNaviBox" perheit="80" lvs_ref="router.tchproj" style="background-image:url('../Image/ws/tchbak4.png')">
+                        <div class="NaviTitle">项目管理</div><div class="NaviDesc">教学课题项目项目管理</div>
+                    </div>
+                </div>
+            </div>
+            <div class="WSBox" style="padding:12px;margin-top:48px">
+                <div class="HeadTitle">最近授课课程</div>
+                <component name="cn.lesn.lesnlist" data-colnum="6" basedata="lesns:lesns"></component>
+            </div>
+            <div class="WSBox" style="padding:12px 24px;margin-top:24px">
+                <div class="HeadTitle">最近操作</div>
+                <component name="cn.list.histories" data-colnum="6" basedata="histories:histories"></component>
+            </div>
+        </div>
+    </script>
+    <script type="text/x-jquery-tmpl" id="TchLesnTmpl">
+        <div class="WSBox" style="padding:24px">
+            <component name="cn.course.crslist" data-cols="4" data-tag1="levels" data-tag1name="年级" data-tag2="modules" data-tag2name="方向" data-lesnref="router.tchlesn" data-planref="router.tchcrs"></component>
+        </div>
+    </script>
+    <script type="text/x-jquery-tmpl" id="TchStudTmpl">
+        <div class="NaviBox" style="padding:12px 0">
+            <a class="NaviLink" lvs_ref="router.tchinfo">返回首页</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a class="NaviLink" lvs_ref="router.tchstud">我的学生</a>
+        </div>
+        <div class="WSBox" style="padding:24px">
+            <div class="WSBaseTab flexbox tabhead">
+                <div class="WSTabItem {{if deftype=='常规'}}active{{/if}}" tabidx="mystud" lvs_ref="tab.SelPanel" idxid="legstud">授课课程班级</div>
+                <div class="WSTabItem {{if deftype=='基础'||deftype==''}}active{{/if}} defclick" tabidx="mybase" lvs_ref="tab.SelPanel" idxid="basestud">基础班级</div>
+            </div>
+            <div class="WSBaseContainer tabcontent" tabcontainer="legstud" style="display:none">
+                <component name="cn.cls.clsstuds" basedata="classes:classes"></component>
+            </div>
+            <div class="WSBaseContainer tabcontent" tabcontainer="basestud" style="display:none">
+                <div style="text-align:left">
+                    <component name="cn.cls.baseclsstuds" basedata="levels:baseclses" data-isedit="1"></component>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script type="text/x-jquery-tmpl" id="TchClassTmpl">
+        <div class="NaviBox" style="padding:12px 0">
+            <a class="NaviLink" lvs_ref="router.tchinfo">返回首页</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a class="NaviLink">我的授课</a>
+        </div>
+        <div class="WSBox" style="padding:24px">
+            <div class="WSBaseTab flexbox tabhead">
+                <div class="WSTabItem {{if deftype=='常规'}}active{{/if}}" tabidx="myclass" lvs_ref="tab.SelPanel" idxid="comclass">常规课程班级</div>
+                <div class="WSTabItem {{if deftype=='课题'||deftype==''}}active{{/if}}" tabidx="mytopic" lvs_ref="tab.SelPanel" idxid="topicclass">项目化学习班</div>
+                <div class="WSTabItem {{if deftype=='结束'}}active{{/if}}" tabidx="ended" lvs_ref="tab.SelPanel" idxid="endclass">已结束班级</div>
+            </div>
+            <div class="WSBaseContainer tabcontent" tabcontainer="comclass" {{if deftype!='常规'}}style="display:none"{{/if}}>
+                <component name="cn.cls.clslesns" basedata="classes:classes"></component>
+            </div>
+            <div class="WSBaseContainer tabcontent" tabcontainer="topicclass" {{if deftype!=''&&deftype!='课题'}}style="display:none"{{/if}}>
+                <component name="cn.cls.topicclslist" basedata="classes:topics"></component>
+            </div>
+            <div class="WSBaseContainer tabcontent" tabcontainer="endclass" {{if deftype!='结束'}}style="display:none"{{/if}}>
+                <component name="cn.cls.clslesns" basedata="classes:expclasses"></component>
+            </div>
+        </div>
+    </script>
+    <script type="text/x-jquery-tmpl" id="TchTaskTmpl">
+        <div class="NaviBox" style="padding:12px 0">
+            <a class="NaviLink" lvs_ref="router.tchinfo">返回首页</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a class="NaviLink">批改作业/任务</a>
+        </div>
+        <div class="WSBox" style="padding:24px">
+            <component name="cn.cls.tchtask" basedata="classes:classes"></component>
+        </div>
+    </script>
+    <script type="text/x-jquery-tmpl" id="TchCourseTmpl">
+            <div class="WSBox" style="padding:24px">
+                <component name="cn.course.subjcrs" data-cols="3" data-tag1="subjs" data-tag1name="科目" data-tag2="grades" data-tag2name="等级"></component>
+            </div>
+    </script>
+    <script type="text/x-jquery-tmpl" id="TchSubjprojTmpl">
+            <div class="WSBox" style="padding:24px">
+                <component name="cn.course.projcrs"></component>
+            </div>
+    </script>
+    <script type="text/x-jquery-tmpl" id="StudBaseTmpl">
+        <div style="padding-top:24px">
+            <div class="WSBox" style="padding:12px">
+                <component name="cn.stud.headbaseinfo"></component>
+            </div>
+            <div style="margin-top:18px">
+                <div class="flexbox">
+                    <div class="flex1 MainNaviBox" perheit="60" lvs_ref="router.applyclass" style="background-image:url('../Image/ws/studbak1.png')">
+                        <div class="NaviTitle">选课报课</div><div class="NaviDesc">学生选择合适课程学习</div>
+                    </div>
+                    <div style="width:24px"></div>
+                    <div  class="flex1 MainNaviBox" perheit="60" lvs_ref="router.studlesn" style="background-image:url('../Image/ws/studbak2.png')">
+                        <div class="NaviTitle">常规课程</div><div class="NaviDesc">当前正在学习的课程</div>
+                    </div>
+                    <div style="width:24px"></div>
+                    <div  class="flex1 MainNaviBox" perheit="60" lvs_ref="router.studteam"  style="background-image:url('../Image/ws/studbak3.png')">
+                        <div class="NaviTitle">项目学习</div><div class="NaviDesc">参与项目化学习课题研究</div>
+                    </div>
+                    <div style="width:24px;display:none"></div>
+                    <div  class="flex1 MainNaviBox" style="display:none" lvs_ref="router.studtch">
+                        <div class="NaviTitle">导师</div><div class="NaviDesc">我的课程导师</div>
+                    </div>
+                </div>
+            </div>
+            <div class="WSBox" style="padding:12px;margin-top:48px">
+                <div class="HeadTitle">最近课程列表</div>
+                <component name="cn.lesn.lesnlist" data-colnum="6" basedata="lesns:lesns"></component>
+            </div>
+            <div class="WSBox" style="padding:12px;margin-top:24px">
+                <div class="HeadTitle">最近操作</div>
+                <component name="cn.list.histories" data-colnum="6" basedata="histories:histories"></component>
+            </div>
+        </div>
+    </script>
+    <script type="text/x-jquery-tmpl" id="ApplyClassTmpl">
+        <div class="WSBox" style="padding:24px">
+            <div class="WSBaseTab flexbox tabhead">
+                <div class="WSTabItem active" tabidx="px" lvs_ref="tab.SelPanel" idxid="px">常规课学习</div>
+                <div class="WSTabItem" tabidx="topic" lvs_ref="tab.SelPanel" idxid="topic">项目化学习</div>
+            </div>
+            <div class="WSBaseContainer tabcontent" tabcontainer="px">
+                <component name="cn.cls.applyclass" basedata="classes:commons" data-clstype="常规"></component>
+            </div>
+            <div class="WSBaseContainer tabcontent" tabcontainer="topic" style="display:none">
+                <component name="cn.cls.applyclass" basedata="classes:topics" data-clstype="课题"></component>
+            </div>
+            <div class="BaseForm" id="StudJoinForm" title="报课申请" style="display:none">
+                <div class="BaseDesc">确认学员姓名：</div>
+                <div class="BaseInput"><input type="text" value="${studname}" placeholder="确认学员姓名" lvs_bind="studname" /></div>
+                <div class="BaseDesc"><a class="FormOk button bg-green">确认申请</a><a class="FormCancel button bg-grey">取消操作</a></div>
+            </div>
+        </div>
+    </script>
+    <script type="text/x-jquery-tmpl" id="StudClassTmpl">
+        <div class="WSBox" style="padding:24px">
+            <div class="WSBaseTab flexbox tabhead">
+                <div class="WSTabItem active" tabidx="studing" lvs_ref="tab.SelPanel" idxid="ing">常规课程</div>
+                <div class="WSTabItem" tabidx="topic" lvs_ref="tab.GetData" idxid="data"  apiname="leag/stud_list" gettype="EStud.MyTopic" idxkey="estudid" tmplname="cn.cls.studclasslist">项目化学习</div>
+                <div class="WSTabItem" tabidx="studed" lvs_ref="tab.GetData" idxid="ed"  apiname="leag/stud_list" gettype="EStud.Classend" idxkey="estudid" tmplname="cn.cls.studclasslist">已经结束</div>
+            </div>
+            <div class="WSBaseContainer tabcontent" tabcontainer="ing">
+                <component name="cn.cls.flexclass"></component>
+            </div>
+            <div class="WSBaseContainer tabcontent" tabcontainer="data" style="display:none">
+            </div>
+        </div>
+    </script>
+    <script type="text/x-jquery-tmpl" id="StudTopicTmpl">
+        <div class="WSBox" style="padding:24px">
+            <component name="cn.cls.flexclass" data-clstype="课题"></component>
+        </div>
+    </script>
+    <script type="text/x-jquery-tmpl" id="GrpBlogTmpl">
+        <div class="NaviBox" style="padding:12px 0">
+            <a class="NaviLink" lvs_ref="toggle.Show">关闭返回</a>
+        </div>
+        <div class="WSBox" style="padding:24px">
+            <component name="cn.blog.blogbase"></component>
+        </div>
+    </script>
+    <script type="text/x-jquery-tmpl" id="StudTeacherTmpl">
+        <div class="WSBox" style="padding:24px">
+            <component name="cn.tch.tchinfo"></component>
+            <component name="cn.tch.tchlist"></component>
+        </div>
+    </script>
+    <script type="text/x-jquery-tmpl" id="TchBaseLesnTmpl">
+        <div>
+            <div class="NaviBox">
+                {{if istch==0}}<a class="NaviLink" lvs_ref="router.studlesn" idxid="${classid}">我的学习</a>{{else}}<a class="NaviLink" lvs_ref="router.tchclass" idxid="${classid}">我的授课</a>{{/if}}&nbsp;&nbsp;>&nbsp;&nbsp;${title}
+                {{if istch>0}}<span class="float-right"><component name="cn.lesn.lesntips"></component></span>{{/if}}
+            </div>
+            <div class="WorkMidSpace" id="LesnLive" perheit="60">
+                <component name="cn.play.lesnplay" basedata="tmpl" data-autoplay="0" data-autotask="1" data-lesnid="${id}"></component>
+            </div>
+        </div>
+    </script>
+    <script type="text/x-jquery-tmpl" id="StudTaskTmpl">
+        <div>
+            <div class="NaviBox">
+                {{if istch==0}}<a class="NaviLink" lvs_ref="router.studlesn" idxid="${classid}">我的学习</a>{{else}}<a class="NaviLink" lvs_ref="router.tchclass" idxid="${classid}">我的授课</a>{{/if}}&nbsp;&nbsp;>&nbsp;&nbsp;${title}[作业]
+            </div>
+            <div class="WorkMidSpace" id="LesnTask" perheit="60">
+            <component name="cn.play.pageshow" data-playtype="task" data-lesnid="${id}"></component>
+            </div>
+        </div>
+    </script>
+    <script type="text/x-jquery-tmpl" id="StudExhTmpl">
+        <div class="NaviBox" style="padding:12px 0">
+            <a class="NaviLink" lvs_ref="router.studinfo">返回首页</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a class="NaviLink">项目化学习作品展评</a>
+        </div>
+        <div>
+            <component name="cn.lesn.taskexhs"></component>
+        </div>
+    </script>
+    <script type="text/javascript">
+        var lvs = LvsCore.Create();
+        var lvsdata = LvsData.Create();
+        $(document).ready(function () {
+            var CurStudid = lvs.GetUrlParam("id");
+            var CurApptype = "Stem";
+            var CurDefope = lvs.GetUrlParam("ope");
+            if (location.hash != "") {
+                CurDefope = location.hash.substr(1);
+            }
+            $.cookie("foken", "06HH-020221111192186", { path: "/", expires: 1 });
+
+            lvs.InitPage($('#divMainInfo'), { apptype: CurApptype, apiname: "customer/cust_list", projid: "url.proj", gettype: CurApptype, role: (CurStudid > 0 ? "stud" : "tch"), roleid: (CurStudid > 0 ? CurStudid : 0 - CurStudid), idxid: CurStudid }, { richedit: 1, vod: 1, video: 1, modules: ["menu", "head", "button", "course", "form", "stud", "list", "blog", "play", "intact", "crsplan", "cls", "lesn", "tch", "theme", "elchart", "prop", "el_slider", "elmind"] }, function (token, idxid, result) {
+                window.PageData = { user: result };
+                window.PageData.router = [
+                    { name: "login", linkurl: "../fstem/shuren.aspx" },
+                    { name: "tchcrs", apiname: "edu/teacher_list", gettype: "Teacher.MySubjcrs", idxkey: "estudid", idxkey2: "courseid", container: "[lvs_elm=WorkSpace]", tmplname: "TchCourseTmpl" },
+                    { name: "tchtmpls", apiname: "edu/teacher_list", gettype: "Teacher.MyTmpls", idxkey: "estudid", idxkey2: "courseid", container: "[lvs_elm=WorkSpace]", tmplname: "TchLesnTmpl" },
+                    { name: "tchclass", apiname: "edu/teacher_list", gettype: "Teacher.MyClass", idxkey: "estudid", idxkey2: "classid", data: { typediv: 1 }, container: "[lvs_elm=WorkSpace]", tmplname: "TchClassTmpl" },
+                    { name: "tchinfo", apiname: "edu/teacher_list", gettype: "Teacher.BaseInfo", idxkey: "estudid", idxkey2: "courseid", container: "[lvs_elm=WorkSpace]", tmplname: "TchBaseTmpl" },
+                    { name: "tchstud", apiname: "edu/teacher_list", gettype: "Teacher.MyStud", idxkey: "estudid", idxkey2: "classid", data: { typediv: 0 }, container: "[lvs_elm=WorkSpace]", tmplname: "TchStudTmpl" },
+                    { name: "tchtask", apiname: "edu/teacher_list", gettype: "Teacher.MyClass", idxkey: "estudid", idxkey2: "classid", data: { typediv: 0 }, container: "[lvs_elm=WorkSpace]", tmplname: "TchTaskTmpl" },
+                    { name: "tchproj", apiname: "edu/teacher_list", gettype: "Teacher.MySubjproj", idxkey: "estudid", idxkey2: "courseid", container: "[lvs_elm=WorkSpace]", tmplname: "TchSubjprojTmpl" },
+                    { name: "tchlesn", apiname: "leag/lesn_list", gettype: "Lesn.Live", idxkey: "estudid", idxkey2: "lesnid", container: "[lvs_elm=WorkSpace]", tmplname: "TchBaseLesnTmpl" },
+                    { name: "studtask", apiname: "leag/lesn_list", gettype: "Lesn.Tasks", idxkey: "estudid", idxkey2: "lesnid", container: "[lvs_elm=WorkSpace]", tmplname: "StudTaskTmpl" },
+                    { name: "crstmpls", apiname: "edu/course_list", gettype: "Crs.Tmpls", idxkey: "estudid", idxkey2: "courseid", data: { history: 1, idxtype: "crstmpl_pbl", curseq: -1 }, container: "[lvs_elm=WorkSpace]", tmplname: "cn.course.crstmpl_pbl" },
+                    { name: "crstmpl_pbl", apiname: "edu/course_list", gettype: "Crs.Tmpls", idxkey: "estudid", idxkey2: "courseid", data: { history: 1, idxtype: "crstmpl_pbl", curseq: -1 }, container: "[lvs_elm=WorkSpace]", tmplname: "cn.course.crstmpl_pbl" },
+                    { name: "crstmpl_edit", linkurl: "../hpoam/lesnplan.htm?tp=plan&tn=foken&id=$ID", target: "_blank" },
+                    { name: "crstmpl_taskedit", linkurl: "../hpoam/lesnplan.htm?tn=foken&id=$ID&tp=task", target: "_blank" },
+                    { name: "projcrs", apiname: "edu/course_list", gettype: "Crs.Tmpls", idxkey: "estudid", idxkey2: "courseid", data: { history: 1, curseq: -1 }, container: "##ShowContainer", tmplname: "cn.course.subjproj_pbl" },
+                    { name: "projteam", apiname: "leag/class_list", gettype: "Class.TeamStat", idxkey: "estudid", idxkey2: "classid", data: { history: 1, idxtype: "projteam", islesn: 1, seq: 1 }, container: "##ShowContainer", tmplname: "cn.cls.projteam" },
+                    { name: "topicteam", apiname: "leag/class_list", gettype: "Class.TeamStat", idxkey: "estudid", idxkey2: "classid", data: { history: 1, idxtype: "topicteam", islesn: 1, seq: 1 }, container: "##ShowContainer", tmplname: "cn.cls.topicteam" },
+                    { name: "studinfo", apiname: "leag/stud_list", gettype: "EStud.Base", idxkey: "estudid", container: "[lvs_elm=WorkSpace]", tmplname: "StudBaseTmpl" },
+                    { name: "studlesn", apiname: "leag/stud_list", gettype: "EStud.MyClass", idxkey: "estudid", container: "[lvs_elm=WorkSpace]", tmplname: "StudClassTmpl" },
+                    { name: "applyclass", apiname: "leag/stud_list", gettype: "EStud.ApplyClass", idxkey: "estudid", container: "[lvs_elm=WorkSpace]", tmplname: "ApplyClassTmpl" },
+                    { name: "studteam", apiname: "leag/stud_list", gettype: "EStud.MyClass", idxkey: "estudid", data: { clstype: "课题" }, container: "[lvs_elm=WorkSpace]", tmplname: "StudTopicTmpl" },
+                    { name: "exhibit", apiname: "leag/lesn_list", gettype: "Lesn.TaskExhs", idxkey: "estudid", data: {}, container: "[lvs_elm=WorkSpace]", tmplname: "StudExhTmpl" },
+                    { name: "studtch", apiname: "leag/stud_list", gettype: "EStud.MyTch", idxkey: "estudid", container: "[lvs_elm=WorkSpace]", tmplname: "StudTeacherTmpl" },
+                    { name: "clsinfo", apiname: "leag/class_list", gettype: "Class.Base", idxkey: "estudid", idxkey2: "classid", data: { history: 1, idxtype: "clsinfo", seq: 2, islesn: 1 }, container: "##ShowContainer", tmplname: "cn.cls.classinfo" },
+                    { name: "blog", apiname: "statuses/blog_show", gettype: "Blog.Id", idxkey: "estudid", idxkey2: "blogid", container: "##BlogContainer", tmplname: "GrpBlogTmpl" }
+                ];
+                if (result.custid == 0)
+                    lvs.LvsRout("login", token, idxid, 0);
+                $.cookie("role", (CurStudid > 0 ? "stud" : "tch"), { expires: 7, path: "/" });
+                $.cookie("roleid", (CurStudid > 0 ? CurStudid : 0 - CurStudid), { expires: 7, path: "/" });
+                $.cookie("rolename", result.name, { expires: 7, path: "/" });
+                $.cookie("roleimg", result.image, { expires: 7, path: "/" });
+                if (CurStudid < 0) {
+                    window.PageData.user.topmenus = { defidx: CurDefope.split('*')[0], container: "[lvs_elm=WorkSpace]", list: [
+                        { id: "tchinfo", name: "首页", router: "tchinfo" },
+                        { id: "tchcrs", name: "备课", router: "tchcrs" },
+                        { id: "tchclass", name: "授课", router: "tchclass" },
+                        { id: "tchstud", name: "班级", router: "tchstud" },
+                        { id: "tchtask", name: "批改", router: "tchtask" },
+                        { id: "exhibit", name: "展评", router: "exhibit" }
+                    ]
+                    };
+                    window.PageData.user.menu = { defidx: "", container: "[lvs_elm=WorkSpace]", list: [
+                        { id: "tchinfo", name: "我的信息", router: "tchinfo" }
+                    ]
+                    };
+                    if (CurDefope == "")
+                        CurDefope = "tchinfo";
+                }
+                else {
+                    window.PageData.user.topmenus = { defidx: CurDefope.split('*')[0], container: "[lvs_elm=WorkSpace]", list: [
+                        { id: "studinfo", name: "首页", router: "studinfo" },
+                        { id: "applyclass", name: "选课报课", router: "applyclass" },
+                        { id: "studclass", name: "我的课程", router: "studlesn" },
+                        { id: "studteam", name: "我的课题", router: "studteam" },
+                        { id: "exhibit", name: "作品展评", router: "exhibit" }
+                    ]
+                    };
+                    window.PageData.user.menu = { defidx: "", container: "[lvs_elm=WorkSpace]", list: [
+                        { id: "studinfo", name: "我的信息", router: "studinfo" }
+                    ]
+                    };
+                    if (CurDefope == "")
+                        CurDefope = "studinfo";
+                }
+                lvs.BindTmpl("#MainSpaceTmpl", $('#divMainPage'), token, idxid, window.PageData, function () {
+                    var bodyheit = $(window).height() - $('.HeaderBox').height() - $('.FooterBox').height() - 8;
+                    $('.MainBody').css("min-height", bodyheit);
+                    if (CurDefope.indexOf("*") != -1) {
+                        lvs.LvsRout(CurDefope.split('*')[0], token, idxid, CurDefope.split('*')[1]);
+                    }
+                    else if (CurDefope != "")
+                        lvs.LvsRout(CurDefope, token, idxid, 0);
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="divMainPage">
+    </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_head_fstemhead" lvs_jqexec="lvsfstemhead">
+        <div style="width:64%;margin-left:18%">
+            <table width="100%"><tr>
+                <td width="20%" valign="top"><img class="HeadLogo" src="../Image/fedu/headlogo.png"/></td>
+                <td width="80%" align="right">
+                    {{if role==''}}<a lvs_elm="GoLogin" projid="${projid}" apptype="${apptype}" class="button bg-yellow">未登录</a>
+                    {{else}}
+                        <span lvs_elm="ShowSessions" curtype="${role}" curid="${roleid}" desttype="" destid="0" style="margin-right:30px">
+                        <img width="20px" height="20px" src="../Image/fedu/消息.png" style="vertical-align:bottom" />
+                        {{if mesnum}}{{if mesnum>0}}<span class="MesNumTip">${mesnum}</span> {{/if}}{{/if}}
+                        </span>
+                        <img class="LitUserHead" lvs_elm="UserSel" currole="${role}" curroleid="${roleid}" style="width:40px;height:40px;vertical-align:middle" src="{{if image==''}}../Image/user.gif{{else}}${image}{{/if}}"/><a lvs_elm="GoLogout" projid="${projid}" apptype="${apptype}">退出</a>
+                    {{/if}}
+                </td>
+            </tr></table>
+        </div>
+        {{if role!=''}}
+        <div class="BaseForm" id="UserSelForm" title="选择操作的身份信息" style="display:none">
+            <table width="100%">
+                <tr>
+                    <td width="15%"></td><td width="70%">
+                        <div class="LineBox">
+                            {{if users.length == 0 }}您尚未报名参与课程学习，请先选择合适的学习社团进行课程学习{{/if}}
+                            {{each(u,usrdata) users}}
+                                <div class="LineList" lvs_ref="{{if usrdata.stype=='导师'}}../fstem/wstch.aspx?id=${usrdata.id}{{else usrdata.stype=='顾问'}}../fstem/wswk.aspx?id=${usrdata.id}{{else}}../fstem/wsstud.aspx?id=${usrdata.id}{{/if}}">
+                                    <img class="TinyUserHead" src="${usrdata.image}" style="vertical-align:middle" />${usrdata.stype}：${usrdata.name}
+                                </div>
+                            {{/each}}
+                        </div>
+                    </td><td width="15%"></td>
+                </tr>
+            </table>
+        </div>
+        {{/if}}
+        <div class="BaseForm" id="MesSessionForm" title="消息列表" style="display:none">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_jqexec="lvs_task_grpres">
+        {{if grpreses}}
+        {{if prog}}<div class="BaseDesc">当前总体进展：${prog}%</div>{{/if}}
+        {{if grpreses.length==0}}
+            <div class="BaseDesc">当前未提交任务成果</div>
+        {{/if}}
+        {{each(t,tdata) grpreses}}
+        {{each(r,resdata) grpreses}}
+            {{if t+r==grpreses.length-1}}
+            {{if resdata.resdesc!='' || resdata.resfile != '' || resdata.prog>0}}
+            <div class="BaseListBox" style="padding:12px 0">
+                <div class="ListDesc"><img class="TinyUserHead" style="vertical-align:middle" src="${resdata.crtimg}"/>${resdata.crtname}<span class="txt-grey float-right">${resdata.time}<span class="txt-red">${resdata.status}</span>{{if besttask}}<img width="30px" height="30px" src="../../Image/biggrant.png" title="模范作业" style="vertical-align:middle"/>{{/if}}</span></div>
+                {{if resdata.status=='草稿'||resdata.status=='驳回'}}{{if ismem}}<div style="text-align:right"><a class="button bg-green" lvs_elm="EditTaskRes" dataidx="${r}">修改内容</a><a class="button bg-red" lvs_elm="DelTaskRes" dataidx="${r}">删除草稿</a></div>{{/if}}
+                {{else resdata.status=='提交'}}{{if ismem}}<div style="text-align:right"><a class="button bg-green" lvs_elm="CancelTaskRes" dataidx="${r}">撤回任务</a></div>{{/if}}
+                {{/if}}
+                {{if editsel}}<div style="text-align:right"><span class="MultSelecting {{if resdata.issel}}MultSelected{{/if}}" idxid="${resdata.id}">{{if resdata.issel}}已选择{{else}}待选择{{/if}}</span></div>{{/if}}
+                {{if resdata.prog>0}}
+                <div class="ListDesc">进度：${resdata.prog}%</div>
+                {{/if}}
+                {{if resdata.resfile!=''}}
+                <div class="ListDesc" lvs_elm="BaseFile" dataidx="${r}">文件：${resdata.resfile}</div>
+                {{/if}}
+                {{if resdata.filelist}}{{if resdata.filelist.length>0}}
+                <div class="ListDesc">更多文件</div>
+                {{each(f,fldata) resdata.filelist}}
+                    {{if fldata.fileurl!=resdata.fileurl}}
+                    <div class="AnsFile">文件：${fldata.resfile}<span class="float-right"><a href="${fldata.fileurl}" download="${fldata.resfile}">下载</a></span></div>
+                    {{/if}}
+                {{/each}}
+                {{/if}}{{/if}}
+                {{if resdata.resdesc!=''}}
+                <div class="ListDesc" lvs_elm="TaskResText${r}"></div>
+                <div class="ListDesc" lvs_elm="TaskResTmpl${r}"></div>
+                <div class="ListDesc" lvs_elm="TaskResPaper${r}"></div>
+                <div class="ListDesc" lvs_elm="TaskResMind${r}"></div>
+                {{/if}}
+            </div>
+            {{/if}}
+            {{/if}}
+        {{/each}}
+        {{/each}}
+        <div class="BaseForm" id="DelGrpresForm" style="display:none">
+            <div class="BaseDesc">确认要删除该草稿，草稿删除后不可恢复</div>
+            <div class="BaseDesc"><a class="button bg-green FormOk">确认删除</a><a class="button bg-yellow FormCancel">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="CancelGrpresForm" style="display:none">
+            <div class="BaseDesc">确认要撤回该任务提交状态，撤回后进入草稿状态，需要再次提交</div>
+            <div class="BaseDesc"><a class="button bg-green FormOk">确认撤回</a><a class="button bg-yellow FormCancel">取消操作</a></div>
+        </div>
+        {{else}}
+        <div class="BaseTmpl" id="UpdTaskTmpl" style="display:none">
+            {{if resprog}}
+            <div class="BaseDesc">当前任务进度；</div>
+            <div class="BaseInput"><input lvs_bind="resprog" type="number" value="${resprog}" /></div>
+            {{/if}}
+            {{if resfile}}
+            <component load="dialog" lvs_bind="respfile" name="cn.theme.basefile" data-resfile="${resfile}" data-fileurl="${fileurl}" data-editmode="1"></component>
+            {{/if}}
+            {{if resptext}}{{if resptext!=''}}
+            <component load="dialog" lvs_bind="resptext" name="cn.form.richedit" data-text="${resptext}"></component>
+            {{/if}}{{/if}}
+            {{if resptmpl}}{{if resptmpl!=''}}
+            <component load="dialog" lvs_bind="resptmpl" name="cn.intact.taskans" data-tmpldesc="${resptmpl}"></component>
+            {{/if}}{{/if}}
+            {{if respmind}}
+            <component load="dialog" lvs_bind="respmind" name="cn.elmind.editmind" data-mindstr="${mindstr}"></component>
+            {{/if}}
+            <div class="BaseDesc">
+                <a class="FormOk button bg-green" opetype="RetRes">确认提交</a><a class="FormOk button bg-yellow" opetype="SaveRes">存为草稿</a><a class="FormCancel button bg-grey float-right">取消操作</a>
+            </div>
+        </div>
+        {{/if}}
+    </div>
+</body>
+</html>

@@ -1,0 +1,194 @@
+﻿.PlayPageItem
+{
+    height:3px;
+    border:#dadada 0.5px solid;
+    border-radius:2px;
+    margin-left:2px;
+    font-size:6px;
+    overflow:hidden;
+    color:#dadada;
+}
+.PlayPageItem .PlayPageItemProg
+{
+    background-color:#52bff9;
+    height:6px;
+}
+.PlayPageCheck
+{
+    border:#ffd282 1px solid;
+    background-color:#ffe2a2;
+}
+.PlayPageCheckOk
+{
+    border:#82f262 1px solid;
+    background-color:#c2ffb2;
+}
+.PlayPageItemAct
+{
+    border:#0a8acd 1px solid;
+}
+
+.PlayPanel
+{
+    position:relative;
+    overflow:hidden;
+}
+.LesnPlayPage
+{
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+}
+.LesnPageElm
+{
+    position:absolute;
+    top:0;
+    left:0;
+    text-align:left;
+}
+.TimeLineBox
+{
+    width:100%;
+    height:6px;
+    position:relative;
+}
+.TimeLineBox .TimeLinePoint
+{
+    background-color:Red;
+    width:3px;
+    border-radius:999px;
+    position:absolute;
+    height:6px;
+}
+.TimeLineBox .TimeLineCursor
+{
+    position:absolute;
+    left:0;
+    top:0;
+    width:0;
+    height:6px;
+    background-color:Orange;
+}
+.ThemePanel
+{
+    position:absolute;
+    z-index:2000;
+    border:#badaff 2px solid;
+    background-color:White;
+    left:10%;
+    top:10%;
+    width:80%;
+    padding:12px;
+    border-radius:8px;
+}
+.PlayIndexBox
+{
+    border:White 2px solid;
+    display:inline-block;
+    background-color:#6ab9c2;
+    color:White;
+    font-size:10px;
+    border-radius:999px;
+    margin-left:20px;
+    padding:1px 5px;
+}
+.VPlayPanel
+{
+    border:#d7d7d7 1px solid;
+    border-radius:5px;
+    box-shadow:1px 2px 1px 2px #eaeaea;
+    z-index:2;
+    position:absolute;
+    background-color:#f2f2f2;
+}
+
+.TimerBox
+{
+    border:#bababa 1px solid;
+    border-radius:6px;
+    background-image:linear-gradient(180deg,#ffffff 0%,#eaeaea 20%,#fafafa 40%,#e7e7e7 70%,#ffffff 100%);
+}
+.TimerBox .TimerImg
+{
+    background-color:#cacaca;
+    padding:8px 6px;
+    line-height:100%;    
+    display:inline-block;
+}
+.TimerBox .TimerShow
+{
+    padding:12px 16px;
+    font-size:2.2vw;
+    color:#03bae7;
+    font-weight:bolder;
+    letter-spacing:2px;
+    display:inline-block;
+}
+.TimerBox .TimerEnd
+{
+    float:right;
+    padding:12px 8px;
+    font-size:18px;
+    color:White;
+    background-color:#3d7dff;
+    cursor:pointer;
+    display:inline-block;
+    border-radius:0 6px 6px 0;
+}
+.TimerBox .TimerEnd:hover
+{
+    background-color:#ffd83d;
+}
+
+.LesnOpeBox
+{
+    margin-left:3px;
+    margin-top:8px;
+    text-align:center;
+    border-radius:999px 0 0 999px;
+    font-size:14px;
+    width:60px;
+    cursor:pointer;
+    padding:3px 6px;
+    display:inline-block;
+    box-shadow:2px 2px 3px rgba(128,140,180,0.5);
+}
+.LesnOpeBox:hover
+{
+    box-shadow:5px 3px 5px rgba(128,140,180,0.6);
+    font-weight:bold;
+}
+
+.TaskThemeOk
+{
+    background-image:linear-gradient(180deg,#59e628 0%,#a8fd8a 30%,#59e628 100%);
+    border:#42bb18 1px solid;
+}
+.TaskThemeNok
+{
+    background-image:linear-gradient(180deg,#fbe1ac 0%,#fff2e0 30%,#fbe1ac 100%);
+    border:#dba282 1px solid;
+}
+.TaskThemeWork
+{
+    background-image:linear-gradient(180deg,#a0dafc 0%,#eef6fb 30%,#7fccf9 100%);
+    border:#dba282 1px solid;
+}
+.TaskThemeEnd
+{
+    background-color:#26befd;
+}
+.LesnAttach
+{
+    background-image:linear-gradient(180deg,#d8f4ff 0%,#eff2ff 30%,#d8f4ff 100%);
+    border:#9be0fc 1px solid;
+}
+.PageShowBox
+{
+    margin:12px;
+    border:#eaeaea 0.5px solid;
+    background-color:White;
+    box-shadow:2px 2px 2px rgba(128,140,180,0.5);
+}

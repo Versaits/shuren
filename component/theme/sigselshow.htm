@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_theme_sigselshow" lvs_jqexec="lvssigselshow" class="PageThemeBox">
+        <div class="ThemeTitle">{{if title!=''}}${title}{{else}}单选题{{/if}}<span class="float-right" lvs_elm="CheckPass" {{if checkok}}pass="1"{{else}}style="display:none"{{/if}}><img width="24px" height="24px" src="../../Image/ok.png" /></span></div>
+        {{if score}}<div class="ThemeDesc">${score}分</div>{{/if}}
+        {{if checkpass}}<div class="ThemeDesc">答对才能通过</div>{{/if}}
+        <div class="ThemeOpe"><a lvs_elm="ThemeAns" class="button bg-grey">答题</a></div>
+        <div class="BaseForm" id="ThemeForm{{if pageid}}_${pageid}{{/if}}_${seqid}" title="答题" style="display:none">
+            <div class="ThemeTitle" lvs_bind="title" style="{{if titlefont}}font-size:${titlefont};{{/if}}{{if titlecolor}}color:${titlecolor};{{/if}}{{if titlewidth}}width:${titlewidth};{{/if}}">{{if title}}${title}{{/if}}</div>
+            <div class="ThemeProblem" lvs_bind="problem" style="{{if problemfont}}font-size:${problemfont};{{/if}}{{if problemcolor}}color:${problemcolor};{{/if}}{{if problemwidth}}width:${problemwidth};{{/if}}">{{if problem}}${problem}{{else}}请输入题目{{/if}}</div>
+            <div class="ThemeOption" lvs_bind="option" style="{{if optionfont}}font-size:${optionfont};{{/if}}{{if optioncolor}}color:${optioncolor}{{/if}}">
+                <div lvs_elm="OptionList">
+                {{if options}}
+                    <div class="flexbox">
+                    {{each(o,optdata) options}}
+                        <div class="OptionItemSeling flex1 FormOk" opetype="Option" seqid="${optdata.seqid}"><span lvs_bind="optionseqid">${optdata.seqid}</span>.<span class="htmlformat">${optdata.opttext}</span>{{if optdata.optimg}}<span lvs_bind="optionimg"><img height="60px" src="${optdata.optimg}" /></span>{{/if}}</div>
+                        {{if optionwidth}}{{if optionwidth>='40.00%'&&optionwidth<='55%'}}{{if (o%2)==1}}</div><div class="flexbox">{{/if}}{{else optionwidth>='30%'&&optionwidth<='35%'}}{{if (o%3)==2}}</div><div class="flexbox">{{/if}}{{else optionwidth>='20.00%'&&optionwidth<='28%'}}{{if (o%4)==3}}</div><div class="flexbox">{{/if}}{{else}}</div><div class="flexbox">{{/if}}{{else}}</div><div class="flexbox">{{/if}}
+                    {{/each}}
+                    </div>
+                {{/if}}
+                </div>
+            </div>
+            <div class="ThemeAnswer"><a lvs_elm="RetAnswer" class="AnsButton FormOk" opetype="RetAnswer">提交答案</a></div>
+        </div>
+    </div>
+</body>
+</html>

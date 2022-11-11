@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_card_headcard" lvs_jqexec="lvs_headcard">
+        <div style="background-image:url('${backimg}');background-repeat:no-repeat;background-position:top center;background-size:100%;" pertop="{{if pertop}}${pertop}{{else}}52{{/if}}">
+            <div class="HeadBox" style="width:96%;margin-left:2%;padding:8px 0">
+                <div class="flexbox" style="width:96%;margin-left:2%;padding:8px 0">
+                    {{if image}}<img class="LitUserHead" src="${image}" />{{/if}}
+                    <div class="flex1" style="padding:12px">
+                        <div class = "HeadTitle">${name}</div>
+                        {{if desc1}}<div class="HeadDesc">${desc1}</div>{{/if}}
+                        {{if desc2}}<div class="HeadDesc">${desc2}</div>{{/if}}
+                    </div>
+                </div>
+                {{if menus}}
+                <div class="flexbox" style="margin-top:8px;text-align:center">
+                    {{each(m,menudata) menus}}
+                        <div class="flex1" headref = "${menudata.ref}">
+                            {{if menudata.num}}<span class="HeadNum">${menudata.num}</span>
+                            {{else menudata.icon}}<img class="HeadIcon" src="${menudata.icon}"/>
+                            {{/if}}
+                            <br /><span class="HeadName">${menudata.name}</span>
+                        </div>
+                    {{/each}}
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

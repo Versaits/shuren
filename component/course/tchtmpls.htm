@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_course_tchtmpls" lvs_jqexec="lvs_tchtmpls">
+        <div style="padding:24px">
+            <div class="LitTitle"><span class="PreTitle">.</span>以下是教师个人备课成果：<span class="float-right"><a lvs_elm="TchAddTmpl" class="WsButton bg-wsblue" idxid="${id}">创建新备课</a></span></div>
+        {{each(t,tmpldata) tmpls}}
+            <div class="TmplListBox">
+                <div class="flexbox" style="padding:8px 0">
+                    <div style="width:15%;">
+                        <img width="90%" class="CrsHeadImg" src="${tmpldata.titleimg}" />
+                    </div>
+                    <div class="flex1">
+                        <div class="TmplTitle"><span class="PreTitle">.</span>${tmpldata.title}</div>
+                        <div class="TmplDesc">${tmpldata.tchname}老师最新更新于：${tmpldata.time}</div>
+                    </div>
+                    <div style="width:15%">
+                        <a lvs_ref="router.crstmpl_edit" idxid="${tmpldata.id}" class="button border-green">{{if tmpldata.isself>0}}编辑{{else}}查看{{/if}}</a>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+        </div>
+        <div class="BaseForm" id="TchAddForm" style="display:none">
+            <div class="BaseDesc">确认需要复制${title}教学讲义？</div>
+            <div class="BaseDesc">新的讲义名称</div>
+            <div class="BaseInput"><input type="text" lvs_bind="copyname" value="${title}" /></div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确认复制</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+    </div>
+</body>
+</html>

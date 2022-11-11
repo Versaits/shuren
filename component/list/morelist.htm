@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_list_morelist" lvs_jqexec="lvs_morelist">
+        <div class="{{if titleclass}}${titleclass}{{else}}ListBaseBox{{/if}}">  
+            <div class="ListTitle flexbox">
+                <div class="LeftTitle">${title}</div>
+                <div class="flex1 RightTitle"><span headref="${moreref}">更多..</span></div>
+            </div>
+            <div class="ListBody">
+                {{if innertype}}
+                    {{if innertype=='matchs'}}
+                    {{each(l,lstdata) list}}
+                    <div class="MatchListItem" idxid="${lstdata.id}">
+                    <component name="cn.club.match" basedata="list[${l}]" data-ref="${listref}${lstdata.id}"></component>
+                    </div>
+                    {{/each}}
+                    {{/if}}
+                {{else}}
+                    {{each(l,lstdata) list}}
+                    <div class="ListItem" idxid="${lstdata.id}">
+                        {{if l==0}}<img width="15px" height="15px" src="../Image/no1.png" style="vertical-align:middle" />
+                        {{else l==1}}<img width="15px" height="15px" src="../Image/no2.png" style="vertical-align:middle" />
+                        {{else l==2}}<img width="15px" height="15px" src="../Image/no3.png" style="vertical-align:middle" />
+                        {{else}}<span class="ListNo">${l+1}.</span>
+                        {{/if}}
+                        ${lstdata.name}
+                    </div>
+                    {{/each}}
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

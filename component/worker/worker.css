@@ -1,0 +1,36 @@
+﻿.TipDesc
+{
+    padding:12px 0;
+    width:90%;
+    margin-left:5%;
+    color:#8a8a8a;
+    letter-spacing:1px;
+    font-size:14px;
+}
+.WorkerBox
+{
+    width:92%;
+    margin-left:4%;
+    margin-top:12px;
+    border:#dadada 1px solid;
+    border-radius:8px;
+    background-color:White;
+    padding:12px;
+    box-shadow:2px 3px 4px rgba(128,164,196,0.6);
+}
+.WorkerBox .WkTitle
+{
+    padding:6px 0;
+    font-size:16px;
+    margin-left:6px;
+    letter-spacing:1px;
+    color:#4a4a4a;
+}
+.WorkerBox .WkDesc
+{
+    padding:6px 0;
+    margin-left:6px;
+    font-size:14px;
+    letter-spacing:0.8px;
+    color:#8a8a8a;
+}

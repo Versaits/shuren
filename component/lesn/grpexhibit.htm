@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_lesn_grpexhibit" lvs_jqexec="lvs_lesn_grpexhibit">
+        <div class="flexbox">
+            <div class="flex1">
+                <div class="ExhTitle">作品：${title}</div>
+                <div class="ExhDesc">来自：${classname}</div>
+                <div class="ExhDesc">分组：${grpname}&nbsp;&nbsp;(${grpmembers})</div>
+                <div class="ExhDesc">指导老师：${tname}</div>
+            </div>
+            <div style="width:200px;text-align:right">
+                <span style="font-size:14px">浏览：${readnum}|均分：<span lvs_bind="avgscore">${remscore}</span>
+                <br />总排名：{{if seq==1}}<span class="GoldToken"></span>{{else seq==2}}<span class="SilverToken"></span>{{else seq==3}}<span class="BronzeToken"></span>{{else}}${seq}{{/if}}{{if inseq}}|班级排名：{{if inseq==1}}<span class="GoldToken"></span>{{else inseq==2}}<span class="SilverToken"></span>{{else inseq==3}}<span class="BronzeToken"></span>{{else}}${inseq}{{/if}}{{/if}}</span>
+                {{if isrem}}
+                <div class="BaseDesc" style="text-align:right">请给出你对作品的评分</div>
+                <div class="BaseDesc" style="height:24px;text-align:right;"><component name="cn.button.scorenum" lvs_bind="remscore" data-max="5"></component></div>
+                <div style="text-align:right"><a lvs_elm="RetRem" class="FormOk button bg-green" opetype="RetRem" style="display:none">提交评分</a></div>
+                {{/if}}
+            </div>
+        </div>
+        <component name="cn.lesn.lesntaskres" data-undownload="1"></component>
+    </div>
+</body>
+</html>

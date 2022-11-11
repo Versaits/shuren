@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn.stud.projstudstat" lvs_jqexec="lvs_proj_studstat">
+        {{if groups}}
+        <div class="BaseDesc" lvs_elm="ConfigStr"></div>
+        <div class="flexbox">
+            {{if studs}}
+            <div style="width:200px" class="BaseListBox">
+                {{if studs.length==0}}
+                    <div class="BaseDesc">暂无学员</div>
+                {{/if}}
+                {{each(s,stddata) studs}}
+                <div class="BaseListItem" idxid="${stddata.id}" dataidx="${s}">
+                    ${stddata.studno}.${stddata.name}{{if stddata.checknum>0}}<span class="GroupTis" title="${stddata.sdesc}">${stddata.checknum}</span>{{/if}}
+                        <span class="float-right txt-grey">${stddata.status}
+                            {{if istch>0||iscot>0}}
+                                <div style="display:none">
+                                {{if stddata.status=='申请'}}<img lvs_elm="Agree" width="10px" heit="10px" title="同意申请" idxid="${stddata.id}" src="../../Image/ok.png" /><img lvs_elm="Refuse" width="10px" heit="10px" style="margin-left:8px" title="拒绝申请" idxid="${stddata.id}" src="../../Image/del.gif" />
+                                {{else}}<img lvs_elm="Remove" width="10px" heit="10px" style="margin-left:8px" title="移除队员" idxid="${stddata.id}" src="../../Image/del.gif" />
+                                {{/if}}
+                                </div>
+                            {{/if}}
+                        </span>
+                </div>
+                {{/each}}
+                {{if istch>0|| iscot>0}}
+                <div class="BaseListAdd" lvs_elm="AddStud" style="display:none">+</div>
+                {{/if}}
+            </div>
+            {{/if}}
+            <div class="flex1">
+                <div lvs_elm="StudInfo">
+                    <table width="100%" class="BaseTable">
+                        <thead><tr><th>分组名称</th><th>成员</th><th>操作</th></tr></thead>
+                        {{each(g,grpdata) groups}}
+                        {{if g%2==1}}<tr class="GreyTr">{{else}}<tr>{{/if}}
+                        <td align="left">${grpdata.name}{{if grpdata.isingrp>0}}<a lvs_elm="UpdGrp" grpid="${grpdata.id}"><img width="16px" height="16px" src="../../Image/bukrecm.png" /></a>{{/if}}</td><td align="left">${grpdata.members}</td><td align="right">{{if istch>0||iscot>0}}<a class="button border-red" lvs_elm="ManGrp" dataidx="${g}">管理</a>{{else grpdata.isingrp>0}}<a lvs_elm="QuitGroup" grpid="${grpdata.id}" class="button border-yellow">退出</a>{{else}}<a lvs_elm="JoinGroup" grpid="${grpdata.id}" class="button border-green">加入</a>{{/if}}</td>
+                        </tr>
+                        {{/each}}
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="BaseForm" id="AgreeForm" style="display:none">
+            <div class="BaseDesc">确认要同意该申请？</div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确定操作</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="RefuseForm" style="display:none">
+            <div class="BaseDesc">确认要拒绝该申请？</div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确定操作</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="RemoveForm" style="display:none">
+            <div class="BaseDesc">确认要移除该成员？</div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确定操作</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="QuitGrpForm" style="display:none">
+            <div class="BaseDesc">确认要退出该分组？</div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确认退出</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="DelGrpForm" style="display:none">
+            <div class="BaseDesc">确认要删除该分组？</div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确认删除</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="JoinGrpForm" style="display:none">
+            <div class="BaseDesc">确认要加入该分组？</div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确认加入</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="ManGrpForm" style="display:none">
+        </div>
+        <div class="BaseForm" id="UpdGrpForm" style="display:none">
+            <div class="BaseDesc"><span class="txt-red">*</span>修改分组名称</div>
+            <div class="BaseInput"><input type="text" lvs_bind="grpname" placeholder="请输入新的分组名称" need="1" /></div>
+            <div class="BaseDesc"><a class="FormOk button bg-green">确认修改</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        <div class="BaseForm" id="ManGrpFrom" title="管理分组" style="display:none">
+        </div>
+        <div class="BaseForm" id="AddStudForm" style="display:none">
+            <div class="TypeTab flexbox">
+                <div class="TypeItem flex1 active" lvs_ref="tab.SelPanel" idxid="1">查找学生</div>
+                {{if classseq}}<div class="TypeItem flex1" lvs_ref="tab.SelPanel" apiname="leag/stud_list" gettype="EStud.ClsAppStud" idxkey2="classid" idxid="${id}" tmplname="cn.stud.estudsel">添加本班级学生</div>{{/if}}
+                <div class="TypeItem flex1" lvs_ref="tab.SelPanel" idxid="3">新注册学生信息</div>
+            </div>
+            <div class="tabcontent" tabcontainer="1">
+                <div class="BaseDesc">请先输入学员姓名查找已注册学员</div>
+                <div class="BaseInput"><input type="text" lvs_bind="studkey" style="width:80%"/><img class="float-right FormOk" lvs_elm="SearchStud" width="30px" height="24px" src="../../Image/find.gif" /></div>
+            </div>
+            <div class="tabcontent" tabcontainer="${id}" style="display:none"></div>
+            <div class="tabcontent" tabcontainer="3" style="display:none">
+                <div class="BasePanel" lvs_elm="RegUserBox">
+                    <div class="BaseDesc">学员姓名</div>
+                    <div class="BaseInput"><input type="text" lvs_bind="studname" placeholder="学生的真实姓名"/></div>
+                    <div class="BaseDesc">所在年级</div>
+                    <div class="BaseInput"><component name="cn.button.serial" lvs_bind="lvlid" need="1" data-serial="23-初一,25-初二,27-初三"></component></div>
+                    <div class="BaseDesc">所在班级</div>
+                    <div class="BaseInput"><input type="number" lvs_bind="classseq" placeholder="学生的班级号"/></div>
+                    <div class="BaseDesc">学生学号</div>
+                    <div class="BaseInput"><input type="number" lvs_bind="studno" placeholder="学生的班级学号"/></div>
+                </div>
+            </div>
+            <div class="BaseDesc"><a class="FormOk button bg-green" lvs_elm="AddStudOk">确定提交</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        </div>
+        {{else}}
+        <div class="BaseTmpl" id="MemberManTmpl" style="display:none">
+            <div class="BaseDesc"><span class="txt-red">*</span>分组名称：</div>
+            <div class="BaseInput"><input type="text" lvs_bind="grpname" need="1" value="${name}" /></div>
+            <div class="BaseDesc">当前分组成员情况：</div>
+            <div class="BaseDesc">
+                <div class="flexrow" lvs_elm="MemBox" style="text-align:center">
+                    {{each(m,memdata) mems}}
+                        <div class="colflex4" lvs_elm="MemItem" idxid="${memdata.id}">
+                            <div class="FlexItemBox FormOk" opetype="SelMem">
+                                <span style="color:#6a6a6a;font-size:18px"><b>${memdata.studno}</b></span><span class="float-right"><a class="FormOk" opetype="DelMem" idxid="${memdata.id}" idxname="${memdata.name}" idxno="${memdata.studno}" style="display:none"><img width="12px" height="12px" src="../../Image/del.gif"/></a></span>
+                                <br /><span>${memdata.name}</span>
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+            <div class="BaseDesc"><a class="button border-green FormOk" opetype="AddMem">添加新成员</a></div>
+            <div class="BaseDesc">
+                <div class="flexrow" lvs_elm="StudBox" style="display:none;text-align:center">
+                {{each(s,studdata) studs}}
+                    <div class="colflex6" lvs_elm="StudItem">
+                        <div class="FlexItemBox">
+                            <span style="color:#6a6a6a;font-size:16px"><b>${studdata.studno}</b></span><span class="float-right"><a class="FormOk" opetype="AddMemOk" idxid="${studdata.id}" idxname="${studdata.name}" idxno="${studdata.studno}"><img width="16px" height="16px" src="../../Image/ok.png"/></a></span>
+                            <br /><span>${studdata.name}</span>
+                        </div>
+                    </div>
+                {{/each}}
+                </div>
+            </div>
+            <div class="BaseDesc"><a class="FormOk button bg-green" opetype="UpdOk">确认以上调整</a><a class="FormCancel button bg-grey">取消操作</a><a class="FormOk button bg-red" opetype="DelGrp">删除分组</a></div>
+        </div>
+        {{/if}}
+    </div>
+</body>
+</html>

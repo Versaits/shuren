@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_menu_submenu" lvs_jqexec="lvs_submenu">
+        <div class="SubMenuBox">
+            {{each(i,itemdata) items}}
+            {{if itemdata.id==0}}
+                <div class="SubMenuItemDiv"></div>
+            {{else}}
+                <div class="SubMenuItem" lvs_elm="SubItem" idxid="${itemdata.id}" dataidx="${i}">
+                    {{if itemdata.image}}<img class="SubMenuImg" src="${itemdata.image}" />{{/if}}${itemdata.name}
+                </div>
+            {{/if}}
+            {{/each}}
+        </div>
+    </div>
+</body>
+</html>

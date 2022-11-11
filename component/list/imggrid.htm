@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div lvs_component="cn_list_imggrid" lvs_jqexec="lvsimggrid">
+        <div style="width:{{if images.length==1}}40%{{else images.length<=4&&images.length!=3}}75%{{else}}100%{{/if}}">
+            <div class="flexbox">
+                {{each(i,imgdata) images}}
+                <div class="ImageGrid flex1" lvs_elm="ImageGrid" idxid="${i}">
+                    <img width="100%" mode="widthFix" src="{{if imgdata.image}}${imgdata.image}{{else}}${imgdata}{{/if}}" />
+                </div>
+                {{if images.length==4&&i%2==0||images.length==2&&i%2==0||i%3!=2}}<div style="width:12px"></div>{{/if}}
+                {{if images.length==4&&i==1||images.length>4&&(i%3)==2}}</div><div class="flexbox" style="margin-top:12px">{{/if}}
+                {{/each}}
+                {{if images.length>4}}
+                    {{if images.length%3==2}}<div class="flex1"></div>{{/if}}
+                    {{if images.length%3==1}}<div class="flex1"></div><div style="width:12px"></div><div class="flex1"></div>{{/if}}
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
