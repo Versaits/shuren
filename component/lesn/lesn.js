@@ -742,18 +742,20 @@
                 var searchData = $(this).val();
                 searchRes = {}
                 exhs = [];
+                groups =[];
                 if($(this).val() != "") {
                     $.each(curdata.exhs,function (a,b) {
                         $.each(b.groups,function(n,value){
                             for (var key in value){
                                 if (key == "exhname" || key == "grpname" || key == "classname") {
                                     if (value[key].indexOf(searchData)!= -1) {
-                                        if ($.inArray(b.groups[n],exhs) == -1){
-                                            exhs.push(b.groups[n]);
+                                        if ($.inArray(b.groups[n],groups) == -1){
+                                            groups.push(b.groups[n]);
                                         }
                                     }
                                 }
-                                searchRes.exhname = b.exhname;
+
+                                exhs.push(groups);
                                 searchRes.exhs = exhs;
                             }
                         })
