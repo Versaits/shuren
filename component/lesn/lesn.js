@@ -737,32 +737,45 @@
                     */
                 });
             });
-
-            $(grpbox).find("[lvs_elm=SearchData]").keyup(function () {
+            var last;
+            $(grpbox).find("[lvs_elm=SearchData]").keyup(function (event) {
                 var searchData = $(this).val();
-                searchRes = {}
-                exhs = [];
-                groups =[];
-                if($(this).val() != "") {
-                    $.each(curdata.exhs,function (a,b) {
-                        $.each(b.groups,function(n,value){
-                            for (var key in value){
-                                if (key == "exhname" || key == "grpname" || key == "classname") {
-                                    if (value[key].indexOf(searchData)!= -1) {
-                                        if ($.inArray(b.groups[n],groups) == -1){
-                                            groups.push(b.groups[n]);
+                var sbox = $(this)
+                last = event.timeStamp;
+                setTimeout(function(){    //设时延迟1s执行
+                    if(last == event.timeStamp || event.keyCode == 13 ) {
+                        if($(sbox).val() != "") {
+                            $.each(curdata.exhs,function (a,b) {
+                                $.each(b.groups,function(n,value){
+                                    for (var key in value){
+                                        if (key == "exhname" || key == "grpname" || key == "classname") {
+                                            if (value[key].indexOf(searchData)!= -1) {
+                                                b.groups[n].undisplay = 0
+                                                break;
+                                            }
+                                            else {
+                                                b.groups[n].undisplay = 1
+                                            }
                                         }
                                     }
-                                }
+                                })
+                            })
+                            $(grpbox).parent().loadcomponent("cn.theme.taskexhs", token, idxid, curdata, function(){
+                            });
+                        }
+                    }
+                },1000);
 
-                                exhs.push(groups);
-                                searchRes.exhs = exhs;
-                            }
-                        })
+
+            })
+            $(grpbox).find(".el_input_clear").click(function () {
+                $.each(curdata.exhs,function (a,b) {
+                    $.each(b.groups,function(n,m){
+                        b.groups[n].undisplay = 0;
                     })
-                    $(grpbox).loadcomponent("cn.theme.taskexhs", token, idxid, searchRes, function(){
-                    });
-                }
+                })
+                $(grpbox).parent().loadcomponent("cn.theme.taskexhs", token, idxid, curdata, function(){
+                });
             })
 
         }

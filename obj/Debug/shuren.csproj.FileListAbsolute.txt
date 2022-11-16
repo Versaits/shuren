@@ -2,3 +2,4 @@ D:\WorkSpace\shuren\shuren\bin\shuren.dll
 D:\WorkSpace\shuren\shuren\bin\shuren.pdb
 D:\WorkSpace\shuren\shuren\obj\Debug\shuren.dll
 D:\WorkSpace\shuren\shuren\obj\Debug\shuren.pdb
+D:\WorkSpace\shuren\shuren\obj\Debug\shuren.csprojResolveAssemblyReference.cache
