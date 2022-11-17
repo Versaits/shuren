@@ -43,7 +43,7 @@
                                     {{if edata.prog}}<div class="flexbox" style="height:5px;border-radius:3px;"><div style="background-color:#4afa6a;width:${fdata.prog}%"></div><div class="flex1" style="background-color:#dadada"></div></div>{{/if}}
                                 </td>
                                 <td>
-                                    {{if istch==0}}{{if fdata.ismem}}<a dataidx1="${t}" dataidx2="${e}" groupid="${fdata.id}" lvs_elm="AddResp" title="新增任务进展与反馈"><img width="20px" height="20px" style="cursor:pointer" src="../../Image/bukrecm.png" /></a>{{/if}}
+                                    {{if istch==0}}{{if fdata.ismem}}<a dataidx1="${t}" dataidx2="${e}" groupid="${fdata.id}" lvs_elm="AddResp" title="新增任务进展与反馈"><button class="button bg-green" style="width: 50px;height: 30px;font-size: 10px;border: none;color: #fff">提交</button></a>{{/if}}
                                     {{else}}<a class="button bg-green" lvs_elm="ProgChk" dataidx1="${t}" dataidx2="${e}" dataidx3="${f}" groupid="${fdata.id}">评</a>
                                     {{/if}}
                                 </td>
@@ -108,7 +108,7 @@
                 <div class="ListDesc">评语：${resdata.check.chkmark}</div>
                 {{/if}}
                 {{if resdata.check.cates}}{{each(c,ctdata) resdata.check.cates}}${ctdata.name}(${ctdata.rate}%)：${ctdata.score}分；{{/each}}{{/if}}
-            </div>  
+            </div>
             {{/each}}
         </div>
         {{else check}}

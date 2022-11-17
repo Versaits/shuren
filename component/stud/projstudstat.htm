@@ -6,7 +6,11 @@
 <body>
     <div lvs_component="cn.stud.projstudstat" lvs_jqexec="lvs_proj_studstat">
         {{if groups}}
-        <div class="BaseDesc" lvs_elm="ConfigStr"></div>
+        <div style="display: flex">
+            <div class="BaseDesc" lvs_elm="ConfigStr"></div>
+            <div style="text-align:right"><a lvs_elm="CreGroup" class="button border-green">加入或新建分组</a></div>
+        </div>
+
         <div class="flexbox">
             {{if studs}}
             <div style="width:200px" class="BaseListBox">

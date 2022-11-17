@@ -131,6 +131,24 @@
                     });
                 });
             });
+            $(studbox).find("[lvs_elm=CreGroup]").click(function () {
+                lvsdata.GetData("leag/lesn_list", $(this), { access_token: token, lesnid: curdata.id, gettype: "Lesn.Groups"}, function( apiname, params, result ){
+                    if( result.config != undefined && result.config != "" ){
+                        result.config = $.parseJSON(decodeURIComponent( result.config ));
+                        result.config.grptype = curdata.grptype;
+                    }
+                    else
+                        result.config = {max:0,mem:0,crt:1,sig:0};
+                    $(studbox).find("#JoinGrpForm").loadtmpl( "cn.lesn.lesngrps", "#JoinGroupTmpl", result, function(){
+                        $('body').unidialog( "#JoinGrpForm", { token: token, idxid: idxid }, function( curbt, curbox ){
+                            lvsdata.GetData("leag/lesn_set", $(curbt), { access_token: token, lesnid: curdata.id, opetype: "JoinProjGroup", groupid: $(curbt).attr("idxid"), groupname: $(curbox).getbind("groupname")}, function( apiname, params, result){
+                                $('body').closedialog();
+                                lvs.LvsRout( "tabfresh", token, idxid, "[lvs_elm=LesnTab]" );
+                            });
+                        });
+                    });
+                });
+            })
             $(studbox).find("[lvs_elm=DelGrp]").click(function(){
                 var groupid = $(this).attr("grpid");
                 $('body').unidialog("#DelGrpForm",{token,idxid}, function( curbt, curbox ){

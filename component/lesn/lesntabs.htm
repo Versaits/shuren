@@ -6,8 +6,8 @@
 <body>
     <div lvs_component="cn_lesn_lesntabs">
         <div class="WSBaseTab flexbox tabhead" lvs_elm="LesnTab" style="margin-left:12px">
-            <div class="WSTabItem active" lvs_ref="tab.GetData" apiname="leag/lesn_list" tmplname="cn.play.lesnplay" gettype="Lesn.Live" idxkey="teacher" idxkey2="lesnid" idxid="${id}" lvs_prexec="lvs_lesn_preplay">课程学习{{if ansnum}}<span class="ListTipNum" title="待完成作业数">${ansnum}</span>{{/if}}</div>
-            <div class="WSTabItem" lvs_elm="LesnTopicTask" lvs_ref="tab.GetData" apiname="leag/lesn_list" tmplname="cn.lesn.lesngrps" gettype="Lesn.TaskGrpres" idxkey="teacher" idxkey2="lesnid" idxid="${id}" lvs_prexec="lvs_lesn_grpdata">项目任务{{if resnum}}<span class="ListTipNum" title="待提交任务数">${resnum}</span>{{/if}}</div>
+            <div class="WSTabItem active" lvs_elm="LesnTopicTask" lvs_ref="tab.GetData" apiname="leag/lesn_list" tmplname="cn.lesn.lesngrps" gettype="Lesn.TaskGrpres" idxkey="teacher" idxkey2="lesnid" idxid="${id}" lvs_prexec="lvs_lesn_grpdata">项目任务{{if resnum}}<span class="ListTipNum" title="待提交任务数">${resnum}</span>{{/if}}</div>
+            <div class="WSTabItem " lvs_ref="tab.GetData" apiname="leag/lesn_list" tmplname="cn.play.lesnplay" gettype="Lesn.Live" idxkey="teacher" idxkey2="lesnid" idxid="${id}" lvs_prexec="lvs_lesn_preplay">课程学习{{if ansnum}}<span class="ListTipNum" title="待完成作业数">${ansnum}</span>{{/if}}</div>
             <div class="WSTabItem" lvs_ref="tab.GetData" apiname="leag/lesn_list" tmplname="cn.stud.projstudstat" gettype="Lesn.Groups" idxkey="teacher" idxkey2="lesnid" idxid="${id}">成员与分组</div>
             <div class="WSTabItem" lvs_ref="tab.GetData" apiname="leag/lesn_list" tmplname="cn.lesn.lesnexhibits" gettype="Lesn.TaskExhibit" idxkey="estudid" idxkey2="lesnid" idxid="${id}" lvs_prexec="lvs_lesn_preexhibit">任务展评{{if exhnum}}<span class="ListTipNum" title="展评任务数">${exhnum}</span>{{/if}}</div>
             <div class="WSTabItem" lvs_ref="tab.GetData" apiname="leag/lesn_list" tmplname="cn.course.crsfiles" gettype="Lesn.Files" idxkey="estudid" idxkey2="lesnid" idxid="${id}">附件</div>

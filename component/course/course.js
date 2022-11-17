@@ -922,14 +922,16 @@
             $(crsbox).on("click", "[lvs_elm=EditCrsTask]", function(){
                 var dataidx = $(this).attr("dataidx");
                 var curtask = curdata.tasks[dataidx];
+                $(crsbox).find("[lvs_elm=SaveTask" + dataidx + "]").attr("style","");
                 if( curtask.item.type == "text" ){
                     $(crsbox).find("[lvs_elm=TaskItem" + dataidx + "]" ).each(function(){
                         var taskbox = $(this);
                         $(this).loadcomponent("cn.form.richedit", token, idxid, { text: $(this).html()}, function(){
-                            $(taskbox).find("[lvs_elm=SaveTask" + dataidx + "]").show().one("click", function(){
+                            $(crsbox).find("[lvs_elm=SaveTask" + dataidx + "]").click(function(){
                                 var taskdesc = { type: "text", desc: $(taskbox).getrichtext() };
-                                lvsdata.GetData("edu/course_set", $(this), { access_token: token, taskid: curtask.id, taskdesc: encodeURIComponent( JSON.stringify( taskdesc ) ),opetype: "Tmpl.SetTask" }, function( apiname, params, result ){
-                                    $(crsbox).find("[lvs_elm=SaveTask" + dataidx + "]").hide();
+                                lvsdata.GetData("edu/course_set", $(this), { access_token: token, taskid: curtask.id, opetype: "Tmpl.SetTask", taskdesc: encodeURIComponent( $(crsbox).find("[lvs_elm=TaskItem"+dataidx+"]").getrichtext()) }, function( apiname, params, result ){
+                                    $(crsbox).find("[lvs_elm=SaveTask" + dataidx + "]").attr("style","display:none");
+                                    // $(crsbox).find("[lvs_elm=TaskItem" + dataidx + "]").html(decodeURIComponent(params.taskdesc));
                                     $(taskbox).html( taskdesc.desc );
                                 });
                             });
@@ -1098,7 +1100,7 @@
                                             $(crsbox).find("[lvs_elm=TaskItem" + seqid + "]").loadcomponent( "cn.theme.baseshow", token, idxid, taskdesc.desc, function(){
                                 
                                             });
-                                            $(crsbox).find("[lvs_elm=TaskItem" + seqid + "]").parent().find("[lvs_elm=EditCrsTask]").css("display", "");
+                                            $(crsbox).find("[lvs_elm=TaskItem" + seqid + "]").parent().find("[lvs_elm=EditCrsTask]").css("display","");
                                         }
                                     });
                                 }
