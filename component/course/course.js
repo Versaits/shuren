@@ -929,7 +929,9 @@
                         $(this).loadcomponent("cn.form.richedit", token, idxid, { text: $(this).html()}, function(){
                             $(crsbox).find("[lvs_elm=SaveTask" + dataidx + "]").click(function(){
                                 var taskdesc = { type: "text", desc: $(taskbox).getrichtext() };
-                                lvsdata.GetData("edu/course_set", $(this), { access_token: token, taskid: curtask.id, opetype: "Tmpl.SetTask", taskdesc: encodeURIComponent( $(crsbox).find("[lvs_elm=TaskItem"+dataidx+"]").getrichtext()) }, function( apiname, params, result ){
+                                // lvsdata.GetData("edu/course_set", $(this), { access_token: token, taskid: curtask.id, opetype: "Tmpl.SetTask", taskdesc: encodeURIComponent( $(crsbox).find("[lvs_elm=TaskItem"+dataidx+"]").getrichtext()) }, function( apiname, params, result ){
+
+                                lvsdata.GetData("edu/course_set", $(this), { access_token: token, taskid: curtask.id, opetype: "Tmpl.SetTask", taskdesc: encodeURIComponent( JSON.stringify( taskdesc ) ) }, function( apiname, params, result ){
                                     $(crsbox).find("[lvs_elm=SaveTask" + dataidx + "]").attr("style","display:none");
                                     // $(crsbox).find("[lvs_elm=TaskItem" + dataidx + "]").html(decodeURIComponent(params.taskdesc));
                                     $(taskbox).html( taskdesc.desc );

@@ -4,18 +4,8 @@
             var dlbox = $(this);
             curdata.url = "http://tuanju.js.cn/attach/proj/15/39a3_README.md"
             curdata.fn = "data.md"
-            $(this).url = curdata.url;
             $(dlbox).find("[lvs_elm=dlFile]").click(function () {
-                handleFileDownload = (curdata.url, curdata.filename) => {
-                    // 创建 a 标签
-                    let a = document.createElement('a');
-                    a.href = url;
-                    a.download = filename;
-                    a.click();
-                }
-            })
-            handlePdfLink = (url, filename) => {
-                fetch(url, {
+                fetch(curdata.url, {
                     method: 'get',
                     responseType: 'arraybuffer',
                 })
@@ -33,11 +23,13 @@
                         })
                         // 将 Blob 对象转为 url
                         const link = window.URL.createObjectURL(e)
-                        handleFileDownload(link, filename)
+                        handleFileDownload(link, curdata.fn)
                     }).catch(err => {
                     console.error(err)
                 })
-            }
+
+            })
+
 
         }
     })
