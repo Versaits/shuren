@@ -4,36 +4,31 @@
     <title></title>
 </head>
 <body>
-    <div lvs_component="cn_course_crsfiles" lvs_jqexec="lvs_course_files">
-        <div style="padding:24px">
+<div lvs_component="cn_course_crsfiles" lvs_jqexec="lvs_course_files">
+    <div style="padding:24px">
         {{if files}}
         {{if files.length==0}}
-            <div class="NullPanel">
-                <img class="NullTips" src="../Image/fedu/nulltip.png"/>
-                <div class="NullText" style="margin-top:24px">本课程还没有相关附件，<a lvs_elm="UploadFile">上传附件</a></div>
-            </div>
-        {{else}}
-            {{each(f,filedata) files}}
-            <div class="BaseListItem">
-                <div class="ListTitle">{{if filedata.type!=''}}[${filedata.type}].{{/if}}${name}<span class="float-right"><a href="${filedata.url}" download="${filedata.name}">下载</a></span></div>
-                <div class="ListBody">${filedata.desc}<a lvs_elm="DelCrsFile" dataidx="${f}" class="float-right" style="cursor:pointer"><img width="13px" height="13px" src="../../Image/del.gif" /></a></div>
-            </div>
-            {{/each}}
-            <div style="text-align:right"><a lvs_elm="UploadFile" class="button border-blue">添加附件</a></div>
-        {{/if}}
-        {{/if}}
-            <div class="UplaodFilePanel" id="UploadTmpl" style="display:none">
-                <div class="BaseDesc">附件说明：</div>
-                <div class="BaseInput"><input type="text" lvs_bind="filedesc" placeholder="附件说明描述" /></div>
-                <div class="BaseDesc">选择文件上传：</div>
-                <div class="BaseInput"><div class="AttachFile" lvs_bind="fileurl"><img width="32px" height="32px" src="../Image/add.png" /></div></div>
-                <div class="BaseDesc"><a class="FormOk button bg-green" apiname="edu/course_set" idxkey2="crstmplid" idxid="${crstmplid}" opetype="Tmpl.AddFile">确定添加</a><a class="FormCancel button bg-yellow">取消操作</a></div>
-            </div>
+        <div class="NullPanel">
+            <img class="NullTips" src="../Image/fedu/nulltip.png"/>
+            <div class="NullText" style="margin-top:24px">本课程还没有相关附件{{if islesning}}{{else}}，<a lvs_elm="UploadFile">上传附件</a>{{/if}}</div>
         </div>
-        <div class="BaseForm" id="DelFileForm" style="display:none">
-            <div class="BaseDesc">请确认确实要删除该附件？删除后将无法恢复</div>
-            <div class="BaseDesc"><a class="FormOk button bg-green">确认删除</a><a class="FormCancel button bg-grey">取消操作</a></div>
+        {{else}}
+        <component name="cn.theme.basefile"></component>
+        {{if islesning}}{{else}}<div style="text-align:right"><a lvs_elm="UploadFile" class="button border-blue">添加附件</a></div>{{/if}}
+        {{/if}}
+        {{/if}}
+        <div class="UplaodFilePanel" id="UploadTmpl" style="display:none">
+            <div class="BaseDesc">附件说明：</div>
+            <div class="BaseInput"><input type="text" lvs_bind="filedesc" placeholder="附件说明描述" /></div>
+            <div class="BaseDesc">选择文件上传：</div>
+            <div class="BaseInput"><div class="AttachFile" lvs_bind="fileurl"><img width="32px" height="32px" src="../Image/add.png" /></div></div>
+            <div class="BaseDesc"><a class="FormOk button bg-green" apiname="edu/course_set" idxkey2="crstmplid" idxid="${crstmplid}" opetype="Tmpl.AddFile">确定添加</a><a class="FormCancel button bg-yellow">取消操作</a></div>
         </div>
     </div>
+    <div class="BaseForm" id="DelFileForm" style="display:none">
+        <div class="BaseDesc">请确认确实要删除该附件？删除后将无法恢复</div>
+        <div class="BaseDesc"><a class="FormOk button bg-green">确认删除</a><a class="FormCancel button bg-grey">取消操作</a></div>
+    </div>
+</div>
 </body>
 </html>

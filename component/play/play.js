@@ -1,4 +1,4 @@
-﻿    //课程播放组件
+﻿//课程播放组件
 (function (jQuery) {
     jQuery.fn.extend({
         lvslesnplay: function (token, idxid, curdata) {
@@ -20,7 +20,7 @@
                         curdata.pages[i].item = {};
                         if (pagestr != undefined && pagestr != ""){
                             try{
-                            curdata.pages[i].item = $.parseJSON(pagestr);
+                                curdata.pages[i].item = $.parseJSON(pagestr);
                             }
                             catch(err){
                                 curdata.pages[i].item = {};
@@ -40,7 +40,7 @@
                         master = curdata.masters[0];
                     if (master.item == undefined && (master.pagestr != "" && master.pagestr != undefined || master.plandesc != "" && master.plandesc != undefined)){
                         try{
-                        master.item = $.parseJSON(decodeURIComponent(master.pagestr || master.plandesc));
+                            master.item = $.parseJSON(decodeURIComponent(master.pagestr || master.plandesc));
                         }
                         catch(err){
                             master.item = {};
@@ -58,10 +58,10 @@
                             curdata.tasks[i].item = {};
                             if (pagestr != undefined && pagestr != ""){
                                 try{
-                                curdata.tasks[i].item = $.parseJSON(pagestr);
+                                    curdata.tasks[i].item = $.parseJSON(pagestr);
                                 }
                                 catch(err){
-                                curdata.tasks[i].item = {};
+                                    curdata.tasks[i].item = {};
                                 }
                             }
                             if( curdata.tasks[i].item.elements ){
@@ -140,6 +140,9 @@
                 lvsdata.GetData("edu/course_list", $("#LesnInfoForm").html(""), { access_token: token, crstmplid: curdata.id, gettype: "CrsTmpl.Files" }, function (apiname, params, result) {
                     $('#LesnInfoForm').loadtmpl("cn.lesn.lesnform", "#LesnFileTmpl", result, function () {
                         $('body').unidialog("#LesnInfoForm", { token: token, idxid: idxid, closing: 1 }, function (curbt, curbox) {
+                            if($(curbt).attr("opetype") == "DownDlgFile" ){
+                                $(curbt).downfile( $(curbt).attr("fileurl"), $(curbt).attr("filename"));
+                            }
                         });
                     });
                 });
@@ -629,7 +632,7 @@
                         window[$(voicebox).attr("id")].pause();
                         $(playbox).attr("ispause", "0" );
                     }
-                        
+
                 });
                 window[$(voicebox).attr("id")].addEventListener( "ended", function(){
                     $(voicebox).attr("playend", 1 );
@@ -754,13 +757,13 @@
                                     curdata.outlines[i].checkid = i;
                                 $('[lvs_elm=CurLesnPage]').find(".VPlayPanel").css({width:"92%","margin-left":"4%", "margin-top": 0- heit * 96 /100, "height": heit * 92 /100 } ).fadeIn(300, function(){
                                     curdata.outlines[i].item.lesnid = curdata.lesnid;
-                                refreshPageTheme(curdata.outlines[i].item, curdata.taskans);
-                                var pagebox = $(this);
-                                Lvs.BindTmpl("#cn.play.lesnpage", $(this), token, idxid, curdata.outlines[i].item, function(){
-                                    $(pagebox).setpagescale( $(pagebox).width(), curdata.outlines[i].item );
-                                    $(playbox).bind("pass", function (e, isok, taskid) {
-                                        $(playbox).find('[themetaskid=' + taskid + ']').removeClass("TaskThemeNok").addClass("TaskThemeOk");
-                                    });
+                                    refreshPageTheme(curdata.outlines[i].item, curdata.taskans);
+                                    var pagebox = $(this);
+                                    Lvs.BindTmpl("#cn.play.lesnpage", $(this), token, idxid, curdata.outlines[i].item, function(){
+                                        $(pagebox).setpagescale( $(pagebox).width(), curdata.outlines[i].item );
+                                        $(playbox).bind("pass", function (e, isok, taskid) {
+                                            $(playbox).find('[themetaskid=' + taskid + ']').removeClass("TaskThemeNok").addClass("TaskThemeOk");
+                                        });
                                         if( curdata.outlines[i].type != "check" ){
                                             var ptime = parseFloat(curdata.outlines[i].playtime||6);
                                             var playidx = i;
@@ -901,7 +904,7 @@
                         $(pagebox).find(".FormOk").click(function(){
                             $(pagebox).lvs_task_retans( $(this), pagebox, token, idxid, curtask.item );
                         });
-                        $(pagebox).bind("pass", function(){ 
+                        $(pagebox).bind("pass", function(){
                             ErrorTip.Create().Show("本题已完成提交" );
                         });
                     });
@@ -972,14 +975,28 @@
     jQuery.fn.extend({
         lvs_play_swf: function (token, idxid, curdata) {
             var playbox = $(this);
+            let swfFlag ;
             let playerid = "SwfPlayer" + (curdata.id != undefined ? curdata.id:"");
             if (curdata.fileurl != "" && curdata.fileurl != undefined && curdata.fileurl != "undefined") {
                 swf2js.load(curdata.fileurl,{"tagId":playerid});
-      		}
+                swfFlag = 1;
+            }
+
+            $('body').find("[lvs_elm=PreviewPanel]").bind("DOMNodeInserted",function () {
+                if (swfFlag == 1){
+                    swfFlag = 0;
+                }else {
+                    swf2js.stopaudio();
+                }
+            })
+            $(this).find("[lvs_elm=StopAudio]").click(function (e) {
+                swf2js.stopaudio();
+            })
+            $(this).find("[lvs_elm=StartAudio]").click(function () {
+                swf2js.playaudio();
+
+            })
         },
-        lvs_stop_swf: function(){
-            swf2js.stopaudio();
-        }
     });
 })(jQuery);
 
@@ -987,23 +1004,23 @@
 function fullScreen() {
     var element = document.documentElement;
     if(element.requestFullscreen) {
-	    element.requestFullscreen();
+        element.requestFullscreen();
     } else if (element.mozRequestFullScreen){	// 兼容火狐
-		element.mozRequestFullScreen();
-	} else if(element.webkitRequestFullscreen) {	// 兼容谷歌
-		element.webkitRequestFullscreen();
-	} else if (element.msRequestFullscreen) {	// 兼容IE
-    	element.msRequestFullscreen();
-	}
+        element.mozRequestFullScreen();
+    } else if(element.webkitRequestFullscreen) {	// 兼容谷歌
+        element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) {	// 兼容IE
+        element.msRequestFullscreen();
+    }
 }
 function exitFullScreen(){
     if(document.exitFullscreen) {
-		document.exitFullscreen();
-	} else if (document.mozCancelFullScreen) {
-		document.mozCancelFullScreen();
-	} else if (document.webkitCancelFullScreen) {
-		document.webkitCancelFullScreen();
-	} else if (document.msExitFullscreen) {
-		document.msExitFullscreen();
-	}
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+    } else if (document.webkitCancelFullScreen) {
+        document.webkitCancelFullScreen();
+    } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+    }
 }

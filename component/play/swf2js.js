@@ -27049,6 +27049,7 @@ if (!("swf2js" in window)){(function(window)
 	Swf2js.prototype.stopaudio = function()
     {
         var stage = stages[0];
+        stage.stop();
         if( stage != undefined ){
             if( stage.loadSounds != undefined ){
 		        for( var i = 0; i < stage.loadSounds.length; i ++){
@@ -27057,6 +27058,18 @@ if (!("swf2js" in window)){(function(window)
             }
         }
     };
+
+    Swf2js.prototype.playaudio = function () {
+        var stage = stages[0];
+        stage.play();
+        if( stage != undefined ){
+            if( stage.loadSounds != undefined ){
+                for( var i = 0; i < stage.loadSounds.length; i ++){
+                    stage.loadSounds[i].play();
+                }
+            }
+        }
+    }
 	
 	Swf2js.prototype.getsize = function()
     {

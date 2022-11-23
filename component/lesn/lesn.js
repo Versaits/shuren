@@ -537,12 +537,13 @@
                 $('#AddExhForm').loadtmpl( "cn.lesn.lesnexhibits", "#AddExhTmpl", grpdata, function(){
                     $('body').unidialog("#AddExhForm", {token, idxid}, function( curbt, curbox ){
                         if( $(curbt).attr("opetype") == "ShowTask" ){
+                            var panelScroll = document.documentElement.scrollTop;
+                            panelScroll = $(window).scrollTop();
                             lvsdata.GetData("leag/lesn_list", $(curbt), { access_token: token, lesnid: curdata.id, groupid: $(curbt).attr("idxid"), gettype: "Lesn.GroupTaskres" }, function( apiname, params, result ){
-                                $('body').basepanel({left:"15%", top: "200px", width:"70%", close: 1}, function( curbox ){
+                                $('body').basepanel({left:"15%", top: panelScroll+100+'px', width:"70%", close: 1}, function( curbox ){
                                     $(curbox).lvs_lesn_grpdata( token, idxid, result, function(){
                                     });
                                     $(curbox).loadcomponent( "cn.lesn.lesntaskres", token, idxid, result,function(){
-
                                     });
                                 });
                                 $('body').bind("click", function(){

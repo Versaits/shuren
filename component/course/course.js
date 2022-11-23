@@ -104,7 +104,9 @@
                     DataEng.GetData( "edu/course_list", undefined, { access_token: token, gettype: "CrsTmpl.Files", crstmplid: $(e.target).attr("idxid") }, function( apiname, params, result){
                         curdata.files = result.files;
                         curdata.crstmplid = params.crstmplid;
-                        $('body').unidialog( "#cn.course.crsfiles", { token: token, idxid: idxid, curdata: curdata }, function( curbt, curbox ){
+                        curdata.token = token;
+                        curdata.idxid = idxid;
+                        $('body').unidialog( "#cn.course.crsfiles", curdata, function( curbt, curbox ){
                             DialogOk( curbt, curbox, token, idxid, $(this) );
                             $(itembox).setbind("FileNum", parseInt($(itembox).getbind("FileNum")) + 1 );
                         });
@@ -194,6 +196,14 @@
         lvs_course_files: function (token, idxid, curdata) {
             var tchid = (idxid < 0) ? 0 - idxid : idxid;
             var crsbox = $(this);
+            curdata.filelist = [];
+            var files = curdata.files || curdata.curdata.files;
+            for( var i = 0; i < files.length; i ++ ){
+                curdata.filelist.push({fileurl: files[i].url, resfile: files[i].name });
+            }
+            curdata.preview = 1;
+            if( !curdata.islesning || curdata.islesning != 1 )
+                curdata.delevt = "delfile";
             $(crsbox).find("[lvs_elm=UploadFile]").bind("click", function (e) {
                 if( $(this).closest(".DialogBox").size() > 0 )
                     $(crsbox).find(".UplaodFilePanel").fadeIn( 500 );
@@ -203,6 +213,7 @@
                             var DataEng = LvsData.Create();
                             DataEng.GetData( "edu/course_set", $(curbt), { access_token: token, crstmplid: curdata.id, filedesc: $(curbox).getbind("filedesc"), fileurl: $(curbox).getbind("fileurl"), opetype: "Tmpl.AddFile"}, function( apiname, params, result ){
                                 curdata.files.push( {id: result.fileid, name: result.name, url: result.url, desc: result.desc } );
+                                $('[lvs_bind=FileNum' + curdata.id + ']').text( files.length );
                                 $('body').closedialog();
                                 $(crsbox).parent().loadcomponent( "cn.course.crsfiles", token, idxid, curdata, function(){
                                 });
@@ -212,11 +223,27 @@
             });
             $(crsbox).find("[lvs_elm=DelCrsFile]").bind("click", function(){
                 var dataidx = $(this).attr("dataidx");
-                var fileid = curdata.files[dataidx].id;
+                var fileid = files[dataidx].id;
                 $('body').unidialog("#DelFileForm", {token, idxid}, function( curbt, curbox ){
                     lvsdata.GetData("edu/course_set", $(curbt), { access_token: token, crstmplid: curdata.id, fileid: fileid, opetype: "Tmpl.DelFile"}, function( apiname, params, result ){
                         $('body').closedialog();
-                        curdata.files.splice( dataidx, 1 );
+                        files.splice( dataidx, 1 );
+                        $('[lvs_bind=FileNum' + curdata.id + ']').text( files.length );
+                        curdata.files = files;
+                        $(crsbox).parent().loadcomponent( "cn.course.crsfiles", token, idxid, curdata, function(){
+                        });
+                    });
+                });
+            });
+            $(crsbox).bind("delfile", function( e, dataidx ){
+                var dataidx = $(this).attr("dataidx");
+                var fileid = files[dataidx].id;
+                $('body').unidialog("#DelFileForm", {token, idxid}, function( curbt, curbox ){
+                    lvsdata.GetData("edu/course_set", $(curbt), { access_token: token, crstmplid: curdata.id, fileid: fileid, opetype: "Tmpl.DelFile"}, function( apiname, params, result ){
+                        $('body').closedialog();
+                        files.splice( dataidx, 1 );
+                        $('[lvs_bind=FileNum' + curdata.id + ']').text( files.length );
+                        curdata.files = files;
                         $(crsbox).parent().loadcomponent( "cn.course.crsfiles", token, idxid, curdata, function(){
                         });
                     });
@@ -377,7 +404,7 @@
             $(crsbox).bind("tmplsel", function (e, crstmplid) {
                 var DataEng = LvsData.Create();
                 DataEng.GetData("edu/course_list", $(crsbox).find("[lvs_elm=CrsTmplBox]").html(""), { access_token: token, crstmplid: crstmplid, gettype: "CrsTmpl.Base"}, function( apiname, params, result ){
-                    
+
                     $(crsbox).find("[lvs_elm=CrsTmplBox]").loadcomponent("cn.course.crstmplbase", token, idxid, result, function(){
                     });
                 });
@@ -526,18 +553,18 @@
             $(crsbox).find("[lvs_bind]").bind("click", function(){
                 var bindbox = $(this);
                 var tmplid = $(this).attr("tmplid") || curdata.id || $(this).attr("idxid");
-                    var formdata = { token: token, idxid: curdata.id, idxkey: $(this).attr("lvs_bind"), idxval: $(this).parent().getbind($(this).attr("lvs_bind")), idxname: $(this).attr("idxname"), idxtype: $(this).attr("idxtype"), idxserial: $(this).attr("idxserial") };
-                    $('body').formdialog( formdata, function(curbt, curbox){
-                        var DataEng = LvsData.Create();
-                        var updparams = { access_token: token, crstmplid: tmplid, opetype: "TmplUpd." + formdata.idxkey, updval: $(curbox).getbind(formdata.idxkey) };
-                        DataEng.GetData("edu/course_set", $(curbt), updparams, function( apiname, params, result ){
-                            $('body').closepanel();
-                            $('body').closedialog();
-                            var setdata = {};
-                            setdata[ formdata.idxkey] = result.updval || params.updval;
-                            $(bindbox).parent().SetData( curdata, setdata );
-                        });
+                var formdata = { token: token, idxid: curdata.id, idxkey: $(this).attr("lvs_bind"), idxval: $(this).parent().getbind($(this).attr("lvs_bind")), idxname: $(this).attr("idxname"), idxtype: $(this).attr("idxtype"), idxserial: $(this).attr("idxserial") };
+                $('body').formdialog( formdata, function(curbt, curbox){
+                    var DataEng = LvsData.Create();
+                    var updparams = { access_token: token, crstmplid: tmplid, opetype: "TmplUpd." + formdata.idxkey, updval: $(curbox).getbind(formdata.idxkey) };
+                    DataEng.GetData("edu/course_set", $(curbt), updparams, function( apiname, params, result ){
+                        $('body').closepanel();
+                        $('body').closedialog();
+                        var setdata = {};
+                        setdata[ formdata.idxkey] = result.updval || params.updval;
+                        $(bindbox).parent().SetData( curdata, setdata );
                     });
+                });
             });
             $(crsbox).find("[lvs_elm=StepItem]").click(function( e ){
                 if( $(e.target).attr("lvs_bind") == undefined ){
@@ -587,7 +614,7 @@
                         $('body').closedialog();
                         curdata.tmpls.push({id: result.id, title: params.crstmplname, courseid: curdata.courseid, tmpltype: params.tmpltype, moduleseq: params.moduleseq, module: params.module, daynum: params.daynum, seqid: $(crsbox).find('.TaskStepItem').size() + 1});
                         $(crsbox).parent().loadcomponent("cn.course.crstmpl_pbl", token, idxid, curdata, function(){
-                            
+
                         });
                     });
                 });
@@ -664,7 +691,7 @@
                         for( var i = 0; i < result.modules.length; i ++ ){
                             var moddata = { id: result.modules[i].modseq, sname: result.modules[i].module, trigger:"modsel", sub:[]};
                             for(var j = 0; j < result.modules[i].sub.length; j ++ ){
-                               moddata.sub.push({id: result.modules[i].sub[j].id, sname: result.modules[i].sub[j].title, type: result.modules[i].sub[j].type, seqid: result.modules[i].sub[j].seqid, tipnum: result.modules[i].sub[j].tasknum, tipname: "提交作业/任务数量", trigger: "lesnsel"});
+                                moddata.sub.push({id: result.modules[i].sub[j].id, sname: result.modules[i].sub[j].title, type: result.modules[i].sub[j].type, seqid: result.modules[i].sub[j].seqid, tipnum: result.modules[i].sub[j].tasknum, tipname: "提交作业/任务数量", trigger: "lesnsel"});
                             }
                             clsdata.list.push( moddata );
                         }
@@ -710,7 +737,7 @@
                                     });
                                 });
                                 $('body').closedialog();
-                            }); 
+                            });
                         });
                     });
                 });
@@ -730,10 +757,10 @@
                 else if( e.keyCode == 39 ){//右
                     if( $(crsbox).find(".TaskStepItemSel").size() == 1 ){
                         var curidx = parseInt($(crsbox).find(".TaskStepItemSel").attr("dataidx"));
-                            $(crsbox).find(".TaskStepItem" ).each(function(){
-                                if( $(this).attr("dataidx") == curidx + 1 )
-                                    $(this).click();
-                            });
+                        $(crsbox).find(".TaskStepItem" ).each(function(){
+                            if( $(this).attr("dataidx") == curidx + 1 )
+                                $(this).click();
+                        });
                     }
                 }
             });
@@ -758,10 +785,10 @@
                 if( curpage.item == undefined && curpage.pagedesc != ""){
                     try
                     {
-                    curpage.item = $.parseJSON( decodeURIComponent( curpage.plandesc ));
+                        curpage.item = $.parseJSON( decodeURIComponent( curpage.plandesc ));
                     }
                     catch( err){
-                    curpage.item = {};
+                        curpage.item = {};
                     }
                 }
                 var pagebox = $(this);
@@ -922,18 +949,14 @@
             $(crsbox).on("click", "[lvs_elm=EditCrsTask]", function(){
                 var dataidx = $(this).attr("dataidx");
                 var curtask = curdata.tasks[dataidx];
-                $(crsbox).find("[lvs_elm=SaveTask" + dataidx + "]").attr("style","");
                 if( curtask.item.type == "text" ){
                     $(crsbox).find("[lvs_elm=TaskItem" + dataidx + "]" ).each(function(){
                         var taskbox = $(this);
                         $(this).loadcomponent("cn.form.richedit", token, idxid, { text: $(this).html()}, function(){
-                            $(crsbox).find("[lvs_elm=SaveTask" + dataidx + "]").click(function(){
+                            $(crsbox).find("[lvs_elm=SaveTask" + dataidx + "]").show().one("click", function(){
                                 var taskdesc = { type: "text", desc: $(taskbox).getrichtext() };
-                                // lvsdata.GetData("edu/course_set", $(this), { access_token: token, taskid: curtask.id, opetype: "Tmpl.SetTask", taskdesc: encodeURIComponent( $(crsbox).find("[lvs_elm=TaskItem"+dataidx+"]").getrichtext()) }, function( apiname, params, result ){
-
-                                lvsdata.GetData("edu/course_set", $(this), { access_token: token, taskid: curtask.id, opetype: "Tmpl.SetTask", taskdesc: encodeURIComponent( JSON.stringify( taskdesc ) ) }, function( apiname, params, result ){
-                                    $(crsbox).find("[lvs_elm=SaveTask" + dataidx + "]").attr("style","display:none");
-                                    // $(crsbox).find("[lvs_elm=TaskItem" + dataidx + "]").html(decodeURIComponent(params.taskdesc));
+                                lvsdata.GetData("edu/course_set", $(this), { access_token: token, taskid: curtask.id, taskdesc: encodeURIComponent( JSON.stringify( taskdesc ) ),opetype: "Tmpl.SetTask" }, function( apiname, params, result ){
+                                    $(crsbox).find("[lvs_elm=SaveTask" + dataidx + "]").hide();
                                     $(taskbox).html( taskdesc.desc );
                                 });
                             });
@@ -1087,23 +1110,22 @@
                                     var taskdesc = {type: tasktype, desc: tdesc};
                                     var stepstr = "";
                                     var stepdesc = {};
-                                    $(curbox).find("[lvs_elm=TaskStepItem]").each(function(){
-                                        if( stepstr != "" )
-                                            stepstr += "|";
+                                    $(curbox).find("[lvs_elm=TaskStepItem]").each(function(n){
                                         stepdesc = { resttime: $(this).getbind("stepcircle"), daynum: $(this).getbind("stepday"),evday: $(this).getbind("stepday"), textres: $(this).getbind("textres"), taskres: $(this).getbind("taskres"), paperres: $(this).getbind("paperres"), progres: $(this).getbind("progres"), fileres: $(this).getbind("fileres"), mindres: $(this).getbind("mindres")};
-                                        stepstr += encodeURIComponent( $(this).getbind("stepname")) + "," + encodeURIComponent( JSON.stringify(stepdesc) );
+                                        var stpname = $(this).getbind("stepname");
+                                        if( stpname == "" && stepdesc.textres == 0 && stepdesc.taskres == 0 && stepdesc.pagerres == 0 && stepdesc.progres == 0 && stepdesc.fileres == 0 && stepdesc.mindres == 0 ){
+                                        }
+                                        else{
+                                            if( stpname == "" )
+                                                stpname = "任务" + (n+1);
+                                            if( stepstr != "" )
+                                                stepstr += "|";
+                                            stepstr += encodeURIComponent( stpname ) + "," + encodeURIComponent( JSON.stringify(stepdesc) );
+                                        }
                                     });
                                     lvsdata.GetData( "edu/course_set", $(curbt), { access_token: token, crstmplid: curdata.id, opetype: "Tmpl.TmplAddTask", taskdesc: encodeURIComponent( JSON.stringify( taskdesc ) ), stepstr: stepstr, tasktype: (tasktype == "thmsel" || tasktype == "thmblank" || tasktype == "thmanswer") ? "TTask": "RTask"}, function( apiname, params, result ){
                                         curdata.tasks.push( { id: result.id, item: taskdesc } );
-                                        if( opetype == "AddWordTask" ){
-                                            lvs.LvsRout("tabfresh", token, idxid, "[lvs_elm=MainTab]" );
-                                        }
-                                        else{
-                                            $(crsbox).find("[lvs_elm=TaskItem" + seqid + "]").loadcomponent( "cn.theme.baseshow", token, idxid, taskdesc.desc, function(){
-                                
-                                            });
-                                            $(crsbox).find("[lvs_elm=TaskItem" + seqid + "]").parent().find("[lvs_elm=EditCrsTask]").css("display","");
-                                        }
+                                        lvs.LvsRout("tabfresh", token, idxid, "[lvs_elm=MainTab]" );
                                     });
                                 }
                             });
@@ -1214,7 +1236,7 @@
                                 lvs.LvsRout( "tchclass", token, idxid, params.classid );
                             }
                             else if( $(curbt).attr("opetype") == "locklesn" ){
-                                if( $(curbt).attr("islock") == 1 ){ 
+                                if( $(curbt).attr("islock") == 1 ){
                                     lvsdata.GetData("leag/lesn_set", $(curbt), { access_token: token, lesnid: $(curbt).attr("idxid"), opetype: "Status", status: "正常"}, function(apiname, params, result ){
                                         $(curbt).attr("islock", 0 ).attr("src", "../../Image/isopen.png" ).attr("title", "开放状态，学生可查看，点击锁定");
                                     });

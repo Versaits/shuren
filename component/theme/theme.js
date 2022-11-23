@@ -4,9 +4,9 @@
         lvssigsel: function (token, idxid, curdata) {
             var themebox = $(this);
             //if( curdata.problem.indexOf("&") != -1 )
-                //$(themebox).find("[lvs_elm=problem]").html( $(themebox).find("[lvs_elm=problem]").html(curdata.problem).html() );
+            //$(themebox).find("[lvs_elm=problem]").html( $(themebox).find("[lvs_elm=problem]").html(curdata.problem).html() );
             //else if( curdata.problem )
-                //$(themebox).find("[lvs_elm=problem]").html( curdata.problem );
+            //$(themebox).find("[lvs_elm=problem]").html( curdata.problem );
             $(themebox).find("[lvs_elm=OptionAdd]").click(function () {
                 var seqstr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N"];
                 var curseq = seqstr[$(themebox).find("[lvs_elm=OptionList]").find(".OptionItem").size()];
@@ -179,7 +179,7 @@
             $(themebox).lvsthemeset(token, idxid, curdata);
             return this;
         },
-         lvsanswerinpshow: function (token, idxid, curdata) {
+        lvsanswerinpshow: function (token, idxid, curdata) {
             var ansbox = $(this);
             if( curdata.problem )
                 $(ansbox).find("[lvs_bind=problem]").html( curdata.problem );
@@ -275,7 +275,10 @@
                     $(this).text($(this).attr("opentext")).attr("isopen", 0);
                 }
                 else{
-                    $(themebox).find(".ThmPanelBox").css({"display": "", "margin-left": $(this).closest(".PageElm").size()>0?(0-$(this).closest(".PageElm").position().left+20): 0});
+                    if( curdata.taskedit || $(this).closest(".PageElm").size() == 0)
+                        $(themebox).find(".ThmPanelBox").css({"display": "", "margin-left": 0, "width": "100%", "margin-top": "-92px" });
+                    else
+                        $(themebox).find(".ThmPanelBox").css({"display": "", "margin-left": (0-$(this).closest(".PageElm").position().left+20)});
                     $(this).attr("opentext", $(this).text()).text("关闭显示").attr("isopen", 1);
                 }
             });
@@ -355,7 +358,7 @@
                     for( var i = 0; i < imgs.length; i ++ ){
                         imgstr += "<div class=\"ThemeImage\"><img lvs_elm=\"ThemeImg\" width=\"60%\" src=\"" + imgs[i] + "\"/></div>";
                     }
-                    $(themebox).find("[lvs_bind=problem]").append( imgstr ); 
+                    $(themebox).find("[lvs_bind=problem]").append( imgstr );
                     $(this).closepanel();
                 });
             });
@@ -494,7 +497,7 @@
                         }
                     }
                     else if( curdata.type == "answer" || curdata.type == "thmanswer"){
-                         $(ansbox).find("[lvs_bind=answer]").html( curdata.answer.curans );
+                        $(ansbox).find("[lvs_bind=answer]").html( curdata.answer.curans );
                     }
                     $('body').closedialog();
                     $(curbt).text("完成提交");
@@ -632,6 +635,18 @@
             $(themebox).find("[lvs_elm=BaseFile]").each(function(n){
                 $(this).loadbasefile( curdata.resfile, curdata.fileurl, n );
             });
+            $(themebox).find("[lvs_elm=PreviewFile]").click(function(){
+                var dataidx = $(this).attr("dataidx" );
+                $(themebox).find("[lvs_elm=PreviewPanel]").loadbasefile( curdata.filelist[dataidx].resfile, curdata.filelist[dataidx].fileurl, dataidx, 1 );
+            });
+            $(themebox).find("[lvs_elm=DownFile]").click(function(){
+                var fileurl = curdata.filelist[$(this).attr("dataidx")].fileurl;
+                var filename = curdata.filelist[$(this).attr("dataidx")].resfile;
+                $(themebox).downfile( fileurl, filename );
+            });
+            $(themebox).find("[lvs_elm=DelFile]").click(function(){
+                $(themebox).trigger( curdata.delevt, [$(this).attr("dataidx")]);
+            });
             $(themebox).find("[lvs_elm=AddAttach]").click(function(){
                 $(this).lvspanelattach( function( elm, srcs, pics, names ){
                     var atts = srcs.split( ',' );
@@ -724,6 +739,17 @@
                     });
                 });
             });
+            $(thmbox).find("[lvs_elm=DownAll]").click(function(){
+                var showbox = $(thmbox).find("[lvs_elm=DownRes" + $(this).attr("dataidx") + "]");
+                lvsdata.GetData("leag/lesn_list", $(this), { access_token: token, resid: curdata.grpreses[$(this).attr("dataidx")].id, gettype: "Lesn.DownFiles" }, function( apiname, params, result ){
+                    $(thmbox).downfile( result.resurl, result.filename );
+                    if( result.failstr != "" )
+                        $(showbox).html( $(showbox).html() + "<br/><span class=\"txt-red\">" + result.failstr + "</span>" );
+                });
+            });
+            $(thmbox).find("[lvs_elm=DownFile]").click(function(){
+                $(this).downfile( $(this).attr("fileurl"),$(this).attr("filename" ));
+            });
             $(thmbox).find("[lvs_elm=EditTaskRes]").click(function(){
                 var taskres = $.parseJSON( curdata.grpreses[$(this).attr("dataidx")].resdesc );
                 if( taskres.respmind )
@@ -759,7 +785,7 @@
 //文件的标准打开方式
 (function (jQuery) {
     jQuery.fn.extend({
-        loadbasefile: function (filename, filesrc, idx) {
+        loadbasefile: function (filename, filesrc, idx, ispreview) {
             var filebox = $(this);
             var token = "";
             var idxid = 0;
@@ -777,10 +803,23 @@
                 });
             }
             else if( ext == "doc" || ext == "docx" || ext == "ppt" || ext=="pptx" || ext=="xls" || ext =="xlss" || ext == "pdf" || ext=="md" || ext=="txt" ){
-                $(this).html( $(this).html() + "<span class=\"float-right\"><a lvs_elm=\"OpenFile\" style=\"cursor:pointer\" filename=\"" + filename + "\" fileurl=\"" + filesrc + "\">打开查看</a></span>" );
-                $(this).find("[lvs_elm=OpenFile]").click(function(){
-                    window.open( $(this).attr("fileurl"), "_blank", "resizable,scrollbars,status,width=" + (screen.availWidth - 10) + ",height=" + (screen.availHeight - 50) );
-                });
+                if( ispreview == 1 ){
+                    let a = document.createElement('a');
+                    a.href = filesrc;
+                    a.target = "_blank";
+                    a.click();
+                    //window.open( filesrc, "_blank", "resizable,scrollbars,status,width=" + (screen.availWidth - 10) + ",height=" + (screen.availHeight - 50) );
+                }
+                else{
+                    $(this).html( "<span class=\"float-right\"><a lvs_elm=\"OpenFile\" style=\"cursor:pointer\" filename=\"" + filename + "\" fileurl=\"" + filesrc + "\">打开查看</a></span>" );
+                    $(this).find("[lvs_elm=OpenFile]").click(function(){
+                        let a = document.createElement('a');
+                        a.href = filesrc;
+                        a.target = "_blank";
+                        a.click();
+                        //window.open( $(this).attr("fileurl"), "_blank", "resizable,scrollbars,status,width=" + (screen.availWidth - 10) + ",height=" + (screen.availHeight - 50) );
+                    });
+                }
             }
             else if( ext == "htm" || ext=="html" ){
                 var heit = $(this).width() * 10 / 16;
@@ -793,7 +832,16 @@
                 });
             }
             else{
-                $(this).html( $(this).html() + "<span class=\"float-right\"><a href=\"" + filesrc.replace("tuanju.js.cn", "shuren.fancience.com") + "\" download=\"" + idx + "_" + filename + "\">下载</a></span>");
+                if( ispreview ==  1 ){
+                    $(this).downfile( filesrc, filename );
+                }
+                else{
+                    $(this).html( $(this).html() + "<span style=\"text-align:center\">无法预览该文件，请点击<a lvs_elm=\"DownTaskFile\" fileurl=\"" + filesrc.replace("tuanju.js.cn", "shuren.fancience.com") + "\" filename=\"" + idx + "_" + filename + "\">下载</a></span>");
+                    $(this).css("padding", "12px");
+                    $(this).find("[lvs_elm=DownTaskFile]").click(function(){
+                        $(this).downfile( $(this).attr("fileurl"), $(this).attr("filename") );
+                    });
+                }
             }
         }
     });
@@ -923,7 +971,7 @@
             if( curdata.tdesc != undefined && curdata.tdesc != ""){
                 $(crsbox).find("[lvs_bind=tasktmpldesc]").html( curdata.tdesc);
                 $(crsbox).find(".TchEdit").attr("contenteditable", "true");
-                $(crsbox).find("[lvs_bind=tasktmpldesc]").find(".TmplTable").each(function(){   
+                $(crsbox).find("[lvs_bind=tasktmpldesc]").find(".TmplTable").each(function(){
                     $(this).find("thead").find("th").each(function(){
                         $(this).append("<img class=\"HideButton\" lvs_elm=\"AddCol\" style=\"display:none\" src=\"../../Image/append.png\" />");
                     });
@@ -1079,7 +1127,7 @@ function ReplaceBlankStr( oristr, answer ){
         idx = idxstr.indexOf("_");
     }
     //if( answer != undefined && answer.curans != "" && answer.curans != undefined)
-        //retstr += "<br/><span class=\"txt-red\">参考答案：" + answer.baseanswer + "</span>"
+    //retstr += "<br/><span class=\"txt-red\">参考答案：" + answer.baseanswer + "</span>"
     return retstr;
 }
 

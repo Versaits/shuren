@@ -10,7 +10,7 @@ var LvsCore = {
                 list.push( {name:"../scripts/html5upload.js",type:"js"} );
             if( pars != undefined && pars.video > 0 ){
                 list.push( {name:"http://imgcache.qq.com/open/qcloud/video/vcplayer/TcPlayer-2.3.2.js", type: "js" });
-                list.push( {name:"../component/play/swfobject.js", type: "js" });
+                list.push( {name:"../component/play/swf2js.js", type: "js" });
             }
             if( pars != undefined && pars.richedit > 0 ){
                 list.push( {name:"../kedit/kindeditor-all-min.js", type: "js" });

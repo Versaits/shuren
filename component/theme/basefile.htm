@@ -4,15 +4,24 @@
     <title></title>
 </head>
 <body>
-    <div lvs_jqexec="lvs_basefile" lvs_component="cn_theme_basefile" idxid="{{if files}}${files}{{else}}${id}{{/if}}">
-        <div class="ListDesc" lvs_elm="BaseFile">文件：${resfile}</div>
-        {{if filelist}}
-        {{each(f,fldata) filelist}}
-        <div class="ListDesc AnsFile">文件：${fldata.resfile}<span class="float-right"><a href="${fldata.fileurl}" download="${fldata.resfile}">下载</a></span></div>
-        {{/each}}
+<div lvs_jqexec="lvs_basefile" lvs_component="cn_theme_basefile" idxid="{{if files}}${files}{{else}}${id}{{/if}}">
+    <div class="flexbox">
+        <div class="flex1" style="text-align:left">
+            {{if fileurl}}{{if fileurl!=''}}<div class="ListDesc" lvs_elm="BaseFile">文件：${resfile}</div>{{/if}}{{/if}}
+            {{if filelist}}
+            {{each(f,fldata) filelist}}
+            <div class="ListDesc AnsFile">{{if preview}}<a lvs_elm="PreviewFile" dataidx="${f}">文件：${fldata.resfile}</a>{{/if}}{{if delevt}}<a lvs_elm="DelFile" dataidx="${f}"><img width="14px" height="14px" style="vertical-align:middle;cursor:pointer;margin-left:8px" src="../../Image/del.gif"/></a>{{/if}}<span class="float-right"><a lvs_elm="DownFile" dataidx="${f}">下载</a></span></div>
+            {{/each}}
+            {{/if}}
+        </div>
+        {{if preview}}
+        <div style="width:40%;margin-left:40px" lvs_elm="PreviewPanel"></div>
         {{/if}}
-        {{if editmode}}<a class="button bg-green" lvs_elm="AddAttach">上传文件</a><a class="button bg-yellow" lvs_elm="AddVideo">上传视频</a>{{/if}}
-        <div class="BaseDesc">说明：重新上传的文件将覆盖原文件</div>
     </div>
+    {{if editmode}}
+    <a class="button border-green" lvs_elm="AddAttach">重新上传文件</a><a class="button border-yellow" lvs_elm="AddVideo">重新上传视频</a>
+    <div class="BaseDesc">说明：重新上传的文件将覆盖原文件</div>
+    {{/if}}
+</div>
 </body>
 </html>

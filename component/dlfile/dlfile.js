@@ -2,10 +2,21 @@
     jQuery.fn.extend({
         lvs_dlFile:function (token,idxid,curdata) {
             var dlbox = $(this);
-            curdata.url = "http://tuanju.js.cn/attach/proj/15/39a3_README.md"
-            curdata.fn = "data.md"
+            curdata.url = "http://tuanju.js.cn/attach/proj/18/35a9_%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97.txt"
+            curdata.fn = "LICENSE.txt"
+            $(this).url = curdata.url
             $(dlbox).find("[lvs_elm=dlFile]").click(function () {
-                fetch(curdata.url, {
+                handleFileLink(curdata.url,curdata.fn);
+            })
+            handleFileDownload = (url, filename) => {
+                // 创建 a 标签
+                let a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                a.click();
+            }
+            handleFileLink = (url, filename) => {
+                fetch(url, {
                     method: 'get',
                     responseType: 'arraybuffer',
                 })
@@ -23,13 +34,11 @@
                         })
                         // 将 Blob 对象转为 url
                         const link = window.URL.createObjectURL(e)
-                        handleFileDownload(link, curdata.fn)
+                        handleFileDownload(link, filename)
                     }).catch(err => {
                     console.error(err)
                 })
-
-            })
-
+            }
 
         }
     })
