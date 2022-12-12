@@ -567,7 +567,7 @@
                 });
             });
             $(crsbox).find("[lvs_elm=StepItem]").click(function( e ){
-                if( $(e.target).attr("lvs_bind") == undefined ){
+                if( $(e.target).attr("lvs_bind") === undefined ){
                     $(crsbox).find(".TaskStepItemSel").removeClass("TaskStepItemSel" );
                     $(this).addClass("TaskStepItemSel");
                     var curidx = $(this).attr("dataidx");

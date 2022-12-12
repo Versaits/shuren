@@ -257,7 +257,7 @@
             if (location.hash != "") {
                 CurDefope = location.hash.substr(1);
             }
-            $.cookie("foken", "06HH-020221123192186", { path: "/", expires: 1 });
+            $.cookie("foken", "06HH-020221209192186", { path: "/", expires: 1 });
 
             lvs.InitPage($('#divMainInfo'), { apptype: CurApptype, apiname: "customer/cust_list", projid: "url.proj", gettype: CurApptype, role: (CurStudid > 0 ? "stud" : "tch"), roleid: (CurStudid > 0 ? CurStudid : 0 - CurStudid), idxid: CurStudid }, { richedit: 1, vod: 1, video: 1, modules: ["menu", "head", "button", "course", "form", "stud", "list", "blog", "play", "intact", "crsplan", "cls", "lesn", "tch", "theme", "elchart", "prop", "el_slider", "elmind"] }, function (token, idxid, result) {
                 window.PageData = { user: result };
