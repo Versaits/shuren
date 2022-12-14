@@ -6,6 +6,30 @@
                { name: "江苏", value: 1000 },
                { name: "北京", value: 1000 },
            ];
+           //边框颜色
+           curdata.borderColor = "rgba(104, 152, 190, 1)";
+           //阴影颜色
+           curdata.shadowColor = "rgba(128, 217, 248, 1)";
+           //选中时的颜色
+           curdata.emphasis = {
+               label: {
+                   color: "#ffffff",
+               },
+               itemStyle: {
+                   areaColor: "#a5d4fe",
+               },
+           };
+           //阴影渐变色
+           curdata.colorStops = [
+               {
+                   offset: 0,
+                   color: "rgba(223, 231, 242, 1)", // 0% 处的颜色
+               },
+               {
+                   offset: 1,
+                   color: "rgba(2, 99, 206, 1)", // 100% 处的颜色
+               },
+           ];
 
            let mapEcharts = null;
            let historyList = [];
@@ -70,8 +94,8 @@
                    }
                }, 250);
            });
-
-           mapEcharts.on("dblclick", (params) => {
+           // mapEcharts.on("dblclick", (params) => {
+           $("body").find("[lvs_elm=return]").click(function () {
                // 当双击事件发生时，清除单击事件，仅响应双击事件
                clearTimeout(timeFn);
                if (historyList.length == 1) {
@@ -125,7 +149,7 @@
                    },
                    series: [
                        {
-                           name: "map",
+                           name: "中国",
                            type: "map", // 地图
                            map: mapName, // 加载注册的地图
                            selectedMode: false, // 不让单独选中
@@ -156,21 +180,14 @@
                                    globalCoord: false, // 缺省为 false
                                },
                                borderWidth: 1, // 边框大小
-                               borderColor: "rgba(104, 152, 190, 1)", // 边框样式
-                               shadowColor: "rgba(128, 217, 248, 1)", // 阴影颜色
+                               borderColor: curdata.borderColor, // 边框样式
+                               shadowColor: curdata.shadowColor, // 阴影颜色
                                shadowOffsetX: -2, // 阴影水平方向上的偏移距离
                                shadowOffsetY: 2, // 阴影垂直方向上的偏移距离
                                shadowBlur: 10, // 文字块的背景阴影长度
                            },
                            // 选中状态下样式
-                           emphasis: {
-                               label: {
-                                   color: "#ffffff",
-                               },
-                               itemStyle: {
-                                   areaColor: "#a5d4fe",
-                               },
-                           },
+                           emphasis: curdata.emphasis,
                            data: curdata.data,
                        },
                    ],
