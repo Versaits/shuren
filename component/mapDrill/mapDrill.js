@@ -1,6 +1,10 @@
 (function (jQuery) {
    jQuery.fn.extend({
        lvs_cnMap:function (token,idxid,curdata) {
+           //地图大小
+           curdata.width = "800px";
+           curdata.height = "800px";
+            $(this).find("[lvs_elm=eMap]").attr("style","height:"+curdata.height+";"+"width:"+curdata.width)
            //tooltip内容
            curdata.data = [
                { name: "江苏", value: 1000 },
@@ -58,6 +62,7 @@
                    if (
                        allAreaCode.filter((item) => item.name.indexOf(params.name) > -1)[0]
                    ) {
+                       $("body").find("[lvs_elm=return]").css("display","")
                        let areaCode = allAreaCode.filter(
                            (item) => item.name.indexOf(params.name) > -1
                        )[0].code;
@@ -95,17 +100,18 @@
                }, 250);
            });
            // mapEcharts.on("dblclick", (params) => {
+           // 当双击事件发生时，清除单击事件，仅响应双击事件
            $("body").find("[lvs_elm=return]").click(function () {
-               // 当双击事件发生时，清除单击事件，仅响应双击事件
                clearTimeout(timeFn);
-               if (historyList.length == 1) {
-                   alert("已经到达最上一级地图了");
-                   return;
-               }
+               // if (historyList.length == 1) {
+               //     $("body").find("[lvs_elm=return]").css("display","none");
+               //     alert("已经到达最上一级地图了");
+               //     return;
+               // }
                let map = historyList.pop();
-               console.log(historyList[historyList.length - 1])
                if (historyList[historyList.length - 1].code == "china") {
                    initMap(china, "china", "中国");
+                   $("body").find("[lvs_elm=return]").css("display","none");
                } else {
                    loadMap(
                        `https://geo.datav.aliyun.com/areas_v3/bound/${
