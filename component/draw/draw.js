@@ -19,10 +19,10 @@
                 theme: 'standard classic', // 设置主题
                 autoScaleImage: true, // 根据画布的大小自动缩放图像（fg和bg）。
                 autoCenterImage: true, // 自动将图像居中（fg和bg，默认为左/顶角）。
-                menuHandle: true, // 设置为false意味着菜单不能被拖动。
+                menuHandle: false, // 设置为false意味着菜单不能被拖动。
                 menuOrientation: 'horizontal', // 菜单排列（水平、垂直）。
-                menuOffsetLeft: 5, // 主菜单的左移量
-                menuOffsetTop: 5, // 主菜单的顶部偏差
+                menuOffsetLeft: 0, // 主菜单的左移量
+                menuOffsetTop: 0, // 主菜单的顶部偏差
                 bg: null, // 初始化时设置bg
                 image: null, // 在启动时设置图像
                 onShapeDown: null, // 绘图事件的回调。
